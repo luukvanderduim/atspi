@@ -18,16 +18,19 @@ generate = [
             # 'Missing memory management functions for Atspi.Application'
             "Atspi.Cache",
             "Atspi.Collection",
+            "Atspi.CollectionMatchType",
             "Atspi.CollectionSortOrder",
+            "Atspi.CollectionTreeTraversalType",
             "Atspi.Component",
             "Atspi.ComponentLayer",
             "Atspi.ControllerEventMask",
+            "Atspi.CoordType",
             "Atspi.DeviceEvent",
             "Atspi.DeviceEventMask",
             # "Atspi.DeviceListener",
             # function `atspi_device_listener_new`'s callback `callback` has invalid user data#
             "Atspi.DeviceListenerCB",
-            # "Atspi.DeviceListenerMode",
+            #"Atspi.DeviceListenerMode",
             # Configured object `Atspi.DeviceListenerMode` missing from the library
             "Atspi.DeviceListenerSimpleCB",
             "Atspi.Document",
@@ -54,12 +57,16 @@ generate = [
             "Atspi.Range",
             "Atspi.Rect",
             "Atspi.Relation",
+            "Atspi.RelationType",
             "Atspi.Role",
             "Atspi.Selection",
             "Atspi.StateSet",
+            "Atspi.StateType",
             "Atspi.Table",
             "Atspi.TableCell",
             "Atspi.Text",
+            "Atspi.TextBoundaryType",
+            "Atspi.TextClipType",
             "Atspi.TextGranularity",
             "Atspi.TextRange",
             "Atspi.Value",
@@ -67,10 +74,6 @@ generate = [
 
 manual = [
          "GLib.Error",
-        # "Atspi.CoordType",
-        # "GObject.Object",
-        # "Atspi.CollectionTreeTraversalType",
-        # "Atspi.CoordType",  glib::tralate?
        ]
 
 

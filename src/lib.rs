@@ -19,7 +19,6 @@ extern crate glib;
 #[macro_use]
 mod rt;
 
-use atspi_sys::*;
 mod auto;
 pub use auto::*;
 

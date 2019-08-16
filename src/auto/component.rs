@@ -2,9 +2,12 @@
 // from gir-files (https://github.com/gtk-rs/gir-files)
 // DO NOT EDIT
 
+use Accessible;
 use ComponentLayer;
+use CoordType;
 use Error;
 use Point;
+use Rect;
 use atspi_sys;
 use glib::object::IsA;
 use glib::translate::*;
@@ -23,39 +26,47 @@ glib_wrapper! {
 pub const NONE_COMPONENT: Option<&Component> = None;
 
 pub trait ComponentExt: 'static {
-    //fn contains(&self, x: i32, y: i32, ctype: /*Ignored*/CoordType) -> Result<(), Error>;
+    fn contains(&self, x: i32, y: i32, ctype: CoordType) -> Result<(), Error>;
 
-    //fn get_accessible_at_point(&self, x: i32, y: i32, ctype: /*Ignored*/CoordType) -> Result<Option<Accessible>, Error>;
+    fn get_accessible_at_point(&self, x: i32, y: i32, ctype: CoordType) -> Result<Option<Accessible>, Error>;
 
     fn get_alpha(&self) -> Result<f64, Error>;
 
-    //fn get_extents(&self, ctype: /*Ignored*/CoordType) -> Result<Rect, Error>;
+    fn get_extents(&self, ctype: CoordType) -> Result<Rect, Error>;
 
     fn get_layer(&self) -> Result<ComponentLayer, Error>;
 
     fn get_mdi_z_order(&self) -> Result<libc::c_short, Error>;
 
-    //fn get_position(&self, ctype: /*Ignored*/CoordType) -> Result<Point, Error>;
+    fn get_position(&self, ctype: CoordType) -> Result<Point, Error>;
 
     fn get_size(&self) -> Result<Point, Error>;
 
     fn grab_focus(&self) -> Result<(), Error>;
 
-    //fn set_extents(&self, x: i32, y: i32, width: i32, height: i32, ctype: /*Ignored*/CoordType) -> Result<(), Error>;
+    fn set_extents(&self, x: i32, y: i32, width: i32, height: i32, ctype: CoordType) -> Result<(), Error>;
 
-    //fn set_position(&self, x: i32, y: i32, ctype: /*Ignored*/CoordType) -> Result<(), Error>;
+    fn set_position(&self, x: i32, y: i32, ctype: CoordType) -> Result<(), Error>;
 
     fn set_size(&self, width: i32, height: i32) -> Result<(), Error>;
 }
 
 impl<O: IsA<Component>> ComponentExt for O {
-    //fn contains(&self, x: i32, y: i32, ctype: /*Ignored*/CoordType) -> Result<(), Error> {
-    //    unsafe { TODO: call atspi_sys:atspi_component_contains() }
-    //}
+    fn contains(&self, x: i32, y: i32, ctype: CoordType) -> Result<(), Error> {
+        unsafe {
+            let mut error = ptr::null_mut();
+            let _ = atspi_sys::atspi_component_contains(self.as_ref().to_glib_none().0, x, y, ctype.to_glib(), &mut error);
+            if error.is_null() { Ok(()) } else { Err(from_glib_full(error)) }
+        }
+    }
 
-    //fn get_accessible_at_point(&self, x: i32, y: i32, ctype: /*Ignored*/CoordType) -> Result<Option<Accessible>, Error> {
-    //    unsafe { TODO: call atspi_sys:atspi_component_get_accessible_at_point() }
-    //}
+    fn get_accessible_at_point(&self, x: i32, y: i32, ctype: CoordType) -> Result<Option<Accessible>, Error> {
+        unsafe {
+            let mut error = ptr::null_mut();
+            let ret = atspi_sys::atspi_component_get_accessible_at_point(self.as_ref().to_glib_none().0, x, y, ctype.to_glib(), &mut error);
+            if error.is_null() { Ok(from_glib_full(ret)) } else { Err(from_glib_full(error)) }
+        }
+    }
 
     fn get_alpha(&self) -> Result<f64, Error> {
         unsafe {
@@ -65,9 +76,13 @@ impl<O: IsA<Component>> ComponentExt for O {
         }
     }
 
-    //fn get_extents(&self, ctype: /*Ignored*/CoordType) -> Result<Rect, Error> {
-    //    unsafe { TODO: call atspi_sys:atspi_component_get_extents() }
-    //}
+    fn get_extents(&self, ctype: CoordType) -> Result<Rect, Error> {
+        unsafe {
+            let mut error = ptr::null_mut();
+            let ret = atspi_sys::atspi_component_get_extents(self.as_ref().to_glib_none().0, ctype.to_glib(), &mut error);
+            if error.is_null() { Ok(from_glib_full(ret)) } else { Err(from_glib_full(error)) }
+        }
+    }
 
     fn get_layer(&self) -> Result<ComponentLayer, Error> {
         unsafe {
@@ -85,9 +100,13 @@ impl<O: IsA<Component>> ComponentExt for O {
         }
     }
 
-    //fn get_position(&self, ctype: /*Ignored*/CoordType) -> Result<Point, Error> {
-    //    unsafe { TODO: call atspi_sys:atspi_component_get_position() }
-    //}
+    fn get_position(&self, ctype: CoordType) -> Result<Point, Error> {
+        unsafe {
+            let mut error = ptr::null_mut();
+            let ret = atspi_sys::atspi_component_get_position(self.as_ref().to_glib_none().0, ctype.to_glib(), &mut error);
+            if error.is_null() { Ok(from_glib_full(ret)) } else { Err(from_glib_full(error)) }
+        }
+    }
 
     fn get_size(&self) -> Result<Point, Error> {
         unsafe {
@@ -105,13 +124,21 @@ impl<O: IsA<Component>> ComponentExt for O {
         }
     }
 
-    //fn set_extents(&self, x: i32, y: i32, width: i32, height: i32, ctype: /*Ignored*/CoordType) -> Result<(), Error> {
-    //    unsafe { TODO: call atspi_sys:atspi_component_set_extents() }
-    //}
+    fn set_extents(&self, x: i32, y: i32, width: i32, height: i32, ctype: CoordType) -> Result<(), Error> {
+        unsafe {
+            let mut error = ptr::null_mut();
+            let _ = atspi_sys::atspi_component_set_extents(self.as_ref().to_glib_none().0, x, y, width, height, ctype.to_glib(), &mut error);
+            if error.is_null() { Ok(()) } else { Err(from_glib_full(error)) }
+        }
+    }
 
-    //fn set_position(&self, x: i32, y: i32, ctype: /*Ignored*/CoordType) -> Result<(), Error> {
-    //    unsafe { TODO: call atspi_sys:atspi_component_set_position() }
-    //}
+    fn set_position(&self, x: i32, y: i32, ctype: CoordType) -> Result<(), Error> {
+        unsafe {
+            let mut error = ptr::null_mut();
+            let _ = atspi_sys::atspi_component_set_position(self.as_ref().to_glib_none().0, x, y, ctype.to_glib(), &mut error);
+            if error.is_null() { Ok(()) } else { Err(from_glib_full(error)) }
+        }
+    }
 
     fn set_size(&self, width: i32, height: i32) -> Result<(), Error> {
         unsafe {

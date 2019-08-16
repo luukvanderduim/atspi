@@ -2,6 +2,7 @@
 // from gir-files (https://github.com/gtk-rs/gir-files)
 // DO NOT EDIT
 
+use StateType;
 use atspi_sys;
 use glib::object::IsA;
 use glib::translate::*;
@@ -24,11 +25,11 @@ impl StateSet {
 pub const NONE_STATE_SET: Option<&StateSet> = None;
 
 pub trait StateSetExt: 'static {
-    //fn add(&self, state: /*Ignored*/StateType);
+    fn add(&self, state: StateType);
 
     fn compare<P: IsA<StateSet>>(&self, set2: &P) -> Option<StateSet>;
 
-    //fn contains(&self, state: /*Ignored*/StateType) -> bool;
+    fn contains(&self, state: StateType) -> bool;
 
     fn equals<P: IsA<StateSet>>(&self, set2: &P) -> bool;
 
@@ -36,15 +37,17 @@ pub trait StateSetExt: 'static {
 
     fn is_empty(&self) -> bool;
 
-    //fn remove(&self, state: /*Ignored*/StateType);
+    fn remove(&self, state: StateType);
 
     fn set_by_name(&self, name: &str, enabled: bool);
 }
 
 impl<O: IsA<StateSet>> StateSetExt for O {
-    //fn add(&self, state: /*Ignored*/StateType) {
-    //    unsafe { TODO: call atspi_sys:atspi_state_set_add() }
-    //}
+    fn add(&self, state: StateType) {
+        unsafe {
+            atspi_sys::atspi_state_set_add(self.as_ref().to_glib_none().0, state.to_glib());
+        }
+    }
 
     fn compare<P: IsA<StateSet>>(&self, set2: &P) -> Option<StateSet> {
         unsafe {
@@ -52,9 +55,11 @@ impl<O: IsA<StateSet>> StateSetExt for O {
         }
     }
 
-    //fn contains(&self, state: /*Ignored*/StateType) -> bool {
-    //    unsafe { TODO: call atspi_sys:atspi_state_set_contains() }
-    //}
+    fn contains(&self, state: StateType) -> bool {
+        unsafe {
+            from_glib(atspi_sys::atspi_state_set_contains(self.as_ref().to_glib_none().0, state.to_glib()))
+        }
+    }
 
     fn equals<P: IsA<StateSet>>(&self, set2: &P) -> bool {
         unsafe {
@@ -72,9 +77,11 @@ impl<O: IsA<StateSet>> StateSetExt for O {
         }
     }
 
-    //fn remove(&self, state: /*Ignored*/StateType) {
-    //    unsafe { TODO: call atspi_sys:atspi_state_set_remove() }
-    //}
+    fn remove(&self, state: StateType) {
+        unsafe {
+            atspi_sys::atspi_state_set_remove(self.as_ref().to_glib_none().0, state.to_glib());
+        }
+    }
 
     fn set_by_name(&self, name: &str, enabled: bool) {
         unsafe {

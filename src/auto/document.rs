@@ -21,12 +21,6 @@ glib_wrapper! {
 pub const NONE_DOCUMENT: Option<&Document> = None;
 
 pub trait DocumentExt: 'static {
-    #[cfg_attr(feature = "v2_10", deprecated)]
-    fn get_attribute_value(&self, attribute: &str) -> Result<GString, Error>;
-
-    //#[cfg_attr(feature = "v2_10", deprecated)]
-    //fn get_attributes(&self) -> Result</*Unknown conversion*//*Unimplemented*/HashTable TypeId { ns_id: 0, id: 28 }/TypeId { ns_id: 0, id: 28 }, Error>;
-
     fn get_current_page_number(&self) -> Result<i32, Error>;
 
     fn get_document_attribute_value(&self, attribute: &str) -> Result<GString, Error>;
@@ -39,18 +33,6 @@ pub trait DocumentExt: 'static {
 }
 
 impl<O: IsA<Document>> DocumentExt for O {
-    fn get_attribute_value(&self, attribute: &str) -> Result<GString, Error> {
-        unsafe {
-            let mut error = ptr::null_mut();
-            let ret = atspi_sys::atspi_document_get_attribute_value(self.as_ref().to_glib_none().0, attribute.to_glib_none().0, &mut error);
-            if error.is_null() { Ok(from_glib_full(ret)) } else { Err(from_glib_full(error)) }
-        }
-    }
-
-    //fn get_attributes(&self) -> Result</*Unknown conversion*//*Unimplemented*/HashTable TypeId { ns_id: 0, id: 28 }/TypeId { ns_id: 0, id: 28 }, Error> {
-    //    unsafe { TODO: call atspi_sys:atspi_document_get_attributes() }
-    //}
-
     fn get_current_page_number(&self) -> Result<i32, Error> {
         unsafe {
             let mut error = ptr::null_mut();

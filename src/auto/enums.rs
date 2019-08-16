@@ -15,6 +15,90 @@ use std::fmt;
 
 #[derive(Debug, Eq, PartialEq, Ord, PartialOrd, Hash)]
 #[derive(Clone, Copy)]
+pub enum CollectionMatchType {
+    Invalid,
+    All,
+    Any,
+    None,
+    Empty,
+    LastDefined,
+    #[doc(hidden)]
+    __Unknown(i32),
+}
+
+impl fmt::Display for CollectionMatchType {
+    fn fmt(&self, f: &mut fmt::Formatter) -> fmt::Result {
+        write!(f, "CollectionMatchType::{}", match *self {
+            CollectionMatchType::Invalid => "Invalid",
+            CollectionMatchType::All => "All",
+            CollectionMatchType::Any => "Any",
+            CollectionMatchType::None => "None",
+            CollectionMatchType::Empty => "Empty",
+            CollectionMatchType::LastDefined => "LastDefined",
+            _ => "Unknown",
+        })
+    }
+}
+
+#[doc(hidden)]
+impl ToGlib for CollectionMatchType {
+    type GlibType = atspi_sys::AtspiCollectionMatchType;
+
+    fn to_glib(&self) -> atspi_sys::AtspiCollectionMatchType {
+        match *self {
+            CollectionMatchType::Invalid => atspi_sys::ATSPI_Collection_MATCH_INVALID,
+            CollectionMatchType::All => atspi_sys::ATSPI_Collection_MATCH_ALL,
+            CollectionMatchType::Any => atspi_sys::ATSPI_Collection_MATCH_ANY,
+            CollectionMatchType::None => atspi_sys::ATSPI_Collection_MATCH_NONE,
+            CollectionMatchType::Empty => atspi_sys::ATSPI_Collection_MATCH_EMPTY,
+            CollectionMatchType::LastDefined => atspi_sys::ATSPI_Collection_MATCH_LAST_DEFINED,
+            CollectionMatchType::__Unknown(value) => value
+        }
+    }
+}
+
+#[doc(hidden)]
+impl FromGlib<atspi_sys::AtspiCollectionMatchType> for CollectionMatchType {
+    fn from_glib(value: atspi_sys::AtspiCollectionMatchType) -> Self {
+        skip_assert_initialized!();
+        match value {
+            0 => CollectionMatchType::Invalid,
+            1 => CollectionMatchType::All,
+            2 => CollectionMatchType::Any,
+            3 => CollectionMatchType::None,
+            4 => CollectionMatchType::Empty,
+            5 => CollectionMatchType::LastDefined,
+            value => CollectionMatchType::__Unknown(value),
+        }
+    }
+}
+
+impl StaticType for CollectionMatchType {
+    fn static_type() -> Type {
+        unsafe { from_glib(atspi_sys::atspi_collection_match_type_get_type()) }
+    }
+}
+
+impl<'a> FromValueOptional<'a> for CollectionMatchType {
+    unsafe fn from_value_optional(value: &Value) -> Option<Self> {
+        Some(FromValue::from_value(value))
+    }
+}
+
+impl<'a> FromValue<'a> for CollectionMatchType {
+    unsafe fn from_value(value: &Value) -> Self {
+        from_glib(gobject_sys::g_value_get_enum(value.to_glib_none().0))
+    }
+}
+
+impl SetValue for CollectionMatchType {
+    unsafe fn set_value(value: &mut Value, this: &Self) {
+        gobject_sys::g_value_set_enum(value.to_glib_none_mut().0, this.to_glib())
+    }
+}
+
+#[derive(Debug, Eq, PartialEq, Ord, PartialOrd, Hash)]
+#[derive(Clone, Copy)]
 pub enum CollectionSortOrder {
     Invalid,
     Canonical,
@@ -100,6 +184,82 @@ impl<'a> FromValue<'a> for CollectionSortOrder {
 }
 
 impl SetValue for CollectionSortOrder {
+    unsafe fn set_value(value: &mut Value, this: &Self) {
+        gobject_sys::g_value_set_enum(value.to_glib_none_mut().0, this.to_glib())
+    }
+}
+
+#[derive(Debug, Eq, PartialEq, Ord, PartialOrd, Hash)]
+#[derive(Clone, Copy)]
+pub enum CollectionTreeTraversalType {
+    RestrictChildren,
+    RestrictSibling,
+    Inorder,
+    LastDefined,
+    #[doc(hidden)]
+    __Unknown(i32),
+}
+
+impl fmt::Display for CollectionTreeTraversalType {
+    fn fmt(&self, f: &mut fmt::Formatter) -> fmt::Result {
+        write!(f, "CollectionTreeTraversalType::{}", match *self {
+            CollectionTreeTraversalType::RestrictChildren => "RestrictChildren",
+            CollectionTreeTraversalType::RestrictSibling => "RestrictSibling",
+            CollectionTreeTraversalType::Inorder => "Inorder",
+            CollectionTreeTraversalType::LastDefined => "LastDefined",
+            _ => "Unknown",
+        })
+    }
+}
+
+#[doc(hidden)]
+impl ToGlib for CollectionTreeTraversalType {
+    type GlibType = atspi_sys::AtspiCollectionTreeTraversalType;
+
+    fn to_glib(&self) -> atspi_sys::AtspiCollectionTreeTraversalType {
+        match *self {
+            CollectionTreeTraversalType::RestrictChildren => atspi_sys::ATSPI_Collection_TREE_RESTRICT_CHILDREN,
+            CollectionTreeTraversalType::RestrictSibling => atspi_sys::ATSPI_Collection_TREE_RESTRICT_SIBLING,
+            CollectionTreeTraversalType::Inorder => atspi_sys::ATSPI_Collection_TREE_INORDER,
+            CollectionTreeTraversalType::LastDefined => atspi_sys::ATSPI_Collection_TREE_LAST_DEFINED,
+            CollectionTreeTraversalType::__Unknown(value) => value
+        }
+    }
+}
+
+#[doc(hidden)]
+impl FromGlib<atspi_sys::AtspiCollectionTreeTraversalType> for CollectionTreeTraversalType {
+    fn from_glib(value: atspi_sys::AtspiCollectionTreeTraversalType) -> Self {
+        skip_assert_initialized!();
+        match value {
+            0 => CollectionTreeTraversalType::RestrictChildren,
+            1 => CollectionTreeTraversalType::RestrictSibling,
+            2 => CollectionTreeTraversalType::Inorder,
+            3 => CollectionTreeTraversalType::LastDefined,
+            value => CollectionTreeTraversalType::__Unknown(value),
+        }
+    }
+}
+
+impl StaticType for CollectionTreeTraversalType {
+    fn static_type() -> Type {
+        unsafe { from_glib(atspi_sys::atspi_collection_tree_traversal_type_get_type()) }
+    }
+}
+
+impl<'a> FromValueOptional<'a> for CollectionTreeTraversalType {
+    unsafe fn from_value_optional(value: &Value) -> Option<Self> {
+        Some(FromValue::from_value(value))
+    }
+}
+
+impl<'a> FromValue<'a> for CollectionTreeTraversalType {
+    unsafe fn from_value(value: &Value) -> Self {
+        from_glib(gobject_sys::g_value_get_enum(value.to_glib_none().0))
+    }
+}
+
+impl SetValue for CollectionTreeTraversalType {
     unsafe fn set_value(value: &mut Value, this: &Self) {
         gobject_sys::g_value_set_enum(value.to_glib_none_mut().0, this.to_glib())
     }
@@ -196,6 +356,230 @@ impl<'a> FromValue<'a> for ComponentLayer {
 }
 
 impl SetValue for ComponentLayer {
+    unsafe fn set_value(value: &mut Value, this: &Self) {
+        gobject_sys::g_value_set_enum(value.to_glib_none_mut().0, this.to_glib())
+    }
+}
+
+#[derive(Debug, Eq, PartialEq, Ord, PartialOrd, Hash)]
+#[derive(Clone, Copy)]
+pub enum CoordType {
+    Screen,
+    Window,
+    #[doc(hidden)]
+    __Unknown(i32),
+}
+
+impl fmt::Display for CoordType {
+    fn fmt(&self, f: &mut fmt::Formatter) -> fmt::Result {
+        write!(f, "CoordType::{}", match *self {
+            CoordType::Screen => "Screen",
+            CoordType::Window => "Window",
+            _ => "Unknown",
+        })
+    }
+}
+
+#[doc(hidden)]
+impl ToGlib for CoordType {
+    type GlibType = atspi_sys::AtspiCoordType;
+
+    fn to_glib(&self) -> atspi_sys::AtspiCoordType {
+        match *self {
+            CoordType::Screen => atspi_sys::ATSPI_COORD_TYPE_SCREEN,
+            CoordType::Window => atspi_sys::ATSPI_COORD_TYPE_WINDOW,
+            CoordType::__Unknown(value) => value
+        }
+    }
+}
+
+#[doc(hidden)]
+impl FromGlib<atspi_sys::AtspiCoordType> for CoordType {
+    fn from_glib(value: atspi_sys::AtspiCoordType) -> Self {
+        skip_assert_initialized!();
+        match value {
+            0 => CoordType::Screen,
+            1 => CoordType::Window,
+            value => CoordType::__Unknown(value),
+        }
+    }
+}
+
+impl StaticType for CoordType {
+    fn static_type() -> Type {
+        unsafe { from_glib(atspi_sys::atspi_coord_type_get_type()) }
+    }
+}
+
+impl<'a> FromValueOptional<'a> for CoordType {
+    unsafe fn from_value_optional(value: &Value) -> Option<Self> {
+        Some(FromValue::from_value(value))
+    }
+}
+
+impl<'a> FromValue<'a> for CoordType {
+    unsafe fn from_value(value: &Value) -> Self {
+        from_glib(gobject_sys::g_value_get_enum(value.to_glib_none().0))
+    }
+}
+
+impl SetValue for CoordType {
+    unsafe fn set_value(value: &mut Value, this: &Self) {
+        gobject_sys::g_value_set_enum(value.to_glib_none_mut().0, this.to_glib())
+    }
+}
+
+#[derive(Debug, Eq, PartialEq, Ord, PartialOrd, Hash)]
+#[derive(Clone, Copy)]
+pub enum RelationType {
+    Null,
+    LabelFor,
+    LabelledBy,
+    ControllerFor,
+    ControlledBy,
+    MemberOf,
+    TooltipFor,
+    NodeChildOf,
+    NodeParentOf,
+    Extended,
+    FlowsTo,
+    FlowsFrom,
+    SubwindowOf,
+    Embeds,
+    EmbeddedBy,
+    PopupFor,
+    ParentWindowOf,
+    DescriptionFor,
+    DescribedBy,
+    Details,
+    DetailsFor,
+    ErrorMessage,
+    ErrorFor,
+    LastDefined,
+    #[doc(hidden)]
+    __Unknown(i32),
+}
+
+impl fmt::Display for RelationType {
+    fn fmt(&self, f: &mut fmt::Formatter) -> fmt::Result {
+        write!(f, "RelationType::{}", match *self {
+            RelationType::Null => "Null",
+            RelationType::LabelFor => "LabelFor",
+            RelationType::LabelledBy => "LabelledBy",
+            RelationType::ControllerFor => "ControllerFor",
+            RelationType::ControlledBy => "ControlledBy",
+            RelationType::MemberOf => "MemberOf",
+            RelationType::TooltipFor => "TooltipFor",
+            RelationType::NodeChildOf => "NodeChildOf",
+            RelationType::NodeParentOf => "NodeParentOf",
+            RelationType::Extended => "Extended",
+            RelationType::FlowsTo => "FlowsTo",
+            RelationType::FlowsFrom => "FlowsFrom",
+            RelationType::SubwindowOf => "SubwindowOf",
+            RelationType::Embeds => "Embeds",
+            RelationType::EmbeddedBy => "EmbeddedBy",
+            RelationType::PopupFor => "PopupFor",
+            RelationType::ParentWindowOf => "ParentWindowOf",
+            RelationType::DescriptionFor => "DescriptionFor",
+            RelationType::DescribedBy => "DescribedBy",
+            RelationType::Details => "Details",
+            RelationType::DetailsFor => "DetailsFor",
+            RelationType::ErrorMessage => "ErrorMessage",
+            RelationType::ErrorFor => "ErrorFor",
+            RelationType::LastDefined => "LastDefined",
+            _ => "Unknown",
+        })
+    }
+}
+
+#[doc(hidden)]
+impl ToGlib for RelationType {
+    type GlibType = atspi_sys::AtspiRelationType;
+
+    fn to_glib(&self) -> atspi_sys::AtspiRelationType {
+        match *self {
+            RelationType::Null => atspi_sys::ATSPI_RELATION_NULL,
+            RelationType::LabelFor => atspi_sys::ATSPI_RELATION_LABEL_FOR,
+            RelationType::LabelledBy => atspi_sys::ATSPI_RELATION_LABELLED_BY,
+            RelationType::ControllerFor => atspi_sys::ATSPI_RELATION_CONTROLLER_FOR,
+            RelationType::ControlledBy => atspi_sys::ATSPI_RELATION_CONTROLLED_BY,
+            RelationType::MemberOf => atspi_sys::ATSPI_RELATION_MEMBER_OF,
+            RelationType::TooltipFor => atspi_sys::ATSPI_RELATION_TOOLTIP_FOR,
+            RelationType::NodeChildOf => atspi_sys::ATSPI_RELATION_NODE_CHILD_OF,
+            RelationType::NodeParentOf => atspi_sys::ATSPI_RELATION_NODE_PARENT_OF,
+            RelationType::Extended => atspi_sys::ATSPI_RELATION_EXTENDED,
+            RelationType::FlowsTo => atspi_sys::ATSPI_RELATION_FLOWS_TO,
+            RelationType::FlowsFrom => atspi_sys::ATSPI_RELATION_FLOWS_FROM,
+            RelationType::SubwindowOf => atspi_sys::ATSPI_RELATION_SUBWINDOW_OF,
+            RelationType::Embeds => atspi_sys::ATSPI_RELATION_EMBEDS,
+            RelationType::EmbeddedBy => atspi_sys::ATSPI_RELATION_EMBEDDED_BY,
+            RelationType::PopupFor => atspi_sys::ATSPI_RELATION_POPUP_FOR,
+            RelationType::ParentWindowOf => atspi_sys::ATSPI_RELATION_PARENT_WINDOW_OF,
+            RelationType::DescriptionFor => atspi_sys::ATSPI_RELATION_DESCRIPTION_FOR,
+            RelationType::DescribedBy => atspi_sys::ATSPI_RELATION_DESCRIBED_BY,
+            RelationType::Details => atspi_sys::ATSPI_RELATION_DETAILS,
+            RelationType::DetailsFor => atspi_sys::ATSPI_RELATION_DETAILS_FOR,
+            RelationType::ErrorMessage => atspi_sys::ATSPI_RELATION_ERROR_MESSAGE,
+            RelationType::ErrorFor => atspi_sys::ATSPI_RELATION_ERROR_FOR,
+            RelationType::LastDefined => atspi_sys::ATSPI_RELATION_LAST_DEFINED,
+            RelationType::__Unknown(value) => value
+        }
+    }
+}
+
+#[doc(hidden)]
+impl FromGlib<atspi_sys::AtspiRelationType> for RelationType {
+    fn from_glib(value: atspi_sys::AtspiRelationType) -> Self {
+        skip_assert_initialized!();
+        match value {
+            0 => RelationType::Null,
+            1 => RelationType::LabelFor,
+            2 => RelationType::LabelledBy,
+            3 => RelationType::ControllerFor,
+            4 => RelationType::ControlledBy,
+            5 => RelationType::MemberOf,
+            6 => RelationType::TooltipFor,
+            7 => RelationType::NodeChildOf,
+            8 => RelationType::NodeParentOf,
+            9 => RelationType::Extended,
+            10 => RelationType::FlowsTo,
+            11 => RelationType::FlowsFrom,
+            12 => RelationType::SubwindowOf,
+            13 => RelationType::Embeds,
+            14 => RelationType::EmbeddedBy,
+            15 => RelationType::PopupFor,
+            16 => RelationType::ParentWindowOf,
+            17 => RelationType::DescriptionFor,
+            18 => RelationType::DescribedBy,
+            19 => RelationType::Details,
+            20 => RelationType::DetailsFor,
+            21 => RelationType::ErrorMessage,
+            22 => RelationType::ErrorFor,
+            23 => RelationType::LastDefined,
+            value => RelationType::__Unknown(value),
+        }
+    }
+}
+
+impl StaticType for RelationType {
+    fn static_type() -> Type {
+        unsafe { from_glib(atspi_sys::atspi_relation_type_get_type()) }
+    }
+}
+
+impl<'a> FromValueOptional<'a> for RelationType {
+    unsafe fn from_value_optional(value: &Value) -> Option<Self> {
+        Some(FromValue::from_value(value))
+    }
+}
+
+impl<'a> FromValue<'a> for RelationType {
+    unsafe fn from_value(value: &Value) -> Self {
+        from_glib(gobject_sys::g_value_get_enum(value.to_glib_none().0))
+    }
+}
+
+impl SetValue for RelationType {
     unsafe fn set_value(value: &mut Value, this: &Self) {
         gobject_sys::g_value_set_enum(value.to_glib_none_mut().0, this.to_glib())
     }
@@ -760,6 +1144,410 @@ impl<'a> FromValue<'a> for Role {
 }
 
 impl SetValue for Role {
+    unsafe fn set_value(value: &mut Value, this: &Self) {
+        gobject_sys::g_value_set_enum(value.to_glib_none_mut().0, this.to_glib())
+    }
+}
+
+#[derive(Debug, Eq, PartialEq, Ord, PartialOrd, Hash)]
+#[derive(Clone, Copy)]
+pub enum StateType {
+    Invalid,
+    Active,
+    Armed,
+    Busy,
+    Checked,
+    Collapsed,
+    Defunct,
+    Editable,
+    Enabled,
+    Expandable,
+    Expanded,
+    Focusable,
+    Focused,
+    HasTooltip,
+    Horizontal,
+    Iconified,
+    Modal,
+    MultiLine,
+    Multiselectable,
+    Opaque,
+    Pressed,
+    Resizable,
+    Selectable,
+    Selected,
+    Sensitive,
+    Showing,
+    SingleLine,
+    Stale,
+    Transient,
+    Vertical,
+    Visible,
+    ManagesDescendants,
+    Indeterminate,
+    Required,
+    Truncated,
+    Animated,
+    InvalidEntry,
+    SupportsAutocompletion,
+    SelectableText,
+    IsDefault,
+    Visited,
+    Checkable,
+    HasPopup,
+    ReadOnly,
+    LastDefined,
+    #[doc(hidden)]
+    __Unknown(i32),
+}
+
+impl fmt::Display for StateType {
+    fn fmt(&self, f: &mut fmt::Formatter) -> fmt::Result {
+        write!(f, "StateType::{}", match *self {
+            StateType::Invalid => "Invalid",
+            StateType::Active => "Active",
+            StateType::Armed => "Armed",
+            StateType::Busy => "Busy",
+            StateType::Checked => "Checked",
+            StateType::Collapsed => "Collapsed",
+            StateType::Defunct => "Defunct",
+            StateType::Editable => "Editable",
+            StateType::Enabled => "Enabled",
+            StateType::Expandable => "Expandable",
+            StateType::Expanded => "Expanded",
+            StateType::Focusable => "Focusable",
+            StateType::Focused => "Focused",
+            StateType::HasTooltip => "HasTooltip",
+            StateType::Horizontal => "Horizontal",
+            StateType::Iconified => "Iconified",
+            StateType::Modal => "Modal",
+            StateType::MultiLine => "MultiLine",
+            StateType::Multiselectable => "Multiselectable",
+            StateType::Opaque => "Opaque",
+            StateType::Pressed => "Pressed",
+            StateType::Resizable => "Resizable",
+            StateType::Selectable => "Selectable",
+            StateType::Selected => "Selected",
+            StateType::Sensitive => "Sensitive",
+            StateType::Showing => "Showing",
+            StateType::SingleLine => "SingleLine",
+            StateType::Stale => "Stale",
+            StateType::Transient => "Transient",
+            StateType::Vertical => "Vertical",
+            StateType::Visible => "Visible",
+            StateType::ManagesDescendants => "ManagesDescendants",
+            StateType::Indeterminate => "Indeterminate",
+            StateType::Required => "Required",
+            StateType::Truncated => "Truncated",
+            StateType::Animated => "Animated",
+            StateType::InvalidEntry => "InvalidEntry",
+            StateType::SupportsAutocompletion => "SupportsAutocompletion",
+            StateType::SelectableText => "SelectableText",
+            StateType::IsDefault => "IsDefault",
+            StateType::Visited => "Visited",
+            StateType::Checkable => "Checkable",
+            StateType::HasPopup => "HasPopup",
+            StateType::ReadOnly => "ReadOnly",
+            StateType::LastDefined => "LastDefined",
+            _ => "Unknown",
+        })
+    }
+}
+
+#[doc(hidden)]
+impl ToGlib for StateType {
+    type GlibType = atspi_sys::AtspiStateType;
+
+    fn to_glib(&self) -> atspi_sys::AtspiStateType {
+        match *self {
+            StateType::Invalid => atspi_sys::ATSPI_STATE_INVALID,
+            StateType::Active => atspi_sys::ATSPI_STATE_ACTIVE,
+            StateType::Armed => atspi_sys::ATSPI_STATE_ARMED,
+            StateType::Busy => atspi_sys::ATSPI_STATE_BUSY,
+            StateType::Checked => atspi_sys::ATSPI_STATE_CHECKED,
+            StateType::Collapsed => atspi_sys::ATSPI_STATE_COLLAPSED,
+            StateType::Defunct => atspi_sys::ATSPI_STATE_DEFUNCT,
+            StateType::Editable => atspi_sys::ATSPI_STATE_EDITABLE,
+            StateType::Enabled => atspi_sys::ATSPI_STATE_ENABLED,
+            StateType::Expandable => atspi_sys::ATSPI_STATE_EXPANDABLE,
+            StateType::Expanded => atspi_sys::ATSPI_STATE_EXPANDED,
+            StateType::Focusable => atspi_sys::ATSPI_STATE_FOCUSABLE,
+            StateType::Focused => atspi_sys::ATSPI_STATE_FOCUSED,
+            StateType::HasTooltip => atspi_sys::ATSPI_STATE_HAS_TOOLTIP,
+            StateType::Horizontal => atspi_sys::ATSPI_STATE_HORIZONTAL,
+            StateType::Iconified => atspi_sys::ATSPI_STATE_ICONIFIED,
+            StateType::Modal => atspi_sys::ATSPI_STATE_MODAL,
+            StateType::MultiLine => atspi_sys::ATSPI_STATE_MULTI_LINE,
+            StateType::Multiselectable => atspi_sys::ATSPI_STATE_MULTISELECTABLE,
+            StateType::Opaque => atspi_sys::ATSPI_STATE_OPAQUE,
+            StateType::Pressed => atspi_sys::ATSPI_STATE_PRESSED,
+            StateType::Resizable => atspi_sys::ATSPI_STATE_RESIZABLE,
+            StateType::Selectable => atspi_sys::ATSPI_STATE_SELECTABLE,
+            StateType::Selected => atspi_sys::ATSPI_STATE_SELECTED,
+            StateType::Sensitive => atspi_sys::ATSPI_STATE_SENSITIVE,
+            StateType::Showing => atspi_sys::ATSPI_STATE_SHOWING,
+            StateType::SingleLine => atspi_sys::ATSPI_STATE_SINGLE_LINE,
+            StateType::Stale => atspi_sys::ATSPI_STATE_STALE,
+            StateType::Transient => atspi_sys::ATSPI_STATE_TRANSIENT,
+            StateType::Vertical => atspi_sys::ATSPI_STATE_VERTICAL,
+            StateType::Visible => atspi_sys::ATSPI_STATE_VISIBLE,
+            StateType::ManagesDescendants => atspi_sys::ATSPI_STATE_MANAGES_DESCENDANTS,
+            StateType::Indeterminate => atspi_sys::ATSPI_STATE_INDETERMINATE,
+            StateType::Required => atspi_sys::ATSPI_STATE_REQUIRED,
+            StateType::Truncated => atspi_sys::ATSPI_STATE_TRUNCATED,
+            StateType::Animated => atspi_sys::ATSPI_STATE_ANIMATED,
+            StateType::InvalidEntry => atspi_sys::ATSPI_STATE_INVALID_ENTRY,
+            StateType::SupportsAutocompletion => atspi_sys::ATSPI_STATE_SUPPORTS_AUTOCOMPLETION,
+            StateType::SelectableText => atspi_sys::ATSPI_STATE_SELECTABLE_TEXT,
+            StateType::IsDefault => atspi_sys::ATSPI_STATE_IS_DEFAULT,
+            StateType::Visited => atspi_sys::ATSPI_STATE_VISITED,
+            StateType::Checkable => atspi_sys::ATSPI_STATE_CHECKABLE,
+            StateType::HasPopup => atspi_sys::ATSPI_STATE_HAS_POPUP,
+            StateType::ReadOnly => atspi_sys::ATSPI_STATE_READ_ONLY,
+            StateType::LastDefined => atspi_sys::ATSPI_STATE_LAST_DEFINED,
+            StateType::__Unknown(value) => value
+        }
+    }
+}
+
+#[doc(hidden)]
+impl FromGlib<atspi_sys::AtspiStateType> for StateType {
+    fn from_glib(value: atspi_sys::AtspiStateType) -> Self {
+        skip_assert_initialized!();
+        match value {
+            0 => StateType::Invalid,
+            1 => StateType::Active,
+            2 => StateType::Armed,
+            3 => StateType::Busy,
+            4 => StateType::Checked,
+            5 => StateType::Collapsed,
+            6 => StateType::Defunct,
+            7 => StateType::Editable,
+            8 => StateType::Enabled,
+            9 => StateType::Expandable,
+            10 => StateType::Expanded,
+            11 => StateType::Focusable,
+            12 => StateType::Focused,
+            13 => StateType::HasTooltip,
+            14 => StateType::Horizontal,
+            15 => StateType::Iconified,
+            16 => StateType::Modal,
+            17 => StateType::MultiLine,
+            18 => StateType::Multiselectable,
+            19 => StateType::Opaque,
+            20 => StateType::Pressed,
+            21 => StateType::Resizable,
+            22 => StateType::Selectable,
+            23 => StateType::Selected,
+            24 => StateType::Sensitive,
+            25 => StateType::Showing,
+            26 => StateType::SingleLine,
+            27 => StateType::Stale,
+            28 => StateType::Transient,
+            29 => StateType::Vertical,
+            30 => StateType::Visible,
+            31 => StateType::ManagesDescendants,
+            32 => StateType::Indeterminate,
+            33 => StateType::Required,
+            34 => StateType::Truncated,
+            35 => StateType::Animated,
+            36 => StateType::InvalidEntry,
+            37 => StateType::SupportsAutocompletion,
+            38 => StateType::SelectableText,
+            39 => StateType::IsDefault,
+            40 => StateType::Visited,
+            41 => StateType::Checkable,
+            42 => StateType::HasPopup,
+            43 => StateType::ReadOnly,
+            44 => StateType::LastDefined,
+            value => StateType::__Unknown(value),
+        }
+    }
+}
+
+impl StaticType for StateType {
+    fn static_type() -> Type {
+        unsafe { from_glib(atspi_sys::atspi_state_type_get_type()) }
+    }
+}
+
+impl<'a> FromValueOptional<'a> for StateType {
+    unsafe fn from_value_optional(value: &Value) -> Option<Self> {
+        Some(FromValue::from_value(value))
+    }
+}
+
+impl<'a> FromValue<'a> for StateType {
+    unsafe fn from_value(value: &Value) -> Self {
+        from_glib(gobject_sys::g_value_get_enum(value.to_glib_none().0))
+    }
+}
+
+impl SetValue for StateType {
+    unsafe fn set_value(value: &mut Value, this: &Self) {
+        gobject_sys::g_value_set_enum(value.to_glib_none_mut().0, this.to_glib())
+    }
+}
+
+#[derive(Debug, Eq, PartialEq, Ord, PartialOrd, Hash)]
+#[derive(Clone, Copy)]
+pub enum TextBoundaryType {
+    Char,
+    WordStart,
+    WordEnd,
+    SentenceStart,
+    SentenceEnd,
+    LineStart,
+    LineEnd,
+    #[doc(hidden)]
+    __Unknown(i32),
+}
+
+impl fmt::Display for TextBoundaryType {
+    fn fmt(&self, f: &mut fmt::Formatter) -> fmt::Result {
+        write!(f, "TextBoundaryType::{}", match *self {
+            TextBoundaryType::Char => "Char",
+            TextBoundaryType::WordStart => "WordStart",
+            TextBoundaryType::WordEnd => "WordEnd",
+            TextBoundaryType::SentenceStart => "SentenceStart",
+            TextBoundaryType::SentenceEnd => "SentenceEnd",
+            TextBoundaryType::LineStart => "LineStart",
+            TextBoundaryType::LineEnd => "LineEnd",
+            _ => "Unknown",
+        })
+    }
+}
+
+#[doc(hidden)]
+impl ToGlib for TextBoundaryType {
+    type GlibType = atspi_sys::AtspiTextBoundaryType;
+
+    fn to_glib(&self) -> atspi_sys::AtspiTextBoundaryType {
+        match *self {
+            TextBoundaryType::Char => atspi_sys::ATSPI_TEXT_BOUNDARY_CHAR,
+            TextBoundaryType::WordStart => atspi_sys::ATSPI_TEXT_BOUNDARY_WORD_START,
+            TextBoundaryType::WordEnd => atspi_sys::ATSPI_TEXT_BOUNDARY_WORD_END,
+            TextBoundaryType::SentenceStart => atspi_sys::ATSPI_TEXT_BOUNDARY_SENTENCE_START,
+            TextBoundaryType::SentenceEnd => atspi_sys::ATSPI_TEXT_BOUNDARY_SENTENCE_END,
+            TextBoundaryType::LineStart => atspi_sys::ATSPI_TEXT_BOUNDARY_LINE_START,
+            TextBoundaryType::LineEnd => atspi_sys::ATSPI_TEXT_BOUNDARY_LINE_END,
+            TextBoundaryType::__Unknown(value) => value
+        }
+    }
+}
+
+#[doc(hidden)]
+impl FromGlib<atspi_sys::AtspiTextBoundaryType> for TextBoundaryType {
+    fn from_glib(value: atspi_sys::AtspiTextBoundaryType) -> Self {
+        skip_assert_initialized!();
+        match value {
+            0 => TextBoundaryType::Char,
+            1 => TextBoundaryType::WordStart,
+            2 => TextBoundaryType::WordEnd,
+            3 => TextBoundaryType::SentenceStart,
+            4 => TextBoundaryType::SentenceEnd,
+            5 => TextBoundaryType::LineStart,
+            6 => TextBoundaryType::LineEnd,
+            value => TextBoundaryType::__Unknown(value),
+        }
+    }
+}
+
+impl StaticType for TextBoundaryType {
+    fn static_type() -> Type {
+        unsafe { from_glib(atspi_sys::atspi_text_boundary_type_get_type()) }
+    }
+}
+
+impl<'a> FromValueOptional<'a> for TextBoundaryType {
+    unsafe fn from_value_optional(value: &Value) -> Option<Self> {
+        Some(FromValue::from_value(value))
+    }
+}
+
+impl<'a> FromValue<'a> for TextBoundaryType {
+    unsafe fn from_value(value: &Value) -> Self {
+        from_glib(gobject_sys::g_value_get_enum(value.to_glib_none().0))
+    }
+}
+
+impl SetValue for TextBoundaryType {
+    unsafe fn set_value(value: &mut Value, this: &Self) {
+        gobject_sys::g_value_set_enum(value.to_glib_none_mut().0, this.to_glib())
+    }
+}
+
+#[derive(Debug, Eq, PartialEq, Ord, PartialOrd, Hash)]
+#[derive(Clone, Copy)]
+pub enum TextClipType {
+    None,
+    Min,
+    Max,
+    Both,
+    #[doc(hidden)]
+    __Unknown(i32),
+}
+
+impl fmt::Display for TextClipType {
+    fn fmt(&self, f: &mut fmt::Formatter) -> fmt::Result {
+        write!(f, "TextClipType::{}", match *self {
+            TextClipType::None => "None",
+            TextClipType::Min => "Min",
+            TextClipType::Max => "Max",
+            TextClipType::Both => "Both",
+            _ => "Unknown",
+        })
+    }
+}
+
+#[doc(hidden)]
+impl ToGlib for TextClipType {
+    type GlibType = atspi_sys::AtspiTextClipType;
+
+    fn to_glib(&self) -> atspi_sys::AtspiTextClipType {
+        match *self {
+            TextClipType::None => atspi_sys::ATSPI_TEXT_CLIP_NONE,
+            TextClipType::Min => atspi_sys::ATSPI_TEXT_CLIP_MIN,
+            TextClipType::Max => atspi_sys::ATSPI_TEXT_CLIP_MAX,
+            TextClipType::Both => atspi_sys::ATSPI_TEXT_CLIP_BOTH,
+            TextClipType::__Unknown(value) => value
+        }
+    }
+}
+
+#[doc(hidden)]
+impl FromGlib<atspi_sys::AtspiTextClipType> for TextClipType {
+    fn from_glib(value: atspi_sys::AtspiTextClipType) -> Self {
+        skip_assert_initialized!();
+        match value {
+            0 => TextClipType::None,
+            1 => TextClipType::Min,
+            2 => TextClipType::Max,
+            3 => TextClipType::Both,
+            value => TextClipType::__Unknown(value),
+        }
+    }
+}
+
+impl StaticType for TextClipType {
+    fn static_type() -> Type {
+        unsafe { from_glib(atspi_sys::atspi_text_clip_type_get_type()) }
+    }
+}
+
+impl<'a> FromValueOptional<'a> for TextClipType {
+    unsafe fn from_value_optional(value: &Value) -> Option<Self> {
+        Some(FromValue::from_value(value))
+    }
+}
+
+impl<'a> FromValue<'a> for TextClipType {
+    unsafe fn from_value(value: &Value) -> Self {
+        from_glib(gobject_sys::g_value_get_enum(value.to_glib_none().0))
+    }
+}
+
+impl SetValue for TextClipType {
     unsafe fn set_value(value: &mut Value, this: &Self) {
         gobject_sys::g_value_set_enum(value.to_glib_none_mut().0, this.to_glib())
     }

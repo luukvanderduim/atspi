@@ -2,8 +2,10 @@
 // from gir-files (https://github.com/gtk-rs/gir-files)
 // DO NOT EDIT
 
+use CoordType;
 use Error;
 use Point;
+use Rect;
 use atspi_sys;
 use glib::GString;
 use glib::object::IsA;
@@ -24,11 +26,11 @@ pub const NONE_IMAGE: Option<&Image> = None;
 pub trait ImageExt: 'static {
     fn get_image_description(&self) -> Result<GString, Error>;
 
-    //fn get_image_extents(&self, ctype: /*Ignored*/CoordType) -> Result<Rect, Error>;
+    fn get_image_extents(&self, ctype: CoordType) -> Result<Rect, Error>;
 
     fn get_image_locale(&self) -> Result<GString, Error>;
 
-    //fn get_image_position(&self, ctype: /*Ignored*/CoordType) -> Result<Point, Error>;
+    fn get_image_position(&self, ctype: CoordType) -> Result<Point, Error>;
 
     fn get_image_size(&self) -> Result<Point, Error>;
 }
@@ -42,9 +44,13 @@ impl<O: IsA<Image>> ImageExt for O {
         }
     }
 
-    //fn get_image_extents(&self, ctype: /*Ignored*/CoordType) -> Result<Rect, Error> {
-    //    unsafe { TODO: call atspi_sys:atspi_image_get_image_extents() }
-    //}
+    fn get_image_extents(&self, ctype: CoordType) -> Result<Rect, Error> {
+        unsafe {
+            let mut error = ptr::null_mut();
+            let ret = atspi_sys::atspi_image_get_image_extents(self.as_ref().to_glib_none().0, ctype.to_glib(), &mut error);
+            if error.is_null() { Ok(from_glib_full(ret)) } else { Err(from_glib_full(error)) }
+        }
+    }
 
     fn get_image_locale(&self) -> Result<GString, Error> {
         unsafe {
@@ -54,9 +60,13 @@ impl<O: IsA<Image>> ImageExt for O {
         }
     }
 
-    //fn get_image_position(&self, ctype: /*Ignored*/CoordType) -> Result<Point, Error> {
-    //    unsafe { TODO: call atspi_sys:atspi_image_get_image_position() }
-    //}
+    fn get_image_position(&self, ctype: CoordType) -> Result<Point, Error> {
+        unsafe {
+            let mut error = ptr::null_mut();
+            let ret = atspi_sys::atspi_image_get_image_position(self.as_ref().to_glib_none().0, ctype.to_glib(), &mut error);
+            if error.is_null() { Ok(from_glib_full(ret)) } else { Err(from_glib_full(error)) }
+        }
+    }
 
     fn get_image_size(&self) -> Result<Point, Error> {
         unsafe {

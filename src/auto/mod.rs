@@ -94,9 +94,16 @@ mod text_range;
 pub use self::text_range::TextRange;
 
 mod enums;
+pub use self::enums::CollectionMatchType;
 pub use self::enums::CollectionSortOrder;
+pub use self::enums::CollectionTreeTraversalType;
 pub use self::enums::ComponentLayer;
+pub use self::enums::CoordType;
+pub use self::enums::RelationType;
 pub use self::enums::Role;
+pub use self::enums::StateType;
+pub use self::enums::TextBoundaryType;
+pub use self::enums::TextClipType;
 pub use self::enums::TextGranularity;
 
 mod flags;

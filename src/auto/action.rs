@@ -27,17 +27,11 @@ pub trait ActionExt: 'static {
 
     fn get_action_name(&self, i: i32) -> Result<GString, Error>;
 
-    #[cfg_attr(feature = "v2_10", deprecated)]
-    fn get_description(&self, i: i32) -> Result<GString, Error>;
-
     fn get_key_binding(&self, i: i32) -> Result<GString, Error>;
 
     fn get_localized_name(&self, i: i32) -> Result<GString, Error>;
 
     fn get_n_actions(&self) -> Result<i32, Error>;
-
-    #[cfg_attr(feature = "v2_10", deprecated)]
-    fn get_name(&self, i: i32) -> Result<GString, Error>;
 }
 
 impl<O: IsA<Action>> ActionExt for O {
@@ -65,14 +59,6 @@ impl<O: IsA<Action>> ActionExt for O {
         }
     }
 
-    fn get_description(&self, i: i32) -> Result<GString, Error> {
-        unsafe {
-            let mut error = ptr::null_mut();
-            let ret = atspi_sys::atspi_action_get_description(self.as_ref().to_glib_none().0, i, &mut error);
-            if error.is_null() { Ok(from_glib_full(ret)) } else { Err(from_glib_full(error)) }
-        }
-    }
-
     fn get_key_binding(&self, i: i32) -> Result<GString, Error> {
         unsafe {
             let mut error = ptr::null_mut();
@@ -94,14 +80,6 @@ impl<O: IsA<Action>> ActionExt for O {
             let mut error = ptr::null_mut();
             let ret = atspi_sys::atspi_action_get_n_actions(self.as_ref().to_glib_none().0, &mut error);
             if error.is_null() { Ok(ret) } else { Err(from_glib_full(error)) }
-        }
-    }
-
-    fn get_name(&self, i: i32) -> Result<GString, Error> {
-        unsafe {
-            let mut error = ptr::null_mut();
-            let ret = atspi_sys::atspi_action_get_name(self.as_ref().to_glib_none().0, i, &mut error);
-            if error.is_null() { Ok(from_glib_full(ret)) } else { Err(from_glib_full(error)) }
         }
     }
 }

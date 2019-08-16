@@ -25,9 +25,9 @@ pub trait CollectionExt: 'static {
 
     //fn get_matches<P: IsA<MatchRule>>(&self, rule: &P, sortby: CollectionSortOrder, count: i32, traverse: bool) -> Result</*Unknown conversion*//*Unimplemented*/Array TypeId { ns_id: 1, id: 17 }, Error>;
 
-    //fn get_matches_from<P: IsA<Accessible>, Q: IsA<MatchRule>>(&self, current_object: &P, rule: &Q, sortby: CollectionSortOrder, tree: /*Ignored*/CollectionTreeTraversalType, count: i32, traverse: bool) -> Result</*Unknown conversion*//*Unimplemented*/Array TypeId { ns_id: 1, id: 17 }, Error>;
+    //fn get_matches_from<P: IsA<Accessible>, Q: IsA<MatchRule>>(&self, current_object: &P, rule: &Q, sortby: CollectionSortOrder, tree: CollectionTreeTraversalType, count: i32, traverse: bool) -> Result</*Unknown conversion*//*Unimplemented*/Array TypeId { ns_id: 1, id: 17 }, Error>;
 
-    //fn get_matches_to<P: IsA<Accessible>, Q: IsA<MatchRule>>(&self, current_object: &P, rule: &Q, sortby: CollectionSortOrder, tree: /*Ignored*/CollectionTreeTraversalType, limit_scope: bool, count: i32, traverse: bool) -> Result</*Unknown conversion*//*Unimplemented*/Array TypeId { ns_id: 1, id: 17 }, Error>;
+    //fn get_matches_to<P: IsA<Accessible>, Q: IsA<MatchRule>>(&self, current_object: &P, rule: &Q, sortby: CollectionSortOrder, tree: CollectionTreeTraversalType, limit_scope: bool, count: i32, traverse: bool) -> Result</*Unknown conversion*//*Unimplemented*/Array TypeId { ns_id: 1, id: 17 }, Error>;
 
     fn is_ancestor_of<P: IsA<Accessible>>(&self, test: &P) -> Result<(), Error>;
 }
@@ -45,11 +45,11 @@ impl<O: IsA<Collection>> CollectionExt for O {
     //    unsafe { TODO: call atspi_sys:atspi_collection_get_matches() }
     //}
 
-    //fn get_matches_from<P: IsA<Accessible>, Q: IsA<MatchRule>>(&self, current_object: &P, rule: &Q, sortby: CollectionSortOrder, tree: /*Ignored*/CollectionTreeTraversalType, count: i32, traverse: bool) -> Result</*Unknown conversion*//*Unimplemented*/Array TypeId { ns_id: 1, id: 17 }, Error> {
+    //fn get_matches_from<P: IsA<Accessible>, Q: IsA<MatchRule>>(&self, current_object: &P, rule: &Q, sortby: CollectionSortOrder, tree: CollectionTreeTraversalType, count: i32, traverse: bool) -> Result</*Unknown conversion*//*Unimplemented*/Array TypeId { ns_id: 1, id: 17 }, Error> {
     //    unsafe { TODO: call atspi_sys:atspi_collection_get_matches_from() }
     //}
 
-    //fn get_matches_to<P: IsA<Accessible>, Q: IsA<MatchRule>>(&self, current_object: &P, rule: &Q, sortby: CollectionSortOrder, tree: /*Ignored*/CollectionTreeTraversalType, limit_scope: bool, count: i32, traverse: bool) -> Result</*Unknown conversion*//*Unimplemented*/Array TypeId { ns_id: 1, id: 17 }, Error> {
+    //fn get_matches_to<P: IsA<Accessible>, Q: IsA<MatchRule>>(&self, current_object: &P, rule: &Q, sortby: CollectionSortOrder, tree: CollectionTreeTraversalType, limit_scope: bool, count: i32, traverse: bool) -> Result</*Unknown conversion*//*Unimplemented*/Array TypeId { ns_id: 1, id: 17 }, Error> {
     //    unsafe { TODO: call atspi_sys:atspi_collection_get_matches_to() }
     //}
 
