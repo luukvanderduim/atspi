@@ -1,0 +1,40 @@
+- timeval.rs use nix' TimeVal, it has Debug, Display and many more
+- Add a type alias for missing _AtspiAccessible
+pub type _AtspiAccessible = AtspiAccessible; // PostGir FIX: To make rustc happy
+
+
+
+luuk@Veldleeuwerik:~/atspi/atspi-sys$ cargo check
+
+   Compiling atspi-sys v0.0.1 (/home/luuk/src/rust/gtk-rs/sys/atspi/atspi-sys)
+    Checking libc v0.2.55
+    Checking libdbus-sys v0.2.0 (https://github.com/diwic/dbus-rs#fe9046af)
+    Checking glib-sys v0.8.0 (https://github.com/gtk-rs/sys#c45adc74)
+    Checking gobject-sys v0.8.0 (https://github.com/gtk-rs/sys#c45adc74)
+error[E0412]: cannot find type `_AtspiAccessible` in this scope
+   --> src/lib.rs:436:20
+    |
+436 |     pub root: *mut _AtspiAccessible,
+    |                    ^^^^^^^^^^^^^^^^ help: a struct with a similar name exists: `AtspiAccessible`
+
+error[E0412]: cannot find type `timeval` in this scope
+   --> src/lib.rs:441:21
+    |
+441 |     pub time_added: timeval,
+    |                     ^^^^^^^ not found in this scope
+help: possible candidate is found in another module, you can import it into scope
+    |
+14  | use libc::timeval;
+    |
+
+error[E0412]: cannot find type `_AtspiAccessible` in this scope
+   --> src/lib.rs:910:26
+    |
+910 |     pub accessible: *mut _AtspiAccessible,
+    |                          ^^^^^^^^^^^^^^^^ help: a struct with a similar name exists: `AtspiAccessible`
+
+error: aborting due to 3 previous errors
+
+For more information about this error, try `rustc --explain E0412`.
+error: Could not compile `atspi-sys`.
+

@@ -1,0 +1,24 @@
+[package]
+name = "atspi"
+version = "0.1.0"
+authors = ["Luuk van der Duim <luukvanderduim@gmail.com>"]
+
+[dependencies]
+libc = "0.2"
+bitflags = "1.1"
+
+[dependencies.atspi-sys]
+path = "./atspi-sys"
+
+[dependencies.glib]
+git = "https://github.com/gtk-rs/glib"
+
+[dependencies.glib-sys]
+git = "https://github.com/gtk-rs/sys"
+
+[dependencies.gobject-sys]
+ git = "https://github.com/gtk-rs/sys"
+
+
+[dev-dependencies]
+gir-format-check = "0.1"

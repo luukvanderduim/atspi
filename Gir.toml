@@ -1,0 +1,83 @@
+[options]
+girs_dir = "../gir-files"
+library = "Atspi"
+version = "2.0"
+min_cfg_version = "2.28"
+target_path = "."
+work_mode = "normal"
+generate_safety_asserts = true
+deprecate_by_min_version = true
+single_version_file = true
+
+
+
+generate = [
+            "Atspi.Accessible",
+            "Atspi.Action",
+            # "Atspi.Application",
+            # 'Missing memory management functions for Atspi.Application'
+            "Atspi.Cache",
+            "Atspi.Collection",
+            "Atspi.CollectionSortOrder",
+            "Atspi.Component",
+            "Atspi.ComponentLayer",
+            "Atspi.ControllerEventMask",
+            "Atspi.DeviceEvent",
+            "Atspi.DeviceEventMask",
+            # "Atspi.DeviceListener",
+            # function `atspi_device_listener_new`'s callback `callback` has invalid user data#
+            "Atspi.DeviceListenerCB",
+            # "Atspi.DeviceListenerMode",
+            # Configured object `Atspi.DeviceListenerMode` missing from the library
+            "Atspi.DeviceListenerSimpleCB",
+            "Atspi.Document",
+            "Atspi.Event",
+            # "Atspi.EventListener",
+            # function `atspi_event_listener_new_simple`'s callback `callback` without associated user data
+            # "Atspi.EventListenerMode",
+            # 'Missing memory management functions for Atspi.EventListenerMode'
+            "Atspi.EventListenerCB",
+            # "Atspi.EventLinstenerSimpleCB",
+            # Configured object `Atspi.EventLinstenerSimpleCB` missing from the library
+            "Atspi.EditableText",
+            "Atspi.Hyperlink",
+            "Atspi.Hypertext",
+            "Atspi.Image",
+            "Atspi.KeyDefinition",
+            "Atspi.KeyEventMask",
+            # "Atspi.KeySet",
+            # 'Missing memory management functions for Atspi.KeySet'
+            "Atspi.KeystrokeListener",
+            "Atspi.MatchRule",
+            "Atspi.Object",
+            "Atspi.Point",
+            "Atspi.Range",
+            "Atspi.Rect",
+            "Atspi.Relation",
+            "Atspi.Role",
+            "Atspi.Selection",
+            "Atspi.StateSet",
+            "Atspi.Table",
+            "Atspi.TableCell",
+            "Atspi.Text",
+            "Atspi.TextGranularity",
+            "Atspi.TextRange",
+            "Atspi.Value",
+        ]
+
+manual = [
+         "GLib.Error",
+        # "Atspi.CoordType",
+        # "GObject.Object",
+        # "Atspi.CollectionTreeTraversalType",
+        # "Atspi.CoordType",  glib::tralate?
+       ]
+
+
+
+
+#[[object]]
+#name = "Atspi.Hyperlink"
+#status = "manual"
+
+

@@ -1,0 +1,341 @@
+[2019-05-26T11:06:33Z WARN  libgir::config::gobjects] Configured object `Atspi.DeviceListenerMode` missing from the library
+[2019-05-26T11:06:33Z WARN  libgir::config::gobjects] Configured object `Atspi.EventLinstenerSimpleCB` missing from the library
+[2019-05-26T11:06:33Z WARN  libgir::analysis::functions] Function atspi_action_do_action has unsupported outs
+[2019-05-26T11:06:33Z WARN  libgir::analysis::functions] Function atspi_action_get_action_description has unsupported outs
+[2019-05-26T11:06:33Z WARN  libgir::analysis::functions] Function atspi_action_get_action_name has unsupported outs
+[2019-05-26T11:06:33Z WARN  libgir::analysis::functions] Function atspi_action_get_key_binding has unsupported outs
+[2019-05-26T11:06:33Z WARN  libgir::analysis::functions] Function atspi_action_get_localized_name has unsupported outs
+[2019-05-26T11:06:33Z WARN  libgir::analysis::functions] Function atspi_action_get_n_actions has unsupported outs
+[2019-05-26T11:06:33Z WARN  libgir::analysis::functions] Function atspi_collection_get_active_descendant has unsupported outs
+[2019-05-26T11:06:33Z WARN  libgir::analysis::functions] Function atspi_collection_get_matches has unsupported outs
+[2019-05-26T11:06:33Z WARN  libgir::analysis::functions] Function atspi_collection_get_matches_from has unsupported outs
+[2019-05-26T11:06:33Z WARN  libgir::analysis::functions] Function atspi_collection_get_matches_to has unsupported outs
+[2019-05-26T11:06:33Z WARN  libgir::analysis::functions] Function atspi_collection_is_ancestor_of has unsupported outs
+[2019-05-26T11:06:33Z WARN  libgir::analysis::functions] Function atspi_component_contains has unsupported outs
+[2019-05-26T11:06:33Z WARN  libgir::analysis::functions] Function atspi_component_get_accessible_at_point has unsupported outs
+[2019-05-26T11:06:33Z WARN  libgir::analysis::functions] Function atspi_component_get_alpha has unsupported outs
+[2019-05-26T11:06:33Z WARN  libgir::analysis::functions] Function atspi_component_get_extents has unsupported outs
+[2019-05-26T11:06:33Z WARN  libgir::analysis::functions] Function atspi_component_get_layer has unsupported outs
+[2019-05-26T11:06:33Z WARN  libgir::analysis::functions] Function atspi_component_get_mdi_z_order has unsupported outs
+[2019-05-26T11:06:33Z WARN  libgir::analysis::functions] Function atspi_component_get_position has unsupported outs
+[2019-05-26T11:06:33Z WARN  libgir::analysis::functions] Function atspi_component_get_size has unsupported outs
+[2019-05-26T11:06:33Z WARN  libgir::analysis::functions] Function atspi_component_grab_focus has unsupported outs
+[2019-05-26T11:06:33Z WARN  libgir::analysis::functions] Function atspi_component_scroll_to has unsupported outs
+[2019-05-26T11:06:33Z WARN  libgir::analysis::functions] Function atspi_component_scroll_to_point has unsupported outs
+[2019-05-26T11:06:33Z WARN  libgir::analysis::functions] Function atspi_component_set_extents has unsupported outs
+[2019-05-26T11:06:33Z WARN  libgir::analysis::functions] Function atspi_component_set_position has unsupported outs
+[2019-05-26T11:06:33Z WARN  libgir::analysis::functions] Function atspi_component_set_size has unsupported outs
+[2019-05-26T11:06:33Z WARN  libgir::analysis::functions] function `atspi_device_listener_new`'s callback `callback` has invalid user data
+[2019-05-26T11:06:33Z WARN  libgir::analysis::functions] `atspi_device_listener_new`: no user data point to the destroy callback
+[2019-05-26T11:06:33Z WARN  libgir::analysis::functions] function `atspi_device_listener_new_simple`'s callback `callback` without associated user data
+[2019-05-26T11:06:33Z WARN  libgir::analysis::functions] `atspi_device_listener_new_simple`: no user data point to the destroy callback
+[2019-05-26T11:06:33Z WARN  libgir::analysis::functions] function `atspi_device_listener_add_callback`'s callback `callback` has invalid user data
+[2019-05-26T11:06:33Z WARN  libgir::analysis::functions] `atspi_device_listener_add_callback`: no user data point to the destroy callback
+[2019-05-26T11:06:33Z WARN  libgir::analysis::functions] function `atspi_device_listener_remove_callback`'s callback `callback` without associated user data
+[2019-05-26T11:06:33Z WARN  libgir::analysis::functions] `remove_callback`: this is supposed to be a callback function but no callback was found...
+[2019-05-26T11:06:33Z WARN  libgir::analysis::functions] Function atspi_document_get_current_page_number has unsupported outs
+[2019-05-26T11:06:33Z WARN  libgir::analysis::functions] Function atspi_document_get_document_attribute_value has unsupported outs
+[2019-05-26T11:06:33Z WARN  libgir::analysis::functions] Function atspi_document_get_document_attributes has unsupported outs
+[2019-05-26T11:06:33Z WARN  libgir::analysis::functions] Function atspi_document_get_locale has unsupported outs
+[2019-05-26T11:06:33Z WARN  libgir::analysis::functions] Function atspi_document_get_page_count has unsupported outs
+[2019-05-26T11:06:33Z WARN  libgir::analysis::functions] Function atspi_editable_text_copy_text has unsupported outs
+[2019-05-26T11:06:33Z WARN  libgir::analysis::functions] Function atspi_editable_text_cut_text has unsupported outs
+[2019-05-26T11:06:33Z WARN  libgir::analysis::functions] Function atspi_editable_text_delete_text has unsupported outs
+[2019-05-26T11:06:33Z WARN  libgir::analysis::functions] Function atspi_editable_text_insert_text has unsupported outs
+[2019-05-26T11:06:33Z WARN  libgir::analysis::functions] Function atspi_editable_text_paste_text has unsupported outs
+[2019-05-26T11:06:33Z WARN  libgir::analysis::functions] Function atspi_editable_text_set_text_contents has unsupported outs
+[2019-05-26T11:06:33Z WARN  libgir::analysis::functions] function `atspi_event_listener_new_simple`'s callback `callback` without associated user data
+[2019-05-26T11:06:33Z WARN  libgir::analysis::functions] `atspi_event_listener_new_simple`: no user data point to the destroy callback
+[2019-05-26T11:06:33Z WARN  libgir::analysis::functions] function `atspi_event_listener_deregister_from_callback`'s callback `callback` has invalid user data
+[2019-05-26T11:06:33Z WARN  libgir::analysis::functions] `deregister_from_callback`: this is supposed to be a callback function but no callback was found...
+[2019-05-26T11:06:33Z WARN  libgir::analysis::functions] Function atspi_event_listener_deregister_from_callback has unsupported outs
+[2019-05-26T11:06:33Z WARN  libgir::analysis::functions] function `atspi_event_listener_deregister_no_data`'s callback `callback` without associated user data
+[2019-05-26T11:06:33Z WARN  libgir::analysis::functions] `deregister_no_data`: this is supposed to be a callback function but no callback was found...
+[2019-05-26T11:06:33Z WARN  libgir::analysis::functions] Function atspi_event_listener_deregister_no_data has unsupported outs
+[2019-05-26T11:06:33Z WARN  libgir::analysis::functions] function `atspi_event_listener_register_from_callback`'s callback `callback` has invalid user data
+[2019-05-26T11:06:33Z WARN  libgir::analysis::functions] `atspi_event_listener_register_from_callback`: no user data point to the destroy callback
+[2019-05-26T11:06:33Z WARN  libgir::analysis::functions] Function atspi_event_listener_register_from_callback has unsupported outs
+[2019-05-26T11:06:33Z WARN  libgir::analysis::functions] function `atspi_event_listener_register_from_callback_full`'s callback `callback` has invalid user data
+[2019-05-26T11:06:33Z WARN  libgir::analysis::functions] `atspi_event_listener_register_from_callback_full`: no user data point to the destroy callback
+[2019-05-26T11:06:33Z WARN  libgir::analysis::functions] Function atspi_event_listener_register_from_callback_full has unsupported outs
+[2019-05-26T11:06:33Z WARN  libgir::analysis::functions] function `atspi_event_listener_register_no_data`'s callback `callback` without associated user data
+[2019-05-26T11:06:33Z WARN  libgir::analysis::functions] `atspi_event_listener_register_no_data`: no user data point to the destroy callback
+[2019-05-26T11:06:33Z WARN  libgir::analysis::functions] Function atspi_event_listener_register_no_data has unsupported outs
+[2019-05-26T11:06:33Z WARN  libgir::analysis::functions] Function atspi_event_listener_deregister has unsupported outs
+[2019-05-26T11:06:33Z WARN  libgir::analysis::functions] Function atspi_event_listener_register has unsupported outs
+[2019-05-26T11:06:33Z WARN  libgir::analysis::functions] Function atspi_event_listener_register_full has unsupported outs
+[2019-05-26T11:06:33Z WARN  libgir::analysis::functions] Function atspi_hypertext_get_link has unsupported outs
+[2019-05-26T11:06:33Z WARN  libgir::analysis::functions] Function atspi_hypertext_get_link_index has unsupported outs
+[2019-05-26T11:06:33Z WARN  libgir::analysis::functions] Function atspi_hypertext_get_n_links has unsupported outs
+[2019-05-26T11:06:33Z WARN  libgir::analysis::functions] Function atspi_image_get_image_description has unsupported outs
+[2019-05-26T11:06:33Z WARN  libgir::analysis::functions] Function atspi_image_get_image_extents has unsupported outs
+[2019-05-26T11:06:33Z WARN  libgir::analysis::functions] Function atspi_image_get_image_locale has unsupported outs
+[2019-05-26T11:06:33Z WARN  libgir::analysis::functions] Function atspi_image_get_image_position has unsupported outs
+[2019-05-26T11:06:33Z WARN  libgir::analysis::functions] Function atspi_image_get_image_size has unsupported outs
+[2019-05-26T11:06:33Z WARN  libgir::analysis::functions] Function atspi_selection_clear_selection has unsupported outs
+[2019-05-26T11:06:33Z WARN  libgir::analysis::functions] Function atspi_selection_deselect_child has unsupported outs
+[2019-05-26T11:06:33Z WARN  libgir::analysis::functions] Function atspi_selection_deselect_selected_child has unsupported outs
+[2019-05-26T11:06:33Z WARN  libgir::analysis::functions] Function atspi_selection_get_n_selected_children has unsupported outs
+[2019-05-26T11:06:33Z WARN  libgir::analysis::functions] Function atspi_selection_get_selected_child has unsupported outs
+[2019-05-26T11:06:33Z WARN  libgir::analysis::functions] Function atspi_selection_is_child_selected has unsupported outs
+[2019-05-26T11:06:33Z WARN  libgir::analysis::functions] Function atspi_selection_select_all has unsupported outs
+[2019-05-26T11:06:33Z WARN  libgir::analysis::functions] Function atspi_selection_select_child has unsupported outs
+[2019-05-26T11:06:33Z WARN  libgir::analysis::functions] Function atspi_table_add_column_selection has unsupported outs
+[2019-05-26T11:06:33Z WARN  libgir::analysis::functions] Function atspi_table_add_row_selection has unsupported outs
+[2019-05-26T11:06:33Z WARN  libgir::analysis::functions] Function atspi_table_get_accessible_at has unsupported outs
+[2019-05-26T11:06:33Z WARN  libgir::analysis::functions] Function atspi_table_get_caption has unsupported outs
+[2019-05-26T11:06:33Z WARN  libgir::analysis::functions] Function atspi_table_get_column_at_index has unsupported outs
+[2019-05-26T11:06:33Z WARN  libgir::analysis::functions] Function atspi_table_get_column_description has unsupported outs
+[2019-05-26T11:06:33Z WARN  libgir::analysis::functions] Function atspi_table_get_column_extent_at has unsupported outs
+[2019-05-26T11:06:33Z WARN  libgir::analysis::functions] Function atspi_table_get_column_header has unsupported outs
+[2019-05-26T11:06:33Z WARN  libgir::analysis::functions] Function atspi_table_get_index_at has unsupported outs
+[2019-05-26T11:06:33Z WARN  libgir::analysis::functions] Function atspi_table_get_n_columns has unsupported outs
+[2019-05-26T11:06:33Z WARN  libgir::analysis::functions] Function atspi_table_get_n_rows has unsupported outs
+[2019-05-26T11:06:33Z WARN  libgir::analysis::functions] Function atspi_table_get_n_selected_columns has unsupported outs
+[2019-05-26T11:06:33Z WARN  libgir::analysis::functions] Function atspi_table_get_n_selected_rows has unsupported outs
+[2019-05-26T11:06:33Z WARN  libgir::analysis::functions] Function atspi_table_get_row_at_index has unsupported outs
+[2019-05-26T11:06:33Z WARN  libgir::analysis::functions] Function atspi_table_get_row_column_extents_at_index has unsupported outs
+[2019-05-26T11:06:33Z WARN  libgir::analysis::functions] Function atspi_table_get_row_description has unsupported outs
+[2019-05-26T11:06:33Z WARN  libgir::analysis::functions] Function atspi_table_get_row_extent_at has unsupported outs
+[2019-05-26T11:06:33Z WARN  libgir::analysis::functions] Function atspi_table_get_row_header has unsupported outs
+[2019-05-26T11:06:33Z WARN  libgir::analysis::functions] Function atspi_table_get_selected_columns has unsupported outs
+[2019-05-26T11:06:33Z WARN  libgir::analysis::functions] Function atspi_table_get_selected_rows has unsupported outs
+[2019-05-26T11:06:33Z WARN  libgir::analysis::functions] Function atspi_table_get_summary has unsupported outs
+[2019-05-26T11:06:33Z WARN  libgir::analysis::functions] Function atspi_table_is_column_selected has unsupported outs
+[2019-05-26T11:06:33Z WARN  libgir::analysis::functions] Function atspi_table_is_row_selected has unsupported outs
+[2019-05-26T11:06:33Z WARN  libgir::analysis::functions] Function atspi_table_is_selected has unsupported outs
+[2019-05-26T11:06:33Z WARN  libgir::analysis::functions] Function atspi_table_remove_column_selection has unsupported outs
+[2019-05-26T11:06:33Z WARN  libgir::analysis::functions] Function atspi_table_remove_row_selection has unsupported outs
+[2019-05-26T11:06:33Z WARN  libgir::analysis::functions] Function atspi_table_cell_get_column_header_cells has unsupported outs
+[2019-05-26T11:06:33Z WARN  libgir::analysis::functions] Function atspi_table_cell_get_column_index has unsupported outs
+[2019-05-26T11:06:33Z WARN  libgir::analysis::functions] Function atspi_table_cell_get_column_span has unsupported outs
+[2019-05-26T11:06:33Z WARN  libgir::analysis::functions] Function atspi_table_cell_get_position has unsupported outs
+[2019-05-26T11:06:33Z WARN  libgir::analysis::functions] Function atspi_table_cell_get_row_column_span has unsupported outs
+[2019-05-26T11:06:33Z WARN  libgir::analysis::functions] Function atspi_table_cell_get_row_header_cells has unsupported outs
+[2019-05-26T11:06:33Z WARN  libgir::analysis::functions] Function atspi_table_cell_get_row_span has unsupported outs
+[2019-05-26T11:06:33Z WARN  libgir::analysis::functions] Function atspi_table_cell_get_table has unsupported outs
+[2019-05-26T11:06:33Z WARN  libgir::analysis::functions] Function atspi_text_add_selection has unsupported outs
+[2019-05-26T11:06:33Z WARN  libgir::analysis::functions] Function atspi_text_get_attribute_run has unsupported outs
+[2019-05-26T11:06:33Z WARN  libgir::analysis::functions] Function atspi_text_get_bounded_ranges has unsupported outs
+[2019-05-26T11:06:33Z WARN  libgir::analysis::functions] Function atspi_text_get_caret_offset has unsupported outs
+[2019-05-26T11:06:33Z WARN  libgir::analysis::functions] Function atspi_text_get_character_at_offset has unsupported outs
+[2019-05-26T11:06:33Z WARN  libgir::analysis::functions] Function atspi_text_get_character_count has unsupported outs
+[2019-05-26T11:06:33Z WARN  libgir::analysis::functions] Function atspi_text_get_character_extents has unsupported outs
+[2019-05-26T11:06:33Z WARN  libgir::analysis::functions] Function atspi_text_get_default_attributes has unsupported outs
+[2019-05-26T11:06:33Z WARN  libgir::analysis::functions] Function atspi_text_get_n_selections has unsupported outs
+[2019-05-26T11:06:33Z WARN  libgir::analysis::functions] Function atspi_text_get_offset_at_point has unsupported outs
+[2019-05-26T11:06:33Z WARN  libgir::analysis::functions] Function atspi_text_get_range_extents has unsupported outs
+[2019-05-26T11:06:33Z WARN  libgir::analysis::functions] Function atspi_text_get_selection has unsupported outs
+[2019-05-26T11:06:33Z WARN  libgir::analysis::functions] Function atspi_text_get_string_at_offset has unsupported outs
+[2019-05-26T11:06:33Z WARN  libgir::analysis::functions] Function atspi_text_get_text has unsupported outs
+[2019-05-26T11:06:33Z WARN  libgir::analysis::functions] Function atspi_text_get_text_after_offset has unsupported outs
+[2019-05-26T11:06:33Z WARN  libgir::analysis::functions] Function atspi_text_get_text_attribute_value has unsupported outs
+[2019-05-26T11:06:33Z WARN  libgir::analysis::functions] Function atspi_text_get_text_attributes has unsupported outs
+[2019-05-26T11:06:33Z WARN  libgir::analysis::functions] Function atspi_text_get_text_before_offset has unsupported outs
+[2019-05-26T11:06:33Z WARN  libgir::analysis::functions] Function atspi_text_remove_selection has unsupported outs
+[2019-05-26T11:06:33Z WARN  libgir::analysis::functions] Function atspi_text_scroll_substring_to has unsupported outs
+[2019-05-26T11:06:33Z WARN  libgir::analysis::functions] Function atspi_text_scroll_substring_to_point has unsupported outs
+[2019-05-26T11:06:33Z WARN  libgir::analysis::functions] Function atspi_text_set_caret_offset has unsupported outs
+[2019-05-26T11:06:33Z WARN  libgir::analysis::functions] Function atspi_text_set_selection has unsupported outs
+[2019-05-26T11:06:33Z WARN  libgir::analysis::functions] Function atspi_value_get_current_value has unsupported outs
+[2019-05-26T11:06:33Z WARN  libgir::analysis::functions] Function atspi_value_get_maximum_value has unsupported outs
+[2019-05-26T11:06:33Z WARN  libgir::analysis::functions] Function atspi_value_get_minimum_increment has unsupported outs
+[2019-05-26T11:06:33Z WARN  libgir::analysis::functions] Function atspi_value_get_minimum_value has unsupported outs
+[2019-05-26T11:06:33Z WARN  libgir::analysis::functions] Function atspi_value_set_current_value has unsupported outs
+[2019-05-26T11:06:33Z WARN  libgir::analysis::functions] Function atspi_accessible_get_application has unsupported outs
+[2019-05-26T11:06:33Z WARN  libgir::analysis::functions] Function atspi_accessible_get_atspi_version has unsupported outs
+[2019-05-26T11:06:33Z WARN  libgir::analysis::functions] Function atspi_accessible_get_attributes has unsupported outs
+[2019-05-26T11:06:33Z WARN  libgir::analysis::functions] Function atspi_accessible_get_attributes_as_array has unsupported outs
+[2019-05-26T11:06:33Z WARN  libgir::analysis::functions] Function atspi_accessible_get_child_at_index has unsupported outs
+[2019-05-26T11:06:33Z WARN  libgir::analysis::functions] Function atspi_accessible_get_child_count has unsupported outs
+[2019-05-26T11:06:33Z WARN  libgir::analysis::functions] Function atspi_accessible_get_description has unsupported outs
+[2019-05-26T11:06:33Z WARN  libgir::analysis::functions] Function atspi_accessible_get_id has unsupported outs
+[2019-05-26T11:06:33Z WARN  libgir::analysis::functions] Function atspi_accessible_get_index_in_parent has unsupported outs
+[2019-05-26T11:06:33Z WARN  libgir::analysis::functions] Function atspi_accessible_get_localized_role_name has unsupported outs
+[2019-05-26T11:06:33Z WARN  libgir::analysis::functions] Function atspi_accessible_get_name has unsupported outs
+[2019-05-26T11:06:33Z WARN  libgir::analysis::functions] Function atspi_accessible_get_object_locale has unsupported outs
+[2019-05-26T11:06:33Z WARN  libgir::analysis::functions] Function atspi_accessible_get_parent has unsupported outs
+[2019-05-26T11:06:33Z WARN  libgir::analysis::functions] Function atspi_accessible_get_process_id has unsupported outs
+[2019-05-26T11:06:33Z WARN  libgir::analysis::functions] Function atspi_accessible_get_relation_set has unsupported outs
+[2019-05-26T11:06:33Z WARN  libgir::analysis::functions] Function atspi_accessible_get_role has unsupported outs
+[2019-05-26T11:06:33Z WARN  libgir::analysis::functions] Function atspi_accessible_get_role_name has unsupported outs
+[2019-05-26T11:06:33Z WARN  libgir::analysis::functions] Function atspi_accessible_get_toolkit_name has unsupported outs
+[2019-05-26T11:06:33Z WARN  libgir::analysis::functions] Function atspi_accessible_get_toolkit_version has unsupported outs
+[2019-05-26T11:06:33Z WARN  libgir::analysis::functions] Function atspi_hyperlink_get_end_index has unsupported outs
+[2019-05-26T11:06:33Z WARN  libgir::analysis::functions] Function atspi_hyperlink_get_index_range has unsupported outs
+[2019-05-26T11:06:33Z WARN  libgir::analysis::functions] Function atspi_hyperlink_get_n_anchors has unsupported outs
+[2019-05-26T11:06:33Z WARN  libgir::analysis::functions] Function atspi_hyperlink_get_object has unsupported outs
+[2019-05-26T11:06:33Z WARN  libgir::analysis::functions] Function atspi_hyperlink_get_start_index has unsupported outs
+[2019-05-26T11:06:33Z WARN  libgir::analysis::functions] Function atspi_hyperlink_get_uri has unsupported outs
+[2019-05-26T11:06:33Z WARN  libgir::analysis::functions] Function atspi_hyperlink_is_valid has unsupported outs
+[NOT GENERATED] Atspi.KeystrokeListener
+[NOT GENERATED METHOD] Atspi.Action::do_action because of GLib.Error
+[NOT GENERATED METHOD] Atspi.Action::get_action_description because of GLib.Error
+[NOT GENERATED METHOD] Atspi.Action::get_action_name because of GLib.Error
+[NOT GENERATED METHOD] Atspi.Action::get_key_binding because of GLib.Error
+[NOT GENERATED METHOD] Atspi.Action::get_localized_name because of GLib.Error
+[NOT GENERATED METHOD] Atspi.Action::get_n_actions because of GLib.Error
+[NOT GENERATED METHOD] Atspi.Collection::get_active_descendant because of GLib.Error
+[NOT GENERATED METHOD] Atspi.Collection::get_matches because of GLib.Error
+[NOT GENERATED METHOD] Atspi.Collection::get_matches_from because of Atspi.CollectionTreeTraversalType and GLib.Error
+[NOT GENERATED METHOD] Atspi.Collection::get_matches_to because of Atspi.CollectionTreeTraversalType and GLib.Error
+[NOT GENERATED METHOD] Atspi.Collection::is_ancestor_of because of GLib.Error
+[NOT GENERATED METHOD] Atspi.Component::contains because of Atspi.CoordType and GLib.Error
+[NOT GENERATED METHOD] Atspi.Component::get_accessible_at_point because of Atspi.CoordType and GLib.Error
+[NOT GENERATED METHOD] Atspi.Component::get_alpha because of GLib.Error
+[NOT GENERATED METHOD] Atspi.Component::get_extents because of Atspi.CoordType and GLib.Error
+[NOT GENERATED METHOD] Atspi.Component::get_layer because of GLib.Error
+[NOT GENERATED METHOD] Atspi.Component::get_mdi_z_order because of GLib.Error
+[NOT GENERATED METHOD] Atspi.Component::get_position because of Atspi.CoordType and GLib.Error
+[NOT GENERATED METHOD] Atspi.Component::get_size because of GLib.Error
+[NOT GENERATED METHOD] Atspi.Component::grab_focus because of GLib.Error
+[NOT GENERATED METHOD] Atspi.Component::scroll_to because of Atspi.ScrollType and GLib.Error
+[NOT GENERATED METHOD] Atspi.Component::scroll_to_point because of Atspi.CoordType and GLib.Error
+[NOT GENERATED METHOD] Atspi.Component::set_extents because of Atspi.CoordType and GLib.Error
+[NOT GENERATED METHOD] Atspi.Component::set_position because of Atspi.CoordType and GLib.Error
+[NOT GENERATED METHOD] Atspi.Component::set_size because of GLib.Error
+[NOT GENERATED METHOD] Atspi.Document::get_current_page_number because of GLib.Error
+[NOT GENERATED METHOD] Atspi.Document::get_document_attribute_value because of GLib.Error
+[NOT GENERATED METHOD] Atspi.Document::get_document_attributes because of GLib.Error and *.HashTable TypeId { ns_id: 0, id: 28 }/TypeId { ns_id: 0, id: 28 }
+[NOT GENERATED METHOD] Atspi.Document::get_locale because of GLib.Error
+[NOT GENERATED METHOD] Atspi.Document::get_page_count because of GLib.Error
+[NOT GENERATED METHOD] Atspi.EditableText::copy_text because of GLib.Error
+[NOT GENERATED METHOD] Atspi.EditableText::cut_text because of GLib.Error
+[NOT GENERATED METHOD] Atspi.EditableText::delete_text because of GLib.Error
+[NOT GENERATED METHOD] Atspi.EditableText::insert_text because of GLib.Error
+[NOT GENERATED METHOD] Atspi.EditableText::paste_text because of GLib.Error
+[NOT GENERATED METHOD] Atspi.EditableText::set_text_contents because of GLib.Error
+[NOT GENERATED METHOD] Atspi.Hypertext::get_link because of GLib.Error
+[NOT GENERATED METHOD] Atspi.Hypertext::get_link_index because of GLib.Error
+[NOT GENERATED METHOD] Atspi.Hypertext::get_n_links because of GLib.Error
+[NOT GENERATED METHOD] Atspi.Image::get_image_description because of GLib.Error
+[NOT GENERATED METHOD] Atspi.Image::get_image_extents because of Atspi.CoordType and GLib.Error
+[NOT GENERATED METHOD] Atspi.Image::get_image_locale because of GLib.Error
+[NOT GENERATED METHOD] Atspi.Image::get_image_position because of Atspi.CoordType and GLib.Error
+[NOT GENERATED METHOD] Atspi.Image::get_image_size because of GLib.Error
+[NOT GENERATED METHOD] Atspi.Selection::clear_selection because of GLib.Error
+[NOT GENERATED METHOD] Atspi.Selection::deselect_child because of GLib.Error
+[NOT GENERATED METHOD] Atspi.Selection::deselect_selected_child because of GLib.Error
+[NOT GENERATED METHOD] Atspi.Selection::get_n_selected_children because of GLib.Error
+[NOT GENERATED METHOD] Atspi.Selection::get_selected_child because of GLib.Error
+[NOT GENERATED METHOD] Atspi.Selection::is_child_selected because of GLib.Error
+[NOT GENERATED METHOD] Atspi.Selection::select_all because of GLib.Error
+[NOT GENERATED METHOD] Atspi.Selection::select_child because of GLib.Error
+[NOT GENERATED METHOD] Atspi.Table::add_column_selection because of GLib.Error
+[NOT GENERATED METHOD] Atspi.Table::add_row_selection because of GLib.Error
+[NOT GENERATED METHOD] Atspi.Table::get_accessible_at because of GLib.Error
+[NOT GENERATED METHOD] Atspi.Table::get_caption because of GLib.Error
+[NOT GENERATED METHOD] Atspi.Table::get_column_at_index because of GLib.Error
+[NOT GENERATED METHOD] Atspi.Table::get_column_description because of GLib.Error
+[NOT GENERATED METHOD] Atspi.Table::get_column_extent_at because of GLib.Error
+[NOT GENERATED METHOD] Atspi.Table::get_column_header because of GLib.Error
+[NOT GENERATED METHOD] Atspi.Table::get_index_at because of GLib.Error
+[NOT GENERATED METHOD] Atspi.Table::get_n_columns because of GLib.Error
+[NOT GENERATED METHOD] Atspi.Table::get_n_rows because of GLib.Error
+[NOT GENERATED METHOD] Atspi.Table::get_n_selected_columns because of GLib.Error
+[NOT GENERATED METHOD] Atspi.Table::get_n_selected_rows because of GLib.Error
+[NOT GENERATED METHOD] Atspi.Table::get_row_at_index because of GLib.Error
+[NOT GENERATED METHOD] Atspi.Table::get_row_column_extents_at_index because of GLib.Error
+[NOT GENERATED METHOD] Atspi.Table::get_row_description because of GLib.Error
+[NOT GENERATED METHOD] Atspi.Table::get_row_extent_at because of GLib.Error
+[NOT GENERATED METHOD] Atspi.Table::get_row_header because of GLib.Error
+[NOT GENERATED METHOD] Atspi.Table::get_selected_columns because of GLib.Error
+[NOT GENERATED METHOD] Atspi.Table::get_selected_rows because of GLib.Error
+[NOT GENERATED METHOD] Atspi.Table::get_summary because of GLib.Error
+[NOT GENERATED METHOD] Atspi.Table::is_column_selected because of GLib.Error
+[NOT GENERATED METHOD] Atspi.Table::is_row_selected because of GLib.Error
+[NOT GENERATED METHOD] Atspi.Table::is_selected because of GLib.Error
+[NOT GENERATED METHOD] Atspi.Table::remove_column_selection because of GLib.Error
+[NOT GENERATED METHOD] Atspi.Table::remove_row_selection because of GLib.Error
+[NOT GENERATED METHOD] Atspi.TableCell::get_column_header_cells because of GLib.Error
+[NOT GENERATED METHOD] Atspi.TableCell::get_column_index because of GLib.Error
+[NOT GENERATED METHOD] Atspi.TableCell::get_column_span because of GLib.Error
+[NOT GENERATED METHOD] Atspi.TableCell::get_position because of GLib.Error
+[NOT GENERATED METHOD] Atspi.TableCell::get_row_column_span because of GLib.Error
+[NOT GENERATED METHOD] Atspi.TableCell::get_row_header_cells because of GLib.Error
+[NOT GENERATED METHOD] Atspi.TableCell::get_row_span because of GLib.Error
+[NOT GENERATED METHOD] Atspi.TableCell::get_table because of GLib.Error
+[NOT GENERATED METHOD] Atspi.Text::add_selection because of GLib.Error
+[NOT GENERATED METHOD] Atspi.Text::get_attribute_run because of GLib.Error and *.HashTable TypeId { ns_id: 0, id: 28 }/TypeId { ns_id: 0, id: 28 }
+[NOT GENERATED METHOD] Atspi.Text::get_bounded_ranges because of Atspi.CoordType, Atspi.TextClipType, Atspi.TextClipType and GLib.Error
+[NOT GENERATED METHOD] Atspi.Text::get_caret_offset because of GLib.Error
+[NOT GENERATED METHOD] Atspi.Text::get_character_at_offset because of GLib.Error
+[NOT GENERATED METHOD] Atspi.Text::get_character_count because of GLib.Error
+[NOT GENERATED METHOD] Atspi.Text::get_character_extents because of Atspi.CoordType and GLib.Error
+[NOT GENERATED METHOD] Atspi.Text::get_default_attributes because of GLib.Error and *.HashTable TypeId { ns_id: 0, id: 28 }/TypeId { ns_id: 0, id: 28 }
+[NOT GENERATED METHOD] Atspi.Text::get_n_selections because of GLib.Error
+[NOT GENERATED METHOD] Atspi.Text::get_offset_at_point because of Atspi.CoordType and GLib.Error
+[NOT GENERATED METHOD] Atspi.Text::get_range_extents because of Atspi.CoordType and GLib.Error
+[NOT GENERATED METHOD] Atspi.Text::get_selection because of GLib.Error
+[NOT GENERATED METHOD] Atspi.Text::get_string_at_offset because of GLib.Error
+[NOT GENERATED METHOD] Atspi.Text::get_text because of GLib.Error
+[NOT GENERATED METHOD] Atspi.Text::get_text_after_offset because of Atspi.TextBoundaryType and GLib.Error
+[NOT GENERATED METHOD] Atspi.Text::get_text_attribute_value because of GLib.Error
+[NOT GENERATED METHOD] Atspi.Text::get_text_attributes because of GLib.Error and *.HashTable TypeId { ns_id: 0, id: 28 }/TypeId { ns_id: 0, id: 28 }
+[NOT GENERATED METHOD] Atspi.Text::get_text_before_offset because of Atspi.TextBoundaryType and GLib.Error
+[NOT GENERATED METHOD] Atspi.Text::remove_selection because of GLib.Error
+[NOT GENERATED METHOD] Atspi.Text::scroll_substring_to because of Atspi.ScrollType and GLib.Error
+[NOT GENERATED METHOD] Atspi.Text::scroll_substring_to_point because of Atspi.CoordType and GLib.Error
+[NOT GENERATED METHOD] Atspi.Text::set_caret_offset because of GLib.Error
+[NOT GENERATED METHOD] Atspi.Text::set_selection because of GLib.Error
+[NOT GENERATED METHOD] Atspi.Value::get_current_value because of GLib.Error
+[NOT GENERATED METHOD] Atspi.Value::get_maximum_value because of GLib.Error
+[NOT GENERATED METHOD] Atspi.Value::get_minimum_increment because of GLib.Error
+[NOT GENERATED METHOD] Atspi.Value::get_minimum_value because of GLib.Error
+[NOT GENERATED METHOD] Atspi.Value::set_current_value because of GLib.Error
+[NOT GENERATED METHOD] Atspi.Accessible::get_application because of GLib.Error
+[NOT GENERATED METHOD] Atspi.Accessible::get_atspi_version because of GLib.Error
+[NOT GENERATED METHOD] Atspi.Accessible::get_attributes because of GLib.Error and *.HashTable TypeId { ns_id: 0, id: 28 }/TypeId { ns_id: 0, id: 28 }
+[NOT GENERATED METHOD] Atspi.Accessible::get_attributes_as_array because of GLib.Error
+[NOT GENERATED METHOD] Atspi.Accessible::get_child_at_index because of GLib.Error
+[NOT GENERATED METHOD] Atspi.Accessible::get_child_count because of GLib.Error
+[NOT GENERATED METHOD] Atspi.Accessible::get_description because of GLib.Error
+[NOT GENERATED METHOD] Atspi.Accessible::get_id because of GLib.Error
+[NOT GENERATED METHOD] Atspi.Accessible::get_index_in_parent because of GLib.Error
+[NOT GENERATED METHOD] Atspi.Accessible::get_localized_role_name because of GLib.Error
+[NOT GENERATED METHOD] Atspi.Accessible::get_name because of GLib.Error
+[NOT GENERATED METHOD] Atspi.Accessible::get_object_locale because of GLib.Error
+[NOT GENERATED METHOD] Atspi.Accessible::get_parent because of GLib.Error
+[NOT GENERATED METHOD] Atspi.Accessible::get_process_id because of GLib.Error
+[NOT GENERATED METHOD] Atspi.Accessible::get_relation_set because of GLib.Error
+[NOT GENERATED METHOD] Atspi.Accessible::get_role because of GLib.Error
+[NOT GENERATED METHOD] Atspi.Accessible::get_role_name because of GLib.Error
+[NOT GENERATED METHOD] Atspi.Accessible::get_toolkit_name because of GLib.Error
+[NOT GENERATED METHOD] Atspi.Accessible::get_toolkit_version because of GLib.Error
+[NOT GENERATED METHOD] Atspi.Hyperlink::get_end_index because of GLib.Error
+[NOT GENERATED METHOD] Atspi.Hyperlink::get_index_range because of GLib.Error
+[NOT GENERATED METHOD] Atspi.Hyperlink::get_n_anchors because of GLib.Error
+[NOT GENERATED METHOD] Atspi.Hyperlink::get_object because of GLib.Error
+[NOT GENERATED METHOD] Atspi.Hyperlink::get_start_index because of GLib.Error
+[NOT GENERATED METHOD] Atspi.Hyperlink::get_uri because of GLib.Error
+[NOT GENERATED METHOD] Atspi.Hyperlink::is_valid because of GLib.Error
+[NOT GENERATED METHOD] Atspi.Relation::get_relation_type because of Atspi.RelationType
+[NOT GENERATED METHOD] Atspi.StateSet::new because of Atspi.StateType
+[NOT GENERATED METHOD] Atspi.StateSet::add because of Atspi.StateType
+[NOT GENERATED METHOD] Atspi.StateSet::contains because of Atspi.StateType
+[NOT GENERATED METHOD] Atspi.StateSet::get_states because of Atspi.StateType
+[NOT GENERATED METHOD] Atspi.StateSet::remove because of Atspi.StateType
+[NOT GENERATED METHOD] Atspi.MatchRule::new because of Atspi.CollectionMatchType, *.HashTable TypeId { ns_id: 0, id: 28 }/TypeId { ns_id: 0, id: 28 }, Atspi.CollectionMatchType, Atspi.CollectionMatchType and Atspi.CollectionMatchType
+[NOT GENERATED METHOD] Atspi.DeviceListener::new because of GLib.DestroyNotify
+[NOT GENERATED METHOD] Atspi.DeviceListener::new_simple because of GLib.DestroyNotify
+[NOT GENERATED METHOD] Atspi.DeviceListener::add_callback because of GLib.DestroyNotify
+[NOT GENERATED METHOD] Atspi.EventListener::new because of GLib.DestroyNotify
+[NOT GENERATED METHOD] Atspi.EventListener::new_simple because of Atspi.EventListenerSimpleCB and GLib.DestroyNotify
+[NOT GENERATED METHOD] Atspi.EventListener::deregister_from_callback because of GLib.Error
+[NOT GENERATED METHOD] Atspi.EventListener::deregister_no_data because of Atspi.EventListenerSimpleCB and GLib.Error
+[NOT GENERATED METHOD] Atspi.EventListener::register_from_callback because of GLib.DestroyNotify and GLib.Error
+[NOT GENERATED METHOD] Atspi.EventListener::register_from_callback_full because of GLib.DestroyNotify and GLib.Error
+[NOT GENERATED METHOD] Atspi.EventListener::register_no_data because of Atspi.EventListenerSimpleCB, GLib.DestroyNotify and GLib.Error
+[NOT GENERATED METHOD] Atspi.EventListener::deregister because of GLib.Error
+[NOT GENERATED METHOD] Atspi.EventListener::register because of GLib.Error
+[NOT GENERATED METHOD] Atspi.EventListener::register_full because of GLib.Error
+[NOT GENERATED] Atspi.EventListenerSimpleCB
+[NOT GENERATED FUNCTION] Atspi.dbus_connection_setup_with_g_main because of DBus.Connection and GLib.MainContext
+[NOT GENERATED FUNCTION] Atspi.deregister_device_event_listener because of GLib.Error
+[NOT GENERATED FUNCTION] Atspi.deregister_keystroke_listener because of Atspi.KeyMaskType and GLib.Error
+[NOT GENERATED FUNCTION] Atspi.generate_keyboard_event because of Atspi.KeySynthType and GLib.Error
+[NOT GENERATED FUNCTION] Atspi.generate_mouse_event because of GLib.Error
+[NOT GENERATED FUNCTION] Atspi.get_a11y_bus because of DBus.Connection
+[NOT GENERATED FUNCTION] Atspi.register_device_event_listener because of GLib.Error
+[NOT GENERATED FUNCTION] Atspi.register_keystroke_listener because of Atspi.KeyMaskType, Atspi.KeyListenerSyncType and GLib.Error
+[NOT GENERATED FUNCTION] Atspi.set_main_context because of GLib.MainContext
