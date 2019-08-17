@@ -13,6 +13,8 @@ extern crate bitflags;
 extern crate atspi_sys;
 extern crate glib_sys;
 extern crate gobject_sys;
+extern crate libdbus_sys as dbus;
+
 #[macro_use]
 extern crate glib;
 
@@ -22,4 +24,8 @@ mod rt;
 mod auto;
 pub use auto::*;
 
+mod key_set;
+pub use key_set::*;
+
+use dbus::DBusConnection;
 use glib::Error;

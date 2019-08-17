@@ -431,6 +431,86 @@ impl SetValue for CoordType {
 
 #[derive(Debug, Eq, PartialEq, Ord, PartialOrd, Hash)]
 #[derive(Clone, Copy)]
+pub enum KeySynthType {
+    Press,
+    Release,
+    Pressrelease,
+    Sym,
+    String,
+    #[doc(hidden)]
+    __Unknown(i32),
+}
+
+impl fmt::Display for KeySynthType {
+    fn fmt(&self, f: &mut fmt::Formatter) -> fmt::Result {
+        write!(f, "KeySynthType::{}", match *self {
+            KeySynthType::Press => "Press",
+            KeySynthType::Release => "Release",
+            KeySynthType::Pressrelease => "Pressrelease",
+            KeySynthType::Sym => "Sym",
+            KeySynthType::String => "String",
+            _ => "Unknown",
+        })
+    }
+}
+
+#[doc(hidden)]
+impl ToGlib for KeySynthType {
+    type GlibType = atspi_sys::AtspiKeySynthType;
+
+    fn to_glib(&self) -> atspi_sys::AtspiKeySynthType {
+        match *self {
+            KeySynthType::Press => atspi_sys::ATSPI_KEY_PRESS,
+            KeySynthType::Release => atspi_sys::ATSPI_KEY_RELEASE,
+            KeySynthType::Pressrelease => atspi_sys::ATSPI_KEY_PRESSRELEASE,
+            KeySynthType::Sym => atspi_sys::ATSPI_KEY_SYM,
+            KeySynthType::String => atspi_sys::ATSPI_KEY_STRING,
+            KeySynthType::__Unknown(value) => value
+        }
+    }
+}
+
+#[doc(hidden)]
+impl FromGlib<atspi_sys::AtspiKeySynthType> for KeySynthType {
+    fn from_glib(value: atspi_sys::AtspiKeySynthType) -> Self {
+        skip_assert_initialized!();
+        match value {
+            0 => KeySynthType::Press,
+            1 => KeySynthType::Release,
+            2 => KeySynthType::Pressrelease,
+            3 => KeySynthType::Sym,
+            4 => KeySynthType::String,
+            value => KeySynthType::__Unknown(value),
+        }
+    }
+}
+
+impl StaticType for KeySynthType {
+    fn static_type() -> Type {
+        unsafe { from_glib(atspi_sys::atspi_key_synth_type_get_type()) }
+    }
+}
+
+impl<'a> FromValueOptional<'a> for KeySynthType {
+    unsafe fn from_value_optional(value: &Value) -> Option<Self> {
+        Some(FromValue::from_value(value))
+    }
+}
+
+impl<'a> FromValue<'a> for KeySynthType {
+    unsafe fn from_value(value: &Value) -> Self {
+        from_glib(gobject_sys::g_value_get_enum(value.to_glib_none().0))
+    }
+}
+
+impl SetValue for KeySynthType {
+    unsafe fn set_value(value: &mut Value, this: &Self) {
+        gobject_sys::g_value_set_enum(value.to_glib_none_mut().0, this.to_glib())
+    }
+}
+
+#[derive(Debug, Eq, PartialEq, Ord, PartialOrd, Hash)]
+#[derive(Clone, Copy)]
 pub enum RelationType {
     Null,
     LabelFor,

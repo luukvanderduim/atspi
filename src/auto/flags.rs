@@ -70,3 +70,53 @@ impl SetValue for Cache {
     }
 }
 
+bitflags! {
+    pub struct KeyListenerSyncType: u32 {
+        const NOSYNC = 0;
+        const SYNCHRONOUS = 1;
+        const CANCONSUME = 2;
+        const ALL_WINDOWS = 4;
+    }
+}
+
+#[doc(hidden)]
+impl ToGlib for KeyListenerSyncType {
+    type GlibType = atspi_sys::AtspiKeyListenerSyncType;
+
+    fn to_glib(&self) -> atspi_sys::AtspiKeyListenerSyncType {
+        self.bits()
+    }
+}
+
+#[doc(hidden)]
+impl FromGlib<atspi_sys::AtspiKeyListenerSyncType> for KeyListenerSyncType {
+    fn from_glib(value: atspi_sys::AtspiKeyListenerSyncType) -> KeyListenerSyncType {
+        skip_assert_initialized!();
+        KeyListenerSyncType::from_bits_truncate(value)
+    }
+}
+
+impl StaticType for KeyListenerSyncType {
+    fn static_type() -> Type {
+        unsafe { from_glib(atspi_sys::atspi_key_listener_sync_type_get_type()) }
+    }
+}
+
+impl<'a> FromValueOptional<'a> for KeyListenerSyncType {
+    unsafe fn from_value_optional(value: &Value) -> Option<Self> {
+        Some(FromValue::from_value(value))
+    }
+}
+
+impl<'a> FromValue<'a> for KeyListenerSyncType {
+    unsafe fn from_value(value: &Value) -> Self {
+        from_glib(gobject_sys::g_value_get_flags(value.to_glib_none().0))
+    }
+}
+
+impl SetValue for KeyListenerSyncType {
+    unsafe fn set_value(value: &mut Value, this: &Self) {
+        gobject_sys::g_value_set_flags(value.to_glib_none_mut().0, this.to_glib())
+    }
+}
+

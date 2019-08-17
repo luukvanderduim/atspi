@@ -16,6 +16,9 @@ git = "https://github.com/gtk-rs/glib"
 [dependencies.glib-sys]
 git = "https://github.com/gtk-rs/sys"
 
+[dependencies.libdbus-sys]
+git = "https://github.com/diwic/dbus-rs"
+
 [dependencies.gobject-sys]
  git = "https://github.com/gtk-rs/sys"
 

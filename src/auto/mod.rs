@@ -99,6 +99,7 @@ pub use self::enums::CollectionSortOrder;
 pub use self::enums::CollectionTreeTraversalType;
 pub use self::enums::ComponentLayer;
 pub use self::enums::CoordType;
+pub use self::enums::KeySynthType;
 pub use self::enums::RelationType;
 pub use self::enums::Role;
 pub use self::enums::StateType;
@@ -108,11 +109,13 @@ pub use self::enums::TextGranularity;
 
 mod flags;
 pub use self::flags::Cache;
+pub use self::flags::KeyListenerSyncType;
 
 mod alias;
 pub use self::alias::ControllerEventMask;
 pub use self::alias::DeviceEventMask;
 pub use self::alias::KeyEventMask;
+pub use self::alias::KeyMaskType;
 pub use self::alias::KeystrokeListener;
 
 #[doc(hidden)]

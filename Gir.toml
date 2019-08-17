@@ -48,9 +48,12 @@ generate = [
             "Atspi.Image",
             "Atspi.KeyDefinition",
             "Atspi.KeyEventMask",
+            "Atspi.KeyListenerSyncType",
+            "Atspi.KeyMaskType",
             # "Atspi.KeySet",
             # 'Missing memory management functions for Atspi.KeySet'
             "Atspi.KeystrokeListener",
+            "Atspi.KeySynthType",
             "Atspi.MatchRule",
             "Atspi.Object",
             "Atspi.Point",
@@ -74,6 +77,7 @@ generate = [
 
 manual = [
          "GLib.Error",
+         # "DBus.Connection",
        ]
 
 
