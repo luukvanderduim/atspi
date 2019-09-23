@@ -24,8 +24,8 @@ mod rt;
 mod auto;
 pub use auto::*;
 
-mod key_set;
-pub use key_set::*;
+//mod key_set;
+//pub use key_set::KeySet;
 
 use dbus::DBusConnection;
 use glib::Error;

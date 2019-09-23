@@ -77,14 +77,8 @@ generate = [
 
 manual = [
          "GLib.Error",
+         "Atspi.KeySet",
          # "DBus.Connection",
        ]
-
-
-
-
-#[[object]]
-#name = "Atspi.Hyperlink"
-#status = "manual"
 
 
