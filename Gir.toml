@@ -5,9 +5,9 @@ version = "2.0"
 min_cfg_version = "2.28"
 target_path = "."
 work_mode = "normal"
-generate_safety_asserts = true
-deprecate_by_min_version = true
-single_version_file = true
+generate_safety_asserts = false
+deprecate_by_min_version = false
+single_version_file = false
 
 
 
@@ -32,6 +32,7 @@ generate = [
 
             "Atspi.DeviceListenerCB",
             "Atspi.DeviceListenerMode",
+
             # Configured object `Atspi.DeviceListenerMode` missing from the library
             "Atspi.DeviceListenerSimpleCB",
             "Atspi.Document",
@@ -41,8 +42,7 @@ generate = [
             # "Atspi.EventListenerMode",
             # 'Missing memory management functions for Atspi.EventListenerMode'
             "Atspi.EventListenerCB",
-             "Atspi.EventLinstenerSimpleCB",
-            # Configured object `Atspi.EventLinstenerSimpleCB` missing from the library
+            "Atspi.EventLinstenerSimpleCB",
             "Atspi.EditableText",
             "Atspi.Hyperlink",
             "Atspi.Hypertext",
@@ -78,6 +78,10 @@ generate = [
 
 manual = [
          "GLib.Error",
+         "GLib.DestroyNotify",
+         "GLib.MainContext",
+         "DBus.Connection",
+
           #"Atspi.KeySet",
          # "DBus.Connection",
        ]
