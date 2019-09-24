@@ -3,4 +3,4 @@
 
 extern crate nix;
 
-pub type  timeval = nix::sys::time::TimeVal;
+pub type timeval = nix::sys::time::TimeVal;

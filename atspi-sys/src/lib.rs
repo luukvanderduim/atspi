@@ -6,12 +6,15 @@
 #![allow(clippy::approx_constant, clippy::type_complexity, clippy::unreadable_literal)]
 
 extern crate libc;
-extern crate libdbus_sys as dbus;
+extern crate dbus;
 extern crate glib_sys as glib;
-extern crate gobject_sys as gobject;
+extern crate gobject;
 
-
+mod accessible;
 mod timeval;
+
+use accessible::_AtspiAccessible;
+
 
 #[allow(unused_imports)]
 use libc::{c_int, c_char, c_uchar, c_float, c_uint, c_double,
@@ -754,11 +757,6 @@ pub struct AtspiAccessible {
     pub cached_properties: c_uint,
     pub priv_: *mut AtspiAccessiblePrivate,
 }
-
-// The _AtspiAccessible type definition is missing, yet it is used
-
-type _AtspiAccessible = AtspiAccessible;
-
 
 impl ::std::fmt::Debug for AtspiAccessible {
     fn fmt(&self, f: &mut ::std::fmt::Formatter) -> ::std::fmt::Result {

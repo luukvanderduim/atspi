@@ -13,14 +13,17 @@ name = "atspi_sys"
 libc = "0.2"
 nix = "0.15"
 
-[dependencies.libdbus-sys]
-git = "https://github.com/diwic/dbus-rs"
+[dependencies.dbus]
+version = "0.2.1"
+package = "libdbus-sys"
 
-[dependencies.glib-sys]
+[dependencies.glib_sys]
 git = "https://github.com/gtk-rs/sys"
+package = "glib-sys"
 
-[dependencies.gobject-sys]
+[dependencies.gobject]
 git = "https://github.com/gtk-rs/sys"
+package = "gobject-sys"
 
 [build-dependencies]
 pkg-config = "0.3.7"

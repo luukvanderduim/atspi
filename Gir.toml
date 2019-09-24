@@ -27,10 +27,11 @@ generate = [
             "Atspi.CoordType",
             "Atspi.DeviceEvent",
             "Atspi.DeviceEventMask",
-            # "Atspi.DeviceListener",
+            "Atspi.DeviceListener",
             # function `atspi_device_listener_new`'s callback `callback` has invalid user data#
+
             "Atspi.DeviceListenerCB",
-            #"Atspi.DeviceListenerMode",
+            "Atspi.DeviceListenerMode",
             # Configured object `Atspi.DeviceListenerMode` missing from the library
             "Atspi.DeviceListenerSimpleCB",
             "Atspi.Document",
@@ -40,7 +41,7 @@ generate = [
             # "Atspi.EventListenerMode",
             # 'Missing memory management functions for Atspi.EventListenerMode'
             "Atspi.EventListenerCB",
-            # "Atspi.EventLinstenerSimpleCB",
+             "Atspi.EventLinstenerSimpleCB",
             # Configured object `Atspi.EventLinstenerSimpleCB` missing from the library
             "Atspi.EditableText",
             "Atspi.Hyperlink",
@@ -77,7 +78,7 @@ generate = [
 
 manual = [
          "GLib.Error",
-         "Atspi.KeySet",
+          #"Atspi.KeySet",
          # "DBus.Connection",
        ]
 
