@@ -8,7 +8,7 @@ libc = "0.2"
 bitflags = "1.1"
 
 [dependencies.atspi-sys]
-path = "./atspi-sys"
+git = "https://github.com/luukvanderduim/atspi-sys"
 
 [dependencies.glib]
 git = "https://github.com/gtk-rs/glib"
