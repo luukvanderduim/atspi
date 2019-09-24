@@ -5,7 +5,7 @@ authors = ["Luuk van der Duim <luukvanderduim@gmail.com>"]
 
 [dependencies]
 libc = "0.2"
-bitflags = "1.1"
+bitflags = "1.0.4"
 
 [dependencies.atspi-sys]
 git = "https://github.com/luukvanderduim/atspi-sys"
