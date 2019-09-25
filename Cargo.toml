@@ -6,7 +6,7 @@ authors = ["Luuk van der Duim <luukvanderduim@gmail.com>"]
 [dependencies]
 libc = "0.2"
 bitflags = "1.0.4"
-dbus = "0.7"
+dbus = "0.2"
 
 
 
