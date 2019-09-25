@@ -27,5 +27,5 @@ pub use auto::*;
 //mod key_set;
 //pub use key_set::KeySet;
 
-use dbus::DBusConnection;
+// use dbus::DBusConnection;
 use glib::Error;
