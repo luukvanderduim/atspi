@@ -81,9 +81,6 @@ manual = [
          "GLib.DestroyNotify",
          "GLib.MainContext",
          "DBus.Connection",
-
-          #"Atspi.KeySet",
-         # "DBus.Connection",
        ]
 
 
