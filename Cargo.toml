@@ -5,7 +5,7 @@ authors = ["Luuk van der Duim <luukvanderduim@gmail.com>"]
 
 [dependencies]
 libc = "0.2"
-bitflags = "1.0.4"
+bitflags = "1.2.0"
 
 [dependencies.atspi-sys]
 git = "https://github.com/luukvanderduim/atspi-sys"
@@ -16,8 +16,6 @@ git = "https://github.com/gtk-rs/glib"
 [dependencies.glib-sys]
 git = "https://github.com/gtk-rs/sys"
 
-[dependencies.libdbus-sys]
-git = "https://github.com/diwic/dbus-rs"
 
 [dependencies.gobject-sys]
  git = "https://github.com/gtk-rs/sys"
