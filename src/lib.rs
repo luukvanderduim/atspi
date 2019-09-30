@@ -23,6 +23,9 @@ mod rt;
 mod auto;
 pub use auto::*;
 
+mod rect;
+pub use rect::*;
+
 //mod key_set;
 //pub use key_set::KeySet;
 

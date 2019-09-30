@@ -62,7 +62,7 @@ generate = [
             "Atspi.Object",
             "Atspi.Point",
             "Atspi.Range",
-            "Atspi.Rect",
+            # "Atspi.Rect",
             "Atspi.Relation",
             "Atspi.RelationType",
             "Atspi.Role",
@@ -86,6 +86,7 @@ manual = [
          "GLib.DestroyNotify",
          "GLib.MainContext",
          "DBus.Connection",
+         "Atspi.Rect",
        ]
 
 [[object]]

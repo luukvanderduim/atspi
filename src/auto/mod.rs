@@ -91,9 +91,6 @@ pub use self::point::Point;
 mod range;
 pub use self::range::Range;
 
-mod rect;
-pub use self::rect::Rect;
-
 mod text_range;
 pub use self::text_range::TextRange;
 
