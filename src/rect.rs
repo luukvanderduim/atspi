@@ -18,15 +18,15 @@ glib_wrapper! {
 
 impl Rect {
     pub fn get_x(&self) -> i32 {
-        self.0.x as i32
+        self.0.x
     }
     pub fn get_y(&self) -> i32 {
-        self.0.y as i32
+        self.0.y
     }
     pub fn get_width(&self) -> i32 {
-        self.0.width as i32
+        self.0.width
     }
     pub fn get_height(&self) -> i32 {
-        self.0.height as i32
+        self.0.height
     }
 }
