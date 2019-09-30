@@ -2,10 +2,10 @@
 // from gir-files (https://github.com/gtk-rs/gir-files)
 // DO NOT EDIT
 
-use CoordType;
-use Error;
-use Point;
-use Rect;
+use crate::CoordType;
+use crate::Error;
+use crate::Point;
+use crate::Rect;
 use atspi_sys;
 use glib::GString;
 use glib::object::IsA;

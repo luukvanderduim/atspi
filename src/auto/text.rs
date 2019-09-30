@@ -2,13 +2,13 @@
 // from gir-files (https://github.com/gtk-rs/gir-files)
 // DO NOT EDIT
 
-use CoordType;
-use Error;
-use Range;
-use Rect;
-use TextBoundaryType;
-use TextGranularity;
-use TextRange;
+use crate::CoordType;
+use crate::Error;
+use crate::Range;
+use crate::Rect;
+use crate::TextBoundaryType;
+use crate::TextGranularity;
+use crate::TextRange;
 use atspi_sys;
 use glib::GString;
 use glib::object::IsA;

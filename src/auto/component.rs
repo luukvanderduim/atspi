@@ -2,12 +2,12 @@
 // from gir-files (https://github.com/gtk-rs/gir-files)
 // DO NOT EDIT
 
-use Accessible;
-use ComponentLayer;
-use CoordType;
-use Error;
-use Point;
-use Rect;
+use crate::Accessible;
+use crate::ComponentLayer;
+use crate::CoordType;
+use crate::Error;
+use crate::Point;
+use crate::Rect;
 use atspi_sys;
 use glib::object::IsA;
 use glib::translate::*;

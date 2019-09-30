@@ -2,7 +2,7 @@
 // from gir-files (https://github.com/gtk-rs/gir-files)
 // DO NOT EDIT
 
-use StateType;
+use crate::StateType;
 use atspi_sys;
 use glib::object::IsA;
 use glib::translate::*;

@@ -22,10 +22,10 @@ pub use glib::{Error, MainContext};
 mod rt;
 
 mod auto;
-pub use auto::*;
+pub use crate::auto::*;
 
 mod rect;
-pub use rect::*;
+pub use crate::rect::*;
 
 //mod key_set;
 //pub use key_set::KeySet;

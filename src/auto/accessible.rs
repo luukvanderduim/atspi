@@ -2,24 +2,24 @@
 // from gir-files (https://github.com/gtk-rs/gir-files)
 // DO NOT EDIT
 
-use Action;
-use Cache;
-use Collection;
-use Component;
-use Document;
-use EditableText;
-use Error;
-use Hyperlink;
-use Hypertext;
-use Image;
-use Object;
-use Role;
-use Selection;
-use StateSet;
-use Table;
-use TableCell;
-use Text;
-use Value;
+use crate::Action;
+use crate::Cache;
+use crate::Collection;
+use crate::Component;
+use crate::Document;
+use crate::EditableText;
+use crate::Error;
+use crate::Hyperlink;
+use crate::Hypertext;
+use crate::Image;
+use crate::Object;
+use crate::Role;
+use crate::Selection;
+use crate::StateSet;
+use crate::Table;
+use crate::TableCell;
+use crate::Text;
+use crate::Value;
 use atspi_sys;
 use glib::GString;
 use glib::object::IsA;

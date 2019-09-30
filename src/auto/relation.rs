@@ -2,8 +2,8 @@
 // from gir-files (https://github.com/gtk-rs/gir-files)
 // DO NOT EDIT
 
-use Accessible;
-use RelationType;
+use crate::Accessible;
+use crate::RelationType;
 use atspi_sys;
 use glib::object::IsA;
 use glib::translate::*;
