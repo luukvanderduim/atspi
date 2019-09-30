@@ -83,8 +83,8 @@ generate = [
 
 manual = [
          "GLib.Error",
-         "GLib.DestroyNotify",
-         "GLib.MainContext",
+         # "GLib.DestroyNotify",
+         # "GLib.MainContext",
          "DBus.Connection",
          "Atspi.Rect",
        ]

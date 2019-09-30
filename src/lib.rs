@@ -16,6 +16,7 @@ extern crate gobject_sys;
 
 #[macro_use]
 extern crate glib;
+pub use glib::{Error, MainContext};
 
 #[macro_use]
 mod rt;
@@ -28,5 +29,3 @@ pub use rect::*;
 
 //mod key_set;
 //pub use key_set::KeySet;
-
-
