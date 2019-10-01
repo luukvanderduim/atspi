@@ -2,8 +2,8 @@
 // from gir-files (https://github.com/gtk-rs/gir-files)
 // DO NOT EDIT
 
-use crate::Error;
-use crate::Hyperlink;
+use Error;
+use Hyperlink;
 use atspi_sys;
 use glib::object::IsA;
 use glib::translate::*;

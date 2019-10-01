@@ -3,44 +3,40 @@
 // DO NOT EDIT
 
 mod accessible;
-pub use self::accessible::{Accessible, AccessibleClass, NONE_ACCESSIBLE};
 pub use self::accessible::AccessibleExt;
+pub use self::accessible::{Accessible, AccessibleClass, NONE_ACCESSIBLE};
 
 mod action;
-pub use self::action::{Action, NONE_ACTION};
 pub use self::action::ActionExt;
+pub use self::action::{Action, NONE_ACTION};
 
 mod collection;
-pub use self::collection::{Collection, NONE_COLLECTION};
 pub use self::collection::CollectionExt;
+pub use self::collection::{Collection, NONE_COLLECTION};
 
 mod component;
-pub use self::component::{Component, NONE_COMPONENT};
 pub use self::component::ComponentExt;
-
-mod device_listener;
-pub use self::device_listener::{DeviceListener, DeviceListenerClass, NONE_DEVICE_LISTENER};
-pub use self::device_listener::DeviceListenerExt;
+pub use self::component::{Component, NONE_COMPONENT};
 
 mod document;
-pub use self::document::{Document, NONE_DOCUMENT};
 pub use self::document::DocumentExt;
+pub use self::document::{Document, NONE_DOCUMENT};
 
 mod editable_text;
-pub use self::editable_text::{EditableText, NONE_EDITABLE_TEXT};
 pub use self::editable_text::EditableTextExt;
+pub use self::editable_text::{EditableText, NONE_EDITABLE_TEXT};
 
 mod hyperlink;
-pub use self::hyperlink::{Hyperlink, HyperlinkClass, NONE_HYPERLINK};
 pub use self::hyperlink::HyperlinkExt;
+pub use self::hyperlink::{Hyperlink, HyperlinkClass, NONE_HYPERLINK};
 
 mod hypertext;
-pub use self::hypertext::{Hypertext, NONE_HYPERTEXT};
 pub use self::hypertext::HypertextExt;
+pub use self::hypertext::{Hypertext, NONE_HYPERTEXT};
 
 mod image;
-pub use self::image::{Image, NONE_IMAGE};
 pub use self::image::ImageExt;
+pub use self::image::{Image, NONE_IMAGE};
 
 mod match_rule;
 pub use self::match_rule::{MatchRule, MatchRuleClass, NONE_MATCH_RULE};
@@ -49,32 +45,32 @@ mod object;
 pub use self::object::{Object, ObjectClass, NONE_OBJECT};
 
 mod relation;
-pub use self::relation::{Relation, RelationClass, NONE_RELATION};
 pub use self::relation::RelationExt;
+pub use self::relation::{Relation, RelationClass, NONE_RELATION};
 
 mod selection;
-pub use self::selection::{Selection, NONE_SELECTION};
 pub use self::selection::SelectionExt;
+pub use self::selection::{Selection, NONE_SELECTION};
 
 mod state_set;
-pub use self::state_set::{StateSet, StateSetClass, NONE_STATE_SET};
 pub use self::state_set::StateSetExt;
+pub use self::state_set::{StateSet, StateSetClass, NONE_STATE_SET};
 
 mod table;
-pub use self::table::{Table, NONE_TABLE};
 pub use self::table::TableExt;
+pub use self::table::{Table, NONE_TABLE};
 
 mod table_cell;
-pub use self::table_cell::{TableCell, NONE_TABLE_CELL};
 pub use self::table_cell::TableCellExt;
+pub use self::table_cell::{TableCell, NONE_TABLE_CELL};
 
 mod text;
-pub use self::text::{Text, NONE_TEXT};
 pub use self::text::TextExt;
+pub use self::text::{Text, NONE_TEXT};
 
 mod value;
-pub use self::value::{Value, NONE_VALUE};
 pub use self::value::ValueExt;
+pub use self::value::{Value, NONE_VALUE};
 
 mod device_event;
 pub use self::device_event::DeviceEvent;
@@ -125,7 +121,7 @@ pub mod traits {
     pub use super::ActionExt;
     pub use super::CollectionExt;
     pub use super::ComponentExt;
-    pub use super::DeviceListenerExt;
+
     pub use super::DocumentExt;
     pub use super::EditableTextExt;
     pub use super::HyperlinkExt;
@@ -134,8 +130,8 @@ pub mod traits {
     pub use super::RelationExt;
     pub use super::SelectionExt;
     pub use super::StateSetExt;
-    pub use super::TableExt;
     pub use super::TableCellExt;
+    pub use super::TableExt;
     pub use super::TextExt;
     pub use super::ValueExt;
 }

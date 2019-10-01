@@ -2,10 +2,10 @@
 // from gir-files (https://github.com/gtk-rs/gir-files)
 // DO NOT EDIT
 
-use crate::Accessible;
-use crate::Error;
-use crate::Object;
-use crate::Range;
+use Accessible;
+use Error;
+use Object;
+use Range;
 use atspi_sys;
 use glib::GString;
 use glib::object::IsA;

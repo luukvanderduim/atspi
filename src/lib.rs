@@ -17,6 +17,7 @@ extern crate gobject_sys;
 #[macro_use]
 extern crate glib;
 pub use glib::{Error, MainContext};
+pub use glib_sys::GDestroyNotify as DestryNotify;
 
 #[macro_use]
 mod rt;
@@ -26,6 +27,12 @@ pub use crate::auto::*;
 
 mod rect;
 pub use crate::rect::*;
+
+mod device_listener;
+pub use crate::device_listener::DeviceListenerExt;
+pub use crate::device_listener::{DeviceListener, DeviceListenerClass, NONE_DEVICE_LISTENER};
+mod other;
+pub use crate::other::*;
 
 //mod key_set;
 //pub use key_set::KeySet;

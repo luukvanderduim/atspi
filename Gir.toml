@@ -28,7 +28,7 @@ generate = [
             "Atspi.CoordType",
             "Atspi.DeviceEvent",
             "Atspi.DeviceEventMask",
-            "Atspi.DeviceListener",
+            # "Atspi.DeviceListener",
             # function `atspi_device_listener_new`'s callback `callback` has invalid user data#
 
             "Atspi.DeviceListenerCB",
@@ -63,6 +63,7 @@ generate = [
             "Atspi.Point",
             "Atspi.Range",
             # "Atspi.Rect",
+            # Manual methods
             "Atspi.Relation",
             "Atspi.RelationType",
             "Atspi.Role",
@@ -83,10 +84,11 @@ generate = [
 
 manual = [
          "GLib.Error",
-         # "GLib.DestroyNotify",
-         # "GLib.MainContext",
+         "GLib.DestroyNotify",
+         "GLib.MainContext",
          "DBus.Connection",
          "Atspi.Rect",
+         "Atspi.DeviceListener"
        ]
 
 [[object]]
@@ -121,4 +123,10 @@ status = "generate"
     # *.HashTable TypeId { ns_id: 0, id: 28 }/TypeId { ns_id: 0, id: 28 }
     ignore = true
 
+[[object]]
+name = "Atspi.Application"
+status = "generate"
 
+[[object]]
+name = "Atspi.Application"
+status = "generate"
