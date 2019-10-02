@@ -33,4 +33,4 @@ pub use crate::device_listener::DeviceListenerExt;
 pub use crate::device_listener::{DeviceListener, DeviceListenerClass, NONE_DEVICE_LISTENER};
 
 pub mod other;
-pub use other::get_desktop_count, get_desktop;
+pub use other::{get_desktop, get_desktop_count};
