@@ -9,11 +9,11 @@
 use crate::Accessible;
 use glib::translate::*;
 
-fn get_desktop_count() -> i32 {
+pub fn get_desktop_count() -> i32 {
     unsafe { atspi_sys::atspi_get_desktop_count() as i32 }
 }
 
-fn get_desktop(i: i32) -> Option<Accessible> {
+pub fn get_desktop(i: i32) -> Option<Accessible> {
     unsafe {
         let ret = atspi_sys::atspi_get_desktop(i);
         if ret.is_null() {
