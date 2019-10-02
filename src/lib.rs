@@ -32,8 +32,5 @@ mod device_listener;
 pub use crate::device_listener::DeviceListenerExt;
 pub use crate::device_listener::{DeviceListener, DeviceListenerClass, NONE_DEVICE_LISTENER};
 
-mod other;
-pub use self::other::{get_desktop, get_desktop_count};
-
-//mod key_set;
-//pub use key_set::KeySet;
+pub mod other;
+pub use other::get_desktop_count, get_desktop;
