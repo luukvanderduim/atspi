@@ -1,9 +1,10 @@
 use crate::Accessible;
+use atspi_sys::*;
 use glib::translate::*;
 
 pub fn get_desktop(i: i32) -> Option<Accessible> {
     unsafe {
-        let ret = atspi_sys::atspi_get_desktop(i);
+        let ret: *mut AtspiAccessible = atspi_get_desktop(i);
         if ret.is_null() {
             None
         } else {
@@ -13,5 +14,5 @@ pub fn get_desktop(i: i32) -> Option<Accessible> {
 }
 
 pub fn get_desktop_count() -> i32 {
-    unsafe { atspi_sys::atspi_get_desktop_count() as i32 }
+    unsafe { atspi_get_desktop_count() }
 }
