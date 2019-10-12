@@ -42,7 +42,7 @@ generate = [
             "Atspi.Event",
             # "Atspi.EventListener",
             # function `atspi_event_listener_new_simple`'s callback `callback` without associated user data
-            # "Atspi.EventListenerMode",
+            "Atspi.EventListenerMode",
             # 'Missing memory management functions for Atspi.EventListenerMode'
             "Atspi.EventListenerCB",
             "Atspi.EventLinstenerSimpleCB",
@@ -88,7 +88,6 @@ manual = [
          "GLib.MainContext",
          "DBus.Connection",
          "Atspi.Rect",
-         "Atspi.DeviceListener"
        ]
 
 [[object]]
@@ -125,8 +124,5 @@ status = "generate"
 
 [[object]]
 name = "Atspi.Application"
-status = "generate"
-
-[[object]]
-name = "Atspi.Application"
-status = "generate"
+status = "ignore"
+#ignore for now, generate later

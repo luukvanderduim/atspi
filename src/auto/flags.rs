@@ -3,13 +3,13 @@
 // DO NOT EDIT
 
 use atspi_sys;
+use glib::StaticType;
+use glib::Type;
 use glib::translate::*;
 use glib::value::FromValue;
 use glib::value::FromValueOptional;
 use glib::value::SetValue;
 use glib::value::Value;
-use glib::StaticType;
-use glib::Type;
 use gobject_sys;
 
 bitflags! {
@@ -23,9 +23,9 @@ bitflags! {
         const ROLE = 32;
         const INTERFACES = 64;
         const ATTRIBUTES = 128;
-        const ALL = 1_073_741_823;
+        const ALL = 1073741823;
         const DEFAULT = 127;
-        const UNDEFINED = 1_073_741_824;
+        const UNDEFINED = 1073741824;
     }
 }
 
@@ -119,3 +119,4 @@ impl SetValue for KeyListenerSyncType {
         gobject_sys::g_value_set_flags(value.to_glib_none_mut().0, this.to_glib())
     }
 }
+
