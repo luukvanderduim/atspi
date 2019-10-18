@@ -3,7 +3,6 @@
 // DO NOT EDIT
 
 use atspi_sys;
-use glib::translate::*;
 use gobject_sys;
 
 glib_wrapper! {

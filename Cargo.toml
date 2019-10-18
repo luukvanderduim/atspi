@@ -1,13 +1,12 @@
 [package]
 name = "atspi"
 version = "0.1.0"
-
 keywords = ["accessibility", "a11y"]
 authors = ["Luuk van der Duim <luukvanderduim@gmail.com>"]
 
 [dependencies]
 libc = "0.2"
-bitflags = "1.2.0"
+bitflags = "1.2"
 
 [dependencies.atspi-sys]
 git = "https://github.com/luukvanderduim/atspi-sys"
