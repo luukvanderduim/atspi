@@ -28,7 +28,7 @@ generate = [
             "Atspi.CoordType",
             "Atspi.DeviceEvent",
             "Atspi.DeviceEventMask",
-            # "Atspi.DeviceListener",
+            "Atspi.DeviceListener",
             # function `atspi_device_listener_new`'s callback `callback` has invalid user data#
 
             "Atspi.DeviceListenerCB",
@@ -40,9 +40,9 @@ generate = [
             # see [[object]] definition
 
             "Atspi.Event",
-            # "Atspi.EventListener",
+            #"Atspi.EventListener",
             # function `atspi_event_listener_new_simple`'s callback `callback` without associated user data
-            "Atspi.EventListenerMode",
+            # "Atspi.EventListenerMode",
             # 'Missing memory management functions for Atspi.EventListenerMode'
             "Atspi.EventListenerCB",
             "Atspi.EventLinstenerSimpleCB",
@@ -54,7 +54,7 @@ generate = [
             "Atspi.KeyEventMask",
             "Atspi.KeyListenerSyncType",
             "Atspi.KeyMaskType",
-            # "Atspi.KeySet",
+             "Atspi.KeySet",
             # 'Missing memory management functions for Atspi.KeySet'
             "Atspi.KeystrokeListener",
             "Atspi.KeySynthType",
