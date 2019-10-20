@@ -54,7 +54,7 @@ generate = [
             "Atspi.KeyEventMask",
             "Atspi.KeyListenerSyncType",
             "Atspi.KeyMaskType",
-             "Atspi.KeySet",
+            # "Atspi.KeySet",
             # 'Missing memory management functions for Atspi.KeySet'
             "Atspi.KeystrokeListener",
             "Atspi.KeySynthType",
