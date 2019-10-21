@@ -17,7 +17,7 @@ glib_wrapper! {
 }
 
 impl StateSet {
-    //pub fn new(states: /*Unknown conversion*//*Unimplemented*/Array TypeId { ns_id: 1, id: 61 }) -> StateSet {
+    //pub fn new(states: /*Unknown conversion*//*Unimplemented*/Array TypeId { ns_id: 1, id: 62 }) -> StateSet {
     //    unsafe { TODO: call atspi_sys:atspi_state_set_new() }
     //}
 }
@@ -33,7 +33,7 @@ pub trait StateSetExt: 'static {
 
     fn equals<P: IsA<StateSet>>(&self, set2: &P) -> bool;
 
-    //fn get_states(&self) -> /*Unknown conversion*//*Unimplemented*/Array TypeId { ns_id: 1, id: 61 };
+    //fn get_states(&self) -> /*Unknown conversion*//*Unimplemented*/Array TypeId { ns_id: 1, id: 62 };
 
     fn is_empty(&self) -> bool;
 
@@ -67,7 +67,7 @@ impl<O: IsA<StateSet>> StateSetExt for O {
         }
     }
 
-    //fn get_states(&self) -> /*Unknown conversion*//*Unimplemented*/Array TypeId { ns_id: 1, id: 61 } {
+    //fn get_states(&self) -> /*Unknown conversion*//*Unimplemented*/Array TypeId { ns_id: 1, id: 62 } {
     //    unsafe { TODO: call atspi_sys:atspi_state_set_get_states() }
     //}
 

@@ -366,6 +366,7 @@ impl SetValue for ComponentLayer {
 pub enum CoordType {
     Screen,
     Window,
+    Parent,
     #[doc(hidden)]
     __Unknown(i32),
 }
@@ -375,6 +376,7 @@ impl fmt::Display for CoordType {
         write!(f, "CoordType::{}", match *self {
             CoordType::Screen => "Screen",
             CoordType::Window => "Window",
+            CoordType::Parent => "Parent",
             _ => "Unknown",
         })
     }
@@ -388,6 +390,7 @@ impl ToGlib for CoordType {
         match *self {
             CoordType::Screen => atspi_sys::ATSPI_COORD_TYPE_SCREEN,
             CoordType::Window => atspi_sys::ATSPI_COORD_TYPE_WINDOW,
+            CoordType::Parent => atspi_sys::ATSPI_COORD_TYPE_PARENT,
             CoordType::__Unknown(value) => value
         }
     }
@@ -400,6 +403,7 @@ impl FromGlib<atspi_sys::AtspiCoordType> for CoordType {
         match value {
             0 => CoordType::Screen,
             1 => CoordType::Window,
+            2 => CoordType::Parent,
             value => CoordType::__Unknown(value),
         }
     }
@@ -437,6 +441,8 @@ pub enum KeySynthType {
     Pressrelease,
     Sym,
     String,
+    Lockmodifiers,
+    Unlockmodifiers,
     #[doc(hidden)]
     __Unknown(i32),
 }
@@ -449,6 +455,8 @@ impl fmt::Display for KeySynthType {
             KeySynthType::Pressrelease => "Pressrelease",
             KeySynthType::Sym => "Sym",
             KeySynthType::String => "String",
+            KeySynthType::Lockmodifiers => "Lockmodifiers",
+            KeySynthType::Unlockmodifiers => "Unlockmodifiers",
             _ => "Unknown",
         })
     }
@@ -465,6 +473,8 @@ impl ToGlib for KeySynthType {
             KeySynthType::Pressrelease => atspi_sys::ATSPI_KEY_PRESSRELEASE,
             KeySynthType::Sym => atspi_sys::ATSPI_KEY_SYM,
             KeySynthType::String => atspi_sys::ATSPI_KEY_STRING,
+            KeySynthType::Lockmodifiers => atspi_sys::ATSPI_KEY_LOCKMODIFIERS,
+            KeySynthType::Unlockmodifiers => atspi_sys::ATSPI_KEY_UNLOCKMODIFIERS,
             KeySynthType::__Unknown(value) => value
         }
     }
@@ -480,6 +490,8 @@ impl FromGlib<atspi_sys::AtspiKeySynthType> for KeySynthType {
             2 => KeySynthType::Pressrelease,
             3 => KeySynthType::Sym,
             4 => KeySynthType::String,
+            5 => KeySynthType::Lockmodifiers,
+            6 => KeySynthType::Unlockmodifiers,
             value => KeySynthType::__Unknown(value),
         }
     }
@@ -793,6 +805,8 @@ pub enum Role {
     DescriptionTerm,
     DescriptionValue,
     Footnote,
+    ContentDeletion,
+    ContentInsertion,
     LastDefined,
     #[doc(hidden)]
     __Unknown(i32),
@@ -926,6 +940,8 @@ impl fmt::Display for Role {
             Role::DescriptionTerm => "DescriptionTerm",
             Role::DescriptionValue => "DescriptionValue",
             Role::Footnote => "Footnote",
+            Role::ContentDeletion => "ContentDeletion",
+            Role::ContentInsertion => "ContentInsertion",
             Role::LastDefined => "LastDefined",
             _ => "Unknown",
         })
@@ -1063,6 +1079,8 @@ impl ToGlib for Role {
             Role::DescriptionTerm => atspi_sys::ATSPI_ROLE_DESCRIPTION_TERM,
             Role::DescriptionValue => atspi_sys::ATSPI_ROLE_DESCRIPTION_VALUE,
             Role::Footnote => atspi_sys::ATSPI_ROLE_FOOTNOTE,
+            Role::ContentDeletion => atspi_sys::ATSPI_ROLE_CONTENT_DELETION,
+            Role::ContentInsertion => atspi_sys::ATSPI_ROLE_CONTENT_INSERTION,
             Role::LastDefined => atspi_sys::ATSPI_ROLE_LAST_DEFINED,
             Role::__Unknown(value) => value
         }
@@ -1199,7 +1217,9 @@ impl FromGlib<atspi_sys::AtspiRole> for Role {
             122 => Role::DescriptionTerm,
             123 => Role::DescriptionValue,
             124 => Role::Footnote,
-            125 => Role::LastDefined,
+            125 => Role::ContentDeletion,
+            126 => Role::ContentInsertion,
+            127 => Role::LastDefined,
             value => Role::__Unknown(value),
         }
     }

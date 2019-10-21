@@ -44,6 +44,10 @@ pub trait ComponentExt: 'static {
 
     fn grab_focus(&self) -> Result<(), Error>;
 
+    //fn scroll_to(&self, type_: /*Ignored*/ScrollType) -> Result<(), Error>;
+
+    fn scroll_to_point(&self, coords: CoordType, x: i32, y: i32) -> Result<(), Error>;
+
     fn set_extents(&self, x: i32, y: i32, width: i32, height: i32, ctype: CoordType) -> Result<(), Error>;
 
     fn set_position(&self, x: i32, y: i32, ctype: CoordType) -> Result<(), Error>;
@@ -120,6 +124,18 @@ impl<O: IsA<Component>> ComponentExt for O {
         unsafe {
             let mut error = ptr::null_mut();
             let _ = atspi_sys::atspi_component_grab_focus(self.as_ref().to_glib_none().0, &mut error);
+            if error.is_null() { Ok(()) } else { Err(from_glib_full(error)) }
+        }
+    }
+
+    //fn scroll_to(&self, type_: /*Ignored*/ScrollType) -> Result<(), Error> {
+    //    unsafe { TODO: call atspi_sys:atspi_component_scroll_to() }
+    //}
+
+    fn scroll_to_point(&self, coords: CoordType, x: i32, y: i32) -> Result<(), Error> {
+        unsafe {
+            let mut error = ptr::null_mut();
+            let _ = atspi_sys::atspi_component_scroll_to_point(self.as_ref().to_glib_none().0, coords.to_glib(), x, y, &mut error);
             if error.is_null() { Ok(()) } else { Err(from_glib_full(error)) }
         }
     }

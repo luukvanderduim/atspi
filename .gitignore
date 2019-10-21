@@ -1,8 +1,5 @@
 test/bin/
 target/
-configure.in
-config.log
-config.status
 *.dylib
 .rust
 *.so

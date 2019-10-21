@@ -22,9 +22,16 @@ use Text;
 use Value;
 use atspi_sys;
 use glib::GString;
+use glib::object::Cast;
 use glib::object::IsA;
+use glib::signal::SignalHandlerId;
+use glib::signal::connect_raw;
 use glib::translate::*;
+use glib_sys;
+use libc;
+use std::boxed::Box as Box_;
 use std::fmt;
+use std::mem::transmute;
 use std::ptr;
 
 glib_wrapper! {
@@ -39,6 +46,9 @@ pub const NONE_ACCESSIBLE: Option<&Accessible> = None;
 
 pub trait AccessibleExt: 'static {
     fn clear_cache(&self);
+
+    #[cfg(any(feature = "v2_34", feature = "dox"))]
+    fn get_accessible_id(&self) -> Result<GString, Error>;
 
     fn get_action_iface(&self) -> Option<Action>;
 
@@ -107,12 +117,23 @@ pub trait AccessibleExt: 'static {
     fn get_value_iface(&self) -> Option<Value>;
 
     fn set_cache_mask(&self, mask: Cache);
+
+    fn connect_region_changed<F: Fn(&Self, i32, i32) + 'static>(&self, f: F) -> SignalHandlerId;
 }
 
 impl<O: IsA<Accessible>> AccessibleExt for O {
     fn clear_cache(&self) {
         unsafe {
             atspi_sys::atspi_accessible_clear_cache(self.as_ref().to_glib_none().0);
+        }
+    }
+
+    #[cfg(any(feature = "v2_34", feature = "dox"))]
+    fn get_accessible_id(&self) -> Result<GString, Error> {
+        unsafe {
+            let mut error = ptr::null_mut();
+            let ret = atspi_sys::atspi_accessible_get_accessible_id(self.as_ref().to_glib_none().0, &mut error);
+            if error.is_null() { Ok(from_glib_full(ret)) } else { Err(from_glib_full(error)) }
         }
     }
 
@@ -343,6 +364,20 @@ impl<O: IsA<Accessible>> AccessibleExt for O {
     fn set_cache_mask(&self, mask: Cache) {
         unsafe {
             atspi_sys::atspi_accessible_set_cache_mask(self.as_ref().to_glib_none().0, mask.to_glib());
+        }
+    }
+
+    fn connect_region_changed<F: Fn(&Self, i32, i32) + 'static>(&self, f: F) -> SignalHandlerId {
+        unsafe extern "C" fn region_changed_trampoline<P, F: Fn(&P, i32, i32) + 'static>(this: *mut atspi_sys::AtspiAccessible, arg1: libc::c_int, arg2: libc::c_int, f: glib_sys::gpointer)
+            where P: IsA<Accessible>
+        {
+            let f: &F = &*(f as *const F);
+            f(&Accessible::from_glib_borrow(this).unsafe_cast(), arg1, arg2)
+        }
+        unsafe {
+            let f: Box_<F> = Box_::new(f);
+            connect_raw(self.as_ptr() as *mut _, b"region-changed\0".as_ptr() as *const _,
+                Some(transmute(region_changed_trampoline::<Self, F> as usize)), Box_::into_raw(f))
         }
     }
 }

@@ -29,7 +29,7 @@ pub const NONE_TEXT: Option<&Text> = None;
 pub trait TextExt: 'static {
     fn add_selection(&self, start_offset: i32, end_offset: i32) -> Result<(), Error>;
 
-    //fn get_bounded_ranges(&self, x: i32, y: i32, width: i32, height: i32, type_: CoordType, clipTypeX: TextClipType, clipTypeY: TextClipType) -> Result</*Unknown conversion*//*Unimplemented*/Array TypeId { ns_id: 1, id: 63 }, Error>;
+    //fn get_bounded_ranges(&self, x: i32, y: i32, width: i32, height: i32, type_: CoordType, clipTypeX: TextClipType, clipTypeY: TextClipType) -> Result</*Unknown conversion*//*Unimplemented*/Array TypeId { ns_id: 1, id: 64 }, Error>;
 
     fn get_caret_offset(&self) -> Result<i32, Error>;
 
@@ -59,6 +59,10 @@ pub trait TextExt: 'static {
 
     fn remove_selection(&self, selection_num: i32) -> Result<(), Error>;
 
+    //fn scroll_substring_to(&self, start_offset: i32, end_offset: i32, type_: /*Ignored*/ScrollType) -> Result<(), Error>;
+
+    fn scroll_substring_to_point(&self, start_offset: i32, end_offset: i32, coords: CoordType, x: i32, y: i32) -> Result<(), Error>;
+
     fn set_caret_offset(&self, new_offset: i32) -> Result<(), Error>;
 
     fn set_selection(&self, selection_num: i32, start_offset: i32, end_offset: i32) -> Result<(), Error>;
@@ -73,7 +77,7 @@ impl<O: IsA<Text>> TextExt for O {
         }
     }
 
-    //fn get_bounded_ranges(&self, x: i32, y: i32, width: i32, height: i32, type_: CoordType, clipTypeX: TextClipType, clipTypeY: TextClipType) -> Result</*Unknown conversion*//*Unimplemented*/Array TypeId { ns_id: 1, id: 63 }, Error> {
+    //fn get_bounded_ranges(&self, x: i32, y: i32, width: i32, height: i32, type_: CoordType, clipTypeX: TextClipType, clipTypeY: TextClipType) -> Result</*Unknown conversion*//*Unimplemented*/Array TypeId { ns_id: 1, id: 64 }, Error> {
     //    unsafe { TODO: call atspi_sys:atspi_text_get_bounded_ranges() }
     //}
 
@@ -185,6 +189,18 @@ impl<O: IsA<Text>> TextExt for O {
         unsafe {
             let mut error = ptr::null_mut();
             let _ = atspi_sys::atspi_text_remove_selection(self.as_ref().to_glib_none().0, selection_num, &mut error);
+            if error.is_null() { Ok(()) } else { Err(from_glib_full(error)) }
+        }
+    }
+
+    //fn scroll_substring_to(&self, start_offset: i32, end_offset: i32, type_: /*Ignored*/ScrollType) -> Result<(), Error> {
+    //    unsafe { TODO: call atspi_sys:atspi_text_scroll_substring_to() }
+    //}
+
+    fn scroll_substring_to_point(&self, start_offset: i32, end_offset: i32, coords: CoordType, x: i32, y: i32) -> Result<(), Error> {
+        unsafe {
+            let mut error = ptr::null_mut();
+            let _ = atspi_sys::atspi_text_scroll_substring_to_point(self.as_ref().to_glib_none().0, start_offset, end_offset, coords.to_glib(), x, y, &mut error);
             if error.is_null() { Ok(()) } else { Err(from_glib_full(error)) }
         }
     }
