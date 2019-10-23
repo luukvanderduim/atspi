@@ -30,10 +30,6 @@ mod editable_text;
 pub use self::editable_text::{EditableText, NONE_EDITABLE_TEXT};
 pub use self::editable_text::EditableTextExt;
 
-mod event_listener;
-pub use self::event_listener::{EventListener, EventListenerClass, NONE_EVENT_LISTENER};
-pub use self::event_listener::EventListenerExt;
-
 mod hyperlink;
 pub use self::hyperlink::{Hyperlink, HyperlinkClass, NONE_HYPERLINK};
 pub use self::hyperlink::HyperlinkExt;
@@ -132,7 +128,6 @@ pub mod traits {
     pub use super::DeviceListenerExt;
     pub use super::DocumentExt;
     pub use super::EditableTextExt;
-    pub use super::EventListenerExt;
     pub use super::HyperlinkExt;
     pub use super::HypertextExt;
     pub use super::ImageExt;
