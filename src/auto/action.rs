@@ -2,8 +2,8 @@
 // from gir-files (https://github.com/gtk-rs/gir-files)
 // DO NOT EDIT
 
+use Error;
 use atspi_sys;
-use glib;
 use glib::GString;
 use glib::object::IsA;
 use glib::translate::*;
@@ -21,21 +21,21 @@ glib_wrapper! {
 pub const NONE_ACTION: Option<&Action> = None;
 
 pub trait ActionExt: 'static {
-    fn do_action(&self, i: i32) -> Result<(), glib::Error>;
+    fn do_action(&self, i: i32) -> Result<(), Error>;
 
-    fn get_action_description(&self, i: i32) -> Result<GString, glib::Error>;
+    fn get_action_description(&self, i: i32) -> Result<GString, Error>;
 
-    fn get_action_name(&self, i: i32) -> Result<GString, glib::Error>;
+    fn get_action_name(&self, i: i32) -> Result<GString, Error>;
 
-    fn get_key_binding(&self, i: i32) -> Result<GString, glib::Error>;
+    fn get_key_binding(&self, i: i32) -> Result<GString, Error>;
 
-    fn get_localized_name(&self, i: i32) -> Result<GString, glib::Error>;
+    fn get_localized_name(&self, i: i32) -> Result<GString, Error>;
 
-    fn get_n_actions(&self) -> Result<i32, glib::Error>;
+    fn get_n_actions(&self) -> Result<i32, Error>;
 }
 
 impl<O: IsA<Action>> ActionExt for O {
-    fn do_action(&self, i: i32) -> Result<(), glib::Error> {
+    fn do_action(&self, i: i32) -> Result<(), Error> {
         unsafe {
             let mut error = ptr::null_mut();
             let _ = atspi_sys::atspi_action_do_action(self.as_ref().to_glib_none().0, i, &mut error);
@@ -43,7 +43,7 @@ impl<O: IsA<Action>> ActionExt for O {
         }
     }
 
-    fn get_action_description(&self, i: i32) -> Result<GString, glib::Error> {
+    fn get_action_description(&self, i: i32) -> Result<GString, Error> {
         unsafe {
             let mut error = ptr::null_mut();
             let ret = atspi_sys::atspi_action_get_action_description(self.as_ref().to_glib_none().0, i, &mut error);
@@ -51,7 +51,7 @@ impl<O: IsA<Action>> ActionExt for O {
         }
     }
 
-    fn get_action_name(&self, i: i32) -> Result<GString, glib::Error> {
+    fn get_action_name(&self, i: i32) -> Result<GString, Error> {
         unsafe {
             let mut error = ptr::null_mut();
             let ret = atspi_sys::atspi_action_get_action_name(self.as_ref().to_glib_none().0, i, &mut error);
@@ -59,7 +59,7 @@ impl<O: IsA<Action>> ActionExt for O {
         }
     }
 
-    fn get_key_binding(&self, i: i32) -> Result<GString, glib::Error> {
+    fn get_key_binding(&self, i: i32) -> Result<GString, Error> {
         unsafe {
             let mut error = ptr::null_mut();
             let ret = atspi_sys::atspi_action_get_key_binding(self.as_ref().to_glib_none().0, i, &mut error);
@@ -67,7 +67,7 @@ impl<O: IsA<Action>> ActionExt for O {
         }
     }
 
-    fn get_localized_name(&self, i: i32) -> Result<GString, glib::Error> {
+    fn get_localized_name(&self, i: i32) -> Result<GString, Error> {
         unsafe {
             let mut error = ptr::null_mut();
             let ret = atspi_sys::atspi_action_get_localized_name(self.as_ref().to_glib_none().0, i, &mut error);
@@ -75,7 +75,7 @@ impl<O: IsA<Action>> ActionExt for O {
         }
     }
 
-    fn get_n_actions(&self) -> Result<i32, glib::Error> {
+    fn get_n_actions(&self) -> Result<i32, Error> {
         unsafe {
             let mut error = ptr::null_mut();
             let ret = atspi_sys::atspi_action_get_n_actions(self.as_ref().to_glib_none().0, &mut error);

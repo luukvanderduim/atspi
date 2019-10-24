@@ -13,7 +13,6 @@ pub fn get_desktop(i: i32) -> Option<Accessible> {
     }
 }
 
-// This function is known not to work in AT-SPI
 pub fn get_desktop_count() -> i32 {
     unsafe { atspi_get_desktop_count() }
 }

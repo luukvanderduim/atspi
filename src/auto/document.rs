@@ -2,8 +2,8 @@
 // from gir-files (https://github.com/gtk-rs/gir-files)
 // DO NOT EDIT
 
+use Error;
 use atspi_sys;
-use glib;
 use glib::GString;
 use glib::object::IsA;
 use glib::translate::*;
@@ -21,17 +21,17 @@ glib_wrapper! {
 pub const NONE_DOCUMENT: Option<&Document> = None;
 
 pub trait DocumentExt: 'static {
-    fn get_current_page_number(&self) -> Result<i32, glib::Error>;
+    fn get_current_page_number(&self) -> Result<i32, Error>;
 
-    fn get_document_attribute_value(&self, attribute: &str) -> Result<GString, glib::Error>;
+    fn get_document_attribute_value(&self, attribute: &str) -> Result<GString, Error>;
 
-    fn get_locale(&self) -> Result<GString, glib::Error>;
+    fn get_locale(&self) -> Result<GString, Error>;
 
-    fn get_page_count(&self) -> Result<i32, glib::Error>;
+    fn get_page_count(&self) -> Result<i32, Error>;
 }
 
 impl<O: IsA<Document>> DocumentExt for O {
-    fn get_current_page_number(&self) -> Result<i32, glib::Error> {
+    fn get_current_page_number(&self) -> Result<i32, Error> {
         unsafe {
             let mut error = ptr::null_mut();
             let ret = atspi_sys::atspi_document_get_current_page_number(self.as_ref().to_glib_none().0, &mut error);
@@ -39,7 +39,7 @@ impl<O: IsA<Document>> DocumentExt for O {
         }
     }
 
-    fn get_document_attribute_value(&self, attribute: &str) -> Result<GString, glib::Error> {
+    fn get_document_attribute_value(&self, attribute: &str) -> Result<GString, Error> {
         unsafe {
             let mut error = ptr::null_mut();
             let ret = atspi_sys::atspi_document_get_document_attribute_value(self.as_ref().to_glib_none().0, attribute.to_glib_none().0, &mut error);
@@ -47,7 +47,7 @@ impl<O: IsA<Document>> DocumentExt for O {
         }
     }
 
-    fn get_locale(&self) -> Result<GString, glib::Error> {
+    fn get_locale(&self) -> Result<GString, Error> {
         unsafe {
             let mut error = ptr::null_mut();
             let ret = atspi_sys::atspi_document_get_locale(self.as_ref().to_glib_none().0, &mut error);
@@ -55,7 +55,7 @@ impl<O: IsA<Document>> DocumentExt for O {
         }
     }
 
-    fn get_page_count(&self) -> Result<i32, glib::Error> {
+    fn get_page_count(&self) -> Result<i32, Error> {
         unsafe {
             let mut error = ptr::null_mut();
             let ret = atspi_sys::atspi_document_get_page_count(self.as_ref().to_glib_none().0, &mut error);

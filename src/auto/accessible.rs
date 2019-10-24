@@ -8,6 +8,7 @@ use Collection;
 use Component;
 use Document;
 use EditableText;
+use Error;
 use Hyperlink;
 use Hypertext;
 use Image;
@@ -20,7 +21,6 @@ use TableCell;
 use Text;
 use Value;
 use atspi_sys;
-use glib;
 use glib::GString;
 use glib::object::Cast;
 use glib::object::IsA;
@@ -48,25 +48,25 @@ pub trait AccessibleExt: 'static {
     fn clear_cache(&self);
 
     #[cfg(any(feature = "v2_34", feature = "dox"))]
-    fn get_accessible_id(&self) -> Result<GString, glib::Error>;
+    fn get_accessible_id(&self) -> Result<GString, Error>;
 
     fn get_action_iface(&self) -> Option<Action>;
 
-    fn get_application(&self) -> Result<Accessible, glib::Error>;
+    fn get_application(&self) -> Result<Accessible, Error>;
 
-    fn get_atspi_version(&self) -> Result<GString, glib::Error>;
+    fn get_atspi_version(&self) -> Result<GString, Error>;
 
-    //fn get_attributes_as_array(&self) -> Result</*Unknown conversion*//*Unimplemented*/Array TypeId { ns_id: 0, id: 28 }, glib::Error>;
+    //fn get_attributes_as_array(&self) -> Result</*Unknown conversion*//*Unimplemented*/Array TypeId { ns_id: 0, id: 28 }, Error>;
 
-    fn get_child_at_index(&self, child_index: i32) -> Result<Accessible, glib::Error>;
+    fn get_child_at_index(&self, child_index: i32) -> Result<Accessible, Error>;
 
-    fn get_child_count(&self) -> Result<i32, glib::Error>;
+    fn get_child_count(&self) -> Result<i32, Error>;
 
     fn get_collection_iface(&self) -> Option<Collection>;
 
     fn get_component_iface(&self) -> Option<Component>;
 
-    fn get_description(&self) -> Result<GString, glib::Error>;
+    fn get_description(&self) -> Result<GString, Error>;
 
     fn get_document_iface(&self) -> Option<Document>;
 
@@ -76,29 +76,29 @@ pub trait AccessibleExt: 'static {
 
     fn get_hypertext_iface(&self) -> Option<Hypertext>;
 
-    fn get_id(&self) -> Result<i32, glib::Error>;
+    fn get_id(&self) -> Result<i32, Error>;
 
     fn get_image_iface(&self) -> Option<Image>;
 
-    fn get_index_in_parent(&self) -> Result<i32, glib::Error>;
+    fn get_index_in_parent(&self) -> Result<i32, Error>;
 
     //fn get_interfaces(&self) -> /*Unknown conversion*//*Unimplemented*/Array TypeId { ns_id: 0, id: 28 };
 
-    fn get_localized_role_name(&self) -> Result<GString, glib::Error>;
+    fn get_localized_role_name(&self) -> Result<GString, Error>;
 
-    fn get_name(&self) -> Result<GString, glib::Error>;
+    fn get_name(&self) -> Result<GString, Error>;
 
-    fn get_object_locale(&self) -> Result<GString, glib::Error>;
+    fn get_object_locale(&self) -> Result<GString, Error>;
 
-    fn get_parent(&self) -> Result<Option<Accessible>, glib::Error>;
+    fn get_parent(&self) -> Result<Option<Accessible>, Error>;
 
-    fn get_process_id(&self) -> Result<(), glib::Error>;
+    fn get_process_id(&self) -> Result<(), Error>;
 
-    //fn get_relation_set(&self) -> Result</*Unknown conversion*//*Unimplemented*/Array TypeId { ns_id: 1, id: 19 }, glib::Error>;
+    //fn get_relation_set(&self) -> Result</*Unknown conversion*//*Unimplemented*/Array TypeId { ns_id: 1, id: 19 }, Error>;
 
-    fn get_role(&self) -> Result<Role, glib::Error>;
+    fn get_role(&self) -> Result<Role, Error>;
 
-    fn get_role_name(&self) -> Result<GString, glib::Error>;
+    fn get_role_name(&self) -> Result<GString, Error>;
 
     fn get_selection_iface(&self) -> Option<Selection>;
 
@@ -110,9 +110,9 @@ pub trait AccessibleExt: 'static {
 
     fn get_text_iface(&self) -> Option<Text>;
 
-    fn get_toolkit_name(&self) -> Result<GString, glib::Error>;
+    fn get_toolkit_name(&self) -> Result<GString, Error>;
 
-    fn get_toolkit_version(&self) -> Result<GString, glib::Error>;
+    fn get_toolkit_version(&self) -> Result<GString, Error>;
 
     fn get_value_iface(&self) -> Option<Value>;
 
@@ -129,7 +129,7 @@ impl<O: IsA<Accessible>> AccessibleExt for O {
     }
 
     #[cfg(any(feature = "v2_34", feature = "dox"))]
-    fn get_accessible_id(&self) -> Result<GString, glib::Error> {
+    fn get_accessible_id(&self) -> Result<GString, Error> {
         unsafe {
             let mut error = ptr::null_mut();
             let ret = atspi_sys::atspi_accessible_get_accessible_id(self.as_ref().to_glib_none().0, &mut error);
@@ -143,7 +143,7 @@ impl<O: IsA<Accessible>> AccessibleExt for O {
         }
     }
 
-    fn get_application(&self) -> Result<Accessible, glib::Error> {
+    fn get_application(&self) -> Result<Accessible, Error> {
         unsafe {
             let mut error = ptr::null_mut();
             let ret = atspi_sys::atspi_accessible_get_application(self.as_ref().to_glib_none().0, &mut error);
@@ -151,7 +151,7 @@ impl<O: IsA<Accessible>> AccessibleExt for O {
         }
     }
 
-    fn get_atspi_version(&self) -> Result<GString, glib::Error> {
+    fn get_atspi_version(&self) -> Result<GString, Error> {
         unsafe {
             let mut error = ptr::null_mut();
             let ret = atspi_sys::atspi_accessible_get_atspi_version(self.as_ref().to_glib_none().0, &mut error);
@@ -159,11 +159,11 @@ impl<O: IsA<Accessible>> AccessibleExt for O {
         }
     }
 
-    //fn get_attributes_as_array(&self) -> Result</*Unknown conversion*//*Unimplemented*/Array TypeId { ns_id: 0, id: 28 }, glib::Error> {
+    //fn get_attributes_as_array(&self) -> Result</*Unknown conversion*//*Unimplemented*/Array TypeId { ns_id: 0, id: 28 }, Error> {
     //    unsafe { TODO: call atspi_sys:atspi_accessible_get_attributes_as_array() }
     //}
 
-    fn get_child_at_index(&self, child_index: i32) -> Result<Accessible, glib::Error> {
+    fn get_child_at_index(&self, child_index: i32) -> Result<Accessible, Error> {
         unsafe {
             let mut error = ptr::null_mut();
             let ret = atspi_sys::atspi_accessible_get_child_at_index(self.as_ref().to_glib_none().0, child_index, &mut error);
@@ -171,7 +171,7 @@ impl<O: IsA<Accessible>> AccessibleExt for O {
         }
     }
 
-    fn get_child_count(&self) -> Result<i32, glib::Error> {
+    fn get_child_count(&self) -> Result<i32, Error> {
         unsafe {
             let mut error = ptr::null_mut();
             let ret = atspi_sys::atspi_accessible_get_child_count(self.as_ref().to_glib_none().0, &mut error);
@@ -191,7 +191,7 @@ impl<O: IsA<Accessible>> AccessibleExt for O {
         }
     }
 
-    fn get_description(&self) -> Result<GString, glib::Error> {
+    fn get_description(&self) -> Result<GString, Error> {
         unsafe {
             let mut error = ptr::null_mut();
             let ret = atspi_sys::atspi_accessible_get_description(self.as_ref().to_glib_none().0, &mut error);
@@ -223,7 +223,7 @@ impl<O: IsA<Accessible>> AccessibleExt for O {
         }
     }
 
-    fn get_id(&self) -> Result<i32, glib::Error> {
+    fn get_id(&self) -> Result<i32, Error> {
         unsafe {
             let mut error = ptr::null_mut();
             let ret = atspi_sys::atspi_accessible_get_id(self.as_ref().to_glib_none().0, &mut error);
@@ -237,7 +237,7 @@ impl<O: IsA<Accessible>> AccessibleExt for O {
         }
     }
 
-    fn get_index_in_parent(&self) -> Result<i32, glib::Error> {
+    fn get_index_in_parent(&self) -> Result<i32, Error> {
         unsafe {
             let mut error = ptr::null_mut();
             let ret = atspi_sys::atspi_accessible_get_index_in_parent(self.as_ref().to_glib_none().0, &mut error);
@@ -249,7 +249,7 @@ impl<O: IsA<Accessible>> AccessibleExt for O {
     //    unsafe { TODO: call atspi_sys:atspi_accessible_get_interfaces() }
     //}
 
-    fn get_localized_role_name(&self) -> Result<GString, glib::Error> {
+    fn get_localized_role_name(&self) -> Result<GString, Error> {
         unsafe {
             let mut error = ptr::null_mut();
             let ret = atspi_sys::atspi_accessible_get_localized_role_name(self.as_ref().to_glib_none().0, &mut error);
@@ -257,7 +257,7 @@ impl<O: IsA<Accessible>> AccessibleExt for O {
         }
     }
 
-    fn get_name(&self) -> Result<GString, glib::Error> {
+    fn get_name(&self) -> Result<GString, Error> {
         unsafe {
             let mut error = ptr::null_mut();
             let ret = atspi_sys::atspi_accessible_get_name(self.as_ref().to_glib_none().0, &mut error);
@@ -265,7 +265,7 @@ impl<O: IsA<Accessible>> AccessibleExt for O {
         }
     }
 
-    fn get_object_locale(&self) -> Result<GString, glib::Error> {
+    fn get_object_locale(&self) -> Result<GString, Error> {
         unsafe {
             let mut error = ptr::null_mut();
             let ret = atspi_sys::atspi_accessible_get_object_locale(self.as_ref().to_glib_none().0, &mut error);
@@ -273,7 +273,7 @@ impl<O: IsA<Accessible>> AccessibleExt for O {
         }
     }
 
-    fn get_parent(&self) -> Result<Option<Accessible>, glib::Error> {
+    fn get_parent(&self) -> Result<Option<Accessible>, Error> {
         unsafe {
             let mut error = ptr::null_mut();
             let ret = atspi_sys::atspi_accessible_get_parent(self.as_ref().to_glib_none().0, &mut error);
@@ -281,7 +281,7 @@ impl<O: IsA<Accessible>> AccessibleExt for O {
         }
     }
 
-    fn get_process_id(&self) -> Result<(), glib::Error> {
+    fn get_process_id(&self) -> Result<(), Error> {
         unsafe {
             let mut error = ptr::null_mut();
             let _ = atspi_sys::atspi_accessible_get_process_id(self.as_ref().to_glib_none().0, &mut error);
@@ -289,11 +289,11 @@ impl<O: IsA<Accessible>> AccessibleExt for O {
         }
     }
 
-    //fn get_relation_set(&self) -> Result</*Unknown conversion*//*Unimplemented*/Array TypeId { ns_id: 1, id: 19 }, glib::Error> {
+    //fn get_relation_set(&self) -> Result</*Unknown conversion*//*Unimplemented*/Array TypeId { ns_id: 1, id: 19 }, Error> {
     //    unsafe { TODO: call atspi_sys:atspi_accessible_get_relation_set() }
     //}
 
-    fn get_role(&self) -> Result<Role, glib::Error> {
+    fn get_role(&self) -> Result<Role, Error> {
         unsafe {
             let mut error = ptr::null_mut();
             let ret = atspi_sys::atspi_accessible_get_role(self.as_ref().to_glib_none().0, &mut error);
@@ -301,7 +301,7 @@ impl<O: IsA<Accessible>> AccessibleExt for O {
         }
     }
 
-    fn get_role_name(&self) -> Result<GString, glib::Error> {
+    fn get_role_name(&self) -> Result<GString, Error> {
         unsafe {
             let mut error = ptr::null_mut();
             let ret = atspi_sys::atspi_accessible_get_role_name(self.as_ref().to_glib_none().0, &mut error);
@@ -339,7 +339,7 @@ impl<O: IsA<Accessible>> AccessibleExt for O {
         }
     }
 
-    fn get_toolkit_name(&self) -> Result<GString, glib::Error> {
+    fn get_toolkit_name(&self) -> Result<GString, Error> {
         unsafe {
             let mut error = ptr::null_mut();
             let ret = atspi_sys::atspi_accessible_get_toolkit_name(self.as_ref().to_glib_none().0, &mut error);
@@ -347,7 +347,7 @@ impl<O: IsA<Accessible>> AccessibleExt for O {
         }
     }
 
-    fn get_toolkit_version(&self) -> Result<GString, glib::Error> {
+    fn get_toolkit_version(&self) -> Result<GString, Error> {
         unsafe {
             let mut error = ptr::null_mut();
             let ret = atspi_sys::atspi_accessible_get_toolkit_version(self.as_ref().to_glib_none().0, &mut error);
