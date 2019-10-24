@@ -40,10 +40,10 @@ generate = [
             # see [[object]] definition
 
             "Atspi.Event",
-            # "Atspi.EventListener",
-            # function `atspi_event_listener_new_simple`'s callback `callback` without associated user data
-            # "Atspi.EventListenerMode",
-            # 'Missing memory management functions for Atspi.EventListenerMode'
+            "Atspi.EventListener",
+                # function `atspi_event_listener_new_simple`'s callback `callback` without associated user data
+            #"Atspi.EventListenerMode",
+                # 'Missing memory management functions for Atspi.EventListenerMode'
             "Atspi.EventListenerCB",
             "Atspi.EventLinstenerSimpleCB",
             "Atspi.EditableText",
