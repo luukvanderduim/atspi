@@ -3,10 +3,10 @@
 // DO NOT EDIT
 
 use CoordType;
-use Error;
 use Point;
 use Rect;
 use atspi_sys;
+use glib;
 use glib::GString;
 use glib::object::IsA;
 use glib::translate::*;
@@ -24,19 +24,19 @@ glib_wrapper! {
 pub const NONE_IMAGE: Option<&Image> = None;
 
 pub trait ImageExt: 'static {
-    fn get_image_description(&self) -> Result<GString, Error>;
+    fn get_image_description(&self) -> Result<GString, glib::Error>;
 
-    fn get_image_extents(&self, ctype: CoordType) -> Result<Rect, Error>;
+    fn get_image_extents(&self, ctype: CoordType) -> Result<Rect, glib::Error>;
 
-    fn get_image_locale(&self) -> Result<GString, Error>;
+    fn get_image_locale(&self) -> Result<GString, glib::Error>;
 
-    fn get_image_position(&self, ctype: CoordType) -> Result<Point, Error>;
+    fn get_image_position(&self, ctype: CoordType) -> Result<Point, glib::Error>;
 
-    fn get_image_size(&self) -> Result<Point, Error>;
+    fn get_image_size(&self) -> Result<Point, glib::Error>;
 }
 
 impl<O: IsA<Image>> ImageExt for O {
-    fn get_image_description(&self) -> Result<GString, Error> {
+    fn get_image_description(&self) -> Result<GString, glib::Error> {
         unsafe {
             let mut error = ptr::null_mut();
             let ret = atspi_sys::atspi_image_get_image_description(self.as_ref().to_glib_none().0, &mut error);
@@ -44,7 +44,7 @@ impl<O: IsA<Image>> ImageExt for O {
         }
     }
 
-    fn get_image_extents(&self, ctype: CoordType) -> Result<Rect, Error> {
+    fn get_image_extents(&self, ctype: CoordType) -> Result<Rect, glib::Error> {
         unsafe {
             let mut error = ptr::null_mut();
             let ret = atspi_sys::atspi_image_get_image_extents(self.as_ref().to_glib_none().0, ctype.to_glib(), &mut error);
@@ -52,7 +52,7 @@ impl<O: IsA<Image>> ImageExt for O {
         }
     }
 
-    fn get_image_locale(&self) -> Result<GString, Error> {
+    fn get_image_locale(&self) -> Result<GString, glib::Error> {
         unsafe {
             let mut error = ptr::null_mut();
             let ret = atspi_sys::atspi_image_get_image_locale(self.as_ref().to_glib_none().0, &mut error);
@@ -60,7 +60,7 @@ impl<O: IsA<Image>> ImageExt for O {
         }
     }
 
-    fn get_image_position(&self, ctype: CoordType) -> Result<Point, Error> {
+    fn get_image_position(&self, ctype: CoordType) -> Result<Point, glib::Error> {
         unsafe {
             let mut error = ptr::null_mut();
             let ret = atspi_sys::atspi_image_get_image_position(self.as_ref().to_glib_none().0, ctype.to_glib(), &mut error);
@@ -68,7 +68,7 @@ impl<O: IsA<Image>> ImageExt for O {
         }
     }
 
-    fn get_image_size(&self) -> Result<Point, Error> {
+    fn get_image_size(&self) -> Result<Point, glib::Error> {
         unsafe {
             let mut error = ptr::null_mut();
             let ret = atspi_sys::atspi_image_get_image_size(self.as_ref().to_glib_none().0, &mut error);

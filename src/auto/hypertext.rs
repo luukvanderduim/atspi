@@ -2,9 +2,9 @@
 // from gir-files (https://github.com/gtk-rs/gir-files)
 // DO NOT EDIT
 
-use Error;
 use Hyperlink;
 use atspi_sys;
+use glib;
 use glib::object::IsA;
 use glib::translate::*;
 use std::fmt;
@@ -21,15 +21,15 @@ glib_wrapper! {
 pub const NONE_HYPERTEXT: Option<&Hypertext> = None;
 
 pub trait HypertextExt: 'static {
-    fn get_link(&self, link_index: i32) -> Result<Option<Hyperlink>, Error>;
+    fn get_link(&self, link_index: i32) -> Result<Option<Hyperlink>, glib::Error>;
 
-    fn get_link_index(&self, character_offset: i32) -> Result<i32, Error>;
+    fn get_link_index(&self, character_offset: i32) -> Result<i32, glib::Error>;
 
-    fn get_n_links(&self) -> Result<i32, Error>;
+    fn get_n_links(&self) -> Result<i32, glib::Error>;
 }
 
 impl<O: IsA<Hypertext>> HypertextExt for O {
-    fn get_link(&self, link_index: i32) -> Result<Option<Hyperlink>, Error> {
+    fn get_link(&self, link_index: i32) -> Result<Option<Hyperlink>, glib::Error> {
         unsafe {
             let mut error = ptr::null_mut();
             let ret = atspi_sys::atspi_hypertext_get_link(self.as_ref().to_glib_none().0, link_index, &mut error);
@@ -37,7 +37,7 @@ impl<O: IsA<Hypertext>> HypertextExt for O {
         }
     }
 
-    fn get_link_index(&self, character_offset: i32) -> Result<i32, Error> {
+    fn get_link_index(&self, character_offset: i32) -> Result<i32, glib::Error> {
         unsafe {
             let mut error = ptr::null_mut();
             let ret = atspi_sys::atspi_hypertext_get_link_index(self.as_ref().to_glib_none().0, character_offset, &mut error);
@@ -45,7 +45,7 @@ impl<O: IsA<Hypertext>> HypertextExt for O {
         }
     }
 
-    fn get_n_links(&self) -> Result<i32, Error> {
+    fn get_n_links(&self) -> Result<i32, glib::Error> {
         unsafe {
             let mut error = ptr::null_mut();
             let ret = atspi_sys::atspi_hypertext_get_n_links(self.as_ref().to_glib_none().0, &mut error);

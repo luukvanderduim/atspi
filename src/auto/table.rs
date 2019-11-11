@@ -3,8 +3,8 @@
 // DO NOT EDIT
 
 use Accessible;
-use Error;
 use atspi_sys;
+use glib;
 use glib::GString;
 use glib::object::IsA;
 use glib::translate::*;
@@ -23,61 +23,61 @@ glib_wrapper! {
 pub const NONE_TABLE: Option<&Table> = None;
 
 pub trait TableExt: 'static {
-    fn add_column_selection(&self, column: i32) -> Result<(), Error>;
+    fn add_column_selection(&self, column: i32) -> Result<(), glib::Error>;
 
-    fn add_row_selection(&self, row: i32) -> Result<(), Error>;
+    fn add_row_selection(&self, row: i32) -> Result<(), glib::Error>;
 
-    fn get_accessible_at(&self, row: i32, column: i32) -> Result<Accessible, Error>;
+    fn get_accessible_at(&self, row: i32, column: i32) -> Result<Accessible, glib::Error>;
 
-    fn get_caption(&self) -> Result<Accessible, Error>;
+    fn get_caption(&self) -> Result<Accessible, glib::Error>;
 
-    fn get_column_at_index(&self, index: i32) -> Result<i32, Error>;
+    fn get_column_at_index(&self, index: i32) -> Result<i32, glib::Error>;
 
-    fn get_column_description(&self, column: i32) -> Result<GString, Error>;
+    fn get_column_description(&self, column: i32) -> Result<GString, glib::Error>;
 
-    fn get_column_extent_at(&self, row: i32, column: i32) -> Result<i32, Error>;
+    fn get_column_extent_at(&self, row: i32, column: i32) -> Result<i32, glib::Error>;
 
-    fn get_column_header(&self, column: i32) -> Result<Accessible, Error>;
+    fn get_column_header(&self, column: i32) -> Result<Accessible, glib::Error>;
 
-    fn get_index_at(&self, row: i32, column: i32) -> Result<i32, Error>;
+    fn get_index_at(&self, row: i32, column: i32) -> Result<i32, glib::Error>;
 
-    fn get_n_columns(&self) -> Result<i32, Error>;
+    fn get_n_columns(&self) -> Result<i32, glib::Error>;
 
-    fn get_n_rows(&self) -> Result<i32, Error>;
+    fn get_n_rows(&self) -> Result<i32, glib::Error>;
 
-    fn get_n_selected_columns(&self) -> Result<i32, Error>;
+    fn get_n_selected_columns(&self) -> Result<i32, glib::Error>;
 
-    fn get_n_selected_rows(&self) -> Result<i32, Error>;
+    fn get_n_selected_rows(&self) -> Result<i32, glib::Error>;
 
-    fn get_row_at_index(&self, index: i32) -> Result<i32, Error>;
+    fn get_row_at_index(&self, index: i32) -> Result<i32, glib::Error>;
 
-    fn get_row_column_extents_at_index(&self, index: i32) -> Result<(i32, i32, i32, i32, bool), Error>;
+    fn get_row_column_extents_at_index(&self, index: i32) -> Result<(i32, i32, i32, i32, bool), glib::Error>;
 
-    fn get_row_description(&self, row: i32) -> Result<GString, Error>;
+    fn get_row_description(&self, row: i32) -> Result<GString, glib::Error>;
 
-    fn get_row_extent_at(&self, row: i32, column: i32) -> Result<i32, Error>;
+    fn get_row_extent_at(&self, row: i32, column: i32) -> Result<i32, glib::Error>;
 
-    fn get_row_header(&self, row: i32) -> Result<Accessible, Error>;
+    fn get_row_header(&self, row: i32) -> Result<Accessible, glib::Error>;
 
-    //fn get_selected_columns(&self) -> Result</*Unknown conversion*//*Unimplemented*/Array TypeId { ns_id: 0, id: 14 }, Error>;
+    //fn get_selected_columns(&self) -> Result</*Unknown conversion*//*Unimplemented*/Array TypeId { ns_id: 0, id: 14 }, glib::Error>;
 
-    //fn get_selected_rows(&self) -> Result</*Unknown conversion*//*Unimplemented*/Array TypeId { ns_id: 0, id: 14 }, Error>;
+    //fn get_selected_rows(&self) -> Result</*Unknown conversion*//*Unimplemented*/Array TypeId { ns_id: 0, id: 14 }, glib::Error>;
 
-    fn get_summary(&self) -> Result<Accessible, Error>;
+    fn get_summary(&self) -> Result<Accessible, glib::Error>;
 
-    fn is_column_selected(&self, column: i32) -> Result<(), Error>;
+    fn is_column_selected(&self, column: i32) -> Result<(), glib::Error>;
 
-    fn is_row_selected(&self, row: i32) -> Result<(), Error>;
+    fn is_row_selected(&self, row: i32) -> Result<(), glib::Error>;
 
-    fn is_selected(&self, row: i32, column: i32) -> Result<(), Error>;
+    fn is_selected(&self, row: i32, column: i32) -> Result<(), glib::Error>;
 
-    fn remove_column_selection(&self, column: i32) -> Result<(), Error>;
+    fn remove_column_selection(&self, column: i32) -> Result<(), glib::Error>;
 
-    fn remove_row_selection(&self, row: i32) -> Result<(), Error>;
+    fn remove_row_selection(&self, row: i32) -> Result<(), glib::Error>;
 }
 
 impl<O: IsA<Table>> TableExt for O {
-    fn add_column_selection(&self, column: i32) -> Result<(), Error> {
+    fn add_column_selection(&self, column: i32) -> Result<(), glib::Error> {
         unsafe {
             let mut error = ptr::null_mut();
             let _ = atspi_sys::atspi_table_add_column_selection(self.as_ref().to_glib_none().0, column, &mut error);
@@ -85,7 +85,7 @@ impl<O: IsA<Table>> TableExt for O {
         }
     }
 
-    fn add_row_selection(&self, row: i32) -> Result<(), Error> {
+    fn add_row_selection(&self, row: i32) -> Result<(), glib::Error> {
         unsafe {
             let mut error = ptr::null_mut();
             let _ = atspi_sys::atspi_table_add_row_selection(self.as_ref().to_glib_none().0, row, &mut error);
@@ -93,7 +93,7 @@ impl<O: IsA<Table>> TableExt for O {
         }
     }
 
-    fn get_accessible_at(&self, row: i32, column: i32) -> Result<Accessible, Error> {
+    fn get_accessible_at(&self, row: i32, column: i32) -> Result<Accessible, glib::Error> {
         unsafe {
             let mut error = ptr::null_mut();
             let ret = atspi_sys::atspi_table_get_accessible_at(self.as_ref().to_glib_none().0, row, column, &mut error);
@@ -101,7 +101,7 @@ impl<O: IsA<Table>> TableExt for O {
         }
     }
 
-    fn get_caption(&self) -> Result<Accessible, Error> {
+    fn get_caption(&self) -> Result<Accessible, glib::Error> {
         unsafe {
             let mut error = ptr::null_mut();
             let ret = atspi_sys::atspi_table_get_caption(self.as_ref().to_glib_none().0, &mut error);
@@ -109,7 +109,7 @@ impl<O: IsA<Table>> TableExt for O {
         }
     }
 
-    fn get_column_at_index(&self, index: i32) -> Result<i32, Error> {
+    fn get_column_at_index(&self, index: i32) -> Result<i32, glib::Error> {
         unsafe {
             let mut error = ptr::null_mut();
             let ret = atspi_sys::atspi_table_get_column_at_index(self.as_ref().to_glib_none().0, index, &mut error);
@@ -117,7 +117,7 @@ impl<O: IsA<Table>> TableExt for O {
         }
     }
 
-    fn get_column_description(&self, column: i32) -> Result<GString, Error> {
+    fn get_column_description(&self, column: i32) -> Result<GString, glib::Error> {
         unsafe {
             let mut error = ptr::null_mut();
             let ret = atspi_sys::atspi_table_get_column_description(self.as_ref().to_glib_none().0, column, &mut error);
@@ -125,7 +125,7 @@ impl<O: IsA<Table>> TableExt for O {
         }
     }
 
-    fn get_column_extent_at(&self, row: i32, column: i32) -> Result<i32, Error> {
+    fn get_column_extent_at(&self, row: i32, column: i32) -> Result<i32, glib::Error> {
         unsafe {
             let mut error = ptr::null_mut();
             let ret = atspi_sys::atspi_table_get_column_extent_at(self.as_ref().to_glib_none().0, row, column, &mut error);
@@ -133,7 +133,7 @@ impl<O: IsA<Table>> TableExt for O {
         }
     }
 
-    fn get_column_header(&self, column: i32) -> Result<Accessible, Error> {
+    fn get_column_header(&self, column: i32) -> Result<Accessible, glib::Error> {
         unsafe {
             let mut error = ptr::null_mut();
             let ret = atspi_sys::atspi_table_get_column_header(self.as_ref().to_glib_none().0, column, &mut error);
@@ -141,7 +141,7 @@ impl<O: IsA<Table>> TableExt for O {
         }
     }
 
-    fn get_index_at(&self, row: i32, column: i32) -> Result<i32, Error> {
+    fn get_index_at(&self, row: i32, column: i32) -> Result<i32, glib::Error> {
         unsafe {
             let mut error = ptr::null_mut();
             let ret = atspi_sys::atspi_table_get_index_at(self.as_ref().to_glib_none().0, row, column, &mut error);
@@ -149,7 +149,7 @@ impl<O: IsA<Table>> TableExt for O {
         }
     }
 
-    fn get_n_columns(&self) -> Result<i32, Error> {
+    fn get_n_columns(&self) -> Result<i32, glib::Error> {
         unsafe {
             let mut error = ptr::null_mut();
             let ret = atspi_sys::atspi_table_get_n_columns(self.as_ref().to_glib_none().0, &mut error);
@@ -157,7 +157,7 @@ impl<O: IsA<Table>> TableExt for O {
         }
     }
 
-    fn get_n_rows(&self) -> Result<i32, Error> {
+    fn get_n_rows(&self) -> Result<i32, glib::Error> {
         unsafe {
             let mut error = ptr::null_mut();
             let ret = atspi_sys::atspi_table_get_n_rows(self.as_ref().to_glib_none().0, &mut error);
@@ -165,7 +165,7 @@ impl<O: IsA<Table>> TableExt for O {
         }
     }
 
-    fn get_n_selected_columns(&self) -> Result<i32, Error> {
+    fn get_n_selected_columns(&self) -> Result<i32, glib::Error> {
         unsafe {
             let mut error = ptr::null_mut();
             let ret = atspi_sys::atspi_table_get_n_selected_columns(self.as_ref().to_glib_none().0, &mut error);
@@ -173,7 +173,7 @@ impl<O: IsA<Table>> TableExt for O {
         }
     }
 
-    fn get_n_selected_rows(&self) -> Result<i32, Error> {
+    fn get_n_selected_rows(&self) -> Result<i32, glib::Error> {
         unsafe {
             let mut error = ptr::null_mut();
             let ret = atspi_sys::atspi_table_get_n_selected_rows(self.as_ref().to_glib_none().0, &mut error);
@@ -181,7 +181,7 @@ impl<O: IsA<Table>> TableExt for O {
         }
     }
 
-    fn get_row_at_index(&self, index: i32) -> Result<i32, Error> {
+    fn get_row_at_index(&self, index: i32) -> Result<i32, glib::Error> {
         unsafe {
             let mut error = ptr::null_mut();
             let ret = atspi_sys::atspi_table_get_row_at_index(self.as_ref().to_glib_none().0, index, &mut error);
@@ -189,7 +189,7 @@ impl<O: IsA<Table>> TableExt for O {
         }
     }
 
-    fn get_row_column_extents_at_index(&self, index: i32) -> Result<(i32, i32, i32, i32, bool), Error> {
+    fn get_row_column_extents_at_index(&self, index: i32) -> Result<(i32, i32, i32, i32, bool), glib::Error> {
         unsafe {
             let mut row = mem::MaybeUninit::uninit();
             let mut col = mem::MaybeUninit::uninit();
@@ -207,7 +207,7 @@ impl<O: IsA<Table>> TableExt for O {
         }
     }
 
-    fn get_row_description(&self, row: i32) -> Result<GString, Error> {
+    fn get_row_description(&self, row: i32) -> Result<GString, glib::Error> {
         unsafe {
             let mut error = ptr::null_mut();
             let ret = atspi_sys::atspi_table_get_row_description(self.as_ref().to_glib_none().0, row, &mut error);
@@ -215,7 +215,7 @@ impl<O: IsA<Table>> TableExt for O {
         }
     }
 
-    fn get_row_extent_at(&self, row: i32, column: i32) -> Result<i32, Error> {
+    fn get_row_extent_at(&self, row: i32, column: i32) -> Result<i32, glib::Error> {
         unsafe {
             let mut error = ptr::null_mut();
             let ret = atspi_sys::atspi_table_get_row_extent_at(self.as_ref().to_glib_none().0, row, column, &mut error);
@@ -223,7 +223,7 @@ impl<O: IsA<Table>> TableExt for O {
         }
     }
 
-    fn get_row_header(&self, row: i32) -> Result<Accessible, Error> {
+    fn get_row_header(&self, row: i32) -> Result<Accessible, glib::Error> {
         unsafe {
             let mut error = ptr::null_mut();
             let ret = atspi_sys::atspi_table_get_row_header(self.as_ref().to_glib_none().0, row, &mut error);
@@ -231,15 +231,15 @@ impl<O: IsA<Table>> TableExt for O {
         }
     }
 
-    //fn get_selected_columns(&self) -> Result</*Unknown conversion*//*Unimplemented*/Array TypeId { ns_id: 0, id: 14 }, Error> {
+    //fn get_selected_columns(&self) -> Result</*Unknown conversion*//*Unimplemented*/Array TypeId { ns_id: 0, id: 14 }, glib::Error> {
     //    unsafe { TODO: call atspi_sys:atspi_table_get_selected_columns() }
     //}
 
-    //fn get_selected_rows(&self) -> Result</*Unknown conversion*//*Unimplemented*/Array TypeId { ns_id: 0, id: 14 }, Error> {
+    //fn get_selected_rows(&self) -> Result</*Unknown conversion*//*Unimplemented*/Array TypeId { ns_id: 0, id: 14 }, glib::Error> {
     //    unsafe { TODO: call atspi_sys:atspi_table_get_selected_rows() }
     //}
 
-    fn get_summary(&self) -> Result<Accessible, Error> {
+    fn get_summary(&self) -> Result<Accessible, glib::Error> {
         unsafe {
             let mut error = ptr::null_mut();
             let ret = atspi_sys::atspi_table_get_summary(self.as_ref().to_glib_none().0, &mut error);
@@ -247,7 +247,7 @@ impl<O: IsA<Table>> TableExt for O {
         }
     }
 
-    fn is_column_selected(&self, column: i32) -> Result<(), Error> {
+    fn is_column_selected(&self, column: i32) -> Result<(), glib::Error> {
         unsafe {
             let mut error = ptr::null_mut();
             let _ = atspi_sys::atspi_table_is_column_selected(self.as_ref().to_glib_none().0, column, &mut error);
@@ -255,7 +255,7 @@ impl<O: IsA<Table>> TableExt for O {
         }
     }
 
-    fn is_row_selected(&self, row: i32) -> Result<(), Error> {
+    fn is_row_selected(&self, row: i32) -> Result<(), glib::Error> {
         unsafe {
             let mut error = ptr::null_mut();
             let _ = atspi_sys::atspi_table_is_row_selected(self.as_ref().to_glib_none().0, row, &mut error);
@@ -263,7 +263,7 @@ impl<O: IsA<Table>> TableExt for O {
         }
     }
 
-    fn is_selected(&self, row: i32, column: i32) -> Result<(), Error> {
+    fn is_selected(&self, row: i32, column: i32) -> Result<(), glib::Error> {
         unsafe {
             let mut error = ptr::null_mut();
             let _ = atspi_sys::atspi_table_is_selected(self.as_ref().to_glib_none().0, row, column, &mut error);
@@ -271,7 +271,7 @@ impl<O: IsA<Table>> TableExt for O {
         }
     }
 
-    fn remove_column_selection(&self, column: i32) -> Result<(), Error> {
+    fn remove_column_selection(&self, column: i32) -> Result<(), glib::Error> {
         unsafe {
             let mut error = ptr::null_mut();
             let _ = atspi_sys::atspi_table_remove_column_selection(self.as_ref().to_glib_none().0, column, &mut error);
@@ -279,7 +279,7 @@ impl<O: IsA<Table>> TableExt for O {
         }
     }
 
-    fn remove_row_selection(&self, row: i32) -> Result<(), Error> {
+    fn remove_row_selection(&self, row: i32) -> Result<(), glib::Error> {
         unsafe {
             let mut error = ptr::null_mut();
             let _ = atspi_sys::atspi_table_remove_row_selection(self.as_ref().to_glib_none().0, row, &mut error);

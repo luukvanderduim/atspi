@@ -5,10 +5,10 @@
 use Accessible;
 use ComponentLayer;
 use CoordType;
-use Error;
 use Point;
 use Rect;
 use atspi_sys;
+use glib;
 use glib::object::IsA;
 use glib::translate::*;
 use libc;
@@ -26,37 +26,37 @@ glib_wrapper! {
 pub const NONE_COMPONENT: Option<&Component> = None;
 
 pub trait ComponentExt: 'static {
-    fn contains(&self, x: i32, y: i32, ctype: CoordType) -> Result<(), Error>;
+    fn contains(&self, x: i32, y: i32, ctype: CoordType) -> Result<(), glib::Error>;
 
-    fn get_accessible_at_point(&self, x: i32, y: i32, ctype: CoordType) -> Result<Option<Accessible>, Error>;
+    fn get_accessible_at_point(&self, x: i32, y: i32, ctype: CoordType) -> Result<Option<Accessible>, glib::Error>;
 
-    fn get_alpha(&self) -> Result<f64, Error>;
+    fn get_alpha(&self) -> Result<f64, glib::Error>;
 
-    fn get_extents(&self, ctype: CoordType) -> Result<Rect, Error>;
+    fn get_extents(&self, ctype: CoordType) -> Result<Rect, glib::Error>;
 
-    fn get_layer(&self) -> Result<ComponentLayer, Error>;
+    fn get_layer(&self) -> Result<ComponentLayer, glib::Error>;
 
-    fn get_mdi_z_order(&self) -> Result<libc::c_short, Error>;
+    fn get_mdi_z_order(&self) -> Result<libc::c_short, glib::Error>;
 
-    fn get_position(&self, ctype: CoordType) -> Result<Point, Error>;
+    fn get_position(&self, ctype: CoordType) -> Result<Point, glib::Error>;
 
-    fn get_size(&self) -> Result<Point, Error>;
+    fn get_size(&self) -> Result<Point, glib::Error>;
 
-    fn grab_focus(&self) -> Result<(), Error>;
+    fn grab_focus(&self) -> Result<(), glib::Error>;
 
-    //fn scroll_to(&self, type_: /*Ignored*/ScrollType) -> Result<(), Error>;
+    //fn scroll_to(&self, type_: /*Ignored*/ScrollType) -> Result<(), glib::Error>;
 
-    fn scroll_to_point(&self, coords: CoordType, x: i32, y: i32) -> Result<(), Error>;
+    fn scroll_to_point(&self, coords: CoordType, x: i32, y: i32) -> Result<(), glib::Error>;
 
-    fn set_extents(&self, x: i32, y: i32, width: i32, height: i32, ctype: CoordType) -> Result<(), Error>;
+    fn set_extents(&self, x: i32, y: i32, width: i32, height: i32, ctype: CoordType) -> Result<(), glib::Error>;
 
-    fn set_position(&self, x: i32, y: i32, ctype: CoordType) -> Result<(), Error>;
+    fn set_position(&self, x: i32, y: i32, ctype: CoordType) -> Result<(), glib::Error>;
 
-    fn set_size(&self, width: i32, height: i32) -> Result<(), Error>;
+    fn set_size(&self, width: i32, height: i32) -> Result<(), glib::Error>;
 }
 
 impl<O: IsA<Component>> ComponentExt for O {
-    fn contains(&self, x: i32, y: i32, ctype: CoordType) -> Result<(), Error> {
+    fn contains(&self, x: i32, y: i32, ctype: CoordType) -> Result<(), glib::Error> {
         unsafe {
             let mut error = ptr::null_mut();
             let _ = atspi_sys::atspi_component_contains(self.as_ref().to_glib_none().0, x, y, ctype.to_glib(), &mut error);
@@ -64,7 +64,7 @@ impl<O: IsA<Component>> ComponentExt for O {
         }
     }
 
-    fn get_accessible_at_point(&self, x: i32, y: i32, ctype: CoordType) -> Result<Option<Accessible>, Error> {
+    fn get_accessible_at_point(&self, x: i32, y: i32, ctype: CoordType) -> Result<Option<Accessible>, glib::Error> {
         unsafe {
             let mut error = ptr::null_mut();
             let ret = atspi_sys::atspi_component_get_accessible_at_point(self.as_ref().to_glib_none().0, x, y, ctype.to_glib(), &mut error);
@@ -72,7 +72,7 @@ impl<O: IsA<Component>> ComponentExt for O {
         }
     }
 
-    fn get_alpha(&self) -> Result<f64, Error> {
+    fn get_alpha(&self) -> Result<f64, glib::Error> {
         unsafe {
             let mut error = ptr::null_mut();
             let ret = atspi_sys::atspi_component_get_alpha(self.as_ref().to_glib_none().0, &mut error);
@@ -80,7 +80,7 @@ impl<O: IsA<Component>> ComponentExt for O {
         }
     }
 
-    fn get_extents(&self, ctype: CoordType) -> Result<Rect, Error> {
+    fn get_extents(&self, ctype: CoordType) -> Result<Rect, glib::Error> {
         unsafe {
             let mut error = ptr::null_mut();
             let ret = atspi_sys::atspi_component_get_extents(self.as_ref().to_glib_none().0, ctype.to_glib(), &mut error);
@@ -88,7 +88,7 @@ impl<O: IsA<Component>> ComponentExt for O {
         }
     }
 
-    fn get_layer(&self) -> Result<ComponentLayer, Error> {
+    fn get_layer(&self) -> Result<ComponentLayer, glib::Error> {
         unsafe {
             let mut error = ptr::null_mut();
             let ret = atspi_sys::atspi_component_get_layer(self.as_ref().to_glib_none().0, &mut error);
@@ -96,7 +96,7 @@ impl<O: IsA<Component>> ComponentExt for O {
         }
     }
 
-    fn get_mdi_z_order(&self) -> Result<libc::c_short, Error> {
+    fn get_mdi_z_order(&self) -> Result<libc::c_short, glib::Error> {
         unsafe {
             let mut error = ptr::null_mut();
             let ret = atspi_sys::atspi_component_get_mdi_z_order(self.as_ref().to_glib_none().0, &mut error);
@@ -104,7 +104,7 @@ impl<O: IsA<Component>> ComponentExt for O {
         }
     }
 
-    fn get_position(&self, ctype: CoordType) -> Result<Point, Error> {
+    fn get_position(&self, ctype: CoordType) -> Result<Point, glib::Error> {
         unsafe {
             let mut error = ptr::null_mut();
             let ret = atspi_sys::atspi_component_get_position(self.as_ref().to_glib_none().0, ctype.to_glib(), &mut error);
@@ -112,7 +112,7 @@ impl<O: IsA<Component>> ComponentExt for O {
         }
     }
 
-    fn get_size(&self) -> Result<Point, Error> {
+    fn get_size(&self) -> Result<Point, glib::Error> {
         unsafe {
             let mut error = ptr::null_mut();
             let ret = atspi_sys::atspi_component_get_size(self.as_ref().to_glib_none().0, &mut error);
@@ -120,7 +120,7 @@ impl<O: IsA<Component>> ComponentExt for O {
         }
     }
 
-    fn grab_focus(&self) -> Result<(), Error> {
+    fn grab_focus(&self) -> Result<(), glib::Error> {
         unsafe {
             let mut error = ptr::null_mut();
             let _ = atspi_sys::atspi_component_grab_focus(self.as_ref().to_glib_none().0, &mut error);
@@ -128,11 +128,11 @@ impl<O: IsA<Component>> ComponentExt for O {
         }
     }
 
-    //fn scroll_to(&self, type_: /*Ignored*/ScrollType) -> Result<(), Error> {
+    //fn scroll_to(&self, type_: /*Ignored*/ScrollType) -> Result<(), glib::Error> {
     //    unsafe { TODO: call atspi_sys:atspi_component_scroll_to() }
     //}
 
-    fn scroll_to_point(&self, coords: CoordType, x: i32, y: i32) -> Result<(), Error> {
+    fn scroll_to_point(&self, coords: CoordType, x: i32, y: i32) -> Result<(), glib::Error> {
         unsafe {
             let mut error = ptr::null_mut();
             let _ = atspi_sys::atspi_component_scroll_to_point(self.as_ref().to_glib_none().0, coords.to_glib(), x, y, &mut error);
@@ -140,7 +140,7 @@ impl<O: IsA<Component>> ComponentExt for O {
         }
     }
 
-    fn set_extents(&self, x: i32, y: i32, width: i32, height: i32, ctype: CoordType) -> Result<(), Error> {
+    fn set_extents(&self, x: i32, y: i32, width: i32, height: i32, ctype: CoordType) -> Result<(), glib::Error> {
         unsafe {
             let mut error = ptr::null_mut();
             let _ = atspi_sys::atspi_component_set_extents(self.as_ref().to_glib_none().0, x, y, width, height, ctype.to_glib(), &mut error);
@@ -148,7 +148,7 @@ impl<O: IsA<Component>> ComponentExt for O {
         }
     }
 
-    fn set_position(&self, x: i32, y: i32, ctype: CoordType) -> Result<(), Error> {
+    fn set_position(&self, x: i32, y: i32, ctype: CoordType) -> Result<(), glib::Error> {
         unsafe {
             let mut error = ptr::null_mut();
             let _ = atspi_sys::atspi_component_set_position(self.as_ref().to_glib_none().0, x, y, ctype.to_glib(), &mut error);
@@ -156,7 +156,7 @@ impl<O: IsA<Component>> ComponentExt for O {
         }
     }
 
-    fn set_size(&self, width: i32, height: i32) -> Result<(), Error> {
+    fn set_size(&self, width: i32, height: i32) -> Result<(), glib::Error> {
         unsafe {
             let mut error = ptr::null_mut();
             let _ = atspi_sys::atspi_component_set_size(self.as_ref().to_glib_none().0, width, height, &mut error);

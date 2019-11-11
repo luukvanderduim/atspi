@@ -18,10 +18,6 @@ mod component;
 pub use self::component::{Component, NONE_COMPONENT};
 pub use self::component::ComponentExt;
 
-mod device_listener;
-pub use self::device_listener::{DeviceListener, DeviceListenerClass, NONE_DEVICE_LISTENER};
-pub use self::device_listener::DeviceListenerExt;
-
 mod document;
 pub use self::document::{Document, NONE_DOCUMENT};
 pub use self::document::DocumentExt;
@@ -29,6 +25,10 @@ pub use self::document::DocumentExt;
 mod editable_text;
 pub use self::editable_text::{EditableText, NONE_EDITABLE_TEXT};
 pub use self::editable_text::EditableTextExt;
+
+mod event_listener;
+pub use self::event_listener::{EventListener, EventListenerClass, NONE_EVENT_LISTENER};
+pub use self::event_listener::EventListenerExt;
 
 mod hyperlink;
 pub use self::hyperlink::{Hyperlink, HyperlinkClass, NONE_HYPERLINK};
@@ -125,9 +125,9 @@ pub mod traits {
     pub use super::ActionExt;
     pub use super::CollectionExt;
     pub use super::ComponentExt;
-    pub use super::DeviceListenerExt;
     pub use super::DocumentExt;
     pub use super::EditableTextExt;
+    pub use super::EventListenerExt;
     pub use super::HyperlinkExt;
     pub use super::HypertextExt;
     pub use super::ImageExt;
