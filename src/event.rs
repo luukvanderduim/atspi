@@ -3,6 +3,7 @@
 // DO NOT EDIT
 
 use atspi_sys;
+use crate::Accessible;
 use glib::translate::*;
 use gobject_sys;
 
@@ -31,4 +32,24 @@ impl Event {
             atspi_sys::atspi_event_quit();
         }
     }
+
+    pub fn get_source(&self) -> Option<Accessible> {
+        unsafe { Some(from_glib_full((&self.0).source))} 
+    }
+    pub fn get_detail1(&self) -> i32 {
+       self.0.detail1 
+    }
+    pub fn get_detail2(&self) -> i32 {
+        self.0.detail2 
+    }
+    /// In the event struct 'sender' is a v2.34> feature.
+    /// Accessibility client programs may want to discern between the cause of events.
+    /// Did the client itself cause the event or was this an externally caused event?
+    /// While 'source' points to the Accessible that sent the Event,
+    /// 
+    /// 'sender' will point to the accessibility client if it caused the event with atspi.
+    pub fn get_sender(&self) -> Option<Accessible> {
+        unsafe { Some(from_glib_full((&self.0).sender))} 
+    }
+
 }
