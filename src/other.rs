@@ -16,3 +16,19 @@ pub fn get_desktop(i: i32) -> Option<Accessible> {
 pub fn get_desktop_count() -> i32 {
     unsafe { atspi_get_desktop_count() }
 }
+
+pub fn init() -> bool {
+    if unsafe { atspi_sys::atspi_init() } == 0 {
+        true
+    } else {
+        false
+    }
+}
+
+pub fn exit() -> bool {
+    if unsafe { atspi_sys::atspi_exit() } == 0 {
+        true
+    } else {
+        false
+    }
+}
