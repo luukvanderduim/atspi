@@ -34,7 +34,7 @@ impl Event {
     }
 
     pub fn get_source(&self) -> Option<Accessible> {
-        unsafe { Some(from_glib_full((&self.0).source))} 
+        unsafe { Some(from_glib_borrow((&self.0).source))} 
     }
     pub fn get_detail1(&self) -> i32 {
        self.0.detail1 
@@ -47,9 +47,11 @@ impl Event {
     /// Did the client itself cause the event or was this an externally caused event?
     /// While 'source' points to the Accessible that sent the Event,
     /// 
-    /// 'sender' will point to the accessibility client if it caused the event with atspi.
+    /// 'sender' will point to 'source' event, unless the event is invoked
+    /// by the accessibility client. Then sender will point to the a11y
+    /// client.
     pub fn get_sender(&self) -> Option<Accessible> {
-        unsafe { Some(from_glib_full((&self.0).sender))} 
+        unsafe { Some(from_glib_borrow((&self.0).sender))} 
     }
 
 }
