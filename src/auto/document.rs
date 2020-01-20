@@ -4,9 +4,9 @@
 
 use atspi_sys;
 use glib;
-use glib::GString;
 use glib::object::IsA;
 use glib::translate::*;
+use glib::GString;
 use std::fmt;
 use std::ptr;
 

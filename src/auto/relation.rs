@@ -2,12 +2,12 @@
 // from gir-files (https://github.com/gtk-rs/gir-files)
 // DO NOT EDIT
 
-use Accessible;
-use RelationType;
 use atspi_sys;
 use glib::object::IsA;
 use glib::translate::*;
 use std::fmt;
+use Accessible;
+use RelationType;
 
 glib_wrapper! {
     pub struct Relation(Object<atspi_sys::AtspiRelation, atspi_sys::AtspiRelationClass, RelationClass>);

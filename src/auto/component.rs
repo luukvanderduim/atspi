@@ -2,11 +2,6 @@
 // from gir-files (https://github.com/gtk-rs/gir-files)
 // DO NOT EDIT
 
-use Accessible;
-use ComponentLayer;
-use CoordType;
-use Point;
-use Rect;
 use atspi_sys;
 use glib;
 use glib::object::IsA;
@@ -14,6 +9,11 @@ use glib::translate::*;
 use libc;
 use std::fmt;
 use std::ptr;
+use Accessible;
+use ComponentLayer;
+use CoordType;
+use Point;
+use Rect;
 
 glib_wrapper! {
     pub struct Component(Interface<atspi_sys::AtspiComponent>);

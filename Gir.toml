@@ -1,5 +1,5 @@
 [options]
-girs_dir = "gir-files-19.10/"
+girs_dir = "../gir-files-19.10/"
 library = "Atspi"
 version = "2.0"
 min_cfg_version = "2.28"
@@ -28,10 +28,12 @@ generate = [
             "Atspi.CoordType",
             "Atspi.DeviceEvent",
             "Atspi.DeviceEventMask",
-            #"Atspi.DeviceListener",
-            # function `atspi_device_listener_new`'s callback `callback` has invalid user data#
+            # "Atspi.DeviceListener",
+            # Fix trait bound impl in GLib
+            # 
 
             "Atspi.DeviceListenerCB",
+            
             "Atspi.DeviceListenerMode",
 
             # Configured object `Atspi.DeviceListenerMode` missing from the library
@@ -45,7 +47,7 @@ generate = [
             # "Atspi.EventListenerMode",
             # 'Missing memory management functions for Atspi.EventListenerMode'
             "Atspi.EventListenerCB",
-            "Atspi.EventLinstenerSimpleCB",
+            "Atspi.EventListenerSimpleCB",
             "Atspi.EditableText",
             "Atspi.Hyperlink",
             "Atspi.Hypertext",
@@ -72,7 +74,7 @@ generate = [
             "Atspi.StateType",
             "Atspi.Table",
             "Atspi.TableCell",
-            # "Atspi.Text",
+             "Atspi.Text",
             # see [[object]] definition
 
             "Atspi.TextBoundaryType",
@@ -87,25 +89,9 @@ manual = [
          "GLib.DestroyNotify",
          "Atspi.Event",
          "GLib.MainContext",
-         "DBus.Connection",
          "Atspi.Rect",
        ]
 
-[[object]]
-name = "Atspi.Text"
-status = "generate"
-    [[object.function]]
-    name = "get_attribute_run"
-    # *.HashTable TypeId { ns_id: 0, id: 28 }/TypeId { ns_id: 0, id: 28 }
-    ignore = true
-    [[object.function]]
-    name = "get_default_attributes"
-    # *.HashTable TypeId { ns_id: 0, id: 28 }/TypeId { ns_id: 0, id: 28 }
-    ignore = true
-    [[object.function]]
-    name = "get_text_attributes"
-    # *.HashTable TypeId { ns_id: 0, id: 28 }/TypeId { ns_id: 0, id: 28 }
-    ignore = true
 
 [[object]]
 name = "Atspi.Accessible"

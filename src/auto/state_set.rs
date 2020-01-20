@@ -2,11 +2,11 @@
 // from gir-files (https://github.com/gtk-rs/gir-files)
 // DO NOT EDIT
 
-use StateType;
 use atspi_sys;
 use glib::object::IsA;
 use glib::translate::*;
 use std::fmt;
+use StateType;
 
 glib_wrapper! {
     pub struct StateSet(Object<atspi_sys::AtspiStateSet, atspi_sys::AtspiStateSetClass, StateSetClass>);

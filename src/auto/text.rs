@@ -2,19 +2,19 @@
 // from gir-files (https://github.com/gtk-rs/gir-files)
 // DO NOT EDIT
 
+use atspi_sys;
+use glib;
+use glib::object::IsA;
+use glib::translate::*;
+use glib::GString;
+use std::fmt;
+use std::ptr;
 use CoordType;
 use Range;
 use Rect;
 use TextBoundaryType;
 use TextGranularity;
 use TextRange;
-use atspi_sys;
-use glib;
-use glib::GString;
-use glib::object::IsA;
-use glib::translate::*;
-use std::fmt;
-use std::ptr;
 
 glib_wrapper! {
     pub struct Text(Interface<atspi_sys::AtspiText>);
@@ -29,6 +29,8 @@ pub const NONE_TEXT: Option<&Text> = None;
 pub trait TextExt: 'static {
     fn add_selection(&self, start_offset: i32, end_offset: i32) -> Result<(), glib::Error>;
 
+    //fn get_attribute_run(&self, offset: i32, include_defaults: bool) -> Result<(/*Unknown conversion*//*Unimplemented*/HashTable TypeId { ns_id: 0, id: 28 }/TypeId { ns_id: 0, id: 28 }, i32, i32), glib::Error>;
+
     //fn get_bounded_ranges(&self, x: i32, y: i32, width: i32, height: i32, type_: CoordType, clipTypeX: TextClipType, clipTypeY: TextClipType) -> Result</*Unknown conversion*//*Unimplemented*/Array TypeId { ns_id: 1, id: 64 }, glib::Error>;
 
     fn get_caret_offset(&self) -> Result<i32, glib::Error>;
@@ -38,6 +40,8 @@ pub trait TextExt: 'static {
     fn get_character_count(&self) -> Result<i32, glib::Error>;
 
     fn get_character_extents(&self, offset: i32, type_: CoordType) -> Result<Rect, glib::Error>;
+
+    //fn get_default_attributes(&self) -> Result</*Unknown conversion*//*Unimplemented*/HashTable TypeId { ns_id: 0, id: 28 }/TypeId { ns_id: 0, id: 28 }, glib::Error>;
 
     fn get_n_selections(&self) -> Result<i32, glib::Error>;
 
@@ -54,6 +58,8 @@ pub trait TextExt: 'static {
     fn get_text_after_offset(&self, offset: i32, type_: TextBoundaryType) -> Result<TextRange, glib::Error>;
 
     fn get_text_attribute_value(&self, offset: i32, attribute_name: &str) -> Result<Option<GString>, glib::Error>;
+
+    //fn get_text_attributes(&self, offset: i32) -> Result<(/*Unknown conversion*//*Unimplemented*/HashTable TypeId { ns_id: 0, id: 28 }/TypeId { ns_id: 0, id: 28 }, i32, i32), glib::Error>;
 
     fn get_text_before_offset(&self, offset: i32, type_: TextBoundaryType) -> Result<TextRange, glib::Error>;
 
@@ -76,6 +82,10 @@ impl<O: IsA<Text>> TextExt for O {
             if error.is_null() { Ok(()) } else { Err(from_glib_full(error)) }
         }
     }
+
+    //fn get_attribute_run(&self, offset: i32, include_defaults: bool) -> Result<(/*Unknown conversion*//*Unimplemented*/HashTable TypeId { ns_id: 0, id: 28 }/TypeId { ns_id: 0, id: 28 }, i32, i32), glib::Error> {
+    //    unsafe { TODO: call atspi_sys:atspi_text_get_attribute_run() }
+    //}
 
     //fn get_bounded_ranges(&self, x: i32, y: i32, width: i32, height: i32, type_: CoordType, clipTypeX: TextClipType, clipTypeY: TextClipType) -> Result</*Unknown conversion*//*Unimplemented*/Array TypeId { ns_id: 1, id: 64 }, glib::Error> {
     //    unsafe { TODO: call atspi_sys:atspi_text_get_bounded_ranges() }
@@ -112,6 +122,10 @@ impl<O: IsA<Text>> TextExt for O {
             if error.is_null() { Ok(from_glib_full(ret)) } else { Err(from_glib_full(error)) }
         }
     }
+
+    //fn get_default_attributes(&self) -> Result</*Unknown conversion*//*Unimplemented*/HashTable TypeId { ns_id: 0, id: 28 }/TypeId { ns_id: 0, id: 28 }, glib::Error> {
+    //    unsafe { TODO: call atspi_sys:atspi_text_get_default_attributes() }
+    //}
 
     fn get_n_selections(&self) -> Result<i32, glib::Error> {
         unsafe {
@@ -176,6 +190,10 @@ impl<O: IsA<Text>> TextExt for O {
             if error.is_null() { Ok(from_glib_full(ret)) } else { Err(from_glib_full(error)) }
         }
     }
+
+    //fn get_text_attributes(&self, offset: i32) -> Result<(/*Unknown conversion*//*Unimplemented*/HashTable TypeId { ns_id: 0, id: 28 }/TypeId { ns_id: 0, id: 28 }, i32, i32), glib::Error> {
+    //    unsafe { TODO: call atspi_sys:atspi_text_get_text_attributes() }
+    //}
 
     fn get_text_before_offset(&self, offset: i32, type_: TextBoundaryType) -> Result<TextRange, glib::Error> {
         unsafe {

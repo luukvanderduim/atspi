@@ -2,16 +2,16 @@
 // from gir-files (https://github.com/gtk-rs/gir-files)
 // DO NOT EDIT
 
+use atspi_sys;
+use glib;
+use glib::object::IsA;
+use glib::translate::*;
+use glib::GString;
+use std::fmt;
+use std::ptr;
 use CoordType;
 use Point;
 use Rect;
-use atspi_sys;
-use glib;
-use glib::GString;
-use glib::object::IsA;
-use glib::translate::*;
-use std::fmt;
-use std::ptr;
 
 glib_wrapper! {
     pub struct Image(Interface<atspi_sys::AtspiImage>);

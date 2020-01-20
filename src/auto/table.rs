@@ -2,15 +2,15 @@
 // from gir-files (https://github.com/gtk-rs/gir-files)
 // DO NOT EDIT
 
-use Accessible;
 use atspi_sys;
 use glib;
-use glib::GString;
 use glib::object::IsA;
 use glib::translate::*;
+use glib::GString;
 use std::fmt;
 use std::mem;
 use std::ptr;
+use Accessible;
 
 glib_wrapper! {
     pub struct Table(Interface<atspi_sys::AtspiTable>);

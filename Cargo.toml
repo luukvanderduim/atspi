@@ -5,11 +5,11 @@ keywords = ["accessibility", "a11y"]
 authors = ["Luuk van der Duim <luukvanderduim@gmail.com>"]
 
 [dependencies]
-libc = "0.2.65"
+libc = "0.2.66"
 bitflags = "1.2.1"
 
 [dependencies.atspi-sys]
-git = "https://github.com/luukvanderduim/atspi-sys"
+path = "./atspi-sys"
 
 [dependencies.glib]
 git = "https://github.com/gtk-rs/glib"

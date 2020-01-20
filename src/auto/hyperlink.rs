@@ -2,16 +2,16 @@
 // from gir-files (https://github.com/gtk-rs/gir-files)
 // DO NOT EDIT
 
+use atspi_sys;
+use glib;
+use glib::object::IsA;
+use glib::translate::*;
+use glib::GString;
+use std::fmt;
+use std::ptr;
 use Accessible;
 use Object;
 use Range;
-use atspi_sys;
-use glib;
-use glib::GString;
-use glib::object::IsA;
-use glib::translate::*;
-use std::fmt;
-use std::ptr;
 
 glib_wrapper! {
     pub struct Hyperlink(Object<atspi_sys::AtspiHyperlink, atspi_sys::AtspiHyperlinkClass, HyperlinkClass>) @extends Object;

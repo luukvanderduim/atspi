@@ -2,13 +2,13 @@
 // from gir-files (https://github.com/gtk-rs/gir-files)
 // DO NOT EDIT
 
-use Hyperlink;
 use atspi_sys;
 use glib;
 use glib::object::IsA;
 use glib::translate::*;
 use std::fmt;
 use std::ptr;
+use Hyperlink;
 
 glib_wrapper! {
     pub struct Hypertext(Interface<atspi_sys::AtspiHypertext>);
