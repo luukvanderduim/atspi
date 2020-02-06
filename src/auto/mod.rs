@@ -18,6 +18,10 @@ mod component;
 pub use self::component::{Component, NONE_COMPONENT};
 pub use self::component::ComponentExt;
 
+mod device_listener;
+pub use self::device_listener::{DeviceListener, DeviceListenerClass, NONE_DEVICE_LISTENER};
+pub use self::device_listener::DeviceListenerExt;
+
 mod document;
 pub use self::document::{Document, NONE_DOCUMENT};
 pub use self::document::DocumentExt;
@@ -122,6 +126,7 @@ pub mod traits {
     pub use super::ActionExt;
     pub use super::CollectionExt;
     pub use super::ComponentExt;
+    pub use super::DeviceListenerExt;
     pub use super::DocumentExt;
     pub use super::EditableTextExt;
     pub use super::EventListenerExt;

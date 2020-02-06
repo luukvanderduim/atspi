@@ -22,7 +22,7 @@ glib_wrapper! {
 pub const NONE_TABLE_CELL: Option<&TableCell> = None;
 
 pub trait TableCellExt: 'static {
-    //fn get_column_header_cells(&self) -> Result</*Unknown conversion*//*Unimplemented*/PtrArray TypeId { ns_id: 1, id: 17 }, glib::Error>;
+    fn get_column_header_cells(&self) -> Result<Vec<Accessible>, glib::Error>;
 
     fn get_column_index(&self) -> Result<i32, glib::Error>;
 
@@ -32,7 +32,7 @@ pub trait TableCellExt: 'static {
 
     fn get_row_column_span(&self) -> Result<(i32, i32, i32, i32), glib::Error>;
 
-    //fn get_row_header_cells(&self) -> Result</*Unknown conversion*//*Unimplemented*/PtrArray TypeId { ns_id: 1, id: 17 }, glib::Error>;
+    fn get_row_header_cells(&self) -> Result<Vec<Accessible>, glib::Error>;
 
     fn get_row_span(&self) -> Result<i32, glib::Error>;
 
@@ -40,9 +40,13 @@ pub trait TableCellExt: 'static {
 }
 
 impl<O: IsA<TableCell>> TableCellExt for O {
-    //fn get_column_header_cells(&self) -> Result</*Unknown conversion*//*Unimplemented*/PtrArray TypeId { ns_id: 1, id: 17 }, glib::Error> {
-    //    unsafe { TODO: call atspi_sys:atspi_table_cell_get_column_header_cells() }
-    //}
+    fn get_column_header_cells(&self) -> Result<Vec<Accessible>, glib::Error> {
+        unsafe {
+            let mut error = ptr::null_mut();
+            let ret = atspi_sys::atspi_table_cell_get_column_header_cells(self.as_ref().to_glib_none().0, &mut error);
+            if error.is_null() { Ok(FromGlibPtrContainer::from_glib_full(ret)) } else { Err(from_glib_full(error)) }
+        }
+    }
 
     fn get_column_index(&self) -> Result<i32, glib::Error> {
         unsafe {
@@ -88,9 +92,13 @@ impl<O: IsA<TableCell>> TableCellExt for O {
         }
     }
 
-    //fn get_row_header_cells(&self) -> Result</*Unknown conversion*//*Unimplemented*/PtrArray TypeId { ns_id: 1, id: 17 }, glib::Error> {
-    //    unsafe { TODO: call atspi_sys:atspi_table_cell_get_row_header_cells() }
-    //}
+    fn get_row_header_cells(&self) -> Result<Vec<Accessible>, glib::Error> {
+        unsafe {
+            let mut error = ptr::null_mut();
+            let ret = atspi_sys::atspi_table_cell_get_row_header_cells(self.as_ref().to_glib_none().0, &mut error);
+            if error.is_null() { Ok(FromGlibPtrContainer::from_glib_full(ret)) } else { Err(from_glib_full(error)) }
+        }
+    }
 
     fn get_row_span(&self) -> Result<i32, glib::Error> {
         unsafe {
