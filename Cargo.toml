@@ -5,7 +5,7 @@ keywords = ["accessibility", "a11y"]
 authors = ["Luuk van der Duim <luukvanderduim@gmail.com>"]
 
 [dependencies]
-libc = "0.2.66"
+libc = "0.2.68"
 bitflags = "1.2.1"
 
 [dependencies.atspi-sys]

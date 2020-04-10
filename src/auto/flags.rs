@@ -119,4 +119,3 @@ impl SetValue for KeyListenerSyncType {
         gobject_sys::g_value_set_flags(value.to_glib_none_mut().0, this.to_glib())
     }
 }
-

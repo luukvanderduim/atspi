@@ -31,7 +31,6 @@ pub use crate::rect::*;
 mod event;
 pub use crate::event::*;
 
-
 /* mod device_listener;
 pub use crate::device_listener::DeviceListenerExt;
 pub use crate::device_listener::{DeviceListener, DeviceListenerClass, NONE_DEVICE_LISTENER}; */

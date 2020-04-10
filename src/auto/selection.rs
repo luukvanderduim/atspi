@@ -42,64 +42,123 @@ impl<O: IsA<Selection>> SelectionExt for O {
     fn clear_selection(&self) -> Result<(), glib::Error> {
         unsafe {
             let mut error = ptr::null_mut();
-            let _ = atspi_sys::atspi_selection_clear_selection(self.as_ref().to_glib_none().0, &mut error);
-            if error.is_null() { Ok(()) } else { Err(from_glib_full(error)) }
+            let _ = atspi_sys::atspi_selection_clear_selection(
+                self.as_ref().to_glib_none().0,
+                &mut error,
+            );
+            if error.is_null() {
+                Ok(())
+            } else {
+                Err(from_glib_full(error))
+            }
         }
     }
 
     fn deselect_child(&self, child_index: i32) -> Result<(), glib::Error> {
         unsafe {
             let mut error = ptr::null_mut();
-            let _ = atspi_sys::atspi_selection_deselect_child(self.as_ref().to_glib_none().0, child_index, &mut error);
-            if error.is_null() { Ok(()) } else { Err(from_glib_full(error)) }
+            let _ = atspi_sys::atspi_selection_deselect_child(
+                self.as_ref().to_glib_none().0,
+                child_index,
+                &mut error,
+            );
+            if error.is_null() {
+                Ok(())
+            } else {
+                Err(from_glib_full(error))
+            }
         }
     }
 
     fn deselect_selected_child(&self, selected_child_index: i32) -> Result<(), glib::Error> {
         unsafe {
             let mut error = ptr::null_mut();
-            let _ = atspi_sys::atspi_selection_deselect_selected_child(self.as_ref().to_glib_none().0, selected_child_index, &mut error);
-            if error.is_null() { Ok(()) } else { Err(from_glib_full(error)) }
+            let _ = atspi_sys::atspi_selection_deselect_selected_child(
+                self.as_ref().to_glib_none().0,
+                selected_child_index,
+                &mut error,
+            );
+            if error.is_null() {
+                Ok(())
+            } else {
+                Err(from_glib_full(error))
+            }
         }
     }
 
     fn get_n_selected_children(&self) -> Result<i32, glib::Error> {
         unsafe {
             let mut error = ptr::null_mut();
-            let ret = atspi_sys::atspi_selection_get_n_selected_children(self.as_ref().to_glib_none().0, &mut error);
-            if error.is_null() { Ok(ret) } else { Err(from_glib_full(error)) }
+            let ret = atspi_sys::atspi_selection_get_n_selected_children(
+                self.as_ref().to_glib_none().0,
+                &mut error,
+            );
+            if error.is_null() {
+                Ok(ret)
+            } else {
+                Err(from_glib_full(error))
+            }
         }
     }
 
     fn get_selected_child(&self, selected_child_index: i32) -> Result<Accessible, glib::Error> {
         unsafe {
             let mut error = ptr::null_mut();
-            let ret = atspi_sys::atspi_selection_get_selected_child(self.as_ref().to_glib_none().0, selected_child_index, &mut error);
-            if error.is_null() { Ok(from_glib_full(ret)) } else { Err(from_glib_full(error)) }
+            let ret = atspi_sys::atspi_selection_get_selected_child(
+                self.as_ref().to_glib_none().0,
+                selected_child_index,
+                &mut error,
+            );
+            if error.is_null() {
+                Ok(from_glib_full(ret))
+            } else {
+                Err(from_glib_full(error))
+            }
         }
     }
 
     fn is_child_selected(&self, child_index: i32) -> Result<(), glib::Error> {
         unsafe {
             let mut error = ptr::null_mut();
-            let _ = atspi_sys::atspi_selection_is_child_selected(self.as_ref().to_glib_none().0, child_index, &mut error);
-            if error.is_null() { Ok(()) } else { Err(from_glib_full(error)) }
+            let _ = atspi_sys::atspi_selection_is_child_selected(
+                self.as_ref().to_glib_none().0,
+                child_index,
+                &mut error,
+            );
+            if error.is_null() {
+                Ok(())
+            } else {
+                Err(from_glib_full(error))
+            }
         }
     }
 
     fn select_all(&self) -> Result<(), glib::Error> {
         unsafe {
             let mut error = ptr::null_mut();
-            let _ = atspi_sys::atspi_selection_select_all(self.as_ref().to_glib_none().0, &mut error);
-            if error.is_null() { Ok(()) } else { Err(from_glib_full(error)) }
+            let _ =
+                atspi_sys::atspi_selection_select_all(self.as_ref().to_glib_none().0, &mut error);
+            if error.is_null() {
+                Ok(())
+            } else {
+                Err(from_glib_full(error))
+            }
         }
     }
 
     fn select_child(&self, child_index: i32) -> Result<(), glib::Error> {
         unsafe {
             let mut error = ptr::null_mut();
-            let _ = atspi_sys::atspi_selection_select_child(self.as_ref().to_glib_none().0, child_index, &mut error);
-            if error.is_null() { Ok(()) } else { Err(from_glib_full(error)) }
+            let _ = atspi_sys::atspi_selection_select_child(
+                self.as_ref().to_glib_none().0,
+                child_index,
+                &mut error,
+            );
+            if error.is_null() {
+                Ok(())
+            } else {
+                Err(from_glib_full(error))
+            }
         }
     }
 }

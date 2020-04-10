@@ -34,32 +34,59 @@ impl<O: IsA<Document>> DocumentExt for O {
     fn get_current_page_number(&self) -> Result<i32, glib::Error> {
         unsafe {
             let mut error = ptr::null_mut();
-            let ret = atspi_sys::atspi_document_get_current_page_number(self.as_ref().to_glib_none().0, &mut error);
-            if error.is_null() { Ok(ret) } else { Err(from_glib_full(error)) }
+            let ret = atspi_sys::atspi_document_get_current_page_number(
+                self.as_ref().to_glib_none().0,
+                &mut error,
+            );
+            if error.is_null() {
+                Ok(ret)
+            } else {
+                Err(from_glib_full(error))
+            }
         }
     }
 
     fn get_document_attribute_value(&self, attribute: &str) -> Result<GString, glib::Error> {
         unsafe {
             let mut error = ptr::null_mut();
-            let ret = atspi_sys::atspi_document_get_document_attribute_value(self.as_ref().to_glib_none().0, attribute.to_glib_none().0, &mut error);
-            if error.is_null() { Ok(from_glib_full(ret)) } else { Err(from_glib_full(error)) }
+            let ret = atspi_sys::atspi_document_get_document_attribute_value(
+                self.as_ref().to_glib_none().0,
+                attribute.to_glib_none().0,
+                &mut error,
+            );
+            if error.is_null() {
+                Ok(from_glib_full(ret))
+            } else {
+                Err(from_glib_full(error))
+            }
         }
     }
 
     fn get_locale(&self) -> Result<GString, glib::Error> {
         unsafe {
             let mut error = ptr::null_mut();
-            let ret = atspi_sys::atspi_document_get_locale(self.as_ref().to_glib_none().0, &mut error);
-            if error.is_null() { Ok(from_glib_full(ret)) } else { Err(from_glib_full(error)) }
+            let ret =
+                atspi_sys::atspi_document_get_locale(self.as_ref().to_glib_none().0, &mut error);
+            if error.is_null() {
+                Ok(from_glib_full(ret))
+            } else {
+                Err(from_glib_full(error))
+            }
         }
     }
 
     fn get_page_count(&self) -> Result<i32, glib::Error> {
         unsafe {
             let mut error = ptr::null_mut();
-            let ret = atspi_sys::atspi_document_get_page_count(self.as_ref().to_glib_none().0, &mut error);
-            if error.is_null() { Ok(ret) } else { Err(from_glib_full(error)) }
+            let ret = atspi_sys::atspi_document_get_page_count(
+                self.as_ref().to_glib_none().0,
+                &mut error,
+            );
+            if error.is_null() {
+                Ok(ret)
+            } else {
+                Err(from_glib_full(error))
+            }
         }
     }
 }

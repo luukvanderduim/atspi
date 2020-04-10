@@ -13,8 +13,7 @@ use glib::Type;
 use gobject_sys;
 use std::fmt;
 
-#[derive(Debug, Eq, PartialEq, Ord, PartialOrd, Hash)]
-#[derive(Clone, Copy)]
+#[derive(Debug, Eq, PartialEq, Ord, PartialOrd, Hash, Clone, Copy)]
 pub enum CollectionMatchType {
     Invalid,
     All,
@@ -28,15 +27,19 @@ pub enum CollectionMatchType {
 
 impl fmt::Display for CollectionMatchType {
     fn fmt(&self, f: &mut fmt::Formatter) -> fmt::Result {
-        write!(f, "CollectionMatchType::{}", match *self {
-            CollectionMatchType::Invalid => "Invalid",
-            CollectionMatchType::All => "All",
-            CollectionMatchType::Any => "Any",
-            CollectionMatchType::None => "None",
-            CollectionMatchType::Empty => "Empty",
-            CollectionMatchType::LastDefined => "LastDefined",
-            _ => "Unknown",
-        })
+        write!(
+            f,
+            "CollectionMatchType::{}",
+            match *self {
+                CollectionMatchType::Invalid => "Invalid",
+                CollectionMatchType::All => "All",
+                CollectionMatchType::Any => "Any",
+                CollectionMatchType::None => "None",
+                CollectionMatchType::Empty => "Empty",
+                CollectionMatchType::LastDefined => "LastDefined",
+                _ => "Unknown",
+            }
+        )
     }
 }
 
@@ -52,7 +55,7 @@ impl ToGlib for CollectionMatchType {
             CollectionMatchType::None => atspi_sys::ATSPI_Collection_MATCH_NONE,
             CollectionMatchType::Empty => atspi_sys::ATSPI_Collection_MATCH_EMPTY,
             CollectionMatchType::LastDefined => atspi_sys::ATSPI_Collection_MATCH_LAST_DEFINED,
-            CollectionMatchType::__Unknown(value) => value
+            CollectionMatchType::__Unknown(value) => value,
         }
     }
 }
@@ -97,8 +100,7 @@ impl SetValue for CollectionMatchType {
     }
 }
 
-#[derive(Debug, Eq, PartialEq, Ord, PartialOrd, Hash)]
-#[derive(Clone, Copy)]
+#[derive(Debug, Eq, PartialEq, Ord, PartialOrd, Hash, Clone, Copy)]
 pub enum CollectionSortOrder {
     Invalid,
     Canonical,
@@ -114,17 +116,21 @@ pub enum CollectionSortOrder {
 
 impl fmt::Display for CollectionSortOrder {
     fn fmt(&self, f: &mut fmt::Formatter) -> fmt::Result {
-        write!(f, "CollectionSortOrder::{}", match *self {
-            CollectionSortOrder::Invalid => "Invalid",
-            CollectionSortOrder::Canonical => "Canonical",
-            CollectionSortOrder::Flow => "Flow",
-            CollectionSortOrder::Tab => "Tab",
-            CollectionSortOrder::ReverseCanonical => "ReverseCanonical",
-            CollectionSortOrder::ReverseFlow => "ReverseFlow",
-            CollectionSortOrder::ReverseTab => "ReverseTab",
-            CollectionSortOrder::LastDefined => "LastDefined",
-            _ => "Unknown",
-        })
+        write!(
+            f,
+            "CollectionSortOrder::{}",
+            match *self {
+                CollectionSortOrder::Invalid => "Invalid",
+                CollectionSortOrder::Canonical => "Canonical",
+                CollectionSortOrder::Flow => "Flow",
+                CollectionSortOrder::Tab => "Tab",
+                CollectionSortOrder::ReverseCanonical => "ReverseCanonical",
+                CollectionSortOrder::ReverseFlow => "ReverseFlow",
+                CollectionSortOrder::ReverseTab => "ReverseTab",
+                CollectionSortOrder::LastDefined => "LastDefined",
+                _ => "Unknown",
+            }
+        )
     }
 }
 
@@ -138,11 +144,13 @@ impl ToGlib for CollectionSortOrder {
             CollectionSortOrder::Canonical => atspi_sys::ATSPI_Collection_SORT_ORDER_CANONICAL,
             CollectionSortOrder::Flow => atspi_sys::ATSPI_Collection_SORT_ORDER_FLOW,
             CollectionSortOrder::Tab => atspi_sys::ATSPI_Collection_SORT_ORDER_TAB,
-            CollectionSortOrder::ReverseCanonical => atspi_sys::ATSPI_Collection_SORT_ORDER_REVERSE_CANONICAL,
+            CollectionSortOrder::ReverseCanonical => {
+                atspi_sys::ATSPI_Collection_SORT_ORDER_REVERSE_CANONICAL
+            }
             CollectionSortOrder::ReverseFlow => atspi_sys::ATSPI_Collection_SORT_ORDER_REVERSE_FLOW,
             CollectionSortOrder::ReverseTab => atspi_sys::ATSPI_Collection_SORT_ORDER_REVERSE_TAB,
             CollectionSortOrder::LastDefined => atspi_sys::ATSPI_Collection_SORT_ORDER_LAST_DEFINED,
-            CollectionSortOrder::__Unknown(value) => value
+            CollectionSortOrder::__Unknown(value) => value,
         }
     }
 }
@@ -189,8 +197,7 @@ impl SetValue for CollectionSortOrder {
     }
 }
 
-#[derive(Debug, Eq, PartialEq, Ord, PartialOrd, Hash)]
-#[derive(Clone, Copy)]
+#[derive(Debug, Eq, PartialEq, Ord, PartialOrd, Hash, Clone, Copy)]
 pub enum CollectionTreeTraversalType {
     RestrictChildren,
     RestrictSibling,
@@ -202,13 +209,17 @@ pub enum CollectionTreeTraversalType {
 
 impl fmt::Display for CollectionTreeTraversalType {
     fn fmt(&self, f: &mut fmt::Formatter) -> fmt::Result {
-        write!(f, "CollectionTreeTraversalType::{}", match *self {
-            CollectionTreeTraversalType::RestrictChildren => "RestrictChildren",
-            CollectionTreeTraversalType::RestrictSibling => "RestrictSibling",
-            CollectionTreeTraversalType::Inorder => "Inorder",
-            CollectionTreeTraversalType::LastDefined => "LastDefined",
-            _ => "Unknown",
-        })
+        write!(
+            f,
+            "CollectionTreeTraversalType::{}",
+            match *self {
+                CollectionTreeTraversalType::RestrictChildren => "RestrictChildren",
+                CollectionTreeTraversalType::RestrictSibling => "RestrictSibling",
+                CollectionTreeTraversalType::Inorder => "Inorder",
+                CollectionTreeTraversalType::LastDefined => "LastDefined",
+                _ => "Unknown",
+            }
+        )
     }
 }
 
@@ -218,11 +229,17 @@ impl ToGlib for CollectionTreeTraversalType {
 
     fn to_glib(&self) -> atspi_sys::AtspiCollectionTreeTraversalType {
         match *self {
-            CollectionTreeTraversalType::RestrictChildren => atspi_sys::ATSPI_Collection_TREE_RESTRICT_CHILDREN,
-            CollectionTreeTraversalType::RestrictSibling => atspi_sys::ATSPI_Collection_TREE_RESTRICT_SIBLING,
+            CollectionTreeTraversalType::RestrictChildren => {
+                atspi_sys::ATSPI_Collection_TREE_RESTRICT_CHILDREN
+            }
+            CollectionTreeTraversalType::RestrictSibling => {
+                atspi_sys::ATSPI_Collection_TREE_RESTRICT_SIBLING
+            }
             CollectionTreeTraversalType::Inorder => atspi_sys::ATSPI_Collection_TREE_INORDER,
-            CollectionTreeTraversalType::LastDefined => atspi_sys::ATSPI_Collection_TREE_LAST_DEFINED,
-            CollectionTreeTraversalType::__Unknown(value) => value
+            CollectionTreeTraversalType::LastDefined => {
+                atspi_sys::ATSPI_Collection_TREE_LAST_DEFINED
+            }
+            CollectionTreeTraversalType::__Unknown(value) => value,
         }
     }
 }
@@ -265,8 +282,7 @@ impl SetValue for CollectionTreeTraversalType {
     }
 }
 
-#[derive(Debug, Eq, PartialEq, Ord, PartialOrd, Hash)]
-#[derive(Clone, Copy)]
+#[derive(Debug, Eq, PartialEq, Ord, PartialOrd, Hash, Clone, Copy)]
 pub enum ComponentLayer {
     Invalid,
     Background,
@@ -283,18 +299,22 @@ pub enum ComponentLayer {
 
 impl fmt::Display for ComponentLayer {
     fn fmt(&self, f: &mut fmt::Formatter) -> fmt::Result {
-        write!(f, "ComponentLayer::{}", match *self {
-            ComponentLayer::Invalid => "Invalid",
-            ComponentLayer::Background => "Background",
-            ComponentLayer::Canvas => "Canvas",
-            ComponentLayer::Widget => "Widget",
-            ComponentLayer::Mdi => "Mdi",
-            ComponentLayer::Popup => "Popup",
-            ComponentLayer::Overlay => "Overlay",
-            ComponentLayer::Window => "Window",
-            ComponentLayer::LastDefined => "LastDefined",
-            _ => "Unknown",
-        })
+        write!(
+            f,
+            "ComponentLayer::{}",
+            match *self {
+                ComponentLayer::Invalid => "Invalid",
+                ComponentLayer::Background => "Background",
+                ComponentLayer::Canvas => "Canvas",
+                ComponentLayer::Widget => "Widget",
+                ComponentLayer::Mdi => "Mdi",
+                ComponentLayer::Popup => "Popup",
+                ComponentLayer::Overlay => "Overlay",
+                ComponentLayer::Window => "Window",
+                ComponentLayer::LastDefined => "LastDefined",
+                _ => "Unknown",
+            }
+        )
     }
 }
 
@@ -313,7 +333,7 @@ impl ToGlib for ComponentLayer {
             ComponentLayer::Overlay => atspi_sys::ATSPI_LAYER_OVERLAY,
             ComponentLayer::Window => atspi_sys::ATSPI_LAYER_WINDOW,
             ComponentLayer::LastDefined => atspi_sys::ATSPI_LAYER_LAST_DEFINED,
-            ComponentLayer::__Unknown(value) => value
+            ComponentLayer::__Unknown(value) => value,
         }
     }
 }
@@ -361,8 +381,7 @@ impl SetValue for ComponentLayer {
     }
 }
 
-#[derive(Debug, Eq, PartialEq, Ord, PartialOrd, Hash)]
-#[derive(Clone, Copy)]
+#[derive(Debug, Eq, PartialEq, Ord, PartialOrd, Hash, Clone, Copy)]
 pub enum CoordType {
     Screen,
     Window,
@@ -373,12 +392,16 @@ pub enum CoordType {
 
 impl fmt::Display for CoordType {
     fn fmt(&self, f: &mut fmt::Formatter) -> fmt::Result {
-        write!(f, "CoordType::{}", match *self {
-            CoordType::Screen => "Screen",
-            CoordType::Window => "Window",
-            CoordType::Parent => "Parent",
-            _ => "Unknown",
-        })
+        write!(
+            f,
+            "CoordType::{}",
+            match *self {
+                CoordType::Screen => "Screen",
+                CoordType::Window => "Window",
+                CoordType::Parent => "Parent",
+                _ => "Unknown",
+            }
+        )
     }
 }
 
@@ -391,7 +414,7 @@ impl ToGlib for CoordType {
             CoordType::Screen => atspi_sys::ATSPI_COORD_TYPE_SCREEN,
             CoordType::Window => atspi_sys::ATSPI_COORD_TYPE_WINDOW,
             CoordType::Parent => atspi_sys::ATSPI_COORD_TYPE_PARENT,
-            CoordType::__Unknown(value) => value
+            CoordType::__Unknown(value) => value,
         }
     }
 }
@@ -433,8 +456,7 @@ impl SetValue for CoordType {
     }
 }
 
-#[derive(Debug, Eq, PartialEq, Ord, PartialOrd, Hash)]
-#[derive(Clone, Copy)]
+#[derive(Debug, Eq, PartialEq, Ord, PartialOrd, Hash, Clone, Copy)]
 pub enum KeySynthType {
     Press,
     Release,
@@ -449,16 +471,20 @@ pub enum KeySynthType {
 
 impl fmt::Display for KeySynthType {
     fn fmt(&self, f: &mut fmt::Formatter) -> fmt::Result {
-        write!(f, "KeySynthType::{}", match *self {
-            KeySynthType::Press => "Press",
-            KeySynthType::Release => "Release",
-            KeySynthType::Pressrelease => "Pressrelease",
-            KeySynthType::Sym => "Sym",
-            KeySynthType::String => "String",
-            KeySynthType::Lockmodifiers => "Lockmodifiers",
-            KeySynthType::Unlockmodifiers => "Unlockmodifiers",
-            _ => "Unknown",
-        })
+        write!(
+            f,
+            "KeySynthType::{}",
+            match *self {
+                KeySynthType::Press => "Press",
+                KeySynthType::Release => "Release",
+                KeySynthType::Pressrelease => "Pressrelease",
+                KeySynthType::Sym => "Sym",
+                KeySynthType::String => "String",
+                KeySynthType::Lockmodifiers => "Lockmodifiers",
+                KeySynthType::Unlockmodifiers => "Unlockmodifiers",
+                _ => "Unknown",
+            }
+        )
     }
 }
 
@@ -475,7 +501,7 @@ impl ToGlib for KeySynthType {
             KeySynthType::String => atspi_sys::ATSPI_KEY_STRING,
             KeySynthType::Lockmodifiers => atspi_sys::ATSPI_KEY_LOCKMODIFIERS,
             KeySynthType::Unlockmodifiers => atspi_sys::ATSPI_KEY_UNLOCKMODIFIERS,
-            KeySynthType::__Unknown(value) => value
+            KeySynthType::__Unknown(value) => value,
         }
     }
 }
@@ -521,8 +547,7 @@ impl SetValue for KeySynthType {
     }
 }
 
-#[derive(Debug, Eq, PartialEq, Ord, PartialOrd, Hash)]
-#[derive(Clone, Copy)]
+#[derive(Debug, Eq, PartialEq, Ord, PartialOrd, Hash, Clone, Copy)]
 pub enum RelationType {
     Null,
     LabelFor,
@@ -554,33 +579,37 @@ pub enum RelationType {
 
 impl fmt::Display for RelationType {
     fn fmt(&self, f: &mut fmt::Formatter) -> fmt::Result {
-        write!(f, "RelationType::{}", match *self {
-            RelationType::Null => "Null",
-            RelationType::LabelFor => "LabelFor",
-            RelationType::LabelledBy => "LabelledBy",
-            RelationType::ControllerFor => "ControllerFor",
-            RelationType::ControlledBy => "ControlledBy",
-            RelationType::MemberOf => "MemberOf",
-            RelationType::TooltipFor => "TooltipFor",
-            RelationType::NodeChildOf => "NodeChildOf",
-            RelationType::NodeParentOf => "NodeParentOf",
-            RelationType::Extended => "Extended",
-            RelationType::FlowsTo => "FlowsTo",
-            RelationType::FlowsFrom => "FlowsFrom",
-            RelationType::SubwindowOf => "SubwindowOf",
-            RelationType::Embeds => "Embeds",
-            RelationType::EmbeddedBy => "EmbeddedBy",
-            RelationType::PopupFor => "PopupFor",
-            RelationType::ParentWindowOf => "ParentWindowOf",
-            RelationType::DescriptionFor => "DescriptionFor",
-            RelationType::DescribedBy => "DescribedBy",
-            RelationType::Details => "Details",
-            RelationType::DetailsFor => "DetailsFor",
-            RelationType::ErrorMessage => "ErrorMessage",
-            RelationType::ErrorFor => "ErrorFor",
-            RelationType::LastDefined => "LastDefined",
-            _ => "Unknown",
-        })
+        write!(
+            f,
+            "RelationType::{}",
+            match *self {
+                RelationType::Null => "Null",
+                RelationType::LabelFor => "LabelFor",
+                RelationType::LabelledBy => "LabelledBy",
+                RelationType::ControllerFor => "ControllerFor",
+                RelationType::ControlledBy => "ControlledBy",
+                RelationType::MemberOf => "MemberOf",
+                RelationType::TooltipFor => "TooltipFor",
+                RelationType::NodeChildOf => "NodeChildOf",
+                RelationType::NodeParentOf => "NodeParentOf",
+                RelationType::Extended => "Extended",
+                RelationType::FlowsTo => "FlowsTo",
+                RelationType::FlowsFrom => "FlowsFrom",
+                RelationType::SubwindowOf => "SubwindowOf",
+                RelationType::Embeds => "Embeds",
+                RelationType::EmbeddedBy => "EmbeddedBy",
+                RelationType::PopupFor => "PopupFor",
+                RelationType::ParentWindowOf => "ParentWindowOf",
+                RelationType::DescriptionFor => "DescriptionFor",
+                RelationType::DescribedBy => "DescribedBy",
+                RelationType::Details => "Details",
+                RelationType::DetailsFor => "DetailsFor",
+                RelationType::ErrorMessage => "ErrorMessage",
+                RelationType::ErrorFor => "ErrorFor",
+                RelationType::LastDefined => "LastDefined",
+                _ => "Unknown",
+            }
+        )
     }
 }
 
@@ -614,7 +643,7 @@ impl ToGlib for RelationType {
             RelationType::ErrorMessage => atspi_sys::ATSPI_RELATION_ERROR_MESSAGE,
             RelationType::ErrorFor => atspi_sys::ATSPI_RELATION_ERROR_FOR,
             RelationType::LastDefined => atspi_sys::ATSPI_RELATION_LAST_DEFINED,
-            RelationType::__Unknown(value) => value
+            RelationType::__Unknown(value) => value,
         }
     }
 }
@@ -677,8 +706,7 @@ impl SetValue for RelationType {
     }
 }
 
-#[derive(Debug, Eq, PartialEq, Ord, PartialOrd, Hash)]
-#[derive(Clone, Copy)]
+#[derive(Debug, Eq, PartialEq, Ord, PartialOrd, Hash, Clone, Copy)]
 pub enum Role {
     Invalid,
     AcceleratorLabel,
@@ -814,137 +842,141 @@ pub enum Role {
 
 impl fmt::Display for Role {
     fn fmt(&self, f: &mut fmt::Formatter) -> fmt::Result {
-        write!(f, "Role::{}", match *self {
-            Role::Invalid => "Invalid",
-            Role::AcceleratorLabel => "AcceleratorLabel",
-            Role::Alert => "Alert",
-            Role::Animation => "Animation",
-            Role::Arrow => "Arrow",
-            Role::Calendar => "Calendar",
-            Role::Canvas => "Canvas",
-            Role::CheckBox => "CheckBox",
-            Role::CheckMenuItem => "CheckMenuItem",
-            Role::ColorChooser => "ColorChooser",
-            Role::ColumnHeader => "ColumnHeader",
-            Role::ComboBox => "ComboBox",
-            Role::DateEditor => "DateEditor",
-            Role::DesktopIcon => "DesktopIcon",
-            Role::DesktopFrame => "DesktopFrame",
-            Role::Dial => "Dial",
-            Role::Dialog => "Dialog",
-            Role::DirectoryPane => "DirectoryPane",
-            Role::DrawingArea => "DrawingArea",
-            Role::FileChooser => "FileChooser",
-            Role::Filler => "Filler",
-            Role::FocusTraversable => "FocusTraversable",
-            Role::FontChooser => "FontChooser",
-            Role::Frame => "Frame",
-            Role::GlassPane => "GlassPane",
-            Role::HtmlContainer => "HtmlContainer",
-            Role::Icon => "Icon",
-            Role::Image => "Image",
-            Role::InternalFrame => "InternalFrame",
-            Role::Label => "Label",
-            Role::LayeredPane => "LayeredPane",
-            Role::List => "List",
-            Role::ListItem => "ListItem",
-            Role::Menu => "Menu",
-            Role::MenuBar => "MenuBar",
-            Role::MenuItem => "MenuItem",
-            Role::OptionPane => "OptionPane",
-            Role::PageTab => "PageTab",
-            Role::PageTabList => "PageTabList",
-            Role::Panel => "Panel",
-            Role::PasswordText => "PasswordText",
-            Role::PopupMenu => "PopupMenu",
-            Role::ProgressBar => "ProgressBar",
-            Role::PushButton => "PushButton",
-            Role::RadioButton => "RadioButton",
-            Role::RadioMenuItem => "RadioMenuItem",
-            Role::RootPane => "RootPane",
-            Role::RowHeader => "RowHeader",
-            Role::ScrollBar => "ScrollBar",
-            Role::ScrollPane => "ScrollPane",
-            Role::Separator => "Separator",
-            Role::Slider => "Slider",
-            Role::SpinButton => "SpinButton",
-            Role::SplitPane => "SplitPane",
-            Role::StatusBar => "StatusBar",
-            Role::Table => "Table",
-            Role::TableCell => "TableCell",
-            Role::TableColumnHeader => "TableColumnHeader",
-            Role::TableRowHeader => "TableRowHeader",
-            Role::TearoffMenuItem => "TearoffMenuItem",
-            Role::Terminal => "Terminal",
-            Role::Text => "Text",
-            Role::ToggleButton => "ToggleButton",
-            Role::ToolBar => "ToolBar",
-            Role::ToolTip => "ToolTip",
-            Role::Tree => "Tree",
-            Role::TreeTable => "TreeTable",
-            Role::Unknown => "Unknown",
-            Role::Viewport => "Viewport",
-            Role::Window => "Window",
-            Role::Extended => "Extended",
-            Role::Header => "Header",
-            Role::Footer => "Footer",
-            Role::Paragraph => "Paragraph",
-            Role::Ruler => "Ruler",
-            Role::Application => "Application",
-            Role::Autocomplete => "Autocomplete",
-            Role::Editbar => "Editbar",
-            Role::Embedded => "Embedded",
-            Role::Entry => "Entry",
-            Role::Chart => "Chart",
-            Role::Caption => "Caption",
-            Role::DocumentFrame => "DocumentFrame",
-            Role::Heading => "Heading",
-            Role::Page => "Page",
-            Role::Section => "Section",
-            Role::RedundantObject => "RedundantObject",
-            Role::Form => "Form",
-            Role::Link => "Link",
-            Role::InputMethodWindow => "InputMethodWindow",
-            Role::TableRow => "TableRow",
-            Role::TreeItem => "TreeItem",
-            Role::DocumentSpreadsheet => "DocumentSpreadsheet",
-            Role::DocumentPresentation => "DocumentPresentation",
-            Role::DocumentText => "DocumentText",
-            Role::DocumentWeb => "DocumentWeb",
-            Role::DocumentEmail => "DocumentEmail",
-            Role::Comment => "Comment",
-            Role::ListBox => "ListBox",
-            Role::Grouping => "Grouping",
-            Role::ImageMap => "ImageMap",
-            Role::Notification => "Notification",
-            Role::InfoBar => "InfoBar",
-            Role::LevelBar => "LevelBar",
-            Role::TitleBar => "TitleBar",
-            Role::BlockQuote => "BlockQuote",
-            Role::Audio => "Audio",
-            Role::Video => "Video",
-            Role::Definition => "Definition",
-            Role::Article => "Article",
-            Role::Landmark => "Landmark",
-            Role::Log => "Log",
-            Role::Marquee => "Marquee",
-            Role::Math => "Math",
-            Role::Rating => "Rating",
-            Role::Timer => "Timer",
-            Role::Static => "Static",
-            Role::MathFraction => "MathFraction",
-            Role::MathRoot => "MathRoot",
-            Role::Subscript => "Subscript",
-            Role::Superscript => "Superscript",
-            Role::DescriptionList => "DescriptionList",
-            Role::DescriptionTerm => "DescriptionTerm",
-            Role::DescriptionValue => "DescriptionValue",
-            Role::Footnote => "Footnote",
-            Role::ContentDeletion => "ContentDeletion",
-            Role::ContentInsertion => "ContentInsertion",
-            Role::LastDefined => "LastDefined",
-            _ => "Unknown",
-        })
+        write!(
+            f,
+            "Role::{}",
+            match *self {
+                Role::Invalid => "Invalid",
+                Role::AcceleratorLabel => "AcceleratorLabel",
+                Role::Alert => "Alert",
+                Role::Animation => "Animation",
+                Role::Arrow => "Arrow",
+                Role::Calendar => "Calendar",
+                Role::Canvas => "Canvas",
+                Role::CheckBox => "CheckBox",
+                Role::CheckMenuItem => "CheckMenuItem",
+                Role::ColorChooser => "ColorChooser",
+                Role::ColumnHeader => "ColumnHeader",
+                Role::ComboBox => "ComboBox",
+                Role::DateEditor => "DateEditor",
+                Role::DesktopIcon => "DesktopIcon",
+                Role::DesktopFrame => "DesktopFrame",
+                Role::Dial => "Dial",
+                Role::Dialog => "Dialog",
+                Role::DirectoryPane => "DirectoryPane",
+                Role::DrawingArea => "DrawingArea",
+                Role::FileChooser => "FileChooser",
+                Role::Filler => "Filler",
+                Role::FocusTraversable => "FocusTraversable",
+                Role::FontChooser => "FontChooser",
+                Role::Frame => "Frame",
+                Role::GlassPane => "GlassPane",
+                Role::HtmlContainer => "HtmlContainer",
+                Role::Icon => "Icon",
+                Role::Image => "Image",
+                Role::InternalFrame => "InternalFrame",
+                Role::Label => "Label",
+                Role::LayeredPane => "LayeredPane",
+                Role::List => "List",
+                Role::ListItem => "ListItem",
+                Role::Menu => "Menu",
+                Role::MenuBar => "MenuBar",
+                Role::MenuItem => "MenuItem",
+                Role::OptionPane => "OptionPane",
+                Role::PageTab => "PageTab",
+                Role::PageTabList => "PageTabList",
+                Role::Panel => "Panel",
+                Role::PasswordText => "PasswordText",
+                Role::PopupMenu => "PopupMenu",
+                Role::ProgressBar => "ProgressBar",
+                Role::PushButton => "PushButton",
+                Role::RadioButton => "RadioButton",
+                Role::RadioMenuItem => "RadioMenuItem",
+                Role::RootPane => "RootPane",
+                Role::RowHeader => "RowHeader",
+                Role::ScrollBar => "ScrollBar",
+                Role::ScrollPane => "ScrollPane",
+                Role::Separator => "Separator",
+                Role::Slider => "Slider",
+                Role::SpinButton => "SpinButton",
+                Role::SplitPane => "SplitPane",
+                Role::StatusBar => "StatusBar",
+                Role::Table => "Table",
+                Role::TableCell => "TableCell",
+                Role::TableColumnHeader => "TableColumnHeader",
+                Role::TableRowHeader => "TableRowHeader",
+                Role::TearoffMenuItem => "TearoffMenuItem",
+                Role::Terminal => "Terminal",
+                Role::Text => "Text",
+                Role::ToggleButton => "ToggleButton",
+                Role::ToolBar => "ToolBar",
+                Role::ToolTip => "ToolTip",
+                Role::Tree => "Tree",
+                Role::TreeTable => "TreeTable",
+                Role::Unknown => "Unknown",
+                Role::Viewport => "Viewport",
+                Role::Window => "Window",
+                Role::Extended => "Extended",
+                Role::Header => "Header",
+                Role::Footer => "Footer",
+                Role::Paragraph => "Paragraph",
+                Role::Ruler => "Ruler",
+                Role::Application => "Application",
+                Role::Autocomplete => "Autocomplete",
+                Role::Editbar => "Editbar",
+                Role::Embedded => "Embedded",
+                Role::Entry => "Entry",
+                Role::Chart => "Chart",
+                Role::Caption => "Caption",
+                Role::DocumentFrame => "DocumentFrame",
+                Role::Heading => "Heading",
+                Role::Page => "Page",
+                Role::Section => "Section",
+                Role::RedundantObject => "RedundantObject",
+                Role::Form => "Form",
+                Role::Link => "Link",
+                Role::InputMethodWindow => "InputMethodWindow",
+                Role::TableRow => "TableRow",
+                Role::TreeItem => "TreeItem",
+                Role::DocumentSpreadsheet => "DocumentSpreadsheet",
+                Role::DocumentPresentation => "DocumentPresentation",
+                Role::DocumentText => "DocumentText",
+                Role::DocumentWeb => "DocumentWeb",
+                Role::DocumentEmail => "DocumentEmail",
+                Role::Comment => "Comment",
+                Role::ListBox => "ListBox",
+                Role::Grouping => "Grouping",
+                Role::ImageMap => "ImageMap",
+                Role::Notification => "Notification",
+                Role::InfoBar => "InfoBar",
+                Role::LevelBar => "LevelBar",
+                Role::TitleBar => "TitleBar",
+                Role::BlockQuote => "BlockQuote",
+                Role::Audio => "Audio",
+                Role::Video => "Video",
+                Role::Definition => "Definition",
+                Role::Article => "Article",
+                Role::Landmark => "Landmark",
+                Role::Log => "Log",
+                Role::Marquee => "Marquee",
+                Role::Math => "Math",
+                Role::Rating => "Rating",
+                Role::Timer => "Timer",
+                Role::Static => "Static",
+                Role::MathFraction => "MathFraction",
+                Role::MathRoot => "MathRoot",
+                Role::Subscript => "Subscript",
+                Role::Superscript => "Superscript",
+                Role::DescriptionList => "DescriptionList",
+                Role::DescriptionTerm => "DescriptionTerm",
+                Role::DescriptionValue => "DescriptionValue",
+                Role::Footnote => "Footnote",
+                Role::ContentDeletion => "ContentDeletion",
+                Role::ContentInsertion => "ContentInsertion",
+                Role::LastDefined => "LastDefined",
+                _ => "Unknown",
+            }
+        )
     }
 }
 
@@ -1082,7 +1114,7 @@ impl ToGlib for Role {
             Role::ContentDeletion => atspi_sys::ATSPI_ROLE_CONTENT_DELETION,
             Role::ContentInsertion => atspi_sys::ATSPI_ROLE_CONTENT_INSERTION,
             Role::LastDefined => atspi_sys::ATSPI_ROLE_LAST_DEFINED,
-            Role::__Unknown(value) => value
+            Role::__Unknown(value) => value,
         }
     }
 }
@@ -1249,8 +1281,7 @@ impl SetValue for Role {
     }
 }
 
-#[derive(Debug, Eq, PartialEq, Ord, PartialOrd, Hash)]
-#[derive(Clone, Copy)]
+#[derive(Debug, Eq, PartialEq, Ord, PartialOrd, Hash, Clone, Copy)]
 pub enum StateType {
     Invalid,
     Active,
@@ -1303,54 +1334,58 @@ pub enum StateType {
 
 impl fmt::Display for StateType {
     fn fmt(&self, f: &mut fmt::Formatter) -> fmt::Result {
-        write!(f, "StateType::{}", match *self {
-            StateType::Invalid => "Invalid",
-            StateType::Active => "Active",
-            StateType::Armed => "Armed",
-            StateType::Busy => "Busy",
-            StateType::Checked => "Checked",
-            StateType::Collapsed => "Collapsed",
-            StateType::Defunct => "Defunct",
-            StateType::Editable => "Editable",
-            StateType::Enabled => "Enabled",
-            StateType::Expandable => "Expandable",
-            StateType::Expanded => "Expanded",
-            StateType::Focusable => "Focusable",
-            StateType::Focused => "Focused",
-            StateType::HasTooltip => "HasTooltip",
-            StateType::Horizontal => "Horizontal",
-            StateType::Iconified => "Iconified",
-            StateType::Modal => "Modal",
-            StateType::MultiLine => "MultiLine",
-            StateType::Multiselectable => "Multiselectable",
-            StateType::Opaque => "Opaque",
-            StateType::Pressed => "Pressed",
-            StateType::Resizable => "Resizable",
-            StateType::Selectable => "Selectable",
-            StateType::Selected => "Selected",
-            StateType::Sensitive => "Sensitive",
-            StateType::Showing => "Showing",
-            StateType::SingleLine => "SingleLine",
-            StateType::Stale => "Stale",
-            StateType::Transient => "Transient",
-            StateType::Vertical => "Vertical",
-            StateType::Visible => "Visible",
-            StateType::ManagesDescendants => "ManagesDescendants",
-            StateType::Indeterminate => "Indeterminate",
-            StateType::Required => "Required",
-            StateType::Truncated => "Truncated",
-            StateType::Animated => "Animated",
-            StateType::InvalidEntry => "InvalidEntry",
-            StateType::SupportsAutocompletion => "SupportsAutocompletion",
-            StateType::SelectableText => "SelectableText",
-            StateType::IsDefault => "IsDefault",
-            StateType::Visited => "Visited",
-            StateType::Checkable => "Checkable",
-            StateType::HasPopup => "HasPopup",
-            StateType::ReadOnly => "ReadOnly",
-            StateType::LastDefined => "LastDefined",
-            _ => "Unknown",
-        })
+        write!(
+            f,
+            "StateType::{}",
+            match *self {
+                StateType::Invalid => "Invalid",
+                StateType::Active => "Active",
+                StateType::Armed => "Armed",
+                StateType::Busy => "Busy",
+                StateType::Checked => "Checked",
+                StateType::Collapsed => "Collapsed",
+                StateType::Defunct => "Defunct",
+                StateType::Editable => "Editable",
+                StateType::Enabled => "Enabled",
+                StateType::Expandable => "Expandable",
+                StateType::Expanded => "Expanded",
+                StateType::Focusable => "Focusable",
+                StateType::Focused => "Focused",
+                StateType::HasTooltip => "HasTooltip",
+                StateType::Horizontal => "Horizontal",
+                StateType::Iconified => "Iconified",
+                StateType::Modal => "Modal",
+                StateType::MultiLine => "MultiLine",
+                StateType::Multiselectable => "Multiselectable",
+                StateType::Opaque => "Opaque",
+                StateType::Pressed => "Pressed",
+                StateType::Resizable => "Resizable",
+                StateType::Selectable => "Selectable",
+                StateType::Selected => "Selected",
+                StateType::Sensitive => "Sensitive",
+                StateType::Showing => "Showing",
+                StateType::SingleLine => "SingleLine",
+                StateType::Stale => "Stale",
+                StateType::Transient => "Transient",
+                StateType::Vertical => "Vertical",
+                StateType::Visible => "Visible",
+                StateType::ManagesDescendants => "ManagesDescendants",
+                StateType::Indeterminate => "Indeterminate",
+                StateType::Required => "Required",
+                StateType::Truncated => "Truncated",
+                StateType::Animated => "Animated",
+                StateType::InvalidEntry => "InvalidEntry",
+                StateType::SupportsAutocompletion => "SupportsAutocompletion",
+                StateType::SelectableText => "SelectableText",
+                StateType::IsDefault => "IsDefault",
+                StateType::Visited => "Visited",
+                StateType::Checkable => "Checkable",
+                StateType::HasPopup => "HasPopup",
+                StateType::ReadOnly => "ReadOnly",
+                StateType::LastDefined => "LastDefined",
+                _ => "Unknown",
+            }
+        )
     }
 }
 
@@ -1405,7 +1440,7 @@ impl ToGlib for StateType {
             StateType::HasPopup => atspi_sys::ATSPI_STATE_HAS_POPUP,
             StateType::ReadOnly => atspi_sys::ATSPI_STATE_READ_ONLY,
             StateType::LastDefined => atspi_sys::ATSPI_STATE_LAST_DEFINED,
-            StateType::__Unknown(value) => value
+            StateType::__Unknown(value) => value,
         }
     }
 }
@@ -1489,8 +1524,7 @@ impl SetValue for StateType {
     }
 }
 
-#[derive(Debug, Eq, PartialEq, Ord, PartialOrd, Hash)]
-#[derive(Clone, Copy)]
+#[derive(Debug, Eq, PartialEq, Ord, PartialOrd, Hash, Clone, Copy)]
 pub enum TextBoundaryType {
     Char,
     WordStart,
@@ -1505,16 +1539,20 @@ pub enum TextBoundaryType {
 
 impl fmt::Display for TextBoundaryType {
     fn fmt(&self, f: &mut fmt::Formatter) -> fmt::Result {
-        write!(f, "TextBoundaryType::{}", match *self {
-            TextBoundaryType::Char => "Char",
-            TextBoundaryType::WordStart => "WordStart",
-            TextBoundaryType::WordEnd => "WordEnd",
-            TextBoundaryType::SentenceStart => "SentenceStart",
-            TextBoundaryType::SentenceEnd => "SentenceEnd",
-            TextBoundaryType::LineStart => "LineStart",
-            TextBoundaryType::LineEnd => "LineEnd",
-            _ => "Unknown",
-        })
+        write!(
+            f,
+            "TextBoundaryType::{}",
+            match *self {
+                TextBoundaryType::Char => "Char",
+                TextBoundaryType::WordStart => "WordStart",
+                TextBoundaryType::WordEnd => "WordEnd",
+                TextBoundaryType::SentenceStart => "SentenceStart",
+                TextBoundaryType::SentenceEnd => "SentenceEnd",
+                TextBoundaryType::LineStart => "LineStart",
+                TextBoundaryType::LineEnd => "LineEnd",
+                _ => "Unknown",
+            }
+        )
     }
 }
 
@@ -1531,7 +1569,7 @@ impl ToGlib for TextBoundaryType {
             TextBoundaryType::SentenceEnd => atspi_sys::ATSPI_TEXT_BOUNDARY_SENTENCE_END,
             TextBoundaryType::LineStart => atspi_sys::ATSPI_TEXT_BOUNDARY_LINE_START,
             TextBoundaryType::LineEnd => atspi_sys::ATSPI_TEXT_BOUNDARY_LINE_END,
-            TextBoundaryType::__Unknown(value) => value
+            TextBoundaryType::__Unknown(value) => value,
         }
     }
 }
@@ -1577,8 +1615,7 @@ impl SetValue for TextBoundaryType {
     }
 }
 
-#[derive(Debug, Eq, PartialEq, Ord, PartialOrd, Hash)]
-#[derive(Clone, Copy)]
+#[derive(Debug, Eq, PartialEq, Ord, PartialOrd, Hash, Clone, Copy)]
 pub enum TextClipType {
     None,
     Min,
@@ -1590,13 +1627,17 @@ pub enum TextClipType {
 
 impl fmt::Display for TextClipType {
     fn fmt(&self, f: &mut fmt::Formatter) -> fmt::Result {
-        write!(f, "TextClipType::{}", match *self {
-            TextClipType::None => "None",
-            TextClipType::Min => "Min",
-            TextClipType::Max => "Max",
-            TextClipType::Both => "Both",
-            _ => "Unknown",
-        })
+        write!(
+            f,
+            "TextClipType::{}",
+            match *self {
+                TextClipType::None => "None",
+                TextClipType::Min => "Min",
+                TextClipType::Max => "Max",
+                TextClipType::Both => "Both",
+                _ => "Unknown",
+            }
+        )
     }
 }
 
@@ -1610,7 +1651,7 @@ impl ToGlib for TextClipType {
             TextClipType::Min => atspi_sys::ATSPI_TEXT_CLIP_MIN,
             TextClipType::Max => atspi_sys::ATSPI_TEXT_CLIP_MAX,
             TextClipType::Both => atspi_sys::ATSPI_TEXT_CLIP_BOTH,
-            TextClipType::__Unknown(value) => value
+            TextClipType::__Unknown(value) => value,
         }
     }
 }
@@ -1653,8 +1694,7 @@ impl SetValue for TextClipType {
     }
 }
 
-#[derive(Debug, Eq, PartialEq, Ord, PartialOrd, Hash)]
-#[derive(Clone, Copy)]
+#[derive(Debug, Eq, PartialEq, Ord, PartialOrd, Hash, Clone, Copy)]
 pub enum TextGranularity {
     Char,
     Word,
@@ -1667,14 +1707,18 @@ pub enum TextGranularity {
 
 impl fmt::Display for TextGranularity {
     fn fmt(&self, f: &mut fmt::Formatter) -> fmt::Result {
-        write!(f, "TextGranularity::{}", match *self {
-            TextGranularity::Char => "Char",
-            TextGranularity::Word => "Word",
-            TextGranularity::Sentence => "Sentence",
-            TextGranularity::Line => "Line",
-            TextGranularity::Paragraph => "Paragraph",
-            _ => "Unknown",
-        })
+        write!(
+            f,
+            "TextGranularity::{}",
+            match *self {
+                TextGranularity::Char => "Char",
+                TextGranularity::Word => "Word",
+                TextGranularity::Sentence => "Sentence",
+                TextGranularity::Line => "Line",
+                TextGranularity::Paragraph => "Paragraph",
+                _ => "Unknown",
+            }
+        )
     }
 }
 
@@ -1689,7 +1733,7 @@ impl ToGlib for TextGranularity {
             TextGranularity::Sentence => atspi_sys::ATSPI_TEXT_GRANULARITY_SENTENCE,
             TextGranularity::Line => atspi_sys::ATSPI_TEXT_GRANULARITY_LINE,
             TextGranularity::Paragraph => atspi_sys::ATSPI_TEXT_GRANULARITY_PARAGRAPH,
-            TextGranularity::__Unknown(value) => value
+            TextGranularity::__Unknown(value) => value,
         }
     }
 }
@@ -1732,4 +1776,3 @@ impl SetValue for TextGranularity {
         gobject_sys::g_value_set_enum(value.to_glib_none_mut().0, this.to_glib())
     }
 }
-

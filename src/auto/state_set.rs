@@ -51,19 +51,28 @@ impl<O: IsA<StateSet>> StateSetExt for O {
 
     fn compare<P: IsA<StateSet>>(&self, set2: &P) -> Option<StateSet> {
         unsafe {
-            from_glib_full(atspi_sys::atspi_state_set_compare(self.as_ref().to_glib_none().0, set2.as_ref().to_glib_none().0))
+            from_glib_full(atspi_sys::atspi_state_set_compare(
+                self.as_ref().to_glib_none().0,
+                set2.as_ref().to_glib_none().0,
+            ))
         }
     }
 
     fn contains(&self, state: StateType) -> bool {
         unsafe {
-            from_glib(atspi_sys::atspi_state_set_contains(self.as_ref().to_glib_none().0, state.to_glib()))
+            from_glib(atspi_sys::atspi_state_set_contains(
+                self.as_ref().to_glib_none().0,
+                state.to_glib(),
+            ))
         }
     }
 
     fn equals<P: IsA<StateSet>>(&self, set2: &P) -> bool {
         unsafe {
-            from_glib(atspi_sys::atspi_state_set_equals(self.as_ref().to_glib_none().0, set2.as_ref().to_glib_none().0))
+            from_glib(atspi_sys::atspi_state_set_equals(
+                self.as_ref().to_glib_none().0,
+                set2.as_ref().to_glib_none().0,
+            ))
         }
     }
 
@@ -73,7 +82,9 @@ impl<O: IsA<StateSet>> StateSetExt for O {
 
     fn is_empty(&self) -> bool {
         unsafe {
-            from_glib(atspi_sys::atspi_state_set_is_empty(self.as_ref().to_glib_none().0))
+            from_glib(atspi_sys::atspi_state_set_is_empty(
+                self.as_ref().to_glib_none().0,
+            ))
         }
     }
 
@@ -85,7 +96,11 @@ impl<O: IsA<StateSet>> StateSetExt for O {
 
     fn set_by_name(&self, name: &str, enabled: bool) {
         unsafe {
-            atspi_sys::atspi_state_set_set_by_name(self.as_ref().to_glib_none().0, name.to_glib_none().0, enabled.to_glib());
+            atspi_sys::atspi_state_set_set_by_name(
+                self.as_ref().to_glib_none().0,
+                name.to_glib_none().0,
+                enabled.to_glib(),
+            );
         }
     }
 }

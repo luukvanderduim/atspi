@@ -21,20 +21,29 @@ impl DeviceListener {
     pub fn new<P: Fn(&DeviceEvent) -> bool + 'static>(callback: P) -> DeviceListener {
         assert_initialized_main_thread!();
         let callback_data: Box_<P> = Box_::new(callback);
-        unsafe extern "C" fn callback_func<P: Fn(&DeviceEvent) -> bool + 'static>(stroke: *const atspi_sys::AtspiDeviceEvent, user_data: glib_sys::gpointer) -> glib_sys::gboolean {
+        unsafe extern "C" fn callback_func<P: Fn(&DeviceEvent) -> bool + 'static>(
+            stroke: *const atspi_sys::AtspiDeviceEvent,
+            user_data: glib_sys::gpointer,
+        ) -> glib_sys::gboolean {
             let stroke = from_glib_full(stroke);
             let callback: &P = &*(user_data as *mut _);
             let res = (*callback)(&stroke);
             res.to_glib()
         }
         let callback = Some(callback_func::<P> as _);
-        unsafe extern "C" fn callback_destroyed_func<P: Fn(&DeviceEvent) -> bool + 'static>(data: glib_sys::gpointer) {
+        unsafe extern "C" fn callback_destroyed_func<P: Fn(&DeviceEvent) -> bool + 'static>(
+            data: glib_sys::gpointer,
+        ) {
             let _callback: Box_<P> = Box_::from_raw(data as *mut _);
         }
         let destroy_call2 = Some(callback_destroyed_func::<P> as _);
         let super_callback0: Box_<P> = callback_data;
         unsafe {
-            from_glib_full(atspi_sys::atspi_device_listener_new(callback, Box_::into_raw(super_callback0) as *mut _, destroy_call2))
+            from_glib_full(atspi_sys::atspi_device_listener_new(
+                callback,
+                Box_::into_raw(super_callback0) as *mut _,
+                destroy_call2,
+            ))
         }
     }
 
@@ -54,20 +63,30 @@ pub trait DeviceListenerExt: 'static {
 impl<O: IsA<DeviceListener>> DeviceListenerExt for O {
     fn add_callback<P: Fn(&DeviceEvent) -> bool + 'static>(&self, callback: P) {
         let callback_data: Box_<P> = Box_::new(callback);
-        unsafe extern "C" fn callback_func<P: Fn(&DeviceEvent) -> bool + 'static>(stroke: *const atspi_sys::AtspiDeviceEvent, user_data: glib_sys::gpointer) -> glib_sys::gboolean {
+        unsafe extern "C" fn callback_func<P: Fn(&DeviceEvent) -> bool + 'static>(
+            stroke: *const atspi_sys::AtspiDeviceEvent,
+            user_data: glib_sys::gpointer,
+        ) -> glib_sys::gboolean {
             let stroke = from_glib_full(stroke);
             let callback: &P = &*(user_data as *mut _);
             let res = (*callback)(&stroke);
             res.to_glib()
         }
         let callback = Some(callback_func::<P> as _);
-        unsafe extern "C" fn callback_destroyed_func<P: Fn(&DeviceEvent) -> bool + 'static>(data: glib_sys::gpointer) {
+        unsafe extern "C" fn callback_destroyed_func<P: Fn(&DeviceEvent) -> bool + 'static>(
+            data: glib_sys::gpointer,
+        ) {
             let _callback: Box_<P> = Box_::from_raw(data as *mut _);
         }
         let destroy_call2 = Some(callback_destroyed_func::<P> as _);
         let super_callback0: Box_<P> = callback_data;
         unsafe {
-            atspi_sys::atspi_device_listener_add_callback(self.as_ref().to_glib_none().0, callback, destroy_call2, Box_::into_raw(super_callback0) as *mut _);
+            atspi_sys::atspi_device_listener_add_callback(
+                self.as_ref().to_glib_none().0,
+                callback,
+                destroy_call2,
+                Box_::into_raw(super_callback0) as *mut _,
+            );
         }
     }
 
