@@ -34,10 +34,16 @@ impl Event {
     }
 
     // FIXME This is likely incorrect
-    // The method call does not need to check 
-    pub fn get_source(self) -> Accessible {
+    pub fn get_source(self) -> Option<Accessible> {
         assert_initialized_main_thread!(); // Needed?
-        unsafe { from_glib_full((self.0).source) }
+
+        unsafe { 
+            if !(self.0).source.is_null() {
+                Some( from_glib_full((self.0).source) )
+            } else {
+                None
+            }    
+        }
     }
 
     pub fn get_detail1(&self) -> i32 {
@@ -61,8 +67,15 @@ impl Event {
     ///
 
     // FIXME This is likely incorrect
-    pub fn get_sender(self) -> Accessible {
+    pub fn get_sender(self) -> Option<Accessible> {
         assert_initialized_main_thread!(); // Needed?
-        unsafe { from_glib_full((self.0).sender) }
+
+        unsafe { 
+            if !(self.0).sender.is_null() {
+                Some( from_glib_full((self.0).sender) )
+            } else {
+                None
+            }    
+        }
     }
 }
