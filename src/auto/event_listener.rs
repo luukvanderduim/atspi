@@ -23,28 +23,19 @@ impl EventListener {
     pub fn new<P: Fn(&Event) + 'static>(callback: P) -> EventListener {
         assert_initialized_main_thread!();
         let callback_data: Box_<P> = Box_::new(callback);
-        unsafe extern "C" fn callback_func<P: Fn(&Event) + 'static>(
-            event: *mut atspi_sys::AtspiEvent,
-            user_data: glib_sys::gpointer,
-        ) {
+        unsafe extern "C" fn callback_func<P: Fn(&Event) + 'static>(event: *mut atspi_sys::AtspiEvent, user_data: glib_sys::gpointer) {
             let event = from_glib_full(event);
             let callback: &P = &*(user_data as *mut _);
             (*callback)(&event);
         }
         let callback = Some(callback_func::<P> as _);
-        unsafe extern "C" fn callback_destroyed_func<P: Fn(&Event) + 'static>(
-            data: glib_sys::gpointer,
-        ) {
+        unsafe extern "C" fn callback_destroyed_func<P: Fn(&Event) + 'static>(data: glib_sys::gpointer) {
             let _callback: Box_<P> = Box_::from_raw(data as *mut _);
         }
         let destroy_call2 = Some(callback_destroyed_func::<P> as _);
         let super_callback0: Box_<P> = callback_data;
         unsafe {
-            from_glib_full(atspi_sys::atspi_event_listener_new(
-                callback,
-                Box_::into_raw(super_callback0) as *mut _,
-                destroy_call2,
-            ))
+            from_glib_full(atspi_sys::atspi_event_listener_new(callback, Box_::into_raw(super_callback0) as *mut _, destroy_call2))
         }
     }
 
@@ -52,16 +43,10 @@ impl EventListener {
     //    unsafe { TODO: call atspi_sys:atspi_event_listener_new_simple() }
     //}
 
-    pub fn deregister_from_callback<P: FnMut(&Event)>(
-        callback: P,
-        event_type: &str,
-    ) -> Result<(), glib::Error> {
+    pub fn deregister_from_callback<P: FnMut(&Event)>(callback: P, event_type: &str) -> Result<(), glib::Error> {
         assert_initialized_main_thread!();
         let callback_data: P = callback;
-        unsafe extern "C" fn callback_func<P: FnMut(&Event)>(
-            event: *mut atspi_sys::AtspiEvent,
-            user_data: glib_sys::gpointer,
-        ) {
+        unsafe extern "C" fn callback_func<P: FnMut(&Event)>(event: *mut atspi_sys::AtspiEvent, user_data: glib_sys::gpointer) {
             let event = from_glib_full(event);
             let callback: *mut P = user_data as *const _ as usize as *mut P;
             (*callback)(&event);
@@ -70,17 +55,8 @@ impl EventListener {
         let super_callback0: &P = &callback_data;
         unsafe {
             let mut error = ptr::null_mut();
-            let _ = atspi_sys::atspi_event_listener_deregister_from_callback(
-                callback,
-                super_callback0 as *const _ as usize as *mut _,
-                event_type.to_glib_none().0,
-                &mut error,
-            );
-            if error.is_null() {
-                Ok(())
-            } else {
-                Err(from_glib_full(error))
-            }
+            let _ = atspi_sys::atspi_event_listener_deregister_from_callback(callback, super_callback0 as *const _ as usize as *mut _, event_type.to_glib_none().0, &mut error);
+            if error.is_null() { Ok(()) } else { Err(from_glib_full(error)) }
         }
     }
 
@@ -88,42 +64,24 @@ impl EventListener {
     //    unsafe { TODO: call atspi_sys:atspi_event_listener_deregister_no_data() }
     //}
 
-    pub fn register_from_callback<P: Fn(&Event) + 'static>(
-        callback: P,
-        event_type: &str,
-    ) -> Result<(), glib::Error> {
+    pub fn register_from_callback<P: Fn(&Event) + 'static>(callback: P, event_type: &str) -> Result<(), glib::Error> {
         assert_initialized_main_thread!();
         let callback_data: Box_<P> = Box_::new(callback);
-        unsafe extern "C" fn callback_func<P: Fn(&Event) + 'static>(
-            event: *mut atspi_sys::AtspiEvent,
-            user_data: glib_sys::gpointer,
-        ) {
+        unsafe extern "C" fn callback_func<P: Fn(&Event) + 'static>(event: *mut atspi_sys::AtspiEvent, user_data: glib_sys::gpointer) {
             let event = from_glib_full(event);
             let callback: &P = &*(user_data as *mut _);
             (*callback)(&event);
         }
         let callback = Some(callback_func::<P> as _);
-        unsafe extern "C" fn callback_destroyed_func<P: Fn(&Event) + 'static>(
-            data: glib_sys::gpointer,
-        ) {
+        unsafe extern "C" fn callback_destroyed_func<P: Fn(&Event) + 'static>(data: glib_sys::gpointer) {
             let _callback: Box_<P> = Box_::from_raw(data as *mut _);
         }
         let destroy_call2 = Some(callback_destroyed_func::<P> as _);
         let super_callback0: Box_<P> = callback_data;
         unsafe {
             let mut error = ptr::null_mut();
-            let _ = atspi_sys::atspi_event_listener_register_from_callback(
-                callback,
-                Box_::into_raw(super_callback0) as *mut _,
-                destroy_call2,
-                event_type.to_glib_none().0,
-                &mut error,
-            );
-            if error.is_null() {
-                Ok(())
-            } else {
-                Err(from_glib_full(error))
-            }
+            let _ = atspi_sys::atspi_event_listener_register_from_callback(callback, Box_::into_raw(super_callback0) as *mut _, destroy_call2, event_type.to_glib_none().0, &mut error);
+            if error.is_null() { Ok(()) } else { Err(from_glib_full(error)) }
         }
     }
 
@@ -150,32 +108,16 @@ impl<O: IsA<EventListener>> EventListenerExt for O {
     fn deregister(&self, event_type: &str) -> Result<(), glib::Error> {
         unsafe {
             let mut error = ptr::null_mut();
-            let _ = atspi_sys::atspi_event_listener_deregister(
-                self.as_ref().to_glib_none().0,
-                event_type.to_glib_none().0,
-                &mut error,
-            );
-            if error.is_null() {
-                Ok(())
-            } else {
-                Err(from_glib_full(error))
-            }
+            let _ = atspi_sys::atspi_event_listener_deregister(self.as_ref().to_glib_none().0, event_type.to_glib_none().0, &mut error);
+            if error.is_null() { Ok(()) } else { Err(from_glib_full(error)) }
         }
     }
 
     fn register(&self, event_type: &str) -> Result<(), glib::Error> {
         unsafe {
             let mut error = ptr::null_mut();
-            let _ = atspi_sys::atspi_event_listener_register(
-                self.as_ref().to_glib_none().0,
-                event_type.to_glib_none().0,
-                &mut error,
-            );
-            if error.is_null() {
-                Ok(())
-            } else {
-                Err(from_glib_full(error))
-            }
+            let _ = atspi_sys::atspi_event_listener_register(self.as_ref().to_glib_none().0, event_type.to_glib_none().0, &mut error);
+            if error.is_null() { Ok(()) } else { Err(from_glib_full(error)) }
         }
     }
 

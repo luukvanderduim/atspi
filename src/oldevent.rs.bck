@@ -33,7 +33,7 @@ impl Event {
         }
     }
 
-    // FIXME This is likely incorrect 
+    // FIXME This is likely incorrect
     pub fn get_source(&self) -> Option<Accessible> {
         unsafe { Some(from_glib_full((&self.0).source)) }
     }
@@ -51,9 +51,9 @@ impl Event {
     /// 'sender' will point to 'source' event, unless the event is invoked
     /// by the accessibility client. Then sender will point to the a11y
     /// client.
-    /// 
-    
-    // FIXME This is likely incorrect 
+    ///
+
+    // FIXME This is likely incorrect
     pub fn get_sender(&self) -> Option<Accessible> {
         unsafe { Some(from_glib_full((&self.0).sender)) }
     }

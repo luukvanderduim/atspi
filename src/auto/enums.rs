@@ -14,6 +14,7 @@ use gobject_sys;
 use std::fmt;
 
 #[derive(Debug, Eq, PartialEq, Ord, PartialOrd, Hash, Clone, Copy)]
+#[non_exhaustive]
 pub enum CollectionMatchType {
     Invalid,
     All,
@@ -101,6 +102,7 @@ impl SetValue for CollectionMatchType {
 }
 
 #[derive(Debug, Eq, PartialEq, Ord, PartialOrd, Hash, Clone, Copy)]
+#[non_exhaustive]
 pub enum CollectionSortOrder {
     Invalid,
     Canonical,
@@ -198,6 +200,7 @@ impl SetValue for CollectionSortOrder {
 }
 
 #[derive(Debug, Eq, PartialEq, Ord, PartialOrd, Hash, Clone, Copy)]
+#[non_exhaustive]
 pub enum CollectionTreeTraversalType {
     RestrictChildren,
     RestrictSibling,
@@ -283,6 +286,7 @@ impl SetValue for CollectionTreeTraversalType {
 }
 
 #[derive(Debug, Eq, PartialEq, Ord, PartialOrd, Hash, Clone, Copy)]
+#[non_exhaustive]
 pub enum ComponentLayer {
     Invalid,
     Background,
@@ -382,6 +386,7 @@ impl SetValue for ComponentLayer {
 }
 
 #[derive(Debug, Eq, PartialEq, Ord, PartialOrd, Hash, Clone, Copy)]
+#[non_exhaustive]
 pub enum CoordType {
     Screen,
     Window,
@@ -457,6 +462,7 @@ impl SetValue for CoordType {
 }
 
 #[derive(Debug, Eq, PartialEq, Ord, PartialOrd, Hash, Clone, Copy)]
+#[non_exhaustive]
 pub enum KeySynthType {
     Press,
     Release,
@@ -548,6 +554,7 @@ impl SetValue for KeySynthType {
 }
 
 #[derive(Debug, Eq, PartialEq, Ord, PartialOrd, Hash, Clone, Copy)]
+#[non_exhaustive]
 pub enum RelationType {
     Null,
     LabelFor,
@@ -707,6 +714,7 @@ impl SetValue for RelationType {
 }
 
 #[derive(Debug, Eq, PartialEq, Ord, PartialOrd, Hash, Clone, Copy)]
+#[non_exhaustive]
 pub enum Role {
     Invalid,
     AcceleratorLabel,
@@ -1282,6 +1290,7 @@ impl SetValue for Role {
 }
 
 #[derive(Debug, Eq, PartialEq, Ord, PartialOrd, Hash, Clone, Copy)]
+#[non_exhaustive]
 pub enum StateType {
     Invalid,
     Active,
@@ -1525,6 +1534,7 @@ impl SetValue for StateType {
 }
 
 #[derive(Debug, Eq, PartialEq, Ord, PartialOrd, Hash, Clone, Copy)]
+#[non_exhaustive]
 pub enum TextBoundaryType {
     Char,
     WordStart,
@@ -1616,6 +1626,7 @@ impl SetValue for TextBoundaryType {
 }
 
 #[derive(Debug, Eq, PartialEq, Ord, PartialOrd, Hash, Clone, Copy)]
+#[non_exhaustive]
 pub enum TextClipType {
     None,
     Min,
@@ -1695,6 +1706,7 @@ impl SetValue for TextClipType {
 }
 
 #[derive(Debug, Eq, PartialEq, Ord, PartialOrd, Hash, Clone, Copy)]
+#[non_exhaustive]
 pub enum TextGranularity {
     Char,
     Word,

@@ -12,7 +12,7 @@ features = ["dox"]
 name = "atspi_sys"
 
 [dependencies]
-libc = "0.2.68"
+libc = "0.2"
 
 [dependencies.gio_sys]
 git = "https://github.com/gtk-rs/sys"
@@ -27,11 +27,11 @@ git = "https://github.com/gtk-rs/sys"
 package = "gobject-sys"
 
 [build-dependencies]
-pkg-config = "0.3.17"
+pkg-config = "0.3.7"
 
 [dev-dependencies]
 shell-words = "0.1.0"
-tempfile = "3.1.0"
+tempfile = "3"
 
 [features]
 v2_34 = []

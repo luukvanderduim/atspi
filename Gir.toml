@@ -39,9 +39,9 @@ generate = [
             # "Atspi.Document",
             # see [[object]] definition
 
-            
+            "Atspi.Event",
             "Atspi.EventListener",
-            # function `atspi_event_listener_new_simple`'s callback `callback` without associated user data
+                # function `atspi_event_listener_new_simple`'s callback `callback` without associated user data
             # "Atspi.EventListenerMode",
             # 'Missing memory management functions for Atspi.EventListenerMode'
             "Atspi.EventListenerCB",
@@ -54,7 +54,7 @@ generate = [
             "Atspi.KeyEventMask",
             "Atspi.KeyListenerSyncType",
             "Atspi.KeyMaskType",
-            # "Atspi.KeySet",
+             "Atspi.KeySet",
             # 'Missing memory management functions for Atspi.KeySet'
             "Atspi.KeystrokeListener",
             "Atspi.KeySynthType",
@@ -85,7 +85,7 @@ generate = [
 manual = [
          "GLib.Error",
          "GLib.DestroyNotify",
-         "Atspi.Event",
+         # "Atspi.Event",
          "GLib.MainContext",
          "Atspi.Rect",
        ]
@@ -94,10 +94,10 @@ manual = [
 [[object]]
 name = "Atspi.Accessible"
 status = "generate"
-    [[object.function]]
-    name = "get_attributes"
-    # *.HashTable TypeId { ns_id: 0, id: 28 }/TypeId { ns_id: 0, id: 28 }
-    ignore = true
+#    [[object.function]]
+#    name = "get_attributes"
+#    # *.HashTable TypeId { ns_id: 0, id: 28 }/TypeId { ns_id: 0, id: 28 }
+#    ignore = true
 
 [[object]]
 name = "Atspi.Document"
