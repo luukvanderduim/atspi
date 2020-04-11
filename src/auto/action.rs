@@ -38,48 +38,90 @@ impl<O: IsA<Action>> ActionExt for O {
     fn do_action(&self, i: i32) -> Result<(), glib::Error> {
         unsafe {
             let mut error = ptr::null_mut();
-            let _ = atspi_sys::atspi_action_do_action(self.as_ref().to_glib_none().0, i, &mut error);
-            if error.is_null() { Ok(()) } else { Err(from_glib_full(error)) }
+            let _ =
+                atspi_sys::atspi_action_do_action(self.as_ref().to_glib_none().0, i, &mut error);
+            if error.is_null() {
+                Ok(())
+            } else {
+                Err(from_glib_full(error))
+            }
         }
     }
 
     fn get_action_description(&self, i: i32) -> Result<GString, glib::Error> {
         unsafe {
             let mut error = ptr::null_mut();
-            let ret = atspi_sys::atspi_action_get_action_description(self.as_ref().to_glib_none().0, i, &mut error);
-            if error.is_null() { Ok(from_glib_full(ret)) } else { Err(from_glib_full(error)) }
+            let ret = atspi_sys::atspi_action_get_action_description(
+                self.as_ref().to_glib_none().0,
+                i,
+                &mut error,
+            );
+            if error.is_null() {
+                Ok(from_glib_full(ret))
+            } else {
+                Err(from_glib_full(error))
+            }
         }
     }
 
     fn get_action_name(&self, i: i32) -> Result<GString, glib::Error> {
         unsafe {
             let mut error = ptr::null_mut();
-            let ret = atspi_sys::atspi_action_get_action_name(self.as_ref().to_glib_none().0, i, &mut error);
-            if error.is_null() { Ok(from_glib_full(ret)) } else { Err(from_glib_full(error)) }
+            let ret = atspi_sys::atspi_action_get_action_name(
+                self.as_ref().to_glib_none().0,
+                i,
+                &mut error,
+            );
+            if error.is_null() {
+                Ok(from_glib_full(ret))
+            } else {
+                Err(from_glib_full(error))
+            }
         }
     }
 
     fn get_key_binding(&self, i: i32) -> Result<GString, glib::Error> {
         unsafe {
             let mut error = ptr::null_mut();
-            let ret = atspi_sys::atspi_action_get_key_binding(self.as_ref().to_glib_none().0, i, &mut error);
-            if error.is_null() { Ok(from_glib_full(ret)) } else { Err(from_glib_full(error)) }
+            let ret = atspi_sys::atspi_action_get_key_binding(
+                self.as_ref().to_glib_none().0,
+                i,
+                &mut error,
+            );
+            if error.is_null() {
+                Ok(from_glib_full(ret))
+            } else {
+                Err(from_glib_full(error))
+            }
         }
     }
 
     fn get_localized_name(&self, i: i32) -> Result<GString, glib::Error> {
         unsafe {
             let mut error = ptr::null_mut();
-            let ret = atspi_sys::atspi_action_get_localized_name(self.as_ref().to_glib_none().0, i, &mut error);
-            if error.is_null() { Ok(from_glib_full(ret)) } else { Err(from_glib_full(error)) }
+            let ret = atspi_sys::atspi_action_get_localized_name(
+                self.as_ref().to_glib_none().0,
+                i,
+                &mut error,
+            );
+            if error.is_null() {
+                Ok(from_glib_full(ret))
+            } else {
+                Err(from_glib_full(error))
+            }
         }
     }
 
     fn get_n_actions(&self) -> Result<i32, glib::Error> {
         unsafe {
             let mut error = ptr::null_mut();
-            let ret = atspi_sys::atspi_action_get_n_actions(self.as_ref().to_glib_none().0, &mut error);
-            if error.is_null() { Ok(ret) } else { Err(from_glib_full(error)) }
+            let ret =
+                atspi_sys::atspi_action_get_n_actions(self.as_ref().to_glib_none().0, &mut error);
+            if error.is_null() {
+                Ok(ret)
+            } else {
+                Err(from_glib_full(error))
+            }
         }
     }
 }

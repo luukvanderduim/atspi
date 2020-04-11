@@ -28,8 +28,8 @@ pub use crate::auto::*;
 mod rect;
 pub use crate::rect::*;
 
-// mod event;
-// pub use crate::event::*;
+mod event;
+pub use crate::event::*;
 
 /* mod device_listener;
 pub use crate::device_listener::DeviceListenerExt;

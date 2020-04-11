@@ -34,15 +34,22 @@ impl Event {
     }
 
     // FIXME This is likely incorrect
-    pub fn get_source(&self) -> Option<Accessible> {
-        unsafe { Some(from_glib_full((&self.0).source)) }
+    // The method call does not need to check 
+    pub fn get_source(self) -> Accessible {
+        assert_initialized_main_thread!(); // Needed?
+        unsafe { from_glib_full((self.0).source) }
     }
+
     pub fn get_detail1(&self) -> i32 {
+        assert_initialized_main_thread!(); // Needed?
         self.0.detail1
     }
+
     pub fn get_detail2(&self) -> i32 {
+        assert_initialized_main_thread!(); // Needed?
         self.0.detail2
     }
+
     /// In the event struct 'sender' is a v2.34> feature.
     /// Accessibility client programs may want to discern between the cause of events.
     /// Did the client itself cause the event or was this an externally caused event?
@@ -54,7 +61,8 @@ impl Event {
     ///
 
     // FIXME This is likely incorrect
-    pub fn get_sender(&self) -> Option<Accessible> {
-        unsafe { Some(from_glib_full((&self.0).sender)) }
+    pub fn get_sender(self) -> Accessible {
+        assert_initialized_main_thread!(); // Needed?
+        unsafe { from_glib_full((self.0).sender) }
     }
 }

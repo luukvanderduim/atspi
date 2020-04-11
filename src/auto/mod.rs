@@ -83,9 +83,6 @@ pub use self::value::{Value, NONE_VALUE};
 mod device_event;
 pub use self::device_event::DeviceEvent;
 
-mod event;
-pub use self::event::Event;
-
 mod key_definition;
 pub use self::key_definition::KeyDefinition;
 

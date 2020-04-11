@@ -36,8 +36,15 @@ impl<O: IsA<Collection>> CollectionExt for O {
     fn get_active_descendant(&self) -> Result<Accessible, glib::Error> {
         unsafe {
             let mut error = ptr::null_mut();
-            let ret = atspi_sys::atspi_collection_get_active_descendant(self.as_ref().to_glib_none().0, &mut error);
-            if error.is_null() { Ok(from_glib_full(ret)) } else { Err(from_glib_full(error)) }
+            let ret = atspi_sys::atspi_collection_get_active_descendant(
+                self.as_ref().to_glib_none().0,
+                &mut error,
+            );
+            if error.is_null() {
+                Ok(from_glib_full(ret))
+            } else {
+                Err(from_glib_full(error))
+            }
         }
     }
 
@@ -56,8 +63,16 @@ impl<O: IsA<Collection>> CollectionExt for O {
     fn is_ancestor_of<P: IsA<Accessible>>(&self, test: &P) -> Result<(), glib::Error> {
         unsafe {
             let mut error = ptr::null_mut();
-            let _ = atspi_sys::atspi_collection_is_ancestor_of(self.as_ref().to_glib_none().0, test.as_ref().to_glib_none().0, &mut error);
-            if error.is_null() { Ok(()) } else { Err(from_glib_full(error)) }
+            let _ = atspi_sys::atspi_collection_is_ancestor_of(
+                self.as_ref().to_glib_none().0,
+                test.as_ref().to_glib_none().0,
+                &mut error,
+            );
+            if error.is_null() {
+                Ok(())
+            } else {
+                Err(from_glib_full(error))
+            }
         }
     }
 }
