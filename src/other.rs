@@ -18,17 +18,9 @@ pub fn get_desktop_count() -> i32 {
 }
 
 pub fn init() -> bool {
-    if unsafe { atspi_sys::atspi_init() } == 0 {
-        true
-    } else {
-        false
-    }
+    unsafe { atspi_sys::atspi_init() == 0 }
 }
 
 pub fn exit() -> bool {
-    if unsafe { atspi_sys::atspi_exit() } == 0 {
-        true
-    } else {
-        false
-    }
+    unsafe { atspi_sys::atspi_exit() == 0 }
 }

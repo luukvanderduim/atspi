@@ -14,6 +14,7 @@ use glib_sys;
 use libc;
 use std::boxed::Box as Box_;
 use std::fmt;
+use std::mem::transmute;
 use std::ptr;
 use Action;
 use Cache;
@@ -536,7 +537,9 @@ impl<O: IsA<Accessible>> AccessibleExt for O {
             connect_raw(
                 self.as_ptr() as *mut _,
                 b"region-changed\0".as_ptr() as *const _,
-                Some(*(&region_changed_trampoline::<Self, F> as *const _ as *const _)),
+                Some(transmute::<_, unsafe extern "C" fn()>(
+                    region_changed_trampoline::<Self, F> as *const (),
+                )),
                 Box_::into_raw(f),
             )
         }
