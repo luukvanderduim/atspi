@@ -134,53 +134,30 @@ impl<O: IsA<Accessible>> AccessibleExt for O {
     fn get_accessible_id(&self) -> Result<GString, glib::Error> {
         unsafe {
             let mut error = ptr::null_mut();
-            let ret = atspi_sys::atspi_accessible_get_accessible_id(
-                self.as_ref().to_glib_none().0,
-                &mut error,
-            );
-            if error.is_null() {
-                Ok(from_glib_full(ret))
-            } else {
-                Err(from_glib_full(error))
-            }
+            let ret = atspi_sys::atspi_accessible_get_accessible_id(self.as_ref().to_glib_none().0, &mut error);
+            if error.is_null() { Ok(from_glib_full(ret)) } else { Err(from_glib_full(error)) }
         }
     }
 
     fn get_action_iface(&self) -> Option<Action> {
         unsafe {
-            from_glib_full(atspi_sys::atspi_accessible_get_action_iface(
-                self.as_ref().to_glib_none().0,
-            ))
+            from_glib_full(atspi_sys::atspi_accessible_get_action_iface(self.as_ref().to_glib_none().0))
         }
     }
 
     fn get_application(&self) -> Result<Accessible, glib::Error> {
         unsafe {
             let mut error = ptr::null_mut();
-            let ret = atspi_sys::atspi_accessible_get_application(
-                self.as_ref().to_glib_none().0,
-                &mut error,
-            );
-            if error.is_null() {
-                Ok(from_glib_full(ret))
-            } else {
-                Err(from_glib_full(error))
-            }
+            let ret = atspi_sys::atspi_accessible_get_application(self.as_ref().to_glib_none().0, &mut error);
+            if error.is_null() { Ok(from_glib_full(ret)) } else { Err(from_glib_full(error)) }
         }
     }
 
     fn get_atspi_version(&self) -> Result<GString, glib::Error> {
         unsafe {
             let mut error = ptr::null_mut();
-            let ret = atspi_sys::atspi_accessible_get_atspi_version(
-                self.as_ref().to_glib_none().0,
-                &mut error,
-            );
-            if error.is_null() {
-                Ok(from_glib_full(ret))
-            } else {
-                Err(from_glib_full(error))
-            }
+            let ret = atspi_sys::atspi_accessible_get_atspi_version(self.as_ref().to_glib_none().0, &mut error);
+            if error.is_null() { Ok(from_glib_full(ret)) } else { Err(from_glib_full(error)) }
         }
     }
 
@@ -195,130 +172,82 @@ impl<O: IsA<Accessible>> AccessibleExt for O {
     fn get_child_at_index(&self, child_index: i32) -> Result<Accessible, glib::Error> {
         unsafe {
             let mut error = ptr::null_mut();
-            let ret = atspi_sys::atspi_accessible_get_child_at_index(
-                self.as_ref().to_glib_none().0,
-                child_index,
-                &mut error,
-            );
-            if error.is_null() {
-                Ok(from_glib_full(ret))
-            } else {
-                Err(from_glib_full(error))
-            }
+            let ret = atspi_sys::atspi_accessible_get_child_at_index(self.as_ref().to_glib_none().0, child_index, &mut error);
+            if error.is_null() { Ok(from_glib_full(ret)) } else { Err(from_glib_full(error)) }
         }
     }
 
     fn get_child_count(&self) -> Result<i32, glib::Error> {
         unsafe {
             let mut error = ptr::null_mut();
-            let ret = atspi_sys::atspi_accessible_get_child_count(
-                self.as_ref().to_glib_none().0,
-                &mut error,
-            );
-            if error.is_null() {
-                Ok(ret)
-            } else {
-                Err(from_glib_full(error))
-            }
+            let ret = atspi_sys::atspi_accessible_get_child_count(self.as_ref().to_glib_none().0, &mut error);
+            if error.is_null() { Ok(ret) } else { Err(from_glib_full(error)) }
         }
     }
 
     fn get_collection_iface(&self) -> Option<Collection> {
         unsafe {
-            from_glib_full(atspi_sys::atspi_accessible_get_collection_iface(
-                self.as_ref().to_glib_none().0,
-            ))
+            from_glib_full(atspi_sys::atspi_accessible_get_collection_iface(self.as_ref().to_glib_none().0))
         }
     }
 
     fn get_component_iface(&self) -> Option<Component> {
         unsafe {
-            from_glib_full(atspi_sys::atspi_accessible_get_component_iface(
-                self.as_ref().to_glib_none().0,
-            ))
+            from_glib_full(atspi_sys::atspi_accessible_get_component_iface(self.as_ref().to_glib_none().0))
         }
     }
 
     fn get_description(&self) -> Result<GString, glib::Error> {
         unsafe {
             let mut error = ptr::null_mut();
-            let ret = atspi_sys::atspi_accessible_get_description(
-                self.as_ref().to_glib_none().0,
-                &mut error,
-            );
-            if error.is_null() {
-                Ok(from_glib_full(ret))
-            } else {
-                Err(from_glib_full(error))
-            }
+            let ret = atspi_sys::atspi_accessible_get_description(self.as_ref().to_glib_none().0, &mut error);
+            if error.is_null() { Ok(from_glib_full(ret)) } else { Err(from_glib_full(error)) }
         }
     }
 
     fn get_document_iface(&self) -> Option<Document> {
         unsafe {
-            from_glib_full(atspi_sys::atspi_accessible_get_document_iface(
-                self.as_ref().to_glib_none().0,
-            ))
+            from_glib_full(atspi_sys::atspi_accessible_get_document_iface(self.as_ref().to_glib_none().0))
         }
     }
 
     fn get_editable_text_iface(&self) -> Option<EditableText> {
         unsafe {
-            from_glib_full(atspi_sys::atspi_accessible_get_editable_text_iface(
-                self.as_ref().to_glib_none().0,
-            ))
+            from_glib_full(atspi_sys::atspi_accessible_get_editable_text_iface(self.as_ref().to_glib_none().0))
         }
     }
 
     fn get_hyperlink(&self) -> Option<Hyperlink> {
         unsafe {
-            from_glib_full(atspi_sys::atspi_accessible_get_hyperlink(
-                self.as_ref().to_glib_none().0,
-            ))
+            from_glib_full(atspi_sys::atspi_accessible_get_hyperlink(self.as_ref().to_glib_none().0))
         }
     }
 
     fn get_hypertext_iface(&self) -> Option<Hypertext> {
         unsafe {
-            from_glib_full(atspi_sys::atspi_accessible_get_hypertext_iface(
-                self.as_ref().to_glib_none().0,
-            ))
+            from_glib_full(atspi_sys::atspi_accessible_get_hypertext_iface(self.as_ref().to_glib_none().0))
         }
     }
 
     fn get_id(&self) -> Result<i32, glib::Error> {
         unsafe {
             let mut error = ptr::null_mut();
-            let ret =
-                atspi_sys::atspi_accessible_get_id(self.as_ref().to_glib_none().0, &mut error);
-            if error.is_null() {
-                Ok(ret)
-            } else {
-                Err(from_glib_full(error))
-            }
+            let ret = atspi_sys::atspi_accessible_get_id(self.as_ref().to_glib_none().0, &mut error);
+            if error.is_null() { Ok(ret) } else { Err(from_glib_full(error)) }
         }
     }
 
     fn get_image_iface(&self) -> Option<Image> {
         unsafe {
-            from_glib_full(atspi_sys::atspi_accessible_get_image_iface(
-                self.as_ref().to_glib_none().0,
-            ))
+            from_glib_full(atspi_sys::atspi_accessible_get_image_iface(self.as_ref().to_glib_none().0))
         }
     }
 
     fn get_index_in_parent(&self) -> Result<i32, glib::Error> {
         unsafe {
             let mut error = ptr::null_mut();
-            let ret = atspi_sys::atspi_accessible_get_index_in_parent(
-                self.as_ref().to_glib_none().0,
-                &mut error,
-            );
-            if error.is_null() {
-                Ok(ret)
-            } else {
-                Err(from_glib_full(error))
-            }
+            let ret = atspi_sys::atspi_accessible_get_index_in_parent(self.as_ref().to_glib_none().0, &mut error);
+            if error.is_null() { Ok(ret) } else { Err(from_glib_full(error)) }
         }
     }
 
@@ -329,71 +258,40 @@ impl<O: IsA<Accessible>> AccessibleExt for O {
     fn get_localized_role_name(&self) -> Result<GString, glib::Error> {
         unsafe {
             let mut error = ptr::null_mut();
-            let ret = atspi_sys::atspi_accessible_get_localized_role_name(
-                self.as_ref().to_glib_none().0,
-                &mut error,
-            );
-            if error.is_null() {
-                Ok(from_glib_full(ret))
-            } else {
-                Err(from_glib_full(error))
-            }
+            let ret = atspi_sys::atspi_accessible_get_localized_role_name(self.as_ref().to_glib_none().0, &mut error);
+            if error.is_null() { Ok(from_glib_full(ret)) } else { Err(from_glib_full(error)) }
         }
     }
 
     fn get_name(&self) -> Result<GString, glib::Error> {
         unsafe {
             let mut error = ptr::null_mut();
-            let ret =
-                atspi_sys::atspi_accessible_get_name(self.as_ref().to_glib_none().0, &mut error);
-            if error.is_null() {
-                Ok(from_glib_full(ret))
-            } else {
-                Err(from_glib_full(error))
-            }
+            let ret = atspi_sys::atspi_accessible_get_name(self.as_ref().to_glib_none().0, &mut error);
+            if error.is_null() { Ok(from_glib_full(ret)) } else { Err(from_glib_full(error)) }
         }
     }
 
     fn get_object_locale(&self) -> Result<GString, glib::Error> {
         unsafe {
             let mut error = ptr::null_mut();
-            let ret = atspi_sys::atspi_accessible_get_object_locale(
-                self.as_ref().to_glib_none().0,
-                &mut error,
-            );
-            if error.is_null() {
-                Ok(from_glib_none(ret))
-            } else {
-                Err(from_glib_full(error))
-            }
+            let ret = atspi_sys::atspi_accessible_get_object_locale(self.as_ref().to_glib_none().0, &mut error);
+            if error.is_null() { Ok(from_glib_none(ret)) } else { Err(from_glib_full(error)) }
         }
     }
 
     fn get_parent(&self) -> Result<Option<Accessible>, glib::Error> {
         unsafe {
             let mut error = ptr::null_mut();
-            let ret =
-                atspi_sys::atspi_accessible_get_parent(self.as_ref().to_glib_none().0, &mut error);
-            if error.is_null() {
-                Ok(from_glib_full(ret))
-            } else {
-                Err(from_glib_full(error))
-            }
+            let ret = atspi_sys::atspi_accessible_get_parent(self.as_ref().to_glib_none().0, &mut error);
+            if error.is_null() { Ok(from_glib_full(ret)) } else { Err(from_glib_full(error)) }
         }
     }
 
     fn get_process_id(&self) -> Result<(), glib::Error> {
         unsafe {
             let mut error = ptr::null_mut();
-            let _ = atspi_sys::atspi_accessible_get_process_id(
-                self.as_ref().to_glib_none().0,
-                &mut error,
-            );
-            if error.is_null() {
-                Ok(())
-            } else {
-                Err(from_glib_full(error))
-            }
+            let _ = atspi_sys::atspi_accessible_get_process_id(self.as_ref().to_glib_none().0, &mut error);
+            if error.is_null() { Ok(()) } else { Err(from_glib_full(error)) }
         }
     }
 
@@ -404,144 +302,88 @@ impl<O: IsA<Accessible>> AccessibleExt for O {
     fn get_role(&self) -> Result<Role, glib::Error> {
         unsafe {
             let mut error = ptr::null_mut();
-            let ret =
-                atspi_sys::atspi_accessible_get_role(self.as_ref().to_glib_none().0, &mut error);
-            if error.is_null() {
-                Ok(from_glib(ret))
-            } else {
-                Err(from_glib_full(error))
-            }
+            let ret = atspi_sys::atspi_accessible_get_role(self.as_ref().to_glib_none().0, &mut error);
+            if error.is_null() { Ok(from_glib(ret)) } else { Err(from_glib_full(error)) }
         }
     }
 
     fn get_role_name(&self) -> Result<GString, glib::Error> {
         unsafe {
             let mut error = ptr::null_mut();
-            let ret = atspi_sys::atspi_accessible_get_role_name(
-                self.as_ref().to_glib_none().0,
-                &mut error,
-            );
-            if error.is_null() {
-                Ok(from_glib_full(ret))
-            } else {
-                Err(from_glib_full(error))
-            }
+            let ret = atspi_sys::atspi_accessible_get_role_name(self.as_ref().to_glib_none().0, &mut error);
+            if error.is_null() { Ok(from_glib_full(ret)) } else { Err(from_glib_full(error)) }
         }
     }
 
     fn get_selection_iface(&self) -> Option<Selection> {
         unsafe {
-            from_glib_full(atspi_sys::atspi_accessible_get_selection_iface(
-                self.as_ref().to_glib_none().0,
-            ))
+            from_glib_full(atspi_sys::atspi_accessible_get_selection_iface(self.as_ref().to_glib_none().0))
         }
     }
 
     fn get_state_set(&self) -> Option<StateSet> {
         unsafe {
-            from_glib_full(atspi_sys::atspi_accessible_get_state_set(
-                self.as_ref().to_glib_none().0,
-            ))
+            from_glib_full(atspi_sys::atspi_accessible_get_state_set(self.as_ref().to_glib_none().0))
         }
     }
 
     fn get_table_cell(&self) -> Option<TableCell> {
         unsafe {
-            from_glib_full(atspi_sys::atspi_accessible_get_table_cell(
-                self.as_ref().to_glib_none().0,
-            ))
+            from_glib_full(atspi_sys::atspi_accessible_get_table_cell(self.as_ref().to_glib_none().0))
         }
     }
 
     fn get_table_iface(&self) -> Option<Table> {
         unsafe {
-            from_glib_full(atspi_sys::atspi_accessible_get_table_iface(
-                self.as_ref().to_glib_none().0,
-            ))
+            from_glib_full(atspi_sys::atspi_accessible_get_table_iface(self.as_ref().to_glib_none().0))
         }
     }
 
     fn get_text_iface(&self) -> Option<Text> {
         unsafe {
-            from_glib_full(atspi_sys::atspi_accessible_get_text_iface(
-                self.as_ref().to_glib_none().0,
-            ))
+            from_glib_full(atspi_sys::atspi_accessible_get_text_iface(self.as_ref().to_glib_none().0))
         }
     }
 
     fn get_toolkit_name(&self) -> Result<GString, glib::Error> {
         unsafe {
             let mut error = ptr::null_mut();
-            let ret = atspi_sys::atspi_accessible_get_toolkit_name(
-                self.as_ref().to_glib_none().0,
-                &mut error,
-            );
-            if error.is_null() {
-                Ok(from_glib_full(ret))
-            } else {
-                Err(from_glib_full(error))
-            }
+            let ret = atspi_sys::atspi_accessible_get_toolkit_name(self.as_ref().to_glib_none().0, &mut error);
+            if error.is_null() { Ok(from_glib_full(ret)) } else { Err(from_glib_full(error)) }
         }
     }
 
     fn get_toolkit_version(&self) -> Result<GString, glib::Error> {
         unsafe {
             let mut error = ptr::null_mut();
-            let ret = atspi_sys::atspi_accessible_get_toolkit_version(
-                self.as_ref().to_glib_none().0,
-                &mut error,
-            );
-            if error.is_null() {
-                Ok(from_glib_full(ret))
-            } else {
-                Err(from_glib_full(error))
-            }
+            let ret = atspi_sys::atspi_accessible_get_toolkit_version(self.as_ref().to_glib_none().0, &mut error);
+            if error.is_null() { Ok(from_glib_full(ret)) } else { Err(from_glib_full(error)) }
         }
     }
 
     fn get_value_iface(&self) -> Option<Value> {
         unsafe {
-            from_glib_full(atspi_sys::atspi_accessible_get_value_iface(
-                self.as_ref().to_glib_none().0,
-            ))
+            from_glib_full(atspi_sys::atspi_accessible_get_value_iface(self.as_ref().to_glib_none().0))
         }
     }
 
     fn set_cache_mask(&self, mask: Cache) {
         unsafe {
-            atspi_sys::atspi_accessible_set_cache_mask(
-                self.as_ref().to_glib_none().0,
-                mask.to_glib(),
-            );
+            atspi_sys::atspi_accessible_set_cache_mask(self.as_ref().to_glib_none().0, mask.to_glib());
         }
     }
 
     fn connect_region_changed<F: Fn(&Self, i32, i32) + 'static>(&self, f: F) -> SignalHandlerId {
-        unsafe extern "C" fn region_changed_trampoline<P, F: Fn(&P, i32, i32) + 'static>(
-            this: *mut atspi_sys::AtspiAccessible,
-            arg1: libc::c_int,
-            arg2: libc::c_int,
-            f: glib_sys::gpointer,
-        ) where
-            P: IsA<Accessible>,
+        unsafe extern "C" fn region_changed_trampoline<P, F: Fn(&P, i32, i32) + 'static>(this: *mut atspi_sys::AtspiAccessible, arg1: libc::c_int, arg2: libc::c_int, f: glib_sys::gpointer)
+            where P: IsA<Accessible>
         {
             let f: &F = &*(f as *const F);
-            f(
-                &Accessible::from_glib_borrow(this).unsafe_cast_ref(),
-                arg1,
-                arg2,
-            )
+            f(&Accessible::from_glib_borrow(this).unsafe_cast_ref(), arg1, arg2)
         }
         unsafe {
             let f: Box_<F> = Box_::new(f);
-            connect_raw(
-                self.as_ptr() as *mut _,
-                b"region-changed\0".as_ptr() as *const _,
-                Some(transmute::<_, unsafe extern "C" fn()>(
-                    region_changed_trampoline::<Self, F> as *const (),
-                )),
-                Box_::into_raw(f),
-            )
+            connect_raw(self.as_ptr() as *mut _, b"region-changed\0".as_ptr() as *const _,
+                Some(transmute::<_, unsafe extern "C" fn()>(region_changed_trampoline::<Self, F> as *const ())), Box_::into_raw(f))
         }
     }
 }

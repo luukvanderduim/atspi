@@ -39,73 +39,40 @@ impl<O: IsA<Image>> ImageExt for O {
     fn get_image_description(&self) -> Result<GString, glib::Error> {
         unsafe {
             let mut error = ptr::null_mut();
-            let ret = atspi_sys::atspi_image_get_image_description(
-                self.as_ref().to_glib_none().0,
-                &mut error,
-            );
-            if error.is_null() {
-                Ok(from_glib_full(ret))
-            } else {
-                Err(from_glib_full(error))
-            }
+            let ret = atspi_sys::atspi_image_get_image_description(self.as_ref().to_glib_none().0, &mut error);
+            if error.is_null() { Ok(from_glib_full(ret)) } else { Err(from_glib_full(error)) }
         }
     }
 
     fn get_image_extents(&self, ctype: CoordType) -> Result<Rect, glib::Error> {
         unsafe {
             let mut error = ptr::null_mut();
-            let ret = atspi_sys::atspi_image_get_image_extents(
-                self.as_ref().to_glib_none().0,
-                ctype.to_glib(),
-                &mut error,
-            );
-            if error.is_null() {
-                Ok(from_glib_full(ret))
-            } else {
-                Err(from_glib_full(error))
-            }
+            let ret = atspi_sys::atspi_image_get_image_extents(self.as_ref().to_glib_none().0, ctype.to_glib(), &mut error);
+            if error.is_null() { Ok(from_glib_full(ret)) } else { Err(from_glib_full(error)) }
         }
     }
 
     fn get_image_locale(&self) -> Result<GString, glib::Error> {
         unsafe {
             let mut error = ptr::null_mut();
-            let ret =
-                atspi_sys::atspi_image_get_image_locale(self.as_ref().to_glib_none().0, &mut error);
-            if error.is_null() {
-                Ok(from_glib_full(ret))
-            } else {
-                Err(from_glib_full(error))
-            }
+            let ret = atspi_sys::atspi_image_get_image_locale(self.as_ref().to_glib_none().0, &mut error);
+            if error.is_null() { Ok(from_glib_full(ret)) } else { Err(from_glib_full(error)) }
         }
     }
 
     fn get_image_position(&self, ctype: CoordType) -> Result<Point, glib::Error> {
         unsafe {
             let mut error = ptr::null_mut();
-            let ret = atspi_sys::atspi_image_get_image_position(
-                self.as_ref().to_glib_none().0,
-                ctype.to_glib(),
-                &mut error,
-            );
-            if error.is_null() {
-                Ok(from_glib_full(ret))
-            } else {
-                Err(from_glib_full(error))
-            }
+            let ret = atspi_sys::atspi_image_get_image_position(self.as_ref().to_glib_none().0, ctype.to_glib(), &mut error);
+            if error.is_null() { Ok(from_glib_full(ret)) } else { Err(from_glib_full(error)) }
         }
     }
 
     fn get_image_size(&self) -> Result<Point, glib::Error> {
         unsafe {
             let mut error = ptr::null_mut();
-            let ret =
-                atspi_sys::atspi_image_get_image_size(self.as_ref().to_glib_none().0, &mut error);
-            if error.is_null() {
-                Ok(from_glib_full(ret))
-            } else {
-                Err(from_glib_full(error))
-            }
+            let ret = atspi_sys::atspi_image_get_image_size(self.as_ref().to_glib_none().0, &mut error);
+            if error.is_null() { Ok(from_glib_full(ret)) } else { Err(from_glib_full(error)) }
         }
     }
 }

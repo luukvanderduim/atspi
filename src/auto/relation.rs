@@ -29,23 +29,20 @@ pub trait RelationExt: 'static {
 
 impl<O: IsA<Relation>> RelationExt for O {
     fn get_n_targets(&self) -> i32 {
-        unsafe { atspi_sys::atspi_relation_get_n_targets(self.as_ref().to_glib_none().0) }
+        unsafe {
+            atspi_sys::atspi_relation_get_n_targets(self.as_ref().to_glib_none().0)
+        }
     }
 
     fn get_relation_type(&self) -> RelationType {
         unsafe {
-            from_glib(atspi_sys::atspi_relation_get_relation_type(
-                self.as_ref().to_glib_none().0,
-            ))
+            from_glib(atspi_sys::atspi_relation_get_relation_type(self.as_ref().to_glib_none().0))
         }
     }
 
     fn get_target(&self, i: i32) -> Option<Accessible> {
         unsafe {
-            from_glib_full(atspi_sys::atspi_relation_get_target(
-                self.as_ref().to_glib_none().0,
-                i,
-            ))
+            from_glib_full(atspi_sys::atspi_relation_get_target(self.as_ref().to_glib_none().0, i))
         }
     }
 }

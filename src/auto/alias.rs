@@ -9,4 +9,4 @@ pub type ControllerEventMask = u32;
 pub type DeviceEventMask = u32;
 pub type KeyEventMask = u32;
 pub type KeyMaskType = u32;
-pub type KeystrokeListener = ();
+pub type KeystrokeListener = /*Unimplemented*/();
