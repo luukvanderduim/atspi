@@ -2,15 +2,13 @@
 // from gir-files (https://github.com/gtk-rs/gir-files)
 // DO NOT EDIT
 
-use atspi_sys;
+use bitflags::bitflags;
 use glib::translate::*;
 use glib::value::FromValue;
 use glib::value::FromValueOptional;
 use glib::value::SetValue;
-use glib::value::Value;
 use glib::StaticType;
 use glib::Type;
-use gobject_sys;
 
 bitflags! {
     pub struct Cache: u32 {
@@ -31,16 +29,16 @@ bitflags! {
 
 #[doc(hidden)]
 impl ToGlib for Cache {
-    type GlibType = atspi_sys::AtspiCache;
+    type GlibType = ffi::AtspiCache;
 
-    fn to_glib(&self) -> atspi_sys::AtspiCache {
+    fn to_glib(&self) -> ffi::AtspiCache {
         self.bits()
     }
 }
 
 #[doc(hidden)]
-impl FromGlib<atspi_sys::AtspiCache> for Cache {
-    fn from_glib(value: atspi_sys::AtspiCache) -> Cache {
+impl FromGlib<ffi::AtspiCache> for Cache {
+    fn from_glib(value: ffi::AtspiCache) -> Cache {
         skip_assert_initialized!();
         Cache::from_bits_truncate(value)
     }
@@ -48,25 +46,25 @@ impl FromGlib<atspi_sys::AtspiCache> for Cache {
 
 impl StaticType for Cache {
     fn static_type() -> Type {
-        unsafe { from_glib(atspi_sys::atspi_cache_get_type()) }
+        unsafe { from_glib(ffi::atspi_cache_get_type()) }
     }
 }
 
 impl<'a> FromValueOptional<'a> for Cache {
-    unsafe fn from_value_optional(value: &Value) -> Option<Self> {
+    unsafe fn from_value_optional(value: &glib::Value) -> Option<Self> {
         Some(FromValue::from_value(value))
     }
 }
 
 impl<'a> FromValue<'a> for Cache {
-    unsafe fn from_value(value: &Value) -> Self {
-        from_glib(gobject_sys::g_value_get_flags(value.to_glib_none().0))
+    unsafe fn from_value(value: &glib::Value) -> Self {
+        from_glib(glib::gobject_ffi::g_value_get_flags(value.to_glib_none().0))
     }
 }
 
 impl SetValue for Cache {
-    unsafe fn set_value(value: &mut Value, this: &Self) {
-        gobject_sys::g_value_set_flags(value.to_glib_none_mut().0, this.to_glib())
+    unsafe fn set_value(value: &mut glib::Value, this: &Self) {
+        glib::gobject_ffi::g_value_set_flags(value.to_glib_none_mut().0, this.to_glib())
     }
 }
 
@@ -81,16 +79,16 @@ bitflags! {
 
 #[doc(hidden)]
 impl ToGlib for KeyListenerSyncType {
-    type GlibType = atspi_sys::AtspiKeyListenerSyncType;
+    type GlibType = ffi::AtspiKeyListenerSyncType;
 
-    fn to_glib(&self) -> atspi_sys::AtspiKeyListenerSyncType {
+    fn to_glib(&self) -> ffi::AtspiKeyListenerSyncType {
         self.bits()
     }
 }
 
 #[doc(hidden)]
-impl FromGlib<atspi_sys::AtspiKeyListenerSyncType> for KeyListenerSyncType {
-    fn from_glib(value: atspi_sys::AtspiKeyListenerSyncType) -> KeyListenerSyncType {
+impl FromGlib<ffi::AtspiKeyListenerSyncType> for KeyListenerSyncType {
+    fn from_glib(value: ffi::AtspiKeyListenerSyncType) -> KeyListenerSyncType {
         skip_assert_initialized!();
         KeyListenerSyncType::from_bits_truncate(value)
     }
@@ -98,25 +96,25 @@ impl FromGlib<atspi_sys::AtspiKeyListenerSyncType> for KeyListenerSyncType {
 
 impl StaticType for KeyListenerSyncType {
     fn static_type() -> Type {
-        unsafe { from_glib(atspi_sys::atspi_key_listener_sync_type_get_type()) }
+        unsafe { from_glib(ffi::atspi_key_listener_sync_type_get_type()) }
     }
 }
 
 impl<'a> FromValueOptional<'a> for KeyListenerSyncType {
-    unsafe fn from_value_optional(value: &Value) -> Option<Self> {
+    unsafe fn from_value_optional(value: &glib::Value) -> Option<Self> {
         Some(FromValue::from_value(value))
     }
 }
 
 impl<'a> FromValue<'a> for KeyListenerSyncType {
-    unsafe fn from_value(value: &Value) -> Self {
-        from_glib(gobject_sys::g_value_get_flags(value.to_glib_none().0))
+    unsafe fn from_value(value: &glib::Value) -> Self {
+        from_glib(glib::gobject_ffi::g_value_get_flags(value.to_glib_none().0))
     }
 }
 
 impl SetValue for KeyListenerSyncType {
-    unsafe fn set_value(value: &mut Value, this: &Self) {
-        gobject_sys::g_value_set_flags(value.to_glib_none_mut().0, this.to_glib())
+    unsafe fn set_value(value: &mut glib::Value, this: &Self) {
+        glib::gobject_ffi::g_value_set_flags(value.to_glib_none_mut().0, this.to_glib())
     }
 }
 

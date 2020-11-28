@@ -2,18 +2,17 @@
 // from gir-files (https://github.com/gtk-rs/gir-files)
 // DO NOT EDIT
 
-use atspi_sys;
+use crate::Accessible;
+use crate::RelationType;
 use glib::object::IsA;
 use glib::translate::*;
 use std::fmt;
-use Accessible;
-use RelationType;
 
-glib_wrapper! {
-    pub struct Relation(Object<atspi_sys::AtspiRelation, atspi_sys::AtspiRelationClass, RelationClass>);
+glib::glib_wrapper! {
+    pub struct Relation(Object<ffi::AtspiRelation, ffi::AtspiRelationClass>);
 
     match fn {
-        get_type => || atspi_sys::atspi_relation_get_type(),
+        get_type => || ffi::atspi_relation_get_type(),
     }
 }
 
@@ -30,25 +29,25 @@ pub trait RelationExt: 'static {
 impl<O: IsA<Relation>> RelationExt for O {
     fn get_n_targets(&self) -> i32 {
         unsafe {
-            atspi_sys::atspi_relation_get_n_targets(self.as_ref().to_glib_none().0)
+            ffi::atspi_relation_get_n_targets(self.as_ref().to_glib_none().0)
         }
     }
 
     fn get_relation_type(&self) -> RelationType {
         unsafe {
-            from_glib(atspi_sys::atspi_relation_get_relation_type(self.as_ref().to_glib_none().0))
+            from_glib(ffi::atspi_relation_get_relation_type(self.as_ref().to_glib_none().0))
         }
     }
 
     fn get_target(&self, i: i32) -> Option<Accessible> {
         unsafe {
-            from_glib_full(atspi_sys::atspi_relation_get_target(self.as_ref().to_glib_none().0, i))
+            from_glib_full(ffi::atspi_relation_get_target(self.as_ref().to_glib_none().0, i))
         }
     }
 }
 
 impl fmt::Display for Relation {
     fn fmt(&self, f: &mut fmt::Formatter) -> fmt::Result {
-        write!(f, "Relation")
+        f.write_str("Relation")
     }
 }

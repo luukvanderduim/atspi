@@ -2,19 +2,17 @@
 // from gir-files (https://github.com/gtk-rs/gir-files)
 // DO NOT EDIT
 
-use atspi_sys;
-use glib;
+use crate::Hyperlink;
 use glib::object::IsA;
 use glib::translate::*;
 use std::fmt;
 use std::ptr;
-use Hyperlink;
 
-glib_wrapper! {
-    pub struct Hypertext(Interface<atspi_sys::AtspiHypertext>);
+glib::glib_wrapper! {
+    pub struct Hypertext(Interface<ffi::AtspiHypertext>);
 
     match fn {
-        get_type => || atspi_sys::atspi_hypertext_get_type(),
+        get_type => || ffi::atspi_hypertext_get_type(),
     }
 }
 
@@ -32,7 +30,7 @@ impl<O: IsA<Hypertext>> HypertextExt for O {
     fn get_link(&self, link_index: i32) -> Result<Option<Hyperlink>, glib::Error> {
         unsafe {
             let mut error = ptr::null_mut();
-            let ret = atspi_sys::atspi_hypertext_get_link(self.as_ref().to_glib_none().0, link_index, &mut error);
+            let ret = ffi::atspi_hypertext_get_link(self.as_ref().to_glib_none().0, link_index, &mut error);
             if error.is_null() { Ok(from_glib_full(ret)) } else { Err(from_glib_full(error)) }
         }
     }
@@ -40,7 +38,7 @@ impl<O: IsA<Hypertext>> HypertextExt for O {
     fn get_link_index(&self, character_offset: i32) -> Result<i32, glib::Error> {
         unsafe {
             let mut error = ptr::null_mut();
-            let ret = atspi_sys::atspi_hypertext_get_link_index(self.as_ref().to_glib_none().0, character_offset, &mut error);
+            let ret = ffi::atspi_hypertext_get_link_index(self.as_ref().to_glib_none().0, character_offset, &mut error);
             if error.is_null() { Ok(ret) } else { Err(from_glib_full(error)) }
         }
     }
@@ -48,7 +46,7 @@ impl<O: IsA<Hypertext>> HypertextExt for O {
     fn get_n_links(&self) -> Result<i32, glib::Error> {
         unsafe {
             let mut error = ptr::null_mut();
-            let ret = atspi_sys::atspi_hypertext_get_n_links(self.as_ref().to_glib_none().0, &mut error);
+            let ret = ffi::atspi_hypertext_get_n_links(self.as_ref().to_glib_none().0, &mut error);
             if error.is_null() { Ok(ret) } else { Err(from_glib_full(error)) }
         }
     }
@@ -56,6 +54,6 @@ impl<O: IsA<Hypertext>> HypertextExt for O {
 
 impl fmt::Display for Hypertext {
     fn fmt(&self, f: &mut fmt::Formatter) -> fmt::Result {
-        write!(f, "Hypertext")
+        f.write_str("Hypertext")
     }
 }

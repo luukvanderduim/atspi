@@ -1,10 +1,10 @@
 use crate::Accessible;
-use atspi_sys::*;
+use ffi;
 use glib::translate::*;
 
 pub fn get_desktop(i: i32) -> Option<Accessible> {
     unsafe {
-        let ret: *mut AtspiAccessible = atspi_get_desktop(i);
+        let ret: *mut ffi::AtspiAccessible = ffi::atspi_get_desktop(i);
         if ret.is_null() {
             None
         } else {
@@ -14,13 +14,13 @@ pub fn get_desktop(i: i32) -> Option<Accessible> {
 }
 
 pub fn get_desktop_count() -> i32 {
-    unsafe { atspi_get_desktop_count() }
+    unsafe { ffi::atspi_get_desktop_count() }
 }
 
 pub fn init() -> bool {
-    unsafe { atspi_sys::atspi_init() == 0 }
+    unsafe { ffi::atspi_init() == 0 }
 }
 
 pub fn exit() -> bool {
-    unsafe { atspi_sys::atspi_exit() == 0 }
+    unsafe { ffi::atspi_exit() == 0 }
 }

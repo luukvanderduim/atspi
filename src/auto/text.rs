@@ -2,25 +2,22 @@
 // from gir-files (https://github.com/gtk-rs/gir-files)
 // DO NOT EDIT
 
-use atspi_sys;
-use glib;
+use crate::CoordType;
+use crate::Range;
+use crate::Rect;
+use crate::TextBoundaryType;
+use crate::TextGranularity;
+use crate::TextRange;
 use glib::object::IsA;
 use glib::translate::*;
-use glib::GString;
 use std::fmt;
 use std::ptr;
-use CoordType;
-use Range;
-use Rect;
-use TextBoundaryType;
-use TextGranularity;
-use TextRange;
 
-glib_wrapper! {
-    pub struct Text(Interface<atspi_sys::AtspiText>);
+glib::glib_wrapper! {
+    pub struct Text(Interface<ffi::AtspiText>);
 
     match fn {
-        get_type => || atspi_sys::atspi_text_get_type(),
+        get_type => || ffi::atspi_text_get_type(),
     }
 }
 
@@ -53,11 +50,11 @@ pub trait TextExt: 'static {
 
     fn get_string_at_offset(&self, offset: i32, granularity: TextGranularity) -> Result<TextRange, glib::Error>;
 
-    fn get_text(&self, start_offset: i32, end_offset: i32) -> Result<GString, glib::Error>;
+    fn get_text(&self, start_offset: i32, end_offset: i32) -> Result<glib::GString, glib::Error>;
 
     fn get_text_after_offset(&self, offset: i32, type_: TextBoundaryType) -> Result<TextRange, glib::Error>;
 
-    fn get_text_attribute_value(&self, offset: i32, attribute_name: &str) -> Result<Option<GString>, glib::Error>;
+    fn get_text_attribute_value(&self, offset: i32, attribute_name: &str) -> Result<Option<glib::GString>, glib::Error>;
 
     //fn get_text_attributes(&self, offset: i32) -> Result<(/*Unknown conversion*//*Unimplemented*/HashTable TypeId { ns_id: 0, id: 28 }/TypeId { ns_id: 0, id: 28 }, i32, i32), glib::Error>;
 
@@ -78,23 +75,23 @@ impl<O: IsA<Text>> TextExt for O {
     fn add_selection(&self, start_offset: i32, end_offset: i32) -> Result<(), glib::Error> {
         unsafe {
             let mut error = ptr::null_mut();
-            let _ = atspi_sys::atspi_text_add_selection(self.as_ref().to_glib_none().0, start_offset, end_offset, &mut error);
+            let _ = ffi::atspi_text_add_selection(self.as_ref().to_glib_none().0, start_offset, end_offset, &mut error);
             if error.is_null() { Ok(()) } else { Err(from_glib_full(error)) }
         }
     }
 
     //fn get_attribute_run(&self, offset: i32, include_defaults: bool) -> Result<(/*Unknown conversion*//*Unimplemented*/HashTable TypeId { ns_id: 0, id: 28 }/TypeId { ns_id: 0, id: 28 }, i32, i32), glib::Error> {
-    //    unsafe { TODO: call atspi_sys:atspi_text_get_attribute_run() }
+    //    unsafe { TODO: call ffi:atspi_text_get_attribute_run() }
     //}
 
     //fn get_bounded_ranges(&self, x: i32, y: i32, width: i32, height: i32, type_: CoordType, clipTypeX: TextClipType, clipTypeY: TextClipType) -> Result</*Unknown conversion*//*Unimplemented*/Array TypeId { ns_id: 1, id: 64 }, glib::Error> {
-    //    unsafe { TODO: call atspi_sys:atspi_text_get_bounded_ranges() }
+    //    unsafe { TODO: call ffi:atspi_text_get_bounded_ranges() }
     //}
 
     fn get_caret_offset(&self) -> Result<i32, glib::Error> {
         unsafe {
             let mut error = ptr::null_mut();
-            let ret = atspi_sys::atspi_text_get_caret_offset(self.as_ref().to_glib_none().0, &mut error);
+            let ret = ffi::atspi_text_get_caret_offset(self.as_ref().to_glib_none().0, &mut error);
             if error.is_null() { Ok(ret) } else { Err(from_glib_full(error)) }
         }
     }
@@ -102,7 +99,7 @@ impl<O: IsA<Text>> TextExt for O {
     fn get_character_at_offset(&self, offset: i32) -> Result<(), glib::Error> {
         unsafe {
             let mut error = ptr::null_mut();
-            let _ = atspi_sys::atspi_text_get_character_at_offset(self.as_ref().to_glib_none().0, offset, &mut error);
+            let _ = ffi::atspi_text_get_character_at_offset(self.as_ref().to_glib_none().0, offset, &mut error);
             if error.is_null() { Ok(()) } else { Err(from_glib_full(error)) }
         }
     }
@@ -110,7 +107,7 @@ impl<O: IsA<Text>> TextExt for O {
     fn get_character_count(&self) -> Result<i32, glib::Error> {
         unsafe {
             let mut error = ptr::null_mut();
-            let ret = atspi_sys::atspi_text_get_character_count(self.as_ref().to_glib_none().0, &mut error);
+            let ret = ffi::atspi_text_get_character_count(self.as_ref().to_glib_none().0, &mut error);
             if error.is_null() { Ok(ret) } else { Err(from_glib_full(error)) }
         }
     }
@@ -118,19 +115,19 @@ impl<O: IsA<Text>> TextExt for O {
     fn get_character_extents(&self, offset: i32, type_: CoordType) -> Result<Rect, glib::Error> {
         unsafe {
             let mut error = ptr::null_mut();
-            let ret = atspi_sys::atspi_text_get_character_extents(self.as_ref().to_glib_none().0, offset, type_.to_glib(), &mut error);
+            let ret = ffi::atspi_text_get_character_extents(self.as_ref().to_glib_none().0, offset, type_.to_glib(), &mut error);
             if error.is_null() { Ok(from_glib_full(ret)) } else { Err(from_glib_full(error)) }
         }
     }
 
     //fn get_default_attributes(&self) -> Result</*Unknown conversion*//*Unimplemented*/HashTable TypeId { ns_id: 0, id: 28 }/TypeId { ns_id: 0, id: 28 }, glib::Error> {
-    //    unsafe { TODO: call atspi_sys:atspi_text_get_default_attributes() }
+    //    unsafe { TODO: call ffi:atspi_text_get_default_attributes() }
     //}
 
     fn get_n_selections(&self) -> Result<i32, glib::Error> {
         unsafe {
             let mut error = ptr::null_mut();
-            let ret = atspi_sys::atspi_text_get_n_selections(self.as_ref().to_glib_none().0, &mut error);
+            let ret = ffi::atspi_text_get_n_selections(self.as_ref().to_glib_none().0, &mut error);
             if error.is_null() { Ok(ret) } else { Err(from_glib_full(error)) }
         }
     }
@@ -138,7 +135,7 @@ impl<O: IsA<Text>> TextExt for O {
     fn get_offset_at_point(&self, x: i32, y: i32, type_: CoordType) -> Result<i32, glib::Error> {
         unsafe {
             let mut error = ptr::null_mut();
-            let ret = atspi_sys::atspi_text_get_offset_at_point(self.as_ref().to_glib_none().0, x, y, type_.to_glib(), &mut error);
+            let ret = ffi::atspi_text_get_offset_at_point(self.as_ref().to_glib_none().0, x, y, type_.to_glib(), &mut error);
             if error.is_null() { Ok(ret) } else { Err(from_glib_full(error)) }
         }
     }
@@ -146,7 +143,7 @@ impl<O: IsA<Text>> TextExt for O {
     fn get_range_extents(&self, start_offset: i32, end_offset: i32, type_: CoordType) -> Result<Rect, glib::Error> {
         unsafe {
             let mut error = ptr::null_mut();
-            let ret = atspi_sys::atspi_text_get_range_extents(self.as_ref().to_glib_none().0, start_offset, end_offset, type_.to_glib(), &mut error);
+            let ret = ffi::atspi_text_get_range_extents(self.as_ref().to_glib_none().0, start_offset, end_offset, type_.to_glib(), &mut error);
             if error.is_null() { Ok(from_glib_full(ret)) } else { Err(from_glib_full(error)) }
         }
     }
@@ -154,7 +151,7 @@ impl<O: IsA<Text>> TextExt for O {
     fn get_selection(&self, selection_num: i32) -> Result<Range, glib::Error> {
         unsafe {
             let mut error = ptr::null_mut();
-            let ret = atspi_sys::atspi_text_get_selection(self.as_ref().to_glib_none().0, selection_num, &mut error);
+            let ret = ffi::atspi_text_get_selection(self.as_ref().to_glib_none().0, selection_num, &mut error);
             if error.is_null() { Ok(from_glib_full(ret)) } else { Err(from_glib_full(error)) }
         }
     }
@@ -162,15 +159,15 @@ impl<O: IsA<Text>> TextExt for O {
     fn get_string_at_offset(&self, offset: i32, granularity: TextGranularity) -> Result<TextRange, glib::Error> {
         unsafe {
             let mut error = ptr::null_mut();
-            let ret = atspi_sys::atspi_text_get_string_at_offset(self.as_ref().to_glib_none().0, offset, granularity.to_glib(), &mut error);
+            let ret = ffi::atspi_text_get_string_at_offset(self.as_ref().to_glib_none().0, offset, granularity.to_glib(), &mut error);
             if error.is_null() { Ok(from_glib_full(ret)) } else { Err(from_glib_full(error)) }
         }
     }
 
-    fn get_text(&self, start_offset: i32, end_offset: i32) -> Result<GString, glib::Error> {
+    fn get_text(&self, start_offset: i32, end_offset: i32) -> Result<glib::GString, glib::Error> {
         unsafe {
             let mut error = ptr::null_mut();
-            let ret = atspi_sys::atspi_text_get_text(self.as_ref().to_glib_none().0, start_offset, end_offset, &mut error);
+            let ret = ffi::atspi_text_get_text(self.as_ref().to_glib_none().0, start_offset, end_offset, &mut error);
             if error.is_null() { Ok(from_glib_full(ret)) } else { Err(from_glib_full(error)) }
         }
     }
@@ -178,27 +175,27 @@ impl<O: IsA<Text>> TextExt for O {
     fn get_text_after_offset(&self, offset: i32, type_: TextBoundaryType) -> Result<TextRange, glib::Error> {
         unsafe {
             let mut error = ptr::null_mut();
-            let ret = atspi_sys::atspi_text_get_text_after_offset(self.as_ref().to_glib_none().0, offset, type_.to_glib(), &mut error);
+            let ret = ffi::atspi_text_get_text_after_offset(self.as_ref().to_glib_none().0, offset, type_.to_glib(), &mut error);
             if error.is_null() { Ok(from_glib_full(ret)) } else { Err(from_glib_full(error)) }
         }
     }
 
-    fn get_text_attribute_value(&self, offset: i32, attribute_name: &str) -> Result<Option<GString>, glib::Error> {
+    fn get_text_attribute_value(&self, offset: i32, attribute_name: &str) -> Result<Option<glib::GString>, glib::Error> {
         unsafe {
             let mut error = ptr::null_mut();
-            let ret = atspi_sys::atspi_text_get_text_attribute_value(self.as_ref().to_glib_none().0, offset, attribute_name.to_glib_none().0, &mut error);
+            let ret = ffi::atspi_text_get_text_attribute_value(self.as_ref().to_glib_none().0, offset, attribute_name.to_glib_none().0, &mut error);
             if error.is_null() { Ok(from_glib_full(ret)) } else { Err(from_glib_full(error)) }
         }
     }
 
     //fn get_text_attributes(&self, offset: i32) -> Result<(/*Unknown conversion*//*Unimplemented*/HashTable TypeId { ns_id: 0, id: 28 }/TypeId { ns_id: 0, id: 28 }, i32, i32), glib::Error> {
-    //    unsafe { TODO: call atspi_sys:atspi_text_get_text_attributes() }
+    //    unsafe { TODO: call ffi:atspi_text_get_text_attributes() }
     //}
 
     fn get_text_before_offset(&self, offset: i32, type_: TextBoundaryType) -> Result<TextRange, glib::Error> {
         unsafe {
             let mut error = ptr::null_mut();
-            let ret = atspi_sys::atspi_text_get_text_before_offset(self.as_ref().to_glib_none().0, offset, type_.to_glib(), &mut error);
+            let ret = ffi::atspi_text_get_text_before_offset(self.as_ref().to_glib_none().0, offset, type_.to_glib(), &mut error);
             if error.is_null() { Ok(from_glib_full(ret)) } else { Err(from_glib_full(error)) }
         }
     }
@@ -206,19 +203,19 @@ impl<O: IsA<Text>> TextExt for O {
     fn remove_selection(&self, selection_num: i32) -> Result<(), glib::Error> {
         unsafe {
             let mut error = ptr::null_mut();
-            let _ = atspi_sys::atspi_text_remove_selection(self.as_ref().to_glib_none().0, selection_num, &mut error);
+            let _ = ffi::atspi_text_remove_selection(self.as_ref().to_glib_none().0, selection_num, &mut error);
             if error.is_null() { Ok(()) } else { Err(from_glib_full(error)) }
         }
     }
 
     //fn scroll_substring_to(&self, start_offset: i32, end_offset: i32, type_: /*Ignored*/ScrollType) -> Result<(), glib::Error> {
-    //    unsafe { TODO: call atspi_sys:atspi_text_scroll_substring_to() }
+    //    unsafe { TODO: call ffi:atspi_text_scroll_substring_to() }
     //}
 
     fn scroll_substring_to_point(&self, start_offset: i32, end_offset: i32, coords: CoordType, x: i32, y: i32) -> Result<(), glib::Error> {
         unsafe {
             let mut error = ptr::null_mut();
-            let _ = atspi_sys::atspi_text_scroll_substring_to_point(self.as_ref().to_glib_none().0, start_offset, end_offset, coords.to_glib(), x, y, &mut error);
+            let _ = ffi::atspi_text_scroll_substring_to_point(self.as_ref().to_glib_none().0, start_offset, end_offset, coords.to_glib(), x, y, &mut error);
             if error.is_null() { Ok(()) } else { Err(from_glib_full(error)) }
         }
     }
@@ -226,7 +223,7 @@ impl<O: IsA<Text>> TextExt for O {
     fn set_caret_offset(&self, new_offset: i32) -> Result<(), glib::Error> {
         unsafe {
             let mut error = ptr::null_mut();
-            let _ = atspi_sys::atspi_text_set_caret_offset(self.as_ref().to_glib_none().0, new_offset, &mut error);
+            let _ = ffi::atspi_text_set_caret_offset(self.as_ref().to_glib_none().0, new_offset, &mut error);
             if error.is_null() { Ok(()) } else { Err(from_glib_full(error)) }
         }
     }
@@ -234,7 +231,7 @@ impl<O: IsA<Text>> TextExt for O {
     fn set_selection(&self, selection_num: i32, start_offset: i32, end_offset: i32) -> Result<(), glib::Error> {
         unsafe {
             let mut error = ptr::null_mut();
-            let _ = atspi_sys::atspi_text_set_selection(self.as_ref().to_glib_none().0, selection_num, start_offset, end_offset, &mut error);
+            let _ = ffi::atspi_text_set_selection(self.as_ref().to_glib_none().0, selection_num, start_offset, end_offset, &mut error);
             if error.is_null() { Ok(()) } else { Err(from_glib_full(error)) }
         }
     }
@@ -242,6 +239,6 @@ impl<O: IsA<Text>> TextExt for O {
 
 impl fmt::Display for Text {
     fn fmt(&self, f: &mut fmt::Formatter) -> fmt::Result {
-        write!(f, "Text")
+        f.write_str("Text")
     }
 }

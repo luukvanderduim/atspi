@@ -2,9 +2,6 @@
 // from gir-files (https://github.com/gtk-rs/gir-files)
 // DO NOT EDIT
 
-extern crate atspi_sys;
-extern crate shell_words;
-extern crate tempfile;
 use std::env;
 use std::error::Error;
 use std::path::Path;
@@ -387,6 +384,7 @@ const RUST_CONSTANTS: &[(&str, &str)] = &[
     ("(gint) ATSPI_LAYER_WIDGET", "3"),
     ("(gint) ATSPI_LAYER_WINDOW", "7"),
     ("(gint) ATSPI_LOCALE_TYPE_COLLATE", "1"),
+    ("ATSPI_LOCALE_TYPE_COUNT", "6"),
     ("(gint) ATSPI_LOCALE_TYPE_CTYPE", "2"),
     ("(gint) ATSPI_LOCALE_TYPE_MESSAGES", "0"),
     ("(gint) ATSPI_LOCALE_TYPE_MONETARY", "3"),
@@ -631,6 +629,7 @@ const RUST_CONSTANTS: &[(&str, &str)] = &[
     ("(gint) ATSPI_TEXT_GRANULARITY_PARAGRAPH", "4"),
     ("(gint) ATSPI_TEXT_GRANULARITY_SENTENCE", "2"),
     ("(gint) ATSPI_TEXT_GRANULARITY_WORD", "1"),
+    ("ATSPI_TREETRAVERSALTYPE_COUNT", "4"),
 ];
 
 

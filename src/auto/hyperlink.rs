@@ -2,22 +2,19 @@
 // from gir-files (https://github.com/gtk-rs/gir-files)
 // DO NOT EDIT
 
-use atspi_sys;
-use glib;
+use crate::Accessible;
+use crate::Object;
+use crate::Range;
 use glib::object::IsA;
 use glib::translate::*;
-use glib::GString;
 use std::fmt;
 use std::ptr;
-use Accessible;
-use Object;
-use Range;
 
-glib_wrapper! {
-    pub struct Hyperlink(Object<atspi_sys::AtspiHyperlink, atspi_sys::AtspiHyperlinkClass, HyperlinkClass>) @extends Object;
+glib::glib_wrapper! {
+    pub struct Hyperlink(Object<ffi::AtspiHyperlink, ffi::AtspiHyperlinkClass>) @extends Object;
 
     match fn {
-        get_type => || atspi_sys::atspi_hyperlink_get_type(),
+        get_type => || ffi::atspi_hyperlink_get_type(),
     }
 }
 
@@ -34,7 +31,7 @@ pub trait HyperlinkExt: 'static {
 
     fn get_start_index(&self) -> Result<i32, glib::Error>;
 
-    fn get_uri(&self, i: i32) -> Result<GString, glib::Error>;
+    fn get_uri(&self, i: i32) -> Result<glib::GString, glib::Error>;
 
     fn is_valid(&self) -> Result<(), glib::Error>;
 }
@@ -43,7 +40,7 @@ impl<O: IsA<Hyperlink>> HyperlinkExt for O {
     fn get_end_index(&self) -> Result<i32, glib::Error> {
         unsafe {
             let mut error = ptr::null_mut();
-            let ret = atspi_sys::atspi_hyperlink_get_end_index(self.as_ref().to_glib_none().0, &mut error);
+            let ret = ffi::atspi_hyperlink_get_end_index(self.as_ref().to_glib_none().0, &mut error);
             if error.is_null() { Ok(ret) } else { Err(from_glib_full(error)) }
         }
     }
@@ -51,7 +48,7 @@ impl<O: IsA<Hyperlink>> HyperlinkExt for O {
     fn get_index_range(&self) -> Result<Range, glib::Error> {
         unsafe {
             let mut error = ptr::null_mut();
-            let ret = atspi_sys::atspi_hyperlink_get_index_range(self.as_ref().to_glib_none().0, &mut error);
+            let ret = ffi::atspi_hyperlink_get_index_range(self.as_ref().to_glib_none().0, &mut error);
             if error.is_null() { Ok(from_glib_full(ret)) } else { Err(from_glib_full(error)) }
         }
     }
@@ -59,7 +56,7 @@ impl<O: IsA<Hyperlink>> HyperlinkExt for O {
     fn get_n_anchors(&self) -> Result<i32, glib::Error> {
         unsafe {
             let mut error = ptr::null_mut();
-            let ret = atspi_sys::atspi_hyperlink_get_n_anchors(self.as_ref().to_glib_none().0, &mut error);
+            let ret = ffi::atspi_hyperlink_get_n_anchors(self.as_ref().to_glib_none().0, &mut error);
             if error.is_null() { Ok(ret) } else { Err(from_glib_full(error)) }
         }
     }
@@ -67,7 +64,7 @@ impl<O: IsA<Hyperlink>> HyperlinkExt for O {
     fn get_object(&self, i: i32) -> Result<Accessible, glib::Error> {
         unsafe {
             let mut error = ptr::null_mut();
-            let ret = atspi_sys::atspi_hyperlink_get_object(self.as_ref().to_glib_none().0, i, &mut error);
+            let ret = ffi::atspi_hyperlink_get_object(self.as_ref().to_glib_none().0, i, &mut error);
             if error.is_null() { Ok(from_glib_full(ret)) } else { Err(from_glib_full(error)) }
         }
     }
@@ -75,15 +72,15 @@ impl<O: IsA<Hyperlink>> HyperlinkExt for O {
     fn get_start_index(&self) -> Result<i32, glib::Error> {
         unsafe {
             let mut error = ptr::null_mut();
-            let ret = atspi_sys::atspi_hyperlink_get_start_index(self.as_ref().to_glib_none().0, &mut error);
+            let ret = ffi::atspi_hyperlink_get_start_index(self.as_ref().to_glib_none().0, &mut error);
             if error.is_null() { Ok(ret) } else { Err(from_glib_full(error)) }
         }
     }
 
-    fn get_uri(&self, i: i32) -> Result<GString, glib::Error> {
+    fn get_uri(&self, i: i32) -> Result<glib::GString, glib::Error> {
         unsafe {
             let mut error = ptr::null_mut();
-            let ret = atspi_sys::atspi_hyperlink_get_uri(self.as_ref().to_glib_none().0, i, &mut error);
+            let ret = ffi::atspi_hyperlink_get_uri(self.as_ref().to_glib_none().0, i, &mut error);
             if error.is_null() { Ok(from_glib_full(ret)) } else { Err(from_glib_full(error)) }
         }
     }
@@ -91,7 +88,7 @@ impl<O: IsA<Hyperlink>> HyperlinkExt for O {
     fn is_valid(&self) -> Result<(), glib::Error> {
         unsafe {
             let mut error = ptr::null_mut();
-            let _ = atspi_sys::atspi_hyperlink_is_valid(self.as_ref().to_glib_none().0, &mut error);
+            let _ = ffi::atspi_hyperlink_is_valid(self.as_ref().to_glib_none().0, &mut error);
             if error.is_null() { Ok(()) } else { Err(from_glib_full(error)) }
         }
     }
@@ -99,6 +96,6 @@ impl<O: IsA<Hyperlink>> HyperlinkExt for O {
 
 impl fmt::Display for Hyperlink {
     fn fmt(&self, f: &mut fmt::Formatter) -> fmt::Result {
-        write!(f, "Hyperlink")
+        f.write_str("Hyperlink")
     }
 }

@@ -1,25 +1,17 @@
 [package]
 name = "atspi"
-version = "0.1.1"
-keywords = ["accessibility", "a11y"]
+version = "0.1.2"
+keywords = ["accessibility", "a11y", "ffi"]
 authors = ["Luuk van der Duim <luukvanderduim@gmail.com>"]
 
+
 [dependencies]
-libc = "0.2.71"
+libc = "0.2.80"
 bitflags = "1.2.1"
-
-[dependencies.atspi-sys]
-path = "./atspi-sys"
-
-[dependencies.glib]
-git = "https://github.com/gtk-rs/glib"
-
-[dependencies.glib-sys]
-git = "https://github.com/gtk-rs/sys"
-
-
-[dependencies.gobject-sys]
- git = "https://github.com/gtk-rs/sys"
+ffi = { package = "atspi-sys", path = "atspi-sys" }
+glib = { git = "https://github.com/gtk-rs/gtk-rs.git" } 
+glib-sys = { git = "https://github.com/gtk-rs/gtk-rs.git" }
+gobject-sys = { git = "https://github.com/gtk-rs/gtk-rs.git" }
 
 
 [dev-dependencies]

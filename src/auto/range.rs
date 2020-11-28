@@ -2,17 +2,15 @@
 // from gir-files (https://github.com/gtk-rs/gir-files)
 // DO NOT EDIT
 
-use atspi_sys;
 use glib::translate::*;
-use gobject_sys;
 
-glib_wrapper! {
+glib::glib_wrapper! {
     #[derive(Debug, PartialEq, Eq, PartialOrd, Ord, Hash)]
-    pub struct Range(Boxed<atspi_sys::AtspiRange>);
+    pub struct Range(Boxed<ffi::AtspiRange>);
 
     match fn {
-        copy => |ptr| gobject_sys::g_boxed_copy(atspi_sys::atspi_range_get_type(), ptr as *mut _) as *mut atspi_sys::AtspiRange,
-        free => |ptr| gobject_sys::g_boxed_free(atspi_sys::atspi_range_get_type(), ptr as *mut _),
-        get_type => || atspi_sys::atspi_range_get_type(),
+        copy => |ptr| glib::gobject_ffi::g_boxed_copy(ffi::atspi_range_get_type(), ptr as *mut _) as *mut ffi::AtspiRange,
+        free => |ptr| glib::gobject_ffi::g_boxed_free(ffi::atspi_range_get_type(), ptr as *mut _),
+        get_type => || ffi::atspi_range_get_type(),
     }
 }

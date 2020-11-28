@@ -1,6 +1,6 @@
 [options]
 work_mode = "sys"
-girs_dir = "../gir-files-20.04/"
+girs_dir = "../gir-files-20.10/"
 library = "Atspi"
 version = "2.0"
 target_path = "."

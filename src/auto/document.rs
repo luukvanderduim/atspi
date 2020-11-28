@@ -2,19 +2,16 @@
 // from gir-files (https://github.com/gtk-rs/gir-files)
 // DO NOT EDIT
 
-use atspi_sys;
-use glib;
 use glib::object::IsA;
 use glib::translate::*;
-use glib::GString;
 use std::fmt;
 use std::ptr;
 
-glib_wrapper! {
-    pub struct Document(Interface<atspi_sys::AtspiDocument>);
+glib::glib_wrapper! {
+    pub struct Document(Interface<ffi::AtspiDocument>);
 
     match fn {
-        get_type => || atspi_sys::atspi_document_get_type(),
+        get_type => || ffi::atspi_document_get_type(),
     }
 }
 
@@ -23,9 +20,11 @@ pub const NONE_DOCUMENT: Option<&Document> = None;
 pub trait DocumentExt: 'static {
     fn get_current_page_number(&self) -> Result<i32, glib::Error>;
 
-    fn get_document_attribute_value(&self, attribute: &str) -> Result<GString, glib::Error>;
+    fn get_document_attribute_value(&self, attribute: &str) -> Result<glib::GString, glib::Error>;
 
-    fn get_locale(&self) -> Result<GString, glib::Error>;
+    //fn get_document_attributes(&self) -> Result</*Unknown conversion*//*Unimplemented*/HashTable TypeId { ns_id: 0, id: 28 }/TypeId { ns_id: 0, id: 28 }, glib::Error>;
+
+    fn get_locale(&self) -> Result<glib::GString, glib::Error>;
 
     fn get_page_count(&self) -> Result<i32, glib::Error>;
 }
@@ -34,23 +33,27 @@ impl<O: IsA<Document>> DocumentExt for O {
     fn get_current_page_number(&self) -> Result<i32, glib::Error> {
         unsafe {
             let mut error = ptr::null_mut();
-            let ret = atspi_sys::atspi_document_get_current_page_number(self.as_ref().to_glib_none().0, &mut error);
+            let ret = ffi::atspi_document_get_current_page_number(self.as_ref().to_glib_none().0, &mut error);
             if error.is_null() { Ok(ret) } else { Err(from_glib_full(error)) }
         }
     }
 
-    fn get_document_attribute_value(&self, attribute: &str) -> Result<GString, glib::Error> {
+    fn get_document_attribute_value(&self, attribute: &str) -> Result<glib::GString, glib::Error> {
         unsafe {
             let mut error = ptr::null_mut();
-            let ret = atspi_sys::atspi_document_get_document_attribute_value(self.as_ref().to_glib_none().0, attribute.to_glib_none().0, &mut error);
+            let ret = ffi::atspi_document_get_document_attribute_value(self.as_ref().to_glib_none().0, attribute.to_glib_none().0, &mut error);
             if error.is_null() { Ok(from_glib_full(ret)) } else { Err(from_glib_full(error)) }
         }
     }
 
-    fn get_locale(&self) -> Result<GString, glib::Error> {
+    //fn get_document_attributes(&self) -> Result</*Unknown conversion*//*Unimplemented*/HashTable TypeId { ns_id: 0, id: 28 }/TypeId { ns_id: 0, id: 28 }, glib::Error> {
+    //    unsafe { TODO: call ffi:atspi_document_get_document_attributes() }
+    //}
+
+    fn get_locale(&self) -> Result<glib::GString, glib::Error> {
         unsafe {
             let mut error = ptr::null_mut();
-            let ret = atspi_sys::atspi_document_get_locale(self.as_ref().to_glib_none().0, &mut error);
+            let ret = ffi::atspi_document_get_locale(self.as_ref().to_glib_none().0, &mut error);
             if error.is_null() { Ok(from_glib_full(ret)) } else { Err(from_glib_full(error)) }
         }
     }
@@ -58,7 +61,7 @@ impl<O: IsA<Document>> DocumentExt for O {
     fn get_page_count(&self) -> Result<i32, glib::Error> {
         unsafe {
             let mut error = ptr::null_mut();
-            let ret = atspi_sys::atspi_document_get_page_count(self.as_ref().to_glib_none().0, &mut error);
+            let ret = ffi::atspi_document_get_page_count(self.as_ref().to_glib_none().0, &mut error);
             if error.is_null() { Ok(ret) } else { Err(from_glib_full(error)) }
         }
     }
@@ -66,6 +69,6 @@ impl<O: IsA<Document>> DocumentExt for O {
 
 impl fmt::Display for Document {
     fn fmt(&self, f: &mut fmt::Formatter) -> fmt::Result {
-        write!(f, "Document")
+        f.write_str("Document")
     }
 }

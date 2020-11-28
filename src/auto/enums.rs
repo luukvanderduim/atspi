@@ -2,15 +2,12 @@
 // from gir-files (https://github.com/gtk-rs/gir-files)
 // DO NOT EDIT
 
-use atspi_sys;
 use glib::translate::*;
 use glib::value::FromValue;
 use glib::value::FromValueOptional;
 use glib::value::SetValue;
-use glib::value::Value;
 use glib::StaticType;
 use glib::Type;
-use gobject_sys;
 use std::fmt;
 
 #[derive(Debug, Eq, PartialEq, Ord, PartialOrd, Hash)]
@@ -23,7 +20,7 @@ pub enum CollectionMatchType {
     None,
     Empty,
     LastDefined,
-    #[doc(hidden)]
+#[doc(hidden)]
     __Unknown(i32),
 }
 
@@ -43,24 +40,24 @@ impl fmt::Display for CollectionMatchType {
 
 #[doc(hidden)]
 impl ToGlib for CollectionMatchType {
-    type GlibType = atspi_sys::AtspiCollectionMatchType;
+    type GlibType = ffi::AtspiCollectionMatchType;
 
-    fn to_glib(&self) -> atspi_sys::AtspiCollectionMatchType {
+    fn to_glib(&self) -> ffi::AtspiCollectionMatchType {
         match *self {
-            CollectionMatchType::Invalid => atspi_sys::ATSPI_Collection_MATCH_INVALID,
-            CollectionMatchType::All => atspi_sys::ATSPI_Collection_MATCH_ALL,
-            CollectionMatchType::Any => atspi_sys::ATSPI_Collection_MATCH_ANY,
-            CollectionMatchType::None => atspi_sys::ATSPI_Collection_MATCH_NONE,
-            CollectionMatchType::Empty => atspi_sys::ATSPI_Collection_MATCH_EMPTY,
-            CollectionMatchType::LastDefined => atspi_sys::ATSPI_Collection_MATCH_LAST_DEFINED,
-            CollectionMatchType::__Unknown(value) => value
-        }
+            CollectionMatchType::Invalid => ffi::ATSPI_Collection_MATCH_INVALID,
+            CollectionMatchType::All => ffi::ATSPI_Collection_MATCH_ALL,
+            CollectionMatchType::Any => ffi::ATSPI_Collection_MATCH_ANY,
+            CollectionMatchType::None => ffi::ATSPI_Collection_MATCH_NONE,
+            CollectionMatchType::Empty => ffi::ATSPI_Collection_MATCH_EMPTY,
+            CollectionMatchType::LastDefined => ffi::ATSPI_Collection_MATCH_LAST_DEFINED,
+            CollectionMatchType::__Unknown(value) => value,
+}
     }
 }
 
 #[doc(hidden)]
-impl FromGlib<atspi_sys::AtspiCollectionMatchType> for CollectionMatchType {
-    fn from_glib(value: atspi_sys::AtspiCollectionMatchType) -> Self {
+impl FromGlib<ffi::AtspiCollectionMatchType> for CollectionMatchType {
+    fn from_glib(value: ffi::AtspiCollectionMatchType) -> Self {
         skip_assert_initialized!();
         match value {
             0 => CollectionMatchType::Invalid,
@@ -70,31 +67,31 @@ impl FromGlib<atspi_sys::AtspiCollectionMatchType> for CollectionMatchType {
             4 => CollectionMatchType::Empty,
             5 => CollectionMatchType::LastDefined,
             value => CollectionMatchType::__Unknown(value),
-        }
+}
     }
 }
 
 impl StaticType for CollectionMatchType {
     fn static_type() -> Type {
-        unsafe { from_glib(atspi_sys::atspi_collection_match_type_get_type()) }
+        unsafe { from_glib(ffi::atspi_collection_match_type_get_type()) }
     }
 }
 
 impl<'a> FromValueOptional<'a> for CollectionMatchType {
-    unsafe fn from_value_optional(value: &Value) -> Option<Self> {
+    unsafe fn from_value_optional(value: &glib::Value) -> Option<Self> {
         Some(FromValue::from_value(value))
     }
 }
 
 impl<'a> FromValue<'a> for CollectionMatchType {
-    unsafe fn from_value(value: &Value) -> Self {
-        from_glib(gobject_sys::g_value_get_enum(value.to_glib_none().0))
+    unsafe fn from_value(value: &glib::Value) -> Self {
+        from_glib(glib::gobject_ffi::g_value_get_enum(value.to_glib_none().0))
     }
 }
 
 impl SetValue for CollectionMatchType {
-    unsafe fn set_value(value: &mut Value, this: &Self) {
-        gobject_sys::g_value_set_enum(value.to_glib_none_mut().0, this.to_glib())
+    unsafe fn set_value(value: &mut glib::Value, this: &Self) {
+        glib::gobject_ffi::g_value_set_enum(value.to_glib_none_mut().0, this.to_glib())
     }
 }
 
@@ -110,7 +107,7 @@ pub enum CollectionSortOrder {
     ReverseFlow,
     ReverseTab,
     LastDefined,
-    #[doc(hidden)]
+#[doc(hidden)]
     __Unknown(i32),
 }
 
@@ -132,26 +129,26 @@ impl fmt::Display for CollectionSortOrder {
 
 #[doc(hidden)]
 impl ToGlib for CollectionSortOrder {
-    type GlibType = atspi_sys::AtspiCollectionSortOrder;
+    type GlibType = ffi::AtspiCollectionSortOrder;
 
-    fn to_glib(&self) -> atspi_sys::AtspiCollectionSortOrder {
+    fn to_glib(&self) -> ffi::AtspiCollectionSortOrder {
         match *self {
-            CollectionSortOrder::Invalid => atspi_sys::ATSPI_Collection_SORT_ORDER_INVALID,
-            CollectionSortOrder::Canonical => atspi_sys::ATSPI_Collection_SORT_ORDER_CANONICAL,
-            CollectionSortOrder::Flow => atspi_sys::ATSPI_Collection_SORT_ORDER_FLOW,
-            CollectionSortOrder::Tab => atspi_sys::ATSPI_Collection_SORT_ORDER_TAB,
-            CollectionSortOrder::ReverseCanonical => atspi_sys::ATSPI_Collection_SORT_ORDER_REVERSE_CANONICAL,
-            CollectionSortOrder::ReverseFlow => atspi_sys::ATSPI_Collection_SORT_ORDER_REVERSE_FLOW,
-            CollectionSortOrder::ReverseTab => atspi_sys::ATSPI_Collection_SORT_ORDER_REVERSE_TAB,
-            CollectionSortOrder::LastDefined => atspi_sys::ATSPI_Collection_SORT_ORDER_LAST_DEFINED,
-            CollectionSortOrder::__Unknown(value) => value
-        }
+            CollectionSortOrder::Invalid => ffi::ATSPI_Collection_SORT_ORDER_INVALID,
+            CollectionSortOrder::Canonical => ffi::ATSPI_Collection_SORT_ORDER_CANONICAL,
+            CollectionSortOrder::Flow => ffi::ATSPI_Collection_SORT_ORDER_FLOW,
+            CollectionSortOrder::Tab => ffi::ATSPI_Collection_SORT_ORDER_TAB,
+            CollectionSortOrder::ReverseCanonical => ffi::ATSPI_Collection_SORT_ORDER_REVERSE_CANONICAL,
+            CollectionSortOrder::ReverseFlow => ffi::ATSPI_Collection_SORT_ORDER_REVERSE_FLOW,
+            CollectionSortOrder::ReverseTab => ffi::ATSPI_Collection_SORT_ORDER_REVERSE_TAB,
+            CollectionSortOrder::LastDefined => ffi::ATSPI_Collection_SORT_ORDER_LAST_DEFINED,
+            CollectionSortOrder::__Unknown(value) => value,
+}
     }
 }
 
 #[doc(hidden)]
-impl FromGlib<atspi_sys::AtspiCollectionSortOrder> for CollectionSortOrder {
-    fn from_glib(value: atspi_sys::AtspiCollectionSortOrder) -> Self {
+impl FromGlib<ffi::AtspiCollectionSortOrder> for CollectionSortOrder {
+    fn from_glib(value: ffi::AtspiCollectionSortOrder) -> Self {
         skip_assert_initialized!();
         match value {
             0 => CollectionSortOrder::Invalid,
@@ -163,31 +160,31 @@ impl FromGlib<atspi_sys::AtspiCollectionSortOrder> for CollectionSortOrder {
             6 => CollectionSortOrder::ReverseTab,
             7 => CollectionSortOrder::LastDefined,
             value => CollectionSortOrder::__Unknown(value),
-        }
+}
     }
 }
 
 impl StaticType for CollectionSortOrder {
     fn static_type() -> Type {
-        unsafe { from_glib(atspi_sys::atspi_collection_sort_order_get_type()) }
+        unsafe { from_glib(ffi::atspi_collection_sort_order_get_type()) }
     }
 }
 
 impl<'a> FromValueOptional<'a> for CollectionSortOrder {
-    unsafe fn from_value_optional(value: &Value) -> Option<Self> {
+    unsafe fn from_value_optional(value: &glib::Value) -> Option<Self> {
         Some(FromValue::from_value(value))
     }
 }
 
 impl<'a> FromValue<'a> for CollectionSortOrder {
-    unsafe fn from_value(value: &Value) -> Self {
-        from_glib(gobject_sys::g_value_get_enum(value.to_glib_none().0))
+    unsafe fn from_value(value: &glib::Value) -> Self {
+        from_glib(glib::gobject_ffi::g_value_get_enum(value.to_glib_none().0))
     }
 }
 
 impl SetValue for CollectionSortOrder {
-    unsafe fn set_value(value: &mut Value, this: &Self) {
-        gobject_sys::g_value_set_enum(value.to_glib_none_mut().0, this.to_glib())
+    unsafe fn set_value(value: &mut glib::Value, this: &Self) {
+        glib::gobject_ffi::g_value_set_enum(value.to_glib_none_mut().0, this.to_glib())
     }
 }
 
@@ -199,7 +196,7 @@ pub enum CollectionTreeTraversalType {
     RestrictSibling,
     Inorder,
     LastDefined,
-    #[doc(hidden)]
+#[doc(hidden)]
     __Unknown(i32),
 }
 
@@ -217,22 +214,22 @@ impl fmt::Display for CollectionTreeTraversalType {
 
 #[doc(hidden)]
 impl ToGlib for CollectionTreeTraversalType {
-    type GlibType = atspi_sys::AtspiCollectionTreeTraversalType;
+    type GlibType = ffi::AtspiCollectionTreeTraversalType;
 
-    fn to_glib(&self) -> atspi_sys::AtspiCollectionTreeTraversalType {
+    fn to_glib(&self) -> ffi::AtspiCollectionTreeTraversalType {
         match *self {
-            CollectionTreeTraversalType::RestrictChildren => atspi_sys::ATSPI_Collection_TREE_RESTRICT_CHILDREN,
-            CollectionTreeTraversalType::RestrictSibling => atspi_sys::ATSPI_Collection_TREE_RESTRICT_SIBLING,
-            CollectionTreeTraversalType::Inorder => atspi_sys::ATSPI_Collection_TREE_INORDER,
-            CollectionTreeTraversalType::LastDefined => atspi_sys::ATSPI_Collection_TREE_LAST_DEFINED,
-            CollectionTreeTraversalType::__Unknown(value) => value
-        }
+            CollectionTreeTraversalType::RestrictChildren => ffi::ATSPI_Collection_TREE_RESTRICT_CHILDREN,
+            CollectionTreeTraversalType::RestrictSibling => ffi::ATSPI_Collection_TREE_RESTRICT_SIBLING,
+            CollectionTreeTraversalType::Inorder => ffi::ATSPI_Collection_TREE_INORDER,
+            CollectionTreeTraversalType::LastDefined => ffi::ATSPI_Collection_TREE_LAST_DEFINED,
+            CollectionTreeTraversalType::__Unknown(value) => value,
+}
     }
 }
 
 #[doc(hidden)]
-impl FromGlib<atspi_sys::AtspiCollectionTreeTraversalType> for CollectionTreeTraversalType {
-    fn from_glib(value: atspi_sys::AtspiCollectionTreeTraversalType) -> Self {
+impl FromGlib<ffi::AtspiCollectionTreeTraversalType> for CollectionTreeTraversalType {
+    fn from_glib(value: ffi::AtspiCollectionTreeTraversalType) -> Self {
         skip_assert_initialized!();
         match value {
             0 => CollectionTreeTraversalType::RestrictChildren,
@@ -240,31 +237,31 @@ impl FromGlib<atspi_sys::AtspiCollectionTreeTraversalType> for CollectionTreeTra
             2 => CollectionTreeTraversalType::Inorder,
             3 => CollectionTreeTraversalType::LastDefined,
             value => CollectionTreeTraversalType::__Unknown(value),
-        }
+}
     }
 }
 
 impl StaticType for CollectionTreeTraversalType {
     fn static_type() -> Type {
-        unsafe { from_glib(atspi_sys::atspi_collection_tree_traversal_type_get_type()) }
+        unsafe { from_glib(ffi::atspi_collection_tree_traversal_type_get_type()) }
     }
 }
 
 impl<'a> FromValueOptional<'a> for CollectionTreeTraversalType {
-    unsafe fn from_value_optional(value: &Value) -> Option<Self> {
+    unsafe fn from_value_optional(value: &glib::Value) -> Option<Self> {
         Some(FromValue::from_value(value))
     }
 }
 
 impl<'a> FromValue<'a> for CollectionTreeTraversalType {
-    unsafe fn from_value(value: &Value) -> Self {
-        from_glib(gobject_sys::g_value_get_enum(value.to_glib_none().0))
+    unsafe fn from_value(value: &glib::Value) -> Self {
+        from_glib(glib::gobject_ffi::g_value_get_enum(value.to_glib_none().0))
     }
 }
 
 impl SetValue for CollectionTreeTraversalType {
-    unsafe fn set_value(value: &mut Value, this: &Self) {
-        gobject_sys::g_value_set_enum(value.to_glib_none_mut().0, this.to_glib())
+    unsafe fn set_value(value: &mut glib::Value, this: &Self) {
+        glib::gobject_ffi::g_value_set_enum(value.to_glib_none_mut().0, this.to_glib())
     }
 }
 
@@ -281,7 +278,7 @@ pub enum ComponentLayer {
     Overlay,
     Window,
     LastDefined,
-    #[doc(hidden)]
+#[doc(hidden)]
     __Unknown(i32),
 }
 
@@ -304,27 +301,27 @@ impl fmt::Display for ComponentLayer {
 
 #[doc(hidden)]
 impl ToGlib for ComponentLayer {
-    type GlibType = atspi_sys::AtspiComponentLayer;
+    type GlibType = ffi::AtspiComponentLayer;
 
-    fn to_glib(&self) -> atspi_sys::AtspiComponentLayer {
+    fn to_glib(&self) -> ffi::AtspiComponentLayer {
         match *self {
-            ComponentLayer::Invalid => atspi_sys::ATSPI_LAYER_INVALID,
-            ComponentLayer::Background => atspi_sys::ATSPI_LAYER_BACKGROUND,
-            ComponentLayer::Canvas => atspi_sys::ATSPI_LAYER_CANVAS,
-            ComponentLayer::Widget => atspi_sys::ATSPI_LAYER_WIDGET,
-            ComponentLayer::Mdi => atspi_sys::ATSPI_LAYER_MDI,
-            ComponentLayer::Popup => atspi_sys::ATSPI_LAYER_POPUP,
-            ComponentLayer::Overlay => atspi_sys::ATSPI_LAYER_OVERLAY,
-            ComponentLayer::Window => atspi_sys::ATSPI_LAYER_WINDOW,
-            ComponentLayer::LastDefined => atspi_sys::ATSPI_LAYER_LAST_DEFINED,
-            ComponentLayer::__Unknown(value) => value
-        }
+            ComponentLayer::Invalid => ffi::ATSPI_LAYER_INVALID,
+            ComponentLayer::Background => ffi::ATSPI_LAYER_BACKGROUND,
+            ComponentLayer::Canvas => ffi::ATSPI_LAYER_CANVAS,
+            ComponentLayer::Widget => ffi::ATSPI_LAYER_WIDGET,
+            ComponentLayer::Mdi => ffi::ATSPI_LAYER_MDI,
+            ComponentLayer::Popup => ffi::ATSPI_LAYER_POPUP,
+            ComponentLayer::Overlay => ffi::ATSPI_LAYER_OVERLAY,
+            ComponentLayer::Window => ffi::ATSPI_LAYER_WINDOW,
+            ComponentLayer::LastDefined => ffi::ATSPI_LAYER_LAST_DEFINED,
+            ComponentLayer::__Unknown(value) => value,
+}
     }
 }
 
 #[doc(hidden)]
-impl FromGlib<atspi_sys::AtspiComponentLayer> for ComponentLayer {
-    fn from_glib(value: atspi_sys::AtspiComponentLayer) -> Self {
+impl FromGlib<ffi::AtspiComponentLayer> for ComponentLayer {
+    fn from_glib(value: ffi::AtspiComponentLayer) -> Self {
         skip_assert_initialized!();
         match value {
             0 => ComponentLayer::Invalid,
@@ -337,31 +334,31 @@ impl FromGlib<atspi_sys::AtspiComponentLayer> for ComponentLayer {
             7 => ComponentLayer::Window,
             8 => ComponentLayer::LastDefined,
             value => ComponentLayer::__Unknown(value),
-        }
+}
     }
 }
 
 impl StaticType for ComponentLayer {
     fn static_type() -> Type {
-        unsafe { from_glib(atspi_sys::atspi_component_layer_get_type()) }
+        unsafe { from_glib(ffi::atspi_component_layer_get_type()) }
     }
 }
 
 impl<'a> FromValueOptional<'a> for ComponentLayer {
-    unsafe fn from_value_optional(value: &Value) -> Option<Self> {
+    unsafe fn from_value_optional(value: &glib::Value) -> Option<Self> {
         Some(FromValue::from_value(value))
     }
 }
 
 impl<'a> FromValue<'a> for ComponentLayer {
-    unsafe fn from_value(value: &Value) -> Self {
-        from_glib(gobject_sys::g_value_get_enum(value.to_glib_none().0))
+    unsafe fn from_value(value: &glib::Value) -> Self {
+        from_glib(glib::gobject_ffi::g_value_get_enum(value.to_glib_none().0))
     }
 }
 
 impl SetValue for ComponentLayer {
-    unsafe fn set_value(value: &mut Value, this: &Self) {
-        gobject_sys::g_value_set_enum(value.to_glib_none_mut().0, this.to_glib())
+    unsafe fn set_value(value: &mut glib::Value, this: &Self) {
+        glib::gobject_ffi::g_value_set_enum(value.to_glib_none_mut().0, this.to_glib())
     }
 }
 
@@ -372,7 +369,7 @@ pub enum CoordType {
     Screen,
     Window,
     Parent,
-    #[doc(hidden)]
+#[doc(hidden)]
     __Unknown(i32),
 }
 
@@ -389,52 +386,52 @@ impl fmt::Display for CoordType {
 
 #[doc(hidden)]
 impl ToGlib for CoordType {
-    type GlibType = atspi_sys::AtspiCoordType;
+    type GlibType = ffi::AtspiCoordType;
 
-    fn to_glib(&self) -> atspi_sys::AtspiCoordType {
+    fn to_glib(&self) -> ffi::AtspiCoordType {
         match *self {
-            CoordType::Screen => atspi_sys::ATSPI_COORD_TYPE_SCREEN,
-            CoordType::Window => atspi_sys::ATSPI_COORD_TYPE_WINDOW,
-            CoordType::Parent => atspi_sys::ATSPI_COORD_TYPE_PARENT,
-            CoordType::__Unknown(value) => value
-        }
+            CoordType::Screen => ffi::ATSPI_COORD_TYPE_SCREEN,
+            CoordType::Window => ffi::ATSPI_COORD_TYPE_WINDOW,
+            CoordType::Parent => ffi::ATSPI_COORD_TYPE_PARENT,
+            CoordType::__Unknown(value) => value,
+}
     }
 }
 
 #[doc(hidden)]
-impl FromGlib<atspi_sys::AtspiCoordType> for CoordType {
-    fn from_glib(value: atspi_sys::AtspiCoordType) -> Self {
+impl FromGlib<ffi::AtspiCoordType> for CoordType {
+    fn from_glib(value: ffi::AtspiCoordType) -> Self {
         skip_assert_initialized!();
         match value {
             0 => CoordType::Screen,
             1 => CoordType::Window,
             2 => CoordType::Parent,
             value => CoordType::__Unknown(value),
-        }
+}
     }
 }
 
 impl StaticType for CoordType {
     fn static_type() -> Type {
-        unsafe { from_glib(atspi_sys::atspi_coord_type_get_type()) }
+        unsafe { from_glib(ffi::atspi_coord_type_get_type()) }
     }
 }
 
 impl<'a> FromValueOptional<'a> for CoordType {
-    unsafe fn from_value_optional(value: &Value) -> Option<Self> {
+    unsafe fn from_value_optional(value: &glib::Value) -> Option<Self> {
         Some(FromValue::from_value(value))
     }
 }
 
 impl<'a> FromValue<'a> for CoordType {
-    unsafe fn from_value(value: &Value) -> Self {
-        from_glib(gobject_sys::g_value_get_enum(value.to_glib_none().0))
+    unsafe fn from_value(value: &glib::Value) -> Self {
+        from_glib(glib::gobject_ffi::g_value_get_enum(value.to_glib_none().0))
     }
 }
 
 impl SetValue for CoordType {
-    unsafe fn set_value(value: &mut Value, this: &Self) {
-        gobject_sys::g_value_set_enum(value.to_glib_none_mut().0, this.to_glib())
+    unsafe fn set_value(value: &mut glib::Value, this: &Self) {
+        glib::gobject_ffi::g_value_set_enum(value.to_glib_none_mut().0, this.to_glib())
     }
 }
 
@@ -449,7 +446,7 @@ pub enum KeySynthType {
     String,
     Lockmodifiers,
     Unlockmodifiers,
-    #[doc(hidden)]
+#[doc(hidden)]
     __Unknown(i32),
 }
 
@@ -470,25 +467,25 @@ impl fmt::Display for KeySynthType {
 
 #[doc(hidden)]
 impl ToGlib for KeySynthType {
-    type GlibType = atspi_sys::AtspiKeySynthType;
+    type GlibType = ffi::AtspiKeySynthType;
 
-    fn to_glib(&self) -> atspi_sys::AtspiKeySynthType {
+    fn to_glib(&self) -> ffi::AtspiKeySynthType {
         match *self {
-            KeySynthType::Press => atspi_sys::ATSPI_KEY_PRESS,
-            KeySynthType::Release => atspi_sys::ATSPI_KEY_RELEASE,
-            KeySynthType::Pressrelease => atspi_sys::ATSPI_KEY_PRESSRELEASE,
-            KeySynthType::Sym => atspi_sys::ATSPI_KEY_SYM,
-            KeySynthType::String => atspi_sys::ATSPI_KEY_STRING,
-            KeySynthType::Lockmodifiers => atspi_sys::ATSPI_KEY_LOCKMODIFIERS,
-            KeySynthType::Unlockmodifiers => atspi_sys::ATSPI_KEY_UNLOCKMODIFIERS,
-            KeySynthType::__Unknown(value) => value
-        }
+            KeySynthType::Press => ffi::ATSPI_KEY_PRESS,
+            KeySynthType::Release => ffi::ATSPI_KEY_RELEASE,
+            KeySynthType::Pressrelease => ffi::ATSPI_KEY_PRESSRELEASE,
+            KeySynthType::Sym => ffi::ATSPI_KEY_SYM,
+            KeySynthType::String => ffi::ATSPI_KEY_STRING,
+            KeySynthType::Lockmodifiers => ffi::ATSPI_KEY_LOCKMODIFIERS,
+            KeySynthType::Unlockmodifiers => ffi::ATSPI_KEY_UNLOCKMODIFIERS,
+            KeySynthType::__Unknown(value) => value,
+}
     }
 }
 
 #[doc(hidden)]
-impl FromGlib<atspi_sys::AtspiKeySynthType> for KeySynthType {
-    fn from_glib(value: atspi_sys::AtspiKeySynthType) -> Self {
+impl FromGlib<ffi::AtspiKeySynthType> for KeySynthType {
+    fn from_glib(value: ffi::AtspiKeySynthType) -> Self {
         skip_assert_initialized!();
         match value {
             0 => KeySynthType::Press,
@@ -499,31 +496,31 @@ impl FromGlib<atspi_sys::AtspiKeySynthType> for KeySynthType {
             5 => KeySynthType::Lockmodifiers,
             6 => KeySynthType::Unlockmodifiers,
             value => KeySynthType::__Unknown(value),
-        }
+}
     }
 }
 
 impl StaticType for KeySynthType {
     fn static_type() -> Type {
-        unsafe { from_glib(atspi_sys::atspi_key_synth_type_get_type()) }
+        unsafe { from_glib(ffi::atspi_key_synth_type_get_type()) }
     }
 }
 
 impl<'a> FromValueOptional<'a> for KeySynthType {
-    unsafe fn from_value_optional(value: &Value) -> Option<Self> {
+    unsafe fn from_value_optional(value: &glib::Value) -> Option<Self> {
         Some(FromValue::from_value(value))
     }
 }
 
 impl<'a> FromValue<'a> for KeySynthType {
-    unsafe fn from_value(value: &Value) -> Self {
-        from_glib(gobject_sys::g_value_get_enum(value.to_glib_none().0))
+    unsafe fn from_value(value: &glib::Value) -> Self {
+        from_glib(glib::gobject_ffi::g_value_get_enum(value.to_glib_none().0))
     }
 }
 
 impl SetValue for KeySynthType {
-    unsafe fn set_value(value: &mut Value, this: &Self) {
-        gobject_sys::g_value_set_enum(value.to_glib_none_mut().0, this.to_glib())
+    unsafe fn set_value(value: &mut glib::Value, this: &Self) {
+        glib::gobject_ffi::g_value_set_enum(value.to_glib_none_mut().0, this.to_glib())
     }
 }
 
@@ -555,7 +552,7 @@ pub enum RelationType {
     ErrorMessage,
     ErrorFor,
     LastDefined,
-    #[doc(hidden)]
+#[doc(hidden)]
     __Unknown(i32),
 }
 
@@ -593,42 +590,42 @@ impl fmt::Display for RelationType {
 
 #[doc(hidden)]
 impl ToGlib for RelationType {
-    type GlibType = atspi_sys::AtspiRelationType;
+    type GlibType = ffi::AtspiRelationType;
 
-    fn to_glib(&self) -> atspi_sys::AtspiRelationType {
+    fn to_glib(&self) -> ffi::AtspiRelationType {
         match *self {
-            RelationType::Null => atspi_sys::ATSPI_RELATION_NULL,
-            RelationType::LabelFor => atspi_sys::ATSPI_RELATION_LABEL_FOR,
-            RelationType::LabelledBy => atspi_sys::ATSPI_RELATION_LABELLED_BY,
-            RelationType::ControllerFor => atspi_sys::ATSPI_RELATION_CONTROLLER_FOR,
-            RelationType::ControlledBy => atspi_sys::ATSPI_RELATION_CONTROLLED_BY,
-            RelationType::MemberOf => atspi_sys::ATSPI_RELATION_MEMBER_OF,
-            RelationType::TooltipFor => atspi_sys::ATSPI_RELATION_TOOLTIP_FOR,
-            RelationType::NodeChildOf => atspi_sys::ATSPI_RELATION_NODE_CHILD_OF,
-            RelationType::NodeParentOf => atspi_sys::ATSPI_RELATION_NODE_PARENT_OF,
-            RelationType::Extended => atspi_sys::ATSPI_RELATION_EXTENDED,
-            RelationType::FlowsTo => atspi_sys::ATSPI_RELATION_FLOWS_TO,
-            RelationType::FlowsFrom => atspi_sys::ATSPI_RELATION_FLOWS_FROM,
-            RelationType::SubwindowOf => atspi_sys::ATSPI_RELATION_SUBWINDOW_OF,
-            RelationType::Embeds => atspi_sys::ATSPI_RELATION_EMBEDS,
-            RelationType::EmbeddedBy => atspi_sys::ATSPI_RELATION_EMBEDDED_BY,
-            RelationType::PopupFor => atspi_sys::ATSPI_RELATION_POPUP_FOR,
-            RelationType::ParentWindowOf => atspi_sys::ATSPI_RELATION_PARENT_WINDOW_OF,
-            RelationType::DescriptionFor => atspi_sys::ATSPI_RELATION_DESCRIPTION_FOR,
-            RelationType::DescribedBy => atspi_sys::ATSPI_RELATION_DESCRIBED_BY,
-            RelationType::Details => atspi_sys::ATSPI_RELATION_DETAILS,
-            RelationType::DetailsFor => atspi_sys::ATSPI_RELATION_DETAILS_FOR,
-            RelationType::ErrorMessage => atspi_sys::ATSPI_RELATION_ERROR_MESSAGE,
-            RelationType::ErrorFor => atspi_sys::ATSPI_RELATION_ERROR_FOR,
-            RelationType::LastDefined => atspi_sys::ATSPI_RELATION_LAST_DEFINED,
-            RelationType::__Unknown(value) => value
-        }
+            RelationType::Null => ffi::ATSPI_RELATION_NULL,
+            RelationType::LabelFor => ffi::ATSPI_RELATION_LABEL_FOR,
+            RelationType::LabelledBy => ffi::ATSPI_RELATION_LABELLED_BY,
+            RelationType::ControllerFor => ffi::ATSPI_RELATION_CONTROLLER_FOR,
+            RelationType::ControlledBy => ffi::ATSPI_RELATION_CONTROLLED_BY,
+            RelationType::MemberOf => ffi::ATSPI_RELATION_MEMBER_OF,
+            RelationType::TooltipFor => ffi::ATSPI_RELATION_TOOLTIP_FOR,
+            RelationType::NodeChildOf => ffi::ATSPI_RELATION_NODE_CHILD_OF,
+            RelationType::NodeParentOf => ffi::ATSPI_RELATION_NODE_PARENT_OF,
+            RelationType::Extended => ffi::ATSPI_RELATION_EXTENDED,
+            RelationType::FlowsTo => ffi::ATSPI_RELATION_FLOWS_TO,
+            RelationType::FlowsFrom => ffi::ATSPI_RELATION_FLOWS_FROM,
+            RelationType::SubwindowOf => ffi::ATSPI_RELATION_SUBWINDOW_OF,
+            RelationType::Embeds => ffi::ATSPI_RELATION_EMBEDS,
+            RelationType::EmbeddedBy => ffi::ATSPI_RELATION_EMBEDDED_BY,
+            RelationType::PopupFor => ffi::ATSPI_RELATION_POPUP_FOR,
+            RelationType::ParentWindowOf => ffi::ATSPI_RELATION_PARENT_WINDOW_OF,
+            RelationType::DescriptionFor => ffi::ATSPI_RELATION_DESCRIPTION_FOR,
+            RelationType::DescribedBy => ffi::ATSPI_RELATION_DESCRIBED_BY,
+            RelationType::Details => ffi::ATSPI_RELATION_DETAILS,
+            RelationType::DetailsFor => ffi::ATSPI_RELATION_DETAILS_FOR,
+            RelationType::ErrorMessage => ffi::ATSPI_RELATION_ERROR_MESSAGE,
+            RelationType::ErrorFor => ffi::ATSPI_RELATION_ERROR_FOR,
+            RelationType::LastDefined => ffi::ATSPI_RELATION_LAST_DEFINED,
+            RelationType::__Unknown(value) => value,
+}
     }
 }
 
 #[doc(hidden)]
-impl FromGlib<atspi_sys::AtspiRelationType> for RelationType {
-    fn from_glib(value: atspi_sys::AtspiRelationType) -> Self {
+impl FromGlib<ffi::AtspiRelationType> for RelationType {
+    fn from_glib(value: ffi::AtspiRelationType) -> Self {
         skip_assert_initialized!();
         match value {
             0 => RelationType::Null,
@@ -656,31 +653,31 @@ impl FromGlib<atspi_sys::AtspiRelationType> for RelationType {
             22 => RelationType::ErrorFor,
             23 => RelationType::LastDefined,
             value => RelationType::__Unknown(value),
-        }
+}
     }
 }
 
 impl StaticType for RelationType {
     fn static_type() -> Type {
-        unsafe { from_glib(atspi_sys::atspi_relation_type_get_type()) }
+        unsafe { from_glib(ffi::atspi_relation_type_get_type()) }
     }
 }
 
 impl<'a> FromValueOptional<'a> for RelationType {
-    unsafe fn from_value_optional(value: &Value) -> Option<Self> {
+    unsafe fn from_value_optional(value: &glib::Value) -> Option<Self> {
         Some(FromValue::from_value(value))
     }
 }
 
 impl<'a> FromValue<'a> for RelationType {
-    unsafe fn from_value(value: &Value) -> Self {
-        from_glib(gobject_sys::g_value_get_enum(value.to_glib_none().0))
+    unsafe fn from_value(value: &glib::Value) -> Self {
+        from_glib(glib::gobject_ffi::g_value_get_enum(value.to_glib_none().0))
     }
 }
 
 impl SetValue for RelationType {
-    unsafe fn set_value(value: &mut Value, this: &Self) {
-        gobject_sys::g_value_set_enum(value.to_glib_none_mut().0, this.to_glib())
+    unsafe fn set_value(value: &mut glib::Value, this: &Self) {
+        glib::gobject_ffi::g_value_set_enum(value.to_glib_none_mut().0, this.to_glib())
     }
 }
 
@@ -815,8 +812,10 @@ pub enum Role {
     Footnote,
     ContentDeletion,
     ContentInsertion,
+    Mark,
+    Suggestion,
     LastDefined,
-    #[doc(hidden)]
+#[doc(hidden)]
     __Unknown(i32),
 }
 
@@ -950,6 +949,8 @@ impl fmt::Display for Role {
             Role::Footnote => "Footnote",
             Role::ContentDeletion => "ContentDeletion",
             Role::ContentInsertion => "ContentInsertion",
+            Role::Mark => "Mark",
+            Role::Suggestion => "Suggestion",
             Role::LastDefined => "LastDefined",
             _ => "Unknown",
         })
@@ -958,146 +959,148 @@ impl fmt::Display for Role {
 
 #[doc(hidden)]
 impl ToGlib for Role {
-    type GlibType = atspi_sys::AtspiRole;
+    type GlibType = ffi::AtspiRole;
 
-    fn to_glib(&self) -> atspi_sys::AtspiRole {
+    fn to_glib(&self) -> ffi::AtspiRole {
         match *self {
-            Role::Invalid => atspi_sys::ATSPI_ROLE_INVALID,
-            Role::AcceleratorLabel => atspi_sys::ATSPI_ROLE_ACCELERATOR_LABEL,
-            Role::Alert => atspi_sys::ATSPI_ROLE_ALERT,
-            Role::Animation => atspi_sys::ATSPI_ROLE_ANIMATION,
-            Role::Arrow => atspi_sys::ATSPI_ROLE_ARROW,
-            Role::Calendar => atspi_sys::ATSPI_ROLE_CALENDAR,
-            Role::Canvas => atspi_sys::ATSPI_ROLE_CANVAS,
-            Role::CheckBox => atspi_sys::ATSPI_ROLE_CHECK_BOX,
-            Role::CheckMenuItem => atspi_sys::ATSPI_ROLE_CHECK_MENU_ITEM,
-            Role::ColorChooser => atspi_sys::ATSPI_ROLE_COLOR_CHOOSER,
-            Role::ColumnHeader => atspi_sys::ATSPI_ROLE_COLUMN_HEADER,
-            Role::ComboBox => atspi_sys::ATSPI_ROLE_COMBO_BOX,
-            Role::DateEditor => atspi_sys::ATSPI_ROLE_DATE_EDITOR,
-            Role::DesktopIcon => atspi_sys::ATSPI_ROLE_DESKTOP_ICON,
-            Role::DesktopFrame => atspi_sys::ATSPI_ROLE_DESKTOP_FRAME,
-            Role::Dial => atspi_sys::ATSPI_ROLE_DIAL,
-            Role::Dialog => atspi_sys::ATSPI_ROLE_DIALOG,
-            Role::DirectoryPane => atspi_sys::ATSPI_ROLE_DIRECTORY_PANE,
-            Role::DrawingArea => atspi_sys::ATSPI_ROLE_DRAWING_AREA,
-            Role::FileChooser => atspi_sys::ATSPI_ROLE_FILE_CHOOSER,
-            Role::Filler => atspi_sys::ATSPI_ROLE_FILLER,
-            Role::FocusTraversable => atspi_sys::ATSPI_ROLE_FOCUS_TRAVERSABLE,
-            Role::FontChooser => atspi_sys::ATSPI_ROLE_FONT_CHOOSER,
-            Role::Frame => atspi_sys::ATSPI_ROLE_FRAME,
-            Role::GlassPane => atspi_sys::ATSPI_ROLE_GLASS_PANE,
-            Role::HtmlContainer => atspi_sys::ATSPI_ROLE_HTML_CONTAINER,
-            Role::Icon => atspi_sys::ATSPI_ROLE_ICON,
-            Role::Image => atspi_sys::ATSPI_ROLE_IMAGE,
-            Role::InternalFrame => atspi_sys::ATSPI_ROLE_INTERNAL_FRAME,
-            Role::Label => atspi_sys::ATSPI_ROLE_LABEL,
-            Role::LayeredPane => atspi_sys::ATSPI_ROLE_LAYERED_PANE,
-            Role::List => atspi_sys::ATSPI_ROLE_LIST,
-            Role::ListItem => atspi_sys::ATSPI_ROLE_LIST_ITEM,
-            Role::Menu => atspi_sys::ATSPI_ROLE_MENU,
-            Role::MenuBar => atspi_sys::ATSPI_ROLE_MENU_BAR,
-            Role::MenuItem => atspi_sys::ATSPI_ROLE_MENU_ITEM,
-            Role::OptionPane => atspi_sys::ATSPI_ROLE_OPTION_PANE,
-            Role::PageTab => atspi_sys::ATSPI_ROLE_PAGE_TAB,
-            Role::PageTabList => atspi_sys::ATSPI_ROLE_PAGE_TAB_LIST,
-            Role::Panel => atspi_sys::ATSPI_ROLE_PANEL,
-            Role::PasswordText => atspi_sys::ATSPI_ROLE_PASSWORD_TEXT,
-            Role::PopupMenu => atspi_sys::ATSPI_ROLE_POPUP_MENU,
-            Role::ProgressBar => atspi_sys::ATSPI_ROLE_PROGRESS_BAR,
-            Role::PushButton => atspi_sys::ATSPI_ROLE_PUSH_BUTTON,
-            Role::RadioButton => atspi_sys::ATSPI_ROLE_RADIO_BUTTON,
-            Role::RadioMenuItem => atspi_sys::ATSPI_ROLE_RADIO_MENU_ITEM,
-            Role::RootPane => atspi_sys::ATSPI_ROLE_ROOT_PANE,
-            Role::RowHeader => atspi_sys::ATSPI_ROLE_ROW_HEADER,
-            Role::ScrollBar => atspi_sys::ATSPI_ROLE_SCROLL_BAR,
-            Role::ScrollPane => atspi_sys::ATSPI_ROLE_SCROLL_PANE,
-            Role::Separator => atspi_sys::ATSPI_ROLE_SEPARATOR,
-            Role::Slider => atspi_sys::ATSPI_ROLE_SLIDER,
-            Role::SpinButton => atspi_sys::ATSPI_ROLE_SPIN_BUTTON,
-            Role::SplitPane => atspi_sys::ATSPI_ROLE_SPLIT_PANE,
-            Role::StatusBar => atspi_sys::ATSPI_ROLE_STATUS_BAR,
-            Role::Table => atspi_sys::ATSPI_ROLE_TABLE,
-            Role::TableCell => atspi_sys::ATSPI_ROLE_TABLE_CELL,
-            Role::TableColumnHeader => atspi_sys::ATSPI_ROLE_TABLE_COLUMN_HEADER,
-            Role::TableRowHeader => atspi_sys::ATSPI_ROLE_TABLE_ROW_HEADER,
-            Role::TearoffMenuItem => atspi_sys::ATSPI_ROLE_TEAROFF_MENU_ITEM,
-            Role::Terminal => atspi_sys::ATSPI_ROLE_TERMINAL,
-            Role::Text => atspi_sys::ATSPI_ROLE_TEXT,
-            Role::ToggleButton => atspi_sys::ATSPI_ROLE_TOGGLE_BUTTON,
-            Role::ToolBar => atspi_sys::ATSPI_ROLE_TOOL_BAR,
-            Role::ToolTip => atspi_sys::ATSPI_ROLE_TOOL_TIP,
-            Role::Tree => atspi_sys::ATSPI_ROLE_TREE,
-            Role::TreeTable => atspi_sys::ATSPI_ROLE_TREE_TABLE,
-            Role::Unknown => atspi_sys::ATSPI_ROLE_UNKNOWN,
-            Role::Viewport => atspi_sys::ATSPI_ROLE_VIEWPORT,
-            Role::Window => atspi_sys::ATSPI_ROLE_WINDOW,
-            Role::Extended => atspi_sys::ATSPI_ROLE_EXTENDED,
-            Role::Header => atspi_sys::ATSPI_ROLE_HEADER,
-            Role::Footer => atspi_sys::ATSPI_ROLE_FOOTER,
-            Role::Paragraph => atspi_sys::ATSPI_ROLE_PARAGRAPH,
-            Role::Ruler => atspi_sys::ATSPI_ROLE_RULER,
-            Role::Application => atspi_sys::ATSPI_ROLE_APPLICATION,
-            Role::Autocomplete => atspi_sys::ATSPI_ROLE_AUTOCOMPLETE,
-            Role::Editbar => atspi_sys::ATSPI_ROLE_EDITBAR,
-            Role::Embedded => atspi_sys::ATSPI_ROLE_EMBEDDED,
-            Role::Entry => atspi_sys::ATSPI_ROLE_ENTRY,
-            Role::Chart => atspi_sys::ATSPI_ROLE_CHART,
-            Role::Caption => atspi_sys::ATSPI_ROLE_CAPTION,
-            Role::DocumentFrame => atspi_sys::ATSPI_ROLE_DOCUMENT_FRAME,
-            Role::Heading => atspi_sys::ATSPI_ROLE_HEADING,
-            Role::Page => atspi_sys::ATSPI_ROLE_PAGE,
-            Role::Section => atspi_sys::ATSPI_ROLE_SECTION,
-            Role::RedundantObject => atspi_sys::ATSPI_ROLE_REDUNDANT_OBJECT,
-            Role::Form => atspi_sys::ATSPI_ROLE_FORM,
-            Role::Link => atspi_sys::ATSPI_ROLE_LINK,
-            Role::InputMethodWindow => atspi_sys::ATSPI_ROLE_INPUT_METHOD_WINDOW,
-            Role::TableRow => atspi_sys::ATSPI_ROLE_TABLE_ROW,
-            Role::TreeItem => atspi_sys::ATSPI_ROLE_TREE_ITEM,
-            Role::DocumentSpreadsheet => atspi_sys::ATSPI_ROLE_DOCUMENT_SPREADSHEET,
-            Role::DocumentPresentation => atspi_sys::ATSPI_ROLE_DOCUMENT_PRESENTATION,
-            Role::DocumentText => atspi_sys::ATSPI_ROLE_DOCUMENT_TEXT,
-            Role::DocumentWeb => atspi_sys::ATSPI_ROLE_DOCUMENT_WEB,
-            Role::DocumentEmail => atspi_sys::ATSPI_ROLE_DOCUMENT_EMAIL,
-            Role::Comment => atspi_sys::ATSPI_ROLE_COMMENT,
-            Role::ListBox => atspi_sys::ATSPI_ROLE_LIST_BOX,
-            Role::Grouping => atspi_sys::ATSPI_ROLE_GROUPING,
-            Role::ImageMap => atspi_sys::ATSPI_ROLE_IMAGE_MAP,
-            Role::Notification => atspi_sys::ATSPI_ROLE_NOTIFICATION,
-            Role::InfoBar => atspi_sys::ATSPI_ROLE_INFO_BAR,
-            Role::LevelBar => atspi_sys::ATSPI_ROLE_LEVEL_BAR,
-            Role::TitleBar => atspi_sys::ATSPI_ROLE_TITLE_BAR,
-            Role::BlockQuote => atspi_sys::ATSPI_ROLE_BLOCK_QUOTE,
-            Role::Audio => atspi_sys::ATSPI_ROLE_AUDIO,
-            Role::Video => atspi_sys::ATSPI_ROLE_VIDEO,
-            Role::Definition => atspi_sys::ATSPI_ROLE_DEFINITION,
-            Role::Article => atspi_sys::ATSPI_ROLE_ARTICLE,
-            Role::Landmark => atspi_sys::ATSPI_ROLE_LANDMARK,
-            Role::Log => atspi_sys::ATSPI_ROLE_LOG,
-            Role::Marquee => atspi_sys::ATSPI_ROLE_MARQUEE,
-            Role::Math => atspi_sys::ATSPI_ROLE_MATH,
-            Role::Rating => atspi_sys::ATSPI_ROLE_RATING,
-            Role::Timer => atspi_sys::ATSPI_ROLE_TIMER,
-            Role::Static => atspi_sys::ATSPI_ROLE_STATIC,
-            Role::MathFraction => atspi_sys::ATSPI_ROLE_MATH_FRACTION,
-            Role::MathRoot => atspi_sys::ATSPI_ROLE_MATH_ROOT,
-            Role::Subscript => atspi_sys::ATSPI_ROLE_SUBSCRIPT,
-            Role::Superscript => atspi_sys::ATSPI_ROLE_SUPERSCRIPT,
-            Role::DescriptionList => atspi_sys::ATSPI_ROLE_DESCRIPTION_LIST,
-            Role::DescriptionTerm => atspi_sys::ATSPI_ROLE_DESCRIPTION_TERM,
-            Role::DescriptionValue => atspi_sys::ATSPI_ROLE_DESCRIPTION_VALUE,
-            Role::Footnote => atspi_sys::ATSPI_ROLE_FOOTNOTE,
-            Role::ContentDeletion => atspi_sys::ATSPI_ROLE_CONTENT_DELETION,
-            Role::ContentInsertion => atspi_sys::ATSPI_ROLE_CONTENT_INSERTION,
-            Role::LastDefined => atspi_sys::ATSPI_ROLE_LAST_DEFINED,
-            Role::__Unknown(value) => value
-        }
+            Role::Invalid => ffi::ATSPI_ROLE_INVALID,
+            Role::AcceleratorLabel => ffi::ATSPI_ROLE_ACCELERATOR_LABEL,
+            Role::Alert => ffi::ATSPI_ROLE_ALERT,
+            Role::Animation => ffi::ATSPI_ROLE_ANIMATION,
+            Role::Arrow => ffi::ATSPI_ROLE_ARROW,
+            Role::Calendar => ffi::ATSPI_ROLE_CALENDAR,
+            Role::Canvas => ffi::ATSPI_ROLE_CANVAS,
+            Role::CheckBox => ffi::ATSPI_ROLE_CHECK_BOX,
+            Role::CheckMenuItem => ffi::ATSPI_ROLE_CHECK_MENU_ITEM,
+            Role::ColorChooser => ffi::ATSPI_ROLE_COLOR_CHOOSER,
+            Role::ColumnHeader => ffi::ATSPI_ROLE_COLUMN_HEADER,
+            Role::ComboBox => ffi::ATSPI_ROLE_COMBO_BOX,
+            Role::DateEditor => ffi::ATSPI_ROLE_DATE_EDITOR,
+            Role::DesktopIcon => ffi::ATSPI_ROLE_DESKTOP_ICON,
+            Role::DesktopFrame => ffi::ATSPI_ROLE_DESKTOP_FRAME,
+            Role::Dial => ffi::ATSPI_ROLE_DIAL,
+            Role::Dialog => ffi::ATSPI_ROLE_DIALOG,
+            Role::DirectoryPane => ffi::ATSPI_ROLE_DIRECTORY_PANE,
+            Role::DrawingArea => ffi::ATSPI_ROLE_DRAWING_AREA,
+            Role::FileChooser => ffi::ATSPI_ROLE_FILE_CHOOSER,
+            Role::Filler => ffi::ATSPI_ROLE_FILLER,
+            Role::FocusTraversable => ffi::ATSPI_ROLE_FOCUS_TRAVERSABLE,
+            Role::FontChooser => ffi::ATSPI_ROLE_FONT_CHOOSER,
+            Role::Frame => ffi::ATSPI_ROLE_FRAME,
+            Role::GlassPane => ffi::ATSPI_ROLE_GLASS_PANE,
+            Role::HtmlContainer => ffi::ATSPI_ROLE_HTML_CONTAINER,
+            Role::Icon => ffi::ATSPI_ROLE_ICON,
+            Role::Image => ffi::ATSPI_ROLE_IMAGE,
+            Role::InternalFrame => ffi::ATSPI_ROLE_INTERNAL_FRAME,
+            Role::Label => ffi::ATSPI_ROLE_LABEL,
+            Role::LayeredPane => ffi::ATSPI_ROLE_LAYERED_PANE,
+            Role::List => ffi::ATSPI_ROLE_LIST,
+            Role::ListItem => ffi::ATSPI_ROLE_LIST_ITEM,
+            Role::Menu => ffi::ATSPI_ROLE_MENU,
+            Role::MenuBar => ffi::ATSPI_ROLE_MENU_BAR,
+            Role::MenuItem => ffi::ATSPI_ROLE_MENU_ITEM,
+            Role::OptionPane => ffi::ATSPI_ROLE_OPTION_PANE,
+            Role::PageTab => ffi::ATSPI_ROLE_PAGE_TAB,
+            Role::PageTabList => ffi::ATSPI_ROLE_PAGE_TAB_LIST,
+            Role::Panel => ffi::ATSPI_ROLE_PANEL,
+            Role::PasswordText => ffi::ATSPI_ROLE_PASSWORD_TEXT,
+            Role::PopupMenu => ffi::ATSPI_ROLE_POPUP_MENU,
+            Role::ProgressBar => ffi::ATSPI_ROLE_PROGRESS_BAR,
+            Role::PushButton => ffi::ATSPI_ROLE_PUSH_BUTTON,
+            Role::RadioButton => ffi::ATSPI_ROLE_RADIO_BUTTON,
+            Role::RadioMenuItem => ffi::ATSPI_ROLE_RADIO_MENU_ITEM,
+            Role::RootPane => ffi::ATSPI_ROLE_ROOT_PANE,
+            Role::RowHeader => ffi::ATSPI_ROLE_ROW_HEADER,
+            Role::ScrollBar => ffi::ATSPI_ROLE_SCROLL_BAR,
+            Role::ScrollPane => ffi::ATSPI_ROLE_SCROLL_PANE,
+            Role::Separator => ffi::ATSPI_ROLE_SEPARATOR,
+            Role::Slider => ffi::ATSPI_ROLE_SLIDER,
+            Role::SpinButton => ffi::ATSPI_ROLE_SPIN_BUTTON,
+            Role::SplitPane => ffi::ATSPI_ROLE_SPLIT_PANE,
+            Role::StatusBar => ffi::ATSPI_ROLE_STATUS_BAR,
+            Role::Table => ffi::ATSPI_ROLE_TABLE,
+            Role::TableCell => ffi::ATSPI_ROLE_TABLE_CELL,
+            Role::TableColumnHeader => ffi::ATSPI_ROLE_TABLE_COLUMN_HEADER,
+            Role::TableRowHeader => ffi::ATSPI_ROLE_TABLE_ROW_HEADER,
+            Role::TearoffMenuItem => ffi::ATSPI_ROLE_TEAROFF_MENU_ITEM,
+            Role::Terminal => ffi::ATSPI_ROLE_TERMINAL,
+            Role::Text => ffi::ATSPI_ROLE_TEXT,
+            Role::ToggleButton => ffi::ATSPI_ROLE_TOGGLE_BUTTON,
+            Role::ToolBar => ffi::ATSPI_ROLE_TOOL_BAR,
+            Role::ToolTip => ffi::ATSPI_ROLE_TOOL_TIP,
+            Role::Tree => ffi::ATSPI_ROLE_TREE,
+            Role::TreeTable => ffi::ATSPI_ROLE_TREE_TABLE,
+            Role::Unknown => ffi::ATSPI_ROLE_UNKNOWN,
+            Role::Viewport => ffi::ATSPI_ROLE_VIEWPORT,
+            Role::Window => ffi::ATSPI_ROLE_WINDOW,
+            Role::Extended => ffi::ATSPI_ROLE_EXTENDED,
+            Role::Header => ffi::ATSPI_ROLE_HEADER,
+            Role::Footer => ffi::ATSPI_ROLE_FOOTER,
+            Role::Paragraph => ffi::ATSPI_ROLE_PARAGRAPH,
+            Role::Ruler => ffi::ATSPI_ROLE_RULER,
+            Role::Application => ffi::ATSPI_ROLE_APPLICATION,
+            Role::Autocomplete => ffi::ATSPI_ROLE_AUTOCOMPLETE,
+            Role::Editbar => ffi::ATSPI_ROLE_EDITBAR,
+            Role::Embedded => ffi::ATSPI_ROLE_EMBEDDED,
+            Role::Entry => ffi::ATSPI_ROLE_ENTRY,
+            Role::Chart => ffi::ATSPI_ROLE_CHART,
+            Role::Caption => ffi::ATSPI_ROLE_CAPTION,
+            Role::DocumentFrame => ffi::ATSPI_ROLE_DOCUMENT_FRAME,
+            Role::Heading => ffi::ATSPI_ROLE_HEADING,
+            Role::Page => ffi::ATSPI_ROLE_PAGE,
+            Role::Section => ffi::ATSPI_ROLE_SECTION,
+            Role::RedundantObject => ffi::ATSPI_ROLE_REDUNDANT_OBJECT,
+            Role::Form => ffi::ATSPI_ROLE_FORM,
+            Role::Link => ffi::ATSPI_ROLE_LINK,
+            Role::InputMethodWindow => ffi::ATSPI_ROLE_INPUT_METHOD_WINDOW,
+            Role::TableRow => ffi::ATSPI_ROLE_TABLE_ROW,
+            Role::TreeItem => ffi::ATSPI_ROLE_TREE_ITEM,
+            Role::DocumentSpreadsheet => ffi::ATSPI_ROLE_DOCUMENT_SPREADSHEET,
+            Role::DocumentPresentation => ffi::ATSPI_ROLE_DOCUMENT_PRESENTATION,
+            Role::DocumentText => ffi::ATSPI_ROLE_DOCUMENT_TEXT,
+            Role::DocumentWeb => ffi::ATSPI_ROLE_DOCUMENT_WEB,
+            Role::DocumentEmail => ffi::ATSPI_ROLE_DOCUMENT_EMAIL,
+            Role::Comment => ffi::ATSPI_ROLE_COMMENT,
+            Role::ListBox => ffi::ATSPI_ROLE_LIST_BOX,
+            Role::Grouping => ffi::ATSPI_ROLE_GROUPING,
+            Role::ImageMap => ffi::ATSPI_ROLE_IMAGE_MAP,
+            Role::Notification => ffi::ATSPI_ROLE_NOTIFICATION,
+            Role::InfoBar => ffi::ATSPI_ROLE_INFO_BAR,
+            Role::LevelBar => ffi::ATSPI_ROLE_LEVEL_BAR,
+            Role::TitleBar => ffi::ATSPI_ROLE_TITLE_BAR,
+            Role::BlockQuote => ffi::ATSPI_ROLE_BLOCK_QUOTE,
+            Role::Audio => ffi::ATSPI_ROLE_AUDIO,
+            Role::Video => ffi::ATSPI_ROLE_VIDEO,
+            Role::Definition => ffi::ATSPI_ROLE_DEFINITION,
+            Role::Article => ffi::ATSPI_ROLE_ARTICLE,
+            Role::Landmark => ffi::ATSPI_ROLE_LANDMARK,
+            Role::Log => ffi::ATSPI_ROLE_LOG,
+            Role::Marquee => ffi::ATSPI_ROLE_MARQUEE,
+            Role::Math => ffi::ATSPI_ROLE_MATH,
+            Role::Rating => ffi::ATSPI_ROLE_RATING,
+            Role::Timer => ffi::ATSPI_ROLE_TIMER,
+            Role::Static => ffi::ATSPI_ROLE_STATIC,
+            Role::MathFraction => ffi::ATSPI_ROLE_MATH_FRACTION,
+            Role::MathRoot => ffi::ATSPI_ROLE_MATH_ROOT,
+            Role::Subscript => ffi::ATSPI_ROLE_SUBSCRIPT,
+            Role::Superscript => ffi::ATSPI_ROLE_SUPERSCRIPT,
+            Role::DescriptionList => ffi::ATSPI_ROLE_DESCRIPTION_LIST,
+            Role::DescriptionTerm => ffi::ATSPI_ROLE_DESCRIPTION_TERM,
+            Role::DescriptionValue => ffi::ATSPI_ROLE_DESCRIPTION_VALUE,
+            Role::Footnote => ffi::ATSPI_ROLE_FOOTNOTE,
+            Role::ContentDeletion => ffi::ATSPI_ROLE_CONTENT_DELETION,
+            Role::ContentInsertion => ffi::ATSPI_ROLE_CONTENT_INSERTION,
+            Role::Mark => ffi::ATSPI_ROLE_MARK,
+            Role::Suggestion => ffi::ATSPI_ROLE_SUGGESTION,
+            Role::LastDefined => ffi::ATSPI_ROLE_LAST_DEFINED,
+            Role::__Unknown(value) => value,
+}
     }
 }
 
 #[doc(hidden)]
-impl FromGlib<atspi_sys::AtspiRole> for Role {
-    fn from_glib(value: atspi_sys::AtspiRole) -> Self {
+impl FromGlib<ffi::AtspiRole> for Role {
+    fn from_glib(value: ffi::AtspiRole) -> Self {
         skip_assert_initialized!();
         match value {
             0 => Role::Invalid,
@@ -1227,33 +1230,35 @@ impl FromGlib<atspi_sys::AtspiRole> for Role {
             124 => Role::Footnote,
             125 => Role::ContentDeletion,
             126 => Role::ContentInsertion,
-            127 => Role::LastDefined,
+            127 => Role::Mark,
+            128 => Role::Suggestion,
+            129 => Role::LastDefined,
             value => Role::__Unknown(value),
-        }
+}
     }
 }
 
 impl StaticType for Role {
     fn static_type() -> Type {
-        unsafe { from_glib(atspi_sys::atspi_role_get_type()) }
+        unsafe { from_glib(ffi::atspi_role_get_type()) }
     }
 }
 
 impl<'a> FromValueOptional<'a> for Role {
-    unsafe fn from_value_optional(value: &Value) -> Option<Self> {
+    unsafe fn from_value_optional(value: &glib::Value) -> Option<Self> {
         Some(FromValue::from_value(value))
     }
 }
 
 impl<'a> FromValue<'a> for Role {
-    unsafe fn from_value(value: &Value) -> Self {
-        from_glib(gobject_sys::g_value_get_enum(value.to_glib_none().0))
+    unsafe fn from_value(value: &glib::Value) -> Self {
+        from_glib(glib::gobject_ffi::g_value_get_enum(value.to_glib_none().0))
     }
 }
 
 impl SetValue for Role {
-    unsafe fn set_value(value: &mut Value, this: &Self) {
-        gobject_sys::g_value_set_enum(value.to_glib_none_mut().0, this.to_glib())
+    unsafe fn set_value(value: &mut glib::Value, this: &Self) {
+        glib::gobject_ffi::g_value_set_enum(value.to_glib_none_mut().0, this.to_glib())
     }
 }
 
@@ -1306,7 +1311,7 @@ pub enum StateType {
     HasPopup,
     ReadOnly,
     LastDefined,
-    #[doc(hidden)]
+#[doc(hidden)]
     __Unknown(i32),
 }
 
@@ -1365,63 +1370,63 @@ impl fmt::Display for StateType {
 
 #[doc(hidden)]
 impl ToGlib for StateType {
-    type GlibType = atspi_sys::AtspiStateType;
+    type GlibType = ffi::AtspiStateType;
 
-    fn to_glib(&self) -> atspi_sys::AtspiStateType {
+    fn to_glib(&self) -> ffi::AtspiStateType {
         match *self {
-            StateType::Invalid => atspi_sys::ATSPI_STATE_INVALID,
-            StateType::Active => atspi_sys::ATSPI_STATE_ACTIVE,
-            StateType::Armed => atspi_sys::ATSPI_STATE_ARMED,
-            StateType::Busy => atspi_sys::ATSPI_STATE_BUSY,
-            StateType::Checked => atspi_sys::ATSPI_STATE_CHECKED,
-            StateType::Collapsed => atspi_sys::ATSPI_STATE_COLLAPSED,
-            StateType::Defunct => atspi_sys::ATSPI_STATE_DEFUNCT,
-            StateType::Editable => atspi_sys::ATSPI_STATE_EDITABLE,
-            StateType::Enabled => atspi_sys::ATSPI_STATE_ENABLED,
-            StateType::Expandable => atspi_sys::ATSPI_STATE_EXPANDABLE,
-            StateType::Expanded => atspi_sys::ATSPI_STATE_EXPANDED,
-            StateType::Focusable => atspi_sys::ATSPI_STATE_FOCUSABLE,
-            StateType::Focused => atspi_sys::ATSPI_STATE_FOCUSED,
-            StateType::HasTooltip => atspi_sys::ATSPI_STATE_HAS_TOOLTIP,
-            StateType::Horizontal => atspi_sys::ATSPI_STATE_HORIZONTAL,
-            StateType::Iconified => atspi_sys::ATSPI_STATE_ICONIFIED,
-            StateType::Modal => atspi_sys::ATSPI_STATE_MODAL,
-            StateType::MultiLine => atspi_sys::ATSPI_STATE_MULTI_LINE,
-            StateType::Multiselectable => atspi_sys::ATSPI_STATE_MULTISELECTABLE,
-            StateType::Opaque => atspi_sys::ATSPI_STATE_OPAQUE,
-            StateType::Pressed => atspi_sys::ATSPI_STATE_PRESSED,
-            StateType::Resizable => atspi_sys::ATSPI_STATE_RESIZABLE,
-            StateType::Selectable => atspi_sys::ATSPI_STATE_SELECTABLE,
-            StateType::Selected => atspi_sys::ATSPI_STATE_SELECTED,
-            StateType::Sensitive => atspi_sys::ATSPI_STATE_SENSITIVE,
-            StateType::Showing => atspi_sys::ATSPI_STATE_SHOWING,
-            StateType::SingleLine => atspi_sys::ATSPI_STATE_SINGLE_LINE,
-            StateType::Stale => atspi_sys::ATSPI_STATE_STALE,
-            StateType::Transient => atspi_sys::ATSPI_STATE_TRANSIENT,
-            StateType::Vertical => atspi_sys::ATSPI_STATE_VERTICAL,
-            StateType::Visible => atspi_sys::ATSPI_STATE_VISIBLE,
-            StateType::ManagesDescendants => atspi_sys::ATSPI_STATE_MANAGES_DESCENDANTS,
-            StateType::Indeterminate => atspi_sys::ATSPI_STATE_INDETERMINATE,
-            StateType::Required => atspi_sys::ATSPI_STATE_REQUIRED,
-            StateType::Truncated => atspi_sys::ATSPI_STATE_TRUNCATED,
-            StateType::Animated => atspi_sys::ATSPI_STATE_ANIMATED,
-            StateType::InvalidEntry => atspi_sys::ATSPI_STATE_INVALID_ENTRY,
-            StateType::SupportsAutocompletion => atspi_sys::ATSPI_STATE_SUPPORTS_AUTOCOMPLETION,
-            StateType::SelectableText => atspi_sys::ATSPI_STATE_SELECTABLE_TEXT,
-            StateType::IsDefault => atspi_sys::ATSPI_STATE_IS_DEFAULT,
-            StateType::Visited => atspi_sys::ATSPI_STATE_VISITED,
-            StateType::Checkable => atspi_sys::ATSPI_STATE_CHECKABLE,
-            StateType::HasPopup => atspi_sys::ATSPI_STATE_HAS_POPUP,
-            StateType::ReadOnly => atspi_sys::ATSPI_STATE_READ_ONLY,
-            StateType::LastDefined => atspi_sys::ATSPI_STATE_LAST_DEFINED,
-            StateType::__Unknown(value) => value
-        }
+            StateType::Invalid => ffi::ATSPI_STATE_INVALID,
+            StateType::Active => ffi::ATSPI_STATE_ACTIVE,
+            StateType::Armed => ffi::ATSPI_STATE_ARMED,
+            StateType::Busy => ffi::ATSPI_STATE_BUSY,
+            StateType::Checked => ffi::ATSPI_STATE_CHECKED,
+            StateType::Collapsed => ffi::ATSPI_STATE_COLLAPSED,
+            StateType::Defunct => ffi::ATSPI_STATE_DEFUNCT,
+            StateType::Editable => ffi::ATSPI_STATE_EDITABLE,
+            StateType::Enabled => ffi::ATSPI_STATE_ENABLED,
+            StateType::Expandable => ffi::ATSPI_STATE_EXPANDABLE,
+            StateType::Expanded => ffi::ATSPI_STATE_EXPANDED,
+            StateType::Focusable => ffi::ATSPI_STATE_FOCUSABLE,
+            StateType::Focused => ffi::ATSPI_STATE_FOCUSED,
+            StateType::HasTooltip => ffi::ATSPI_STATE_HAS_TOOLTIP,
+            StateType::Horizontal => ffi::ATSPI_STATE_HORIZONTAL,
+            StateType::Iconified => ffi::ATSPI_STATE_ICONIFIED,
+            StateType::Modal => ffi::ATSPI_STATE_MODAL,
+            StateType::MultiLine => ffi::ATSPI_STATE_MULTI_LINE,
+            StateType::Multiselectable => ffi::ATSPI_STATE_MULTISELECTABLE,
+            StateType::Opaque => ffi::ATSPI_STATE_OPAQUE,
+            StateType::Pressed => ffi::ATSPI_STATE_PRESSED,
+            StateType::Resizable => ffi::ATSPI_STATE_RESIZABLE,
+            StateType::Selectable => ffi::ATSPI_STATE_SELECTABLE,
+            StateType::Selected => ffi::ATSPI_STATE_SELECTED,
+            StateType::Sensitive => ffi::ATSPI_STATE_SENSITIVE,
+            StateType::Showing => ffi::ATSPI_STATE_SHOWING,
+            StateType::SingleLine => ffi::ATSPI_STATE_SINGLE_LINE,
+            StateType::Stale => ffi::ATSPI_STATE_STALE,
+            StateType::Transient => ffi::ATSPI_STATE_TRANSIENT,
+            StateType::Vertical => ffi::ATSPI_STATE_VERTICAL,
+            StateType::Visible => ffi::ATSPI_STATE_VISIBLE,
+            StateType::ManagesDescendants => ffi::ATSPI_STATE_MANAGES_DESCENDANTS,
+            StateType::Indeterminate => ffi::ATSPI_STATE_INDETERMINATE,
+            StateType::Required => ffi::ATSPI_STATE_REQUIRED,
+            StateType::Truncated => ffi::ATSPI_STATE_TRUNCATED,
+            StateType::Animated => ffi::ATSPI_STATE_ANIMATED,
+            StateType::InvalidEntry => ffi::ATSPI_STATE_INVALID_ENTRY,
+            StateType::SupportsAutocompletion => ffi::ATSPI_STATE_SUPPORTS_AUTOCOMPLETION,
+            StateType::SelectableText => ffi::ATSPI_STATE_SELECTABLE_TEXT,
+            StateType::IsDefault => ffi::ATSPI_STATE_IS_DEFAULT,
+            StateType::Visited => ffi::ATSPI_STATE_VISITED,
+            StateType::Checkable => ffi::ATSPI_STATE_CHECKABLE,
+            StateType::HasPopup => ffi::ATSPI_STATE_HAS_POPUP,
+            StateType::ReadOnly => ffi::ATSPI_STATE_READ_ONLY,
+            StateType::LastDefined => ffi::ATSPI_STATE_LAST_DEFINED,
+            StateType::__Unknown(value) => value,
+}
     }
 }
 
 #[doc(hidden)]
-impl FromGlib<atspi_sys::AtspiStateType> for StateType {
-    fn from_glib(value: atspi_sys::AtspiStateType) -> Self {
+impl FromGlib<ffi::AtspiStateType> for StateType {
+    fn from_glib(value: ffi::AtspiStateType) -> Self {
         skip_assert_initialized!();
         match value {
             0 => StateType::Invalid,
@@ -1470,31 +1475,31 @@ impl FromGlib<atspi_sys::AtspiStateType> for StateType {
             43 => StateType::ReadOnly,
             44 => StateType::LastDefined,
             value => StateType::__Unknown(value),
-        }
+}
     }
 }
 
 impl StaticType for StateType {
     fn static_type() -> Type {
-        unsafe { from_glib(atspi_sys::atspi_state_type_get_type()) }
+        unsafe { from_glib(ffi::atspi_state_type_get_type()) }
     }
 }
 
 impl<'a> FromValueOptional<'a> for StateType {
-    unsafe fn from_value_optional(value: &Value) -> Option<Self> {
+    unsafe fn from_value_optional(value: &glib::Value) -> Option<Self> {
         Some(FromValue::from_value(value))
     }
 }
 
 impl<'a> FromValue<'a> for StateType {
-    unsafe fn from_value(value: &Value) -> Self {
-        from_glib(gobject_sys::g_value_get_enum(value.to_glib_none().0))
+    unsafe fn from_value(value: &glib::Value) -> Self {
+        from_glib(glib::gobject_ffi::g_value_get_enum(value.to_glib_none().0))
     }
 }
 
 impl SetValue for StateType {
-    unsafe fn set_value(value: &mut Value, this: &Self) {
-        gobject_sys::g_value_set_enum(value.to_glib_none_mut().0, this.to_glib())
+    unsafe fn set_value(value: &mut glib::Value, this: &Self) {
+        glib::gobject_ffi::g_value_set_enum(value.to_glib_none_mut().0, this.to_glib())
     }
 }
 
@@ -1509,7 +1514,7 @@ pub enum TextBoundaryType {
     SentenceEnd,
     LineStart,
     LineEnd,
-    #[doc(hidden)]
+#[doc(hidden)]
     __Unknown(i32),
 }
 
@@ -1530,25 +1535,25 @@ impl fmt::Display for TextBoundaryType {
 
 #[doc(hidden)]
 impl ToGlib for TextBoundaryType {
-    type GlibType = atspi_sys::AtspiTextBoundaryType;
+    type GlibType = ffi::AtspiTextBoundaryType;
 
-    fn to_glib(&self) -> atspi_sys::AtspiTextBoundaryType {
+    fn to_glib(&self) -> ffi::AtspiTextBoundaryType {
         match *self {
-            TextBoundaryType::Char => atspi_sys::ATSPI_TEXT_BOUNDARY_CHAR,
-            TextBoundaryType::WordStart => atspi_sys::ATSPI_TEXT_BOUNDARY_WORD_START,
-            TextBoundaryType::WordEnd => atspi_sys::ATSPI_TEXT_BOUNDARY_WORD_END,
-            TextBoundaryType::SentenceStart => atspi_sys::ATSPI_TEXT_BOUNDARY_SENTENCE_START,
-            TextBoundaryType::SentenceEnd => atspi_sys::ATSPI_TEXT_BOUNDARY_SENTENCE_END,
-            TextBoundaryType::LineStart => atspi_sys::ATSPI_TEXT_BOUNDARY_LINE_START,
-            TextBoundaryType::LineEnd => atspi_sys::ATSPI_TEXT_BOUNDARY_LINE_END,
-            TextBoundaryType::__Unknown(value) => value
-        }
+            TextBoundaryType::Char => ffi::ATSPI_TEXT_BOUNDARY_CHAR,
+            TextBoundaryType::WordStart => ffi::ATSPI_TEXT_BOUNDARY_WORD_START,
+            TextBoundaryType::WordEnd => ffi::ATSPI_TEXT_BOUNDARY_WORD_END,
+            TextBoundaryType::SentenceStart => ffi::ATSPI_TEXT_BOUNDARY_SENTENCE_START,
+            TextBoundaryType::SentenceEnd => ffi::ATSPI_TEXT_BOUNDARY_SENTENCE_END,
+            TextBoundaryType::LineStart => ffi::ATSPI_TEXT_BOUNDARY_LINE_START,
+            TextBoundaryType::LineEnd => ffi::ATSPI_TEXT_BOUNDARY_LINE_END,
+            TextBoundaryType::__Unknown(value) => value,
+}
     }
 }
 
 #[doc(hidden)]
-impl FromGlib<atspi_sys::AtspiTextBoundaryType> for TextBoundaryType {
-    fn from_glib(value: atspi_sys::AtspiTextBoundaryType) -> Self {
+impl FromGlib<ffi::AtspiTextBoundaryType> for TextBoundaryType {
+    fn from_glib(value: ffi::AtspiTextBoundaryType) -> Self {
         skip_assert_initialized!();
         match value {
             0 => TextBoundaryType::Char,
@@ -1559,31 +1564,31 @@ impl FromGlib<atspi_sys::AtspiTextBoundaryType> for TextBoundaryType {
             5 => TextBoundaryType::LineStart,
             6 => TextBoundaryType::LineEnd,
             value => TextBoundaryType::__Unknown(value),
-        }
+}
     }
 }
 
 impl StaticType for TextBoundaryType {
     fn static_type() -> Type {
-        unsafe { from_glib(atspi_sys::atspi_text_boundary_type_get_type()) }
+        unsafe { from_glib(ffi::atspi_text_boundary_type_get_type()) }
     }
 }
 
 impl<'a> FromValueOptional<'a> for TextBoundaryType {
-    unsafe fn from_value_optional(value: &Value) -> Option<Self> {
+    unsafe fn from_value_optional(value: &glib::Value) -> Option<Self> {
         Some(FromValue::from_value(value))
     }
 }
 
 impl<'a> FromValue<'a> for TextBoundaryType {
-    unsafe fn from_value(value: &Value) -> Self {
-        from_glib(gobject_sys::g_value_get_enum(value.to_glib_none().0))
+    unsafe fn from_value(value: &glib::Value) -> Self {
+        from_glib(glib::gobject_ffi::g_value_get_enum(value.to_glib_none().0))
     }
 }
 
 impl SetValue for TextBoundaryType {
-    unsafe fn set_value(value: &mut Value, this: &Self) {
-        gobject_sys::g_value_set_enum(value.to_glib_none_mut().0, this.to_glib())
+    unsafe fn set_value(value: &mut glib::Value, this: &Self) {
+        glib::gobject_ffi::g_value_set_enum(value.to_glib_none_mut().0, this.to_glib())
     }
 }
 
@@ -1595,7 +1600,7 @@ pub enum TextClipType {
     Min,
     Max,
     Both,
-    #[doc(hidden)]
+#[doc(hidden)]
     __Unknown(i32),
 }
 
@@ -1613,22 +1618,22 @@ impl fmt::Display for TextClipType {
 
 #[doc(hidden)]
 impl ToGlib for TextClipType {
-    type GlibType = atspi_sys::AtspiTextClipType;
+    type GlibType = ffi::AtspiTextClipType;
 
-    fn to_glib(&self) -> atspi_sys::AtspiTextClipType {
+    fn to_glib(&self) -> ffi::AtspiTextClipType {
         match *self {
-            TextClipType::None => atspi_sys::ATSPI_TEXT_CLIP_NONE,
-            TextClipType::Min => atspi_sys::ATSPI_TEXT_CLIP_MIN,
-            TextClipType::Max => atspi_sys::ATSPI_TEXT_CLIP_MAX,
-            TextClipType::Both => atspi_sys::ATSPI_TEXT_CLIP_BOTH,
-            TextClipType::__Unknown(value) => value
-        }
+            TextClipType::None => ffi::ATSPI_TEXT_CLIP_NONE,
+            TextClipType::Min => ffi::ATSPI_TEXT_CLIP_MIN,
+            TextClipType::Max => ffi::ATSPI_TEXT_CLIP_MAX,
+            TextClipType::Both => ffi::ATSPI_TEXT_CLIP_BOTH,
+            TextClipType::__Unknown(value) => value,
+}
     }
 }
 
 #[doc(hidden)]
-impl FromGlib<atspi_sys::AtspiTextClipType> for TextClipType {
-    fn from_glib(value: atspi_sys::AtspiTextClipType) -> Self {
+impl FromGlib<ffi::AtspiTextClipType> for TextClipType {
+    fn from_glib(value: ffi::AtspiTextClipType) -> Self {
         skip_assert_initialized!();
         match value {
             0 => TextClipType::None,
@@ -1636,31 +1641,31 @@ impl FromGlib<atspi_sys::AtspiTextClipType> for TextClipType {
             2 => TextClipType::Max,
             3 => TextClipType::Both,
             value => TextClipType::__Unknown(value),
-        }
+}
     }
 }
 
 impl StaticType for TextClipType {
     fn static_type() -> Type {
-        unsafe { from_glib(atspi_sys::atspi_text_clip_type_get_type()) }
+        unsafe { from_glib(ffi::atspi_text_clip_type_get_type()) }
     }
 }
 
 impl<'a> FromValueOptional<'a> for TextClipType {
-    unsafe fn from_value_optional(value: &Value) -> Option<Self> {
+    unsafe fn from_value_optional(value: &glib::Value) -> Option<Self> {
         Some(FromValue::from_value(value))
     }
 }
 
 impl<'a> FromValue<'a> for TextClipType {
-    unsafe fn from_value(value: &Value) -> Self {
-        from_glib(gobject_sys::g_value_get_enum(value.to_glib_none().0))
+    unsafe fn from_value(value: &glib::Value) -> Self {
+        from_glib(glib::gobject_ffi::g_value_get_enum(value.to_glib_none().0))
     }
 }
 
 impl SetValue for TextClipType {
-    unsafe fn set_value(value: &mut Value, this: &Self) {
-        gobject_sys::g_value_set_enum(value.to_glib_none_mut().0, this.to_glib())
+    unsafe fn set_value(value: &mut glib::Value, this: &Self) {
+        glib::gobject_ffi::g_value_set_enum(value.to_glib_none_mut().0, this.to_glib())
     }
 }
 
@@ -1673,7 +1678,7 @@ pub enum TextGranularity {
     Sentence,
     Line,
     Paragraph,
-    #[doc(hidden)]
+#[doc(hidden)]
     __Unknown(i32),
 }
 
@@ -1692,23 +1697,23 @@ impl fmt::Display for TextGranularity {
 
 #[doc(hidden)]
 impl ToGlib for TextGranularity {
-    type GlibType = atspi_sys::AtspiTextGranularity;
+    type GlibType = ffi::AtspiTextGranularity;
 
-    fn to_glib(&self) -> atspi_sys::AtspiTextGranularity {
+    fn to_glib(&self) -> ffi::AtspiTextGranularity {
         match *self {
-            TextGranularity::Char => atspi_sys::ATSPI_TEXT_GRANULARITY_CHAR,
-            TextGranularity::Word => atspi_sys::ATSPI_TEXT_GRANULARITY_WORD,
-            TextGranularity::Sentence => atspi_sys::ATSPI_TEXT_GRANULARITY_SENTENCE,
-            TextGranularity::Line => atspi_sys::ATSPI_TEXT_GRANULARITY_LINE,
-            TextGranularity::Paragraph => atspi_sys::ATSPI_TEXT_GRANULARITY_PARAGRAPH,
-            TextGranularity::__Unknown(value) => value
-        }
+            TextGranularity::Char => ffi::ATSPI_TEXT_GRANULARITY_CHAR,
+            TextGranularity::Word => ffi::ATSPI_TEXT_GRANULARITY_WORD,
+            TextGranularity::Sentence => ffi::ATSPI_TEXT_GRANULARITY_SENTENCE,
+            TextGranularity::Line => ffi::ATSPI_TEXT_GRANULARITY_LINE,
+            TextGranularity::Paragraph => ffi::ATSPI_TEXT_GRANULARITY_PARAGRAPH,
+            TextGranularity::__Unknown(value) => value,
+}
     }
 }
 
 #[doc(hidden)]
-impl FromGlib<atspi_sys::AtspiTextGranularity> for TextGranularity {
-    fn from_glib(value: atspi_sys::AtspiTextGranularity) -> Self {
+impl FromGlib<ffi::AtspiTextGranularity> for TextGranularity {
+    fn from_glib(value: ffi::AtspiTextGranularity) -> Self {
         skip_assert_initialized!();
         match value {
             0 => TextGranularity::Char,
@@ -1717,31 +1722,31 @@ impl FromGlib<atspi_sys::AtspiTextGranularity> for TextGranularity {
             3 => TextGranularity::Line,
             4 => TextGranularity::Paragraph,
             value => TextGranularity::__Unknown(value),
-        }
+}
     }
 }
 
 impl StaticType for TextGranularity {
     fn static_type() -> Type {
-        unsafe { from_glib(atspi_sys::atspi_text_granularity_get_type()) }
+        unsafe { from_glib(ffi::atspi_text_granularity_get_type()) }
     }
 }
 
 impl<'a> FromValueOptional<'a> for TextGranularity {
-    unsafe fn from_value_optional(value: &Value) -> Option<Self> {
+    unsafe fn from_value_optional(value: &glib::Value) -> Option<Self> {
         Some(FromValue::from_value(value))
     }
 }
 
 impl<'a> FromValue<'a> for TextGranularity {
-    unsafe fn from_value(value: &Value) -> Self {
-        from_glib(gobject_sys::g_value_get_enum(value.to_glib_none().0))
+    unsafe fn from_value(value: &glib::Value) -> Self {
+        from_glib(glib::gobject_ffi::g_value_get_enum(value.to_glib_none().0))
     }
 }
 
 impl SetValue for TextGranularity {
-    unsafe fn set_value(value: &mut Value, this: &Self) {
-        gobject_sys::g_value_set_enum(value.to_glib_none_mut().0, this.to_glib())
+    unsafe fn set_value(value: &mut glib::Value, this: &Self) {
+        glib::gobject_ffi::g_value_set_enum(value.to_glib_none_mut().0, this.to_glib())
     }
 }
 

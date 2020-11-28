@@ -2,15 +2,14 @@
 // from gir-files (https://github.com/gtk-rs/gir-files)
 // DO NOT EDIT
 
-use atspi_sys;
 use glib::translate::*;
 use std::fmt;
 
-glib_wrapper! {
-    pub struct Object(Object<atspi_sys::AtspiObject, atspi_sys::AtspiObjectClass, ObjectClass>);
+glib::glib_wrapper! {
+    pub struct Object(Object<ffi::AtspiObject, ffi::AtspiObjectClass>);
 
     match fn {
-        get_type => || atspi_sys::atspi_object_get_type(),
+        get_type => || ffi::atspi_object_get_type(),
     }
 }
 
@@ -20,6 +19,6 @@ pub const NONE_OBJECT: Option<&Object> = None;
 
 impl fmt::Display for Object {
     fn fmt(&self, f: &mut fmt::Formatter) -> fmt::Result {
-        write!(f, "Object")
+        f.write_str("Object")
     }
 }

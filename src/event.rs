@@ -2,19 +2,17 @@
 // from gir-files (https://github.com/gtk-rs/gir-files)
 // DO NOT EDIT
 
-use crate::Accessible;
-use atspi_sys;
 use glib::translate::*;
-use gobject_sys;
 
-glib_wrapper! {
+
+glib::glib_wrapper! {
     #[derive(Debug, PartialEq, Eq, PartialOrd, Ord, Hash)]
-    pub struct Event(Boxed<atspi_sys::AtspiEvent>);
+    pub struct Event(Boxed<ffi::AtspiEvent>);
 
     match fn {
-        copy => |ptr| gobject_sys::g_boxed_copy(atspi_sys::atspi_event_get_type(), ptr as *mut _) as *mut atspi_sys::AtspiEvent,
-        free => |ptr| gobject_sys::g_boxed_free(atspi_sys::atspi_event_get_type(), ptr as *mut _),
-        get_type => || atspi_sys::atspi_event_get_type(),
+        copy => |ptr| glib::gobject_ffi::g_boxed_copy(ffi::atspi_event_get_type(), ptr as *mut _) as *mut ffi::AtspiEvent,
+        free => |ptr| glib::gobject_ffi::g_boxed_free(ffi::atspi_event_get_type(), ptr as *mut _),
+        get_type => || ffi::atspi_event_get_type(),
     }
 }
 
@@ -22,24 +20,25 @@ impl Event {
     pub fn main() {
         assert_initialized_main_thread!();
         unsafe {
-            atspi_sys::atspi_event_main();
+            ffi::atspi_event_main();
         }
     }
 
     pub fn quit() {
         assert_initialized_main_thread!();
         unsafe {
-            atspi_sys::atspi_event_quit();
+            ffi::atspi_event_quit();
         }
     }
 
-    // FIXME This is likely incorrect
-    pub fn get_source(self) -> Option<Accessible> {
+      // FIXME This is likely incorrect
+      pub fn get_source(self) -> Option<super::Accessible> {
         assert_initialized_main_thread!(); // Needed?
 
         unsafe {
             if !(self.0).source.is_null() {
-                Some(from_glib_none((self.0).source))
+                // Not sure if I really need to clone, but I don't want to invalidate the struct
+                Some(from_glib_none((self.0).source.clone()) )
             } else {
                 None
             }
@@ -67,7 +66,7 @@ impl Event {
     ///
 
     // FIXME This is likely incorrect
-    pub fn get_sender(self) -> Option<Accessible> {
+    pub fn get_sender(self) -> Option<crate::Accessible> {
         assert_initialized_main_thread!(); // Needed?
 
         unsafe {

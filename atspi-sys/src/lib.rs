@@ -4,17 +4,17 @@
 
 #![allow(non_camel_case_types, non_upper_case_globals, non_snake_case)]
 #![allow(clippy::approx_constant, clippy::type_complexity, clippy::unreadable_literal)]
+#![cfg_attr(feature = "dox", feature(doc_cfg))]
 
-extern crate libc;
-extern crate glib_sys as glib;
-extern crate gio_sys as gio;
-extern crate gobject_sys as gobject;
+use glib_sys as glib;
+use gio_sys as gio;
+use gobject_sys as gobject;
 
 mod accessible;
 mod timevalue;
 
-pub use accessible::*;
-pub use timevalue::*;
+use accessible::*;
+use timevalue::*;
 
 #[allow(unused_imports)]
 use libc::{c_int, c_char, c_uchar, c_float, c_uint, c_double,
@@ -381,6 +381,7 @@ pub const ATSPI_DBUS_PATH_SCREEN_READER: *const c_char = b"/org/a11y/atspi/scree
 pub const ATSPI_EVENTTYPE_COUNT: c_int = 4;
 pub const ATSPI_KEYEVENTTYPE_COUNT: c_int = 2;
 pub const ATSPI_KEYSYNTHTYPE_COUNT: c_int = 5;
+pub const ATSPI_LOCALE_TYPE_COUNT: c_int = 6;
 pub const ATSPI_MATCHTYPES_COUNT: c_int = 6;
 pub const ATSPI_MODIFIERTYPE_COUNT: c_int = 8;
 pub const ATSPI_RELATIONTYPE_COUNT: c_int = 24;
@@ -390,6 +391,7 @@ pub const ATSPI_SORTORDER_COUNT: c_int = 8;
 pub const ATSPI_STATETYPE_COUNT: c_int = 42;
 pub const ATSPI_TEXT_BOUNDARY_TYPE_COUNT: c_int = 7;
 pub const ATSPI_TEXT_CLIP_TYPE_COUNT: c_int = 4;
+pub const ATSPI_TREETRAVERSALTYPE_COUNT: c_int = 4;
 
 // Flags
 pub type AtspiCache = c_uint;
@@ -424,6 +426,7 @@ pub type AtspiEventListenerSimpleCB = Option<unsafe extern "C" fn(*const AtspiEv
 pub struct AtspiAccessibleClass {
     pub parent_class: AtspiObjectClass,
     pub region_changed: Option<unsafe extern "C" fn(*mut AtspiAccessible, c_int, c_int)>,
+    pub mode_changed: Option<unsafe extern "C" fn(*mut AtspiAccessible, gboolean)>,
 }
 
 impl ::std::fmt::Debug for AtspiAccessibleClass {
@@ -431,6 +434,7 @@ impl ::std::fmt::Debug for AtspiAccessibleClass {
         f.debug_struct(&format!("AtspiAccessibleClass @ {:?}", self as *const _))
          .field("parent_class", &self.parent_class)
          .field("region_changed", &self.region_changed)
+         .field("mode_changed", &self.mode_changed)
          .finish()
     }
 }
@@ -1047,6 +1051,7 @@ impl ::std::fmt::Debug for AtspiValue {
 }
 
 
+#[link(name = "atspi")]
 extern "C" {
 
     //=========================================================================
@@ -1191,6 +1196,7 @@ extern "C" {
     pub fn atspi_accessible_get_type() -> GType;
     pub fn atspi_accessible_clear_cache(obj: *mut AtspiAccessible);
     #[cfg(any(feature = "v2_34", feature = "dox"))]
+    #[cfg_attr(feature = "dox", doc(cfg(feature = "v2_34")))]
     pub fn atspi_accessible_get_accessible_id(obj: *mut AtspiAccessible, error: *mut *mut glib::GError) -> *mut c_char;
     pub fn atspi_accessible_get_action(obj: *mut AtspiAccessible) -> *mut AtspiAction;
     pub fn atspi_accessible_get_action_iface(obj: *mut AtspiAccessible) -> *mut AtspiAction;

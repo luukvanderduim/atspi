@@ -2,20 +2,18 @@
 // from gir-files (https://github.com/gtk-rs/gir-files)
 // DO NOT EDIT
 
-use atspi_sys;
-use glib;
+use crate::Accessible;
 use glib::object::IsA;
 use glib::translate::*;
 use std::fmt;
 use std::mem;
 use std::ptr;
-use Accessible;
 
-glib_wrapper! {
-    pub struct TableCell(Interface<atspi_sys::AtspiTableCell>);
+glib::glib_wrapper! {
+    pub struct TableCell(Interface<ffi::AtspiTableCell>);
 
     match fn {
-        get_type => || atspi_sys::atspi_table_cell_get_type(),
+        get_type => || ffi::atspi_table_cell_get_type(),
     }
 }
 
@@ -43,7 +41,7 @@ impl<O: IsA<TableCell>> TableCellExt for O {
     fn get_column_header_cells(&self) -> Result<Vec<Accessible>, glib::Error> {
         unsafe {
             let mut error = ptr::null_mut();
-            let ret = atspi_sys::atspi_table_cell_get_column_header_cells(self.as_ref().to_glib_none().0, &mut error);
+            let ret = ffi::atspi_table_cell_get_column_header_cells(self.as_ref().to_glib_none().0, &mut error);
             if error.is_null() { Ok(FromGlibPtrContainer::from_glib_full(ret)) } else { Err(from_glib_full(error)) }
         }
     }
@@ -51,7 +49,7 @@ impl<O: IsA<TableCell>> TableCellExt for O {
     fn get_column_index(&self) -> Result<i32, glib::Error> {
         unsafe {
             let mut error = ptr::null_mut();
-            let ret = atspi_sys::atspi_table_cell_get_column_index(self.as_ref().to_glib_none().0, &mut error);
+            let ret = ffi::atspi_table_cell_get_column_index(self.as_ref().to_glib_none().0, &mut error);
             if error.is_null() { Ok(ret) } else { Err(from_glib_full(error)) }
         }
     }
@@ -59,7 +57,7 @@ impl<O: IsA<TableCell>> TableCellExt for O {
     fn get_column_span(&self) -> Result<i32, glib::Error> {
         unsafe {
             let mut error = ptr::null_mut();
-            let ret = atspi_sys::atspi_table_cell_get_column_span(self.as_ref().to_glib_none().0, &mut error);
+            let ret = ffi::atspi_table_cell_get_column_span(self.as_ref().to_glib_none().0, &mut error);
             if error.is_null() { Ok(ret) } else { Err(from_glib_full(error)) }
         }
     }
@@ -69,7 +67,7 @@ impl<O: IsA<TableCell>> TableCellExt for O {
             let mut row = mem::MaybeUninit::uninit();
             let mut column = mem::MaybeUninit::uninit();
             let mut error = ptr::null_mut();
-            let ret = atspi_sys::atspi_table_cell_get_position(self.as_ref().to_glib_none().0, row.as_mut_ptr(), column.as_mut_ptr(), &mut error);
+            let ret = ffi::atspi_table_cell_get_position(self.as_ref().to_glib_none().0, row.as_mut_ptr(), column.as_mut_ptr(), &mut error);
             let row = row.assume_init();
             let column = column.assume_init();
             if error.is_null() { Ok((ret, row, column)) } else { Err(from_glib_full(error)) }
@@ -83,7 +81,7 @@ impl<O: IsA<TableCell>> TableCellExt for O {
             let mut row_span = mem::MaybeUninit::uninit();
             let mut column_span = mem::MaybeUninit::uninit();
             let mut error = ptr::null_mut();
-            let _ = atspi_sys::atspi_table_cell_get_row_column_span(self.as_ref().to_glib_none().0, row.as_mut_ptr(), column.as_mut_ptr(), row_span.as_mut_ptr(), column_span.as_mut_ptr(), &mut error);
+            let _ = ffi::atspi_table_cell_get_row_column_span(self.as_ref().to_glib_none().0, row.as_mut_ptr(), column.as_mut_ptr(), row_span.as_mut_ptr(), column_span.as_mut_ptr(), &mut error);
             let row = row.assume_init();
             let column = column.assume_init();
             let row_span = row_span.assume_init();
@@ -95,7 +93,7 @@ impl<O: IsA<TableCell>> TableCellExt for O {
     fn get_row_header_cells(&self) -> Result<Vec<Accessible>, glib::Error> {
         unsafe {
             let mut error = ptr::null_mut();
-            let ret = atspi_sys::atspi_table_cell_get_row_header_cells(self.as_ref().to_glib_none().0, &mut error);
+            let ret = ffi::atspi_table_cell_get_row_header_cells(self.as_ref().to_glib_none().0, &mut error);
             if error.is_null() { Ok(FromGlibPtrContainer::from_glib_full(ret)) } else { Err(from_glib_full(error)) }
         }
     }
@@ -103,7 +101,7 @@ impl<O: IsA<TableCell>> TableCellExt for O {
     fn get_row_span(&self) -> Result<i32, glib::Error> {
         unsafe {
             let mut error = ptr::null_mut();
-            let ret = atspi_sys::atspi_table_cell_get_row_span(self.as_ref().to_glib_none().0, &mut error);
+            let ret = ffi::atspi_table_cell_get_row_span(self.as_ref().to_glib_none().0, &mut error);
             if error.is_null() { Ok(ret) } else { Err(from_glib_full(error)) }
         }
     }
@@ -111,7 +109,7 @@ impl<O: IsA<TableCell>> TableCellExt for O {
     fn get_table(&self) -> Result<Accessible, glib::Error> {
         unsafe {
             let mut error = ptr::null_mut();
-            let ret = atspi_sys::atspi_table_cell_get_table(self.as_ref().to_glib_none().0, &mut error);
+            let ret = ffi::atspi_table_cell_get_table(self.as_ref().to_glib_none().0, &mut error);
             if error.is_null() { Ok(from_glib_full(ret)) } else { Err(from_glib_full(error)) }
         }
     }
@@ -119,6 +117,6 @@ impl<O: IsA<TableCell>> TableCellExt for O {
 
 impl fmt::Display for TableCell {
     fn fmt(&self, f: &mut fmt::Formatter) -> fmt::Result {
-        write!(f, "TableCell")
+        f.write_str("TableCell")
     }
 }

@@ -2,24 +2,21 @@
 // from gir-files (https://github.com/gtk-rs/gir-files)
 // DO NOT EDIT
 
-use atspi_sys;
-use glib;
+use crate::Accessible;
+use crate::ComponentLayer;
+use crate::CoordType;
+use crate::Point;
+use crate::Rect;
 use glib::object::IsA;
 use glib::translate::*;
-use libc;
 use std::fmt;
 use std::ptr;
-use Accessible;
-use ComponentLayer;
-use CoordType;
-use Point;
-use Rect;
 
-glib_wrapper! {
-    pub struct Component(Interface<atspi_sys::AtspiComponent>);
+glib::glib_wrapper! {
+    pub struct Component(Interface<ffi::AtspiComponent>);
 
     match fn {
-        get_type => || atspi_sys::atspi_component_get_type(),
+        get_type => || ffi::atspi_component_get_type(),
     }
 }
 
@@ -59,7 +56,7 @@ impl<O: IsA<Component>> ComponentExt for O {
     fn contains(&self, x: i32, y: i32, ctype: CoordType) -> Result<(), glib::Error> {
         unsafe {
             let mut error = ptr::null_mut();
-            let _ = atspi_sys::atspi_component_contains(self.as_ref().to_glib_none().0, x, y, ctype.to_glib(), &mut error);
+            let _ = ffi::atspi_component_contains(self.as_ref().to_glib_none().0, x, y, ctype.to_glib(), &mut error);
             if error.is_null() { Ok(()) } else { Err(from_glib_full(error)) }
         }
     }
@@ -67,7 +64,7 @@ impl<O: IsA<Component>> ComponentExt for O {
     fn get_accessible_at_point(&self, x: i32, y: i32, ctype: CoordType) -> Result<Option<Accessible>, glib::Error> {
         unsafe {
             let mut error = ptr::null_mut();
-            let ret = atspi_sys::atspi_component_get_accessible_at_point(self.as_ref().to_glib_none().0, x, y, ctype.to_glib(), &mut error);
+            let ret = ffi::atspi_component_get_accessible_at_point(self.as_ref().to_glib_none().0, x, y, ctype.to_glib(), &mut error);
             if error.is_null() { Ok(from_glib_full(ret)) } else { Err(from_glib_full(error)) }
         }
     }
@@ -75,7 +72,7 @@ impl<O: IsA<Component>> ComponentExt for O {
     fn get_alpha(&self) -> Result<f64, glib::Error> {
         unsafe {
             let mut error = ptr::null_mut();
-            let ret = atspi_sys::atspi_component_get_alpha(self.as_ref().to_glib_none().0, &mut error);
+            let ret = ffi::atspi_component_get_alpha(self.as_ref().to_glib_none().0, &mut error);
             if error.is_null() { Ok(ret) } else { Err(from_glib_full(error)) }
         }
     }
@@ -83,7 +80,7 @@ impl<O: IsA<Component>> ComponentExt for O {
     fn get_extents(&self, ctype: CoordType) -> Result<Rect, glib::Error> {
         unsafe {
             let mut error = ptr::null_mut();
-            let ret = atspi_sys::atspi_component_get_extents(self.as_ref().to_glib_none().0, ctype.to_glib(), &mut error);
+            let ret = ffi::atspi_component_get_extents(self.as_ref().to_glib_none().0, ctype.to_glib(), &mut error);
             if error.is_null() { Ok(from_glib_full(ret)) } else { Err(from_glib_full(error)) }
         }
     }
@@ -91,7 +88,7 @@ impl<O: IsA<Component>> ComponentExt for O {
     fn get_layer(&self) -> Result<ComponentLayer, glib::Error> {
         unsafe {
             let mut error = ptr::null_mut();
-            let ret = atspi_sys::atspi_component_get_layer(self.as_ref().to_glib_none().0, &mut error);
+            let ret = ffi::atspi_component_get_layer(self.as_ref().to_glib_none().0, &mut error);
             if error.is_null() { Ok(from_glib(ret)) } else { Err(from_glib_full(error)) }
         }
     }
@@ -99,7 +96,7 @@ impl<O: IsA<Component>> ComponentExt for O {
     fn get_mdi_z_order(&self) -> Result<libc::c_short, glib::Error> {
         unsafe {
             let mut error = ptr::null_mut();
-            let ret = atspi_sys::atspi_component_get_mdi_z_order(self.as_ref().to_glib_none().0, &mut error);
+            let ret = ffi::atspi_component_get_mdi_z_order(self.as_ref().to_glib_none().0, &mut error);
             if error.is_null() { Ok(ret) } else { Err(from_glib_full(error)) }
         }
     }
@@ -107,7 +104,7 @@ impl<O: IsA<Component>> ComponentExt for O {
     fn get_position(&self, ctype: CoordType) -> Result<Point, glib::Error> {
         unsafe {
             let mut error = ptr::null_mut();
-            let ret = atspi_sys::atspi_component_get_position(self.as_ref().to_glib_none().0, ctype.to_glib(), &mut error);
+            let ret = ffi::atspi_component_get_position(self.as_ref().to_glib_none().0, ctype.to_glib(), &mut error);
             if error.is_null() { Ok(from_glib_full(ret)) } else { Err(from_glib_full(error)) }
         }
     }
@@ -115,7 +112,7 @@ impl<O: IsA<Component>> ComponentExt for O {
     fn get_size(&self) -> Result<Point, glib::Error> {
         unsafe {
             let mut error = ptr::null_mut();
-            let ret = atspi_sys::atspi_component_get_size(self.as_ref().to_glib_none().0, &mut error);
+            let ret = ffi::atspi_component_get_size(self.as_ref().to_glib_none().0, &mut error);
             if error.is_null() { Ok(from_glib_full(ret)) } else { Err(from_glib_full(error)) }
         }
     }
@@ -123,19 +120,19 @@ impl<O: IsA<Component>> ComponentExt for O {
     fn grab_focus(&self) -> Result<(), glib::Error> {
         unsafe {
             let mut error = ptr::null_mut();
-            let _ = atspi_sys::atspi_component_grab_focus(self.as_ref().to_glib_none().0, &mut error);
+            let _ = ffi::atspi_component_grab_focus(self.as_ref().to_glib_none().0, &mut error);
             if error.is_null() { Ok(()) } else { Err(from_glib_full(error)) }
         }
     }
 
     //fn scroll_to(&self, type_: /*Ignored*/ScrollType) -> Result<(), glib::Error> {
-    //    unsafe { TODO: call atspi_sys:atspi_component_scroll_to() }
+    //    unsafe { TODO: call ffi:atspi_component_scroll_to() }
     //}
 
     fn scroll_to_point(&self, coords: CoordType, x: i32, y: i32) -> Result<(), glib::Error> {
         unsafe {
             let mut error = ptr::null_mut();
-            let _ = atspi_sys::atspi_component_scroll_to_point(self.as_ref().to_glib_none().0, coords.to_glib(), x, y, &mut error);
+            let _ = ffi::atspi_component_scroll_to_point(self.as_ref().to_glib_none().0, coords.to_glib(), x, y, &mut error);
             if error.is_null() { Ok(()) } else { Err(from_glib_full(error)) }
         }
     }
@@ -143,7 +140,7 @@ impl<O: IsA<Component>> ComponentExt for O {
     fn set_extents(&self, x: i32, y: i32, width: i32, height: i32, ctype: CoordType) -> Result<(), glib::Error> {
         unsafe {
             let mut error = ptr::null_mut();
-            let _ = atspi_sys::atspi_component_set_extents(self.as_ref().to_glib_none().0, x, y, width, height, ctype.to_glib(), &mut error);
+            let _ = ffi::atspi_component_set_extents(self.as_ref().to_glib_none().0, x, y, width, height, ctype.to_glib(), &mut error);
             if error.is_null() { Ok(()) } else { Err(from_glib_full(error)) }
         }
     }
@@ -151,7 +148,7 @@ impl<O: IsA<Component>> ComponentExt for O {
     fn set_position(&self, x: i32, y: i32, ctype: CoordType) -> Result<(), glib::Error> {
         unsafe {
             let mut error = ptr::null_mut();
-            let _ = atspi_sys::atspi_component_set_position(self.as_ref().to_glib_none().0, x, y, ctype.to_glib(), &mut error);
+            let _ = ffi::atspi_component_set_position(self.as_ref().to_glib_none().0, x, y, ctype.to_glib(), &mut error);
             if error.is_null() { Ok(()) } else { Err(from_glib_full(error)) }
         }
     }
@@ -159,7 +156,7 @@ impl<O: IsA<Component>> ComponentExt for O {
     fn set_size(&self, width: i32, height: i32) -> Result<(), glib::Error> {
         unsafe {
             let mut error = ptr::null_mut();
-            let _ = atspi_sys::atspi_component_set_size(self.as_ref().to_glib_none().0, width, height, &mut error);
+            let _ = ffi::atspi_component_set_size(self.as_ref().to_glib_none().0, width, height, &mut error);
             if error.is_null() { Ok(()) } else { Err(from_glib_full(error)) }
         }
     }
@@ -167,6 +164,6 @@ impl<O: IsA<Component>> ComponentExt for O {
 
 impl fmt::Display for Component {
     fn fmt(&self, f: &mut fmt::Formatter) -> fmt::Result {
-        write!(f, "Component")
+        f.write_str("Component")
     }
 }

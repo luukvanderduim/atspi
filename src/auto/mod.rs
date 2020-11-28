@@ -3,12 +3,15 @@
 // DO NOT EDIT
 
 mod accessible;
-pub use self::accessible::{Accessible, AccessibleClass, NONE_ACCESSIBLE};
+pub use self::accessible::{Accessible, NONE_ACCESSIBLE};
 pub use self::accessible::AccessibleExt;
 
 mod action;
 pub use self::action::{Action, NONE_ACTION};
 pub use self::action::ActionExt;
+
+mod application;
+pub use self::application::{Application, NONE_APPLICATION};
 
 mod collection;
 pub use self::collection::{Collection, NONE_COLLECTION};
@@ -19,7 +22,7 @@ pub use self::component::{Component, NONE_COMPONENT};
 pub use self::component::ComponentExt;
 
 mod device_listener;
-pub use self::device_listener::{DeviceListener, DeviceListenerClass, NONE_DEVICE_LISTENER};
+pub use self::device_listener::{DeviceListener, NONE_DEVICE_LISTENER};
 pub use self::device_listener::DeviceListenerExt;
 
 mod document;
@@ -31,11 +34,11 @@ pub use self::editable_text::{EditableText, NONE_EDITABLE_TEXT};
 pub use self::editable_text::EditableTextExt;
 
 mod event_listener;
-pub use self::event_listener::{EventListener, EventListenerClass, NONE_EVENT_LISTENER};
+pub use self::event_listener::{EventListener, NONE_EVENT_LISTENER};
 pub use self::event_listener::EventListenerExt;
 
 mod hyperlink;
-pub use self::hyperlink::{Hyperlink, HyperlinkClass, NONE_HYPERLINK};
+pub use self::hyperlink::{Hyperlink, NONE_HYPERLINK};
 pub use self::hyperlink::HyperlinkExt;
 
 mod hypertext;
@@ -47,22 +50,18 @@ pub use self::image::{Image, NONE_IMAGE};
 pub use self::image::ImageExt;
 
 mod match_rule;
-pub use self::match_rule::{MatchRule, MatchRuleClass, NONE_MATCH_RULE};
+pub use self::match_rule::{MatchRule, NONE_MATCH_RULE};
 
 mod object;
-pub use self::object::{Object, ObjectClass, NONE_OBJECT};
+pub use self::object::{Object, NONE_OBJECT};
 
 mod relation;
-pub use self::relation::{Relation, RelationClass, NONE_RELATION};
+pub use self::relation::{Relation, NONE_RELATION};
 pub use self::relation::RelationExt;
 
 mod selection;
 pub use self::selection::{Selection, NONE_SELECTION};
 pub use self::selection::SelectionExt;
-
-mod state_set;
-pub use self::state_set::{StateSet, StateSetClass, NONE_STATE_SET};
-pub use self::state_set::StateSetExt;
 
 mod table;
 pub use self::table::{Table, NONE_TABLE};
@@ -135,7 +134,6 @@ pub mod traits {
     pub use super::ImageExt;
     pub use super::RelationExt;
     pub use super::SelectionExt;
-    pub use super::StateSetExt;
     pub use super::TableExt;
     pub use super::TableCellExt;
     pub use super::TextExt;
