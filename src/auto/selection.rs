@@ -8,7 +8,7 @@ use glib::translate::*;
 use std::fmt;
 use std::ptr;
 
-glib::glib_wrapper! {
+glib::wrapper! {
     pub struct Selection(Interface<ffi::AtspiSelection>);
 
     match fn {
@@ -19,20 +19,28 @@ glib::glib_wrapper! {
 pub const NONE_SELECTION: Option<&Selection> = None;
 
 pub trait SelectionExt: 'static {
+    #[doc(alias = "atspi_selection_clear_selection")]
     fn clear_selection(&self) -> Result<(), glib::Error>;
 
+    #[doc(alias = "atspi_selection_deselect_child")]
     fn deselect_child(&self, child_index: i32) -> Result<(), glib::Error>;
 
+    #[doc(alias = "atspi_selection_deselect_selected_child")]
     fn deselect_selected_child(&self, selected_child_index: i32) -> Result<(), glib::Error>;
 
+    #[doc(alias = "atspi_selection_get_n_selected_children")]
     fn get_n_selected_children(&self) -> Result<i32, glib::Error>;
 
+    #[doc(alias = "atspi_selection_get_selected_child")]
     fn get_selected_child(&self, selected_child_index: i32) -> Result<Accessible, glib::Error>;
 
+    #[doc(alias = "atspi_selection_is_child_selected")]
     fn is_child_selected(&self, child_index: i32) -> Result<(), glib::Error>;
 
+    #[doc(alias = "atspi_selection_select_all")]
     fn select_all(&self) -> Result<(), glib::Error>;
 
+    #[doc(alias = "atspi_selection_select_child")]
     fn select_child(&self, child_index: i32) -> Result<(), glib::Error>;
 }
 

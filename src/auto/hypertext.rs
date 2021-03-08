@@ -8,7 +8,7 @@ use glib::translate::*;
 use std::fmt;
 use std::ptr;
 
-glib::glib_wrapper! {
+glib::wrapper! {
     pub struct Hypertext(Interface<ffi::AtspiHypertext>);
 
     match fn {
@@ -19,10 +19,13 @@ glib::glib_wrapper! {
 pub const NONE_HYPERTEXT: Option<&Hypertext> = None;
 
 pub trait HypertextExt: 'static {
+    #[doc(alias = "atspi_hypertext_get_link")]
     fn get_link(&self, link_index: i32) -> Result<Option<Hyperlink>, glib::Error>;
 
+    #[doc(alias = "atspi_hypertext_get_link_index")]
     fn get_link_index(&self, character_offset: i32) -> Result<i32, glib::Error>;
 
+    #[doc(alias = "atspi_hypertext_get_n_links")]
     fn get_n_links(&self) -> Result<i32, glib::Error>;
 }
 

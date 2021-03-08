@@ -10,7 +10,7 @@ use glib::translate::*;
 use std::fmt;
 use std::ptr;
 
-glib::glib_wrapper! {
+glib::wrapper! {
     pub struct Image(Interface<ffi::AtspiImage>);
 
     match fn {
@@ -21,14 +21,19 @@ glib::glib_wrapper! {
 pub const NONE_IMAGE: Option<&Image> = None;
 
 pub trait ImageExt: 'static {
+    #[doc(alias = "atspi_image_get_image_description")]
     fn get_image_description(&self) -> Result<glib::GString, glib::Error>;
 
+    #[doc(alias = "atspi_image_get_image_extents")]
     fn get_image_extents(&self, ctype: CoordType) -> Result<Rect, glib::Error>;
 
+    #[doc(alias = "atspi_image_get_image_locale")]
     fn get_image_locale(&self) -> Result<glib::GString, glib::Error>;
 
+    #[doc(alias = "atspi_image_get_image_position")]
     fn get_image_position(&self, ctype: CoordType) -> Result<Point, glib::Error>;
 
+    #[doc(alias = "atspi_image_get_image_size")]
     fn get_image_size(&self) -> Result<Point, glib::Error>;
 }
 

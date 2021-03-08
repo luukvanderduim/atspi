@@ -9,7 +9,7 @@ use std::fmt;
 use std::mem;
 use std::ptr;
 
-glib::glib_wrapper! {
+glib::wrapper! {
     pub struct TableCell(Interface<ffi::AtspiTableCell>);
 
     match fn {
@@ -20,20 +20,28 @@ glib::glib_wrapper! {
 pub const NONE_TABLE_CELL: Option<&TableCell> = None;
 
 pub trait TableCellExt: 'static {
+    #[doc(alias = "atspi_table_cell_get_column_header_cells")]
     fn get_column_header_cells(&self) -> Result<Vec<Accessible>, glib::Error>;
 
+    #[doc(alias = "atspi_table_cell_get_column_index")]
     fn get_column_index(&self) -> Result<i32, glib::Error>;
 
+    #[doc(alias = "atspi_table_cell_get_column_span")]
     fn get_column_span(&self) -> Result<i32, glib::Error>;
 
+    #[doc(alias = "atspi_table_cell_get_position")]
     fn get_position(&self) -> Result<(i32, i32, i32), glib::Error>;
 
+    #[doc(alias = "atspi_table_cell_get_row_column_span")]
     fn get_row_column_span(&self) -> Result<(i32, i32, i32, i32), glib::Error>;
 
+    #[doc(alias = "atspi_table_cell_get_row_header_cells")]
     fn get_row_header_cells(&self) -> Result<Vec<Accessible>, glib::Error>;
 
+    #[doc(alias = "atspi_table_cell_get_row_span")]
     fn get_row_span(&self) -> Result<i32, glib::Error>;
 
+    #[doc(alias = "atspi_table_cell_get_table")]
     fn get_table(&self) -> Result<Accessible, glib::Error>;
 }
 

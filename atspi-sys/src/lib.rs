@@ -13,8 +13,8 @@ use gobject_sys as gobject;
 mod accessible;
 mod timevalue;
 
-use accessible::*;
-use timevalue::*;
+pub use accessible::*;
+pub use timevalue::*;
 
 #[allow(unused_imports)]
 use libc::{c_int, c_char, c_uchar, c_float, c_uint, c_double,

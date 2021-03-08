@@ -7,7 +7,7 @@ use glib::translate::*;
 use std::fmt;
 use std::ptr;
 
-glib::glib_wrapper! {
+glib::wrapper! {
     pub struct Action(Interface<ffi::AtspiAction>);
 
     match fn {
@@ -18,16 +18,22 @@ glib::glib_wrapper! {
 pub const NONE_ACTION: Option<&Action> = None;
 
 pub trait ActionExt: 'static {
+    #[doc(alias = "atspi_action_do_action")]
     fn do_action(&self, i: i32) -> Result<(), glib::Error>;
 
+    #[doc(alias = "atspi_action_get_action_description")]
     fn get_action_description(&self, i: i32) -> Result<glib::GString, glib::Error>;
 
+    #[doc(alias = "atspi_action_get_action_name")]
     fn get_action_name(&self, i: i32) -> Result<glib::GString, glib::Error>;
 
+    #[doc(alias = "atspi_action_get_key_binding")]
     fn get_key_binding(&self, i: i32) -> Result<glib::GString, glib::Error>;
 
+    #[doc(alias = "atspi_action_get_localized_name")]
     fn get_localized_name(&self, i: i32) -> Result<glib::GString, glib::Error>;
 
+    #[doc(alias = "atspi_action_get_n_actions")]
     fn get_n_actions(&self) -> Result<i32, glib::Error>;
 }
 

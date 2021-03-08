@@ -7,7 +7,7 @@ use glib::translate::*;
 use std::fmt;
 use std::ptr;
 
-glib::glib_wrapper! {
+glib::wrapper! {
     pub struct Value(Interface<ffi::AtspiValue>);
 
     match fn {
@@ -18,14 +18,19 @@ glib::glib_wrapper! {
 pub const NONE_VALUE: Option<&Value> = None;
 
 pub trait ValueExt: 'static {
+    #[doc(alias = "atspi_value_get_current_value")]
     fn get_current_value(&self) -> Result<f64, glib::Error>;
 
+    #[doc(alias = "atspi_value_get_maximum_value")]
     fn get_maximum_value(&self) -> Result<f64, glib::Error>;
 
+    #[doc(alias = "atspi_value_get_minimum_increment")]
     fn get_minimum_increment(&self) -> Result<f64, glib::Error>;
 
+    #[doc(alias = "atspi_value_get_minimum_value")]
     fn get_minimum_value(&self) -> Result<f64, glib::Error>;
 
+    #[doc(alias = "atspi_value_set_current_value")]
     fn set_current_value(&self, new_value: f64) -> Result<(), glib::Error>;
 }
 

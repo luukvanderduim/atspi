@@ -30,9 +30,6 @@ pub mod prelude;
 mod rect;
 pub use crate::rect::*;
 
-mod state_set;
-pub use crate::state_set::*;
-
 mod event;
 pub use crate::event::*;
 

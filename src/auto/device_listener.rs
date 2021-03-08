@@ -8,7 +8,7 @@ use glib::translate::*;
 use std::boxed::Box as Box_;
 use std::fmt;
 
-glib::glib_wrapper! {
+glib::wrapper! {
     pub struct DeviceListener(Object<ffi::AtspiDeviceListener, ffi::AtspiDeviceListenerClass>);
 
     match fn {
@@ -17,6 +17,7 @@ glib::glib_wrapper! {
 }
 
 impl DeviceListener {
+    #[doc(alias = "atspi_device_listener_new")]
     pub fn new<P: Fn(&DeviceEvent) -> bool + 'static>(callback: P) -> DeviceListener {
         assert_initialized_main_thread!();
         let callback_data: Box_<P> = Box_::new(callback);
@@ -37,6 +38,7 @@ impl DeviceListener {
         }
     }
 
+    //#[doc(alias = "atspi_device_listener_new_simple")]
     //pub fn new_simple<P: Fn(&DeviceEvent) -> bool + 'static>(callback: P) -> DeviceListener {
     //    unsafe { TODO: call ffi:atspi_device_listener_new_simple() }
     //}
@@ -45,8 +47,10 @@ impl DeviceListener {
 pub const NONE_DEVICE_LISTENER: Option<&DeviceListener> = None;
 
 pub trait DeviceListenerExt: 'static {
+    #[doc(alias = "atspi_device_listener_add_callback")]
     fn add_callback<P: Fn(&DeviceEvent) -> bool + 'static>(&self, callback: P);
 
+    //#[doc(alias = "atspi_device_listener_remove_callback")]
     //fn remove_callback<P: FnMut(&DeviceEvent) -> bool>(&self, callback: P);
 }
 

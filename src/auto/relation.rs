@@ -8,7 +8,7 @@ use glib::object::IsA;
 use glib::translate::*;
 use std::fmt;
 
-glib::glib_wrapper! {
+glib::wrapper! {
     pub struct Relation(Object<ffi::AtspiRelation, ffi::AtspiRelationClass>);
 
     match fn {
@@ -19,10 +19,13 @@ glib::glib_wrapper! {
 pub const NONE_RELATION: Option<&Relation> = None;
 
 pub trait RelationExt: 'static {
+    #[doc(alias = "atspi_relation_get_n_targets")]
     fn get_n_targets(&self) -> i32;
 
+    #[doc(alias = "atspi_relation_get_relation_type")]
     fn get_relation_type(&self) -> RelationType;
 
+    #[doc(alias = "atspi_relation_get_target")]
     fn get_target(&self, i: i32) -> Option<Accessible>;
 }
 

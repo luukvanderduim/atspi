@@ -8,7 +8,7 @@ use glib::translate::*;
 use std::fmt;
 use std::ptr;
 
-glib::glib_wrapper! {
+glib::wrapper! {
     pub struct Collection(Interface<ffi::AtspiCollection>);
 
     match fn {
@@ -19,14 +19,19 @@ glib::glib_wrapper! {
 pub const NONE_COLLECTION: Option<&Collection> = None;
 
 pub trait CollectionExt: 'static {
+    #[doc(alias = "atspi_collection_get_active_descendant")]
     fn get_active_descendant(&self) -> Result<Accessible, glib::Error>;
 
+    //#[doc(alias = "atspi_collection_get_matches")]
     //fn get_matches<P: IsA<MatchRule>>(&self, rule: &P, sortby: CollectionSortOrder, count: i32, traverse: bool) -> Result</*Unknown conversion*//*Unimplemented*/Array TypeId { ns_id: 1, id: 17 }, glib::Error>;
 
+    //#[doc(alias = "atspi_collection_get_matches_from")]
     //fn get_matches_from<P: IsA<Accessible>, Q: IsA<MatchRule>>(&self, current_object: &P, rule: &Q, sortby: CollectionSortOrder, tree: CollectionTreeTraversalType, count: i32, traverse: bool) -> Result</*Unknown conversion*//*Unimplemented*/Array TypeId { ns_id: 1, id: 17 }, glib::Error>;
 
+    //#[doc(alias = "atspi_collection_get_matches_to")]
     //fn get_matches_to<P: IsA<Accessible>, Q: IsA<MatchRule>>(&self, current_object: &P, rule: &Q, sortby: CollectionSortOrder, tree: CollectionTreeTraversalType, limit_scope: bool, count: i32, traverse: bool) -> Result</*Unknown conversion*//*Unimplemented*/Array TypeId { ns_id: 1, id: 17 }, glib::Error>;
 
+    #[doc(alias = "atspi_collection_is_ancestor_of")]
     fn is_ancestor_of<P: IsA<Accessible>>(&self, test: &P) -> Result<(), glib::Error>;
 }
 

@@ -7,7 +7,7 @@ use glib::translate::*;
 use std::fmt;
 use std::ptr;
 
-glib::glib_wrapper! {
+glib::wrapper! {
     pub struct EditableText(Interface<ffi::AtspiEditableText>);
 
     match fn {
@@ -18,16 +18,22 @@ glib::glib_wrapper! {
 pub const NONE_EDITABLE_TEXT: Option<&EditableText> = None;
 
 pub trait EditableTextExt: 'static {
+    #[doc(alias = "atspi_editable_text_copy_text")]
     fn copy_text(&self, start_pos: i32, end_pos: i32) -> Result<(), glib::Error>;
 
+    #[doc(alias = "atspi_editable_text_cut_text")]
     fn cut_text(&self, start_pos: i32, end_pos: i32) -> Result<(), glib::Error>;
 
+    #[doc(alias = "atspi_editable_text_delete_text")]
     fn delete_text(&self, start_pos: i32, end_pos: i32) -> Result<(), glib::Error>;
 
+    #[doc(alias = "atspi_editable_text_insert_text")]
     fn insert_text(&self, position: i32, text: &str) -> Result<(), glib::Error>;
 
+    #[doc(alias = "atspi_editable_text_paste_text")]
     fn paste_text(&self, position: i32) -> Result<(), glib::Error>;
 
+    #[doc(alias = "atspi_editable_text_set_text_contents")]
     fn set_text_contents(&self, new_contents: &str) -> Result<(), glib::Error>;
 }
 

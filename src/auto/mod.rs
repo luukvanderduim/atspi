@@ -63,6 +63,10 @@ mod selection;
 pub use self::selection::{Selection, NONE_SELECTION};
 pub use self::selection::SelectionExt;
 
+mod state_set;
+pub use self::state_set::{StateSet, NONE_STATE_SET};
+pub use self::state_set::StateSetExt;
+
 mod table;
 pub use self::table::{Table, NONE_TABLE};
 pub use self::table::TableExt;
@@ -134,6 +138,7 @@ pub mod traits {
     pub use super::ImageExt;
     pub use super::RelationExt;
     pub use super::SelectionExt;
+    pub use super::StateSetExt;
     pub use super::TableExt;
     pub use super::TableCellExt;
     pub use super::TextExt;

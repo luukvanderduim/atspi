@@ -9,7 +9,7 @@ use std::fmt;
 use std::mem;
 use std::ptr;
 
-glib::glib_wrapper! {
+glib::wrapper! {
     pub struct Table(Interface<ffi::AtspiTable>);
 
     match fn {
@@ -20,56 +20,82 @@ glib::glib_wrapper! {
 pub const NONE_TABLE: Option<&Table> = None;
 
 pub trait TableExt: 'static {
+    #[doc(alias = "atspi_table_add_column_selection")]
     fn add_column_selection(&self, column: i32) -> Result<(), glib::Error>;
 
+    #[doc(alias = "atspi_table_add_row_selection")]
     fn add_row_selection(&self, row: i32) -> Result<(), glib::Error>;
 
+    #[doc(alias = "atspi_table_get_accessible_at")]
     fn get_accessible_at(&self, row: i32, column: i32) -> Result<Accessible, glib::Error>;
 
+    #[doc(alias = "atspi_table_get_caption")]
     fn get_caption(&self) -> Result<Accessible, glib::Error>;
 
+    #[doc(alias = "atspi_table_get_column_at_index")]
     fn get_column_at_index(&self, index: i32) -> Result<i32, glib::Error>;
 
+    #[doc(alias = "atspi_table_get_column_description")]
     fn get_column_description(&self, column: i32) -> Result<glib::GString, glib::Error>;
 
+    #[doc(alias = "atspi_table_get_column_extent_at")]
     fn get_column_extent_at(&self, row: i32, column: i32) -> Result<i32, glib::Error>;
 
+    #[doc(alias = "atspi_table_get_column_header")]
     fn get_column_header(&self, column: i32) -> Result<Accessible, glib::Error>;
 
+    #[doc(alias = "atspi_table_get_index_at")]
     fn get_index_at(&self, row: i32, column: i32) -> Result<i32, glib::Error>;
 
+    #[doc(alias = "atspi_table_get_n_columns")]
     fn get_n_columns(&self) -> Result<i32, glib::Error>;
 
+    #[doc(alias = "atspi_table_get_n_rows")]
     fn get_n_rows(&self) -> Result<i32, glib::Error>;
 
+    #[doc(alias = "atspi_table_get_n_selected_columns")]
     fn get_n_selected_columns(&self) -> Result<i32, glib::Error>;
 
+    #[doc(alias = "atspi_table_get_n_selected_rows")]
     fn get_n_selected_rows(&self) -> Result<i32, glib::Error>;
 
+    #[doc(alias = "atspi_table_get_row_at_index")]
     fn get_row_at_index(&self, index: i32) -> Result<i32, glib::Error>;
 
+    #[doc(alias = "atspi_table_get_row_column_extents_at_index")]
     fn get_row_column_extents_at_index(&self, index: i32) -> Result<(i32, i32, i32, i32, bool), glib::Error>;
 
+    #[doc(alias = "atspi_table_get_row_description")]
     fn get_row_description(&self, row: i32) -> Result<glib::GString, glib::Error>;
 
+    #[doc(alias = "atspi_table_get_row_extent_at")]
     fn get_row_extent_at(&self, row: i32, column: i32) -> Result<i32, glib::Error>;
 
+    #[doc(alias = "atspi_table_get_row_header")]
     fn get_row_header(&self, row: i32) -> Result<Accessible, glib::Error>;
 
+    //#[doc(alias = "atspi_table_get_selected_columns")]
     //fn get_selected_columns(&self) -> Result</*Unknown conversion*//*Unimplemented*/Array TypeId { ns_id: 0, id: 14 }, glib::Error>;
 
+    //#[doc(alias = "atspi_table_get_selected_rows")]
     //fn get_selected_rows(&self) -> Result</*Unknown conversion*//*Unimplemented*/Array TypeId { ns_id: 0, id: 14 }, glib::Error>;
 
+    #[doc(alias = "atspi_table_get_summary")]
     fn get_summary(&self) -> Result<Accessible, glib::Error>;
 
+    #[doc(alias = "atspi_table_is_column_selected")]
     fn is_column_selected(&self, column: i32) -> Result<(), glib::Error>;
 
+    #[doc(alias = "atspi_table_is_row_selected")]
     fn is_row_selected(&self, row: i32) -> Result<(), glib::Error>;
 
+    #[doc(alias = "atspi_table_is_selected")]
     fn is_selected(&self, row: i32, column: i32) -> Result<(), glib::Error>;
 
+    #[doc(alias = "atspi_table_remove_column_selection")]
     fn remove_column_selection(&self, column: i32) -> Result<(), glib::Error>;
 
+    #[doc(alias = "atspi_table_remove_row_selection")]
     fn remove_row_selection(&self, row: i32) -> Result<(), glib::Error>;
 }
 

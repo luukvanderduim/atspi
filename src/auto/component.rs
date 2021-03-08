@@ -12,7 +12,7 @@ use glib::translate::*;
 use std::fmt;
 use std::ptr;
 
-glib::glib_wrapper! {
+glib::wrapper! {
     pub struct Component(Interface<ffi::AtspiComponent>);
 
     match fn {
@@ -23,32 +23,46 @@ glib::glib_wrapper! {
 pub const NONE_COMPONENT: Option<&Component> = None;
 
 pub trait ComponentExt: 'static {
+    #[doc(alias = "atspi_component_contains")]
     fn contains(&self, x: i32, y: i32, ctype: CoordType) -> Result<(), glib::Error>;
 
+    #[doc(alias = "atspi_component_get_accessible_at_point")]
     fn get_accessible_at_point(&self, x: i32, y: i32, ctype: CoordType) -> Result<Option<Accessible>, glib::Error>;
 
+    #[doc(alias = "atspi_component_get_alpha")]
     fn get_alpha(&self) -> Result<f64, glib::Error>;
 
+    #[doc(alias = "atspi_component_get_extents")]
     fn get_extents(&self, ctype: CoordType) -> Result<Rect, glib::Error>;
 
+    #[doc(alias = "atspi_component_get_layer")]
     fn get_layer(&self) -> Result<ComponentLayer, glib::Error>;
 
+    #[doc(alias = "atspi_component_get_mdi_z_order")]
     fn get_mdi_z_order(&self) -> Result<libc::c_short, glib::Error>;
 
+    #[doc(alias = "atspi_component_get_position")]
     fn get_position(&self, ctype: CoordType) -> Result<Point, glib::Error>;
 
+    #[doc(alias = "atspi_component_get_size")]
     fn get_size(&self) -> Result<Point, glib::Error>;
 
+    #[doc(alias = "atspi_component_grab_focus")]
     fn grab_focus(&self) -> Result<(), glib::Error>;
 
+    //#[doc(alias = "atspi_component_scroll_to")]
     //fn scroll_to(&self, type_: /*Ignored*/ScrollType) -> Result<(), glib::Error>;
 
+    #[doc(alias = "atspi_component_scroll_to_point")]
     fn scroll_to_point(&self, coords: CoordType, x: i32, y: i32) -> Result<(), glib::Error>;
 
+    #[doc(alias = "atspi_component_set_extents")]
     fn set_extents(&self, x: i32, y: i32, width: i32, height: i32, ctype: CoordType) -> Result<(), glib::Error>;
 
+    #[doc(alias = "atspi_component_set_position")]
     fn set_position(&self, x: i32, y: i32, ctype: CoordType) -> Result<(), glib::Error>;
 
+    #[doc(alias = "atspi_component_set_size")]
     fn set_size(&self, width: i32, height: i32) -> Result<(), glib::Error>;
 }
 

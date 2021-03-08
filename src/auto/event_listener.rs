@@ -9,7 +9,7 @@ use std::boxed::Box as Box_;
 use std::fmt;
 use std::ptr;
 
-glib::glib_wrapper! {
+glib::wrapper! {
     pub struct EventListener(Object<ffi::AtspiEventListener, ffi::AtspiEventListenerClass>);
 
     match fn {
@@ -18,6 +18,7 @@ glib::glib_wrapper! {
 }
 
 impl EventListener {
+    #[doc(alias = "atspi_event_listener_new")]
     pub fn new<P: Fn(&Event) + 'static>(callback: P) -> EventListener {
         assert_initialized_main_thread!();
         let callback_data: Box_<P> = Box_::new(callback);
@@ -37,10 +38,12 @@ impl EventListener {
         }
     }
 
+    //#[doc(alias = "atspi_event_listener_new_simple")]
     //pub fn new_simple<P: Fn(&Event) + 'static>(callback: P) -> EventListener {
     //    unsafe { TODO: call ffi:atspi_event_listener_new_simple() }
     //}
 
+    #[doc(alias = "atspi_event_listener_deregister_from_callback")]
     pub fn deregister_from_callback<P: FnMut(&Event)>(callback: P, event_type: &str) -> Result<(), glib::Error> {
         assert_initialized_main_thread!();
         let callback_data: P = callback;
@@ -58,10 +61,12 @@ impl EventListener {
         }
     }
 
+    //#[doc(alias = "atspi_event_listener_deregister_no_data")]
     //pub fn deregister_no_data<P: FnMut(&Event)>(callback: P, event_type: &str) -> Result<(), glib::Error> {
     //    unsafe { TODO: call ffi:atspi_event_listener_deregister_no_data() }
     //}
 
+    #[doc(alias = "atspi_event_listener_register_from_callback")]
     pub fn register_from_callback<P: Fn(&Event) + 'static>(callback: P, event_type: &str) -> Result<(), glib::Error> {
         assert_initialized_main_thread!();
         let callback_data: Box_<P> = Box_::new(callback);
@@ -83,10 +88,12 @@ impl EventListener {
         }
     }
 
+    //#[doc(alias = "atspi_event_listener_register_from_callback_full")]
     //pub fn register_from_callback_full(callback: Option<Box_<dyn Fn(&Event) + 'static>>, event_type: &str, properties: /*Unknown conversion*//*Unimplemented*/Array TypeId { ns_id: 0, id: 28 }) -> Result<(), glib::Error> {
     //    unsafe { TODO: call ffi:atspi_event_listener_register_from_callback_full() }
     //}
 
+    //#[doc(alias = "atspi_event_listener_register_no_data")]
     //pub fn register_no_data<P: Fn(&Event) + 'static>(callback: P, event_type: &str) -> Result<(), glib::Error> {
     //    unsafe { TODO: call ffi:atspi_event_listener_register_no_data() }
     //}
@@ -95,10 +102,13 @@ impl EventListener {
 pub const NONE_EVENT_LISTENER: Option<&EventListener> = None;
 
 pub trait EventListenerExt: 'static {
+    #[doc(alias = "atspi_event_listener_deregister")]
     fn deregister(&self, event_type: &str) -> Result<(), glib::Error>;
 
+    #[doc(alias = "atspi_event_listener_register")]
     fn register(&self, event_type: &str) -> Result<(), glib::Error>;
 
+    //#[doc(alias = "atspi_event_listener_register_full")]
     //fn register_full(&self, event_type: &str, properties: /*Unknown conversion*//*Unimplemented*/Array TypeId { ns_id: 0, id: 28 }) -> Result<(), glib::Error>;
 }
 

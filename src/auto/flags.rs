@@ -9,6 +9,7 @@ use glib::value::FromValueOptional;
 use glib::value::SetValue;
 use glib::StaticType;
 use glib::Type;
+use std::fmt;
 
 bitflags! {
     pub struct Cache: u32 {
@@ -27,6 +28,12 @@ bitflags! {
     }
 }
 
+impl fmt::Display for Cache {
+    fn fmt(&self, f: &mut fmt::Formatter) -> fmt::Result {
+        <Self as fmt::Debug>::fmt(self, f)
+    }
+}
+
 #[doc(hidden)]
 impl ToGlib for Cache {
     type GlibType = ffi::AtspiCache;
@@ -38,7 +45,7 @@ impl ToGlib for Cache {
 
 #[doc(hidden)]
 impl FromGlib<ffi::AtspiCache> for Cache {
-    fn from_glib(value: ffi::AtspiCache) -> Cache {
+    unsafe fn from_glib(value: ffi::AtspiCache) -> Cache {
         skip_assert_initialized!();
         Cache::from_bits_truncate(value)
     }
@@ -77,6 +84,12 @@ bitflags! {
     }
 }
 
+impl fmt::Display for KeyListenerSyncType {
+    fn fmt(&self, f: &mut fmt::Formatter) -> fmt::Result {
+        <Self as fmt::Debug>::fmt(self, f)
+    }
+}
+
 #[doc(hidden)]
 impl ToGlib for KeyListenerSyncType {
     type GlibType = ffi::AtspiKeyListenerSyncType;
@@ -88,7 +101,7 @@ impl ToGlib for KeyListenerSyncType {
 
 #[doc(hidden)]
 impl FromGlib<ffi::AtspiKeyListenerSyncType> for KeyListenerSyncType {
-    fn from_glib(value: ffi::AtspiKeyListenerSyncType) -> KeyListenerSyncType {
+    unsafe fn from_glib(value: ffi::AtspiKeyListenerSyncType) -> KeyListenerSyncType {
         skip_assert_initialized!();
         KeyListenerSyncType::from_bits_truncate(value)
     }

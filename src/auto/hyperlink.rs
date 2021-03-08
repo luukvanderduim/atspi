@@ -10,7 +10,7 @@ use glib::translate::*;
 use std::fmt;
 use std::ptr;
 
-glib::glib_wrapper! {
+glib::wrapper! {
     pub struct Hyperlink(Object<ffi::AtspiHyperlink, ffi::AtspiHyperlinkClass>) @extends Object;
 
     match fn {
@@ -21,18 +21,25 @@ glib::glib_wrapper! {
 pub const NONE_HYPERLINK: Option<&Hyperlink> = None;
 
 pub trait HyperlinkExt: 'static {
+    #[doc(alias = "atspi_hyperlink_get_end_index")]
     fn get_end_index(&self) -> Result<i32, glib::Error>;
 
+    #[doc(alias = "atspi_hyperlink_get_index_range")]
     fn get_index_range(&self) -> Result<Range, glib::Error>;
 
+    #[doc(alias = "atspi_hyperlink_get_n_anchors")]
     fn get_n_anchors(&self) -> Result<i32, glib::Error>;
 
+    #[doc(alias = "atspi_hyperlink_get_object")]
     fn get_object(&self, i: i32) -> Result<Accessible, glib::Error>;
 
+    #[doc(alias = "atspi_hyperlink_get_start_index")]
     fn get_start_index(&self) -> Result<i32, glib::Error>;
 
+    #[doc(alias = "atspi_hyperlink_get_uri")]
     fn get_uri(&self, i: i32) -> Result<glib::GString, glib::Error>;
 
+    #[doc(alias = "atspi_hyperlink_is_valid")]
     fn is_valid(&self) -> Result<(), glib::Error>;
 }
 

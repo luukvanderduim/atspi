@@ -2,10 +2,9 @@
 // from gir-files (https://github.com/gtk-rs/gir-files)
 // DO NOT EDIT
 
-use glib::translate::*;
 use std::fmt;
 
-glib::glib_wrapper! {
+glib::wrapper! {
     pub struct Application(Object<ffi::AtspiApplication, ffi::AtspiApplicationClass>);
 
     match fn {

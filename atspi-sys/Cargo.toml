@@ -24,22 +24,23 @@ name = "atspi_sys"
 libc = "0.2"
 
 [dependencies.glib-sys]
-git = "https://github.com/gtk-rs/gtk-rs.git" 
+git = "https://github.com/gtk-rs/gtk-rs.git"
 
 [dependencies.gobject-sys]
-git = "https://github.com/gtk-rs/gtk-rs.git" 
+git = "https://github.com/gtk-rs/gtk-rs.git"
 
 [dependencies.gio-sys]
-git = "https://github.com/gtk-rs/gtk-rs.git" 
+git = "https://github.com/gtk-rs/gtk-rs.git"
 
 [build-dependencies]
 pkg-config = "0.3.19"
-system-deps = "2.0"
+system-deps = "2.0.3"
 
 [dev-dependencies]
 shell-words = "1.0.0"
-tempfile = "3"
+tempfile = "3.2.0"
 
 [features]
 dox = []
 v2_34 = []
+v2_38 = []

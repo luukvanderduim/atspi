@@ -13,12 +13,19 @@ use std::fmt;
 #[derive(Debug, Eq, PartialEq, Ord, PartialOrd, Hash)]
 #[derive(Clone, Copy)]
 #[non_exhaustive]
+#[doc(alias = "AtspiCollectionMatchType")]
 pub enum CollectionMatchType {
+    #[doc(alias = "ATSPI_Collection_MATCH_INVALID")]
     Invalid,
+    #[doc(alias = "ATSPI_Collection_MATCH_ALL")]
     All,
+    #[doc(alias = "ATSPI_Collection_MATCH_ANY")]
     Any,
+    #[doc(alias = "ATSPI_Collection_MATCH_NONE")]
     None,
+    #[doc(alias = "ATSPI_Collection_MATCH_EMPTY")]
     Empty,
+    #[doc(alias = "ATSPI_Collection_MATCH_LAST_DEFINED")]
     LastDefined,
 #[doc(hidden)]
     __Unknown(i32),
@@ -57,7 +64,7 @@ impl ToGlib for CollectionMatchType {
 
 #[doc(hidden)]
 impl FromGlib<ffi::AtspiCollectionMatchType> for CollectionMatchType {
-    fn from_glib(value: ffi::AtspiCollectionMatchType) -> Self {
+    unsafe fn from_glib(value: ffi::AtspiCollectionMatchType) -> Self {
         skip_assert_initialized!();
         match value {
             0 => CollectionMatchType::Invalid,
@@ -98,14 +105,23 @@ impl SetValue for CollectionMatchType {
 #[derive(Debug, Eq, PartialEq, Ord, PartialOrd, Hash)]
 #[derive(Clone, Copy)]
 #[non_exhaustive]
+#[doc(alias = "AtspiCollectionSortOrder")]
 pub enum CollectionSortOrder {
+    #[doc(alias = "ATSPI_Collection_SORT_ORDER_INVALID")]
     Invalid,
+    #[doc(alias = "ATSPI_Collection_SORT_ORDER_CANONICAL")]
     Canonical,
+    #[doc(alias = "ATSPI_Collection_SORT_ORDER_FLOW")]
     Flow,
+    #[doc(alias = "ATSPI_Collection_SORT_ORDER_TAB")]
     Tab,
+    #[doc(alias = "ATSPI_Collection_SORT_ORDER_REVERSE_CANONICAL")]
     ReverseCanonical,
+    #[doc(alias = "ATSPI_Collection_SORT_ORDER_REVERSE_FLOW")]
     ReverseFlow,
+    #[doc(alias = "ATSPI_Collection_SORT_ORDER_REVERSE_TAB")]
     ReverseTab,
+    #[doc(alias = "ATSPI_Collection_SORT_ORDER_LAST_DEFINED")]
     LastDefined,
 #[doc(hidden)]
     __Unknown(i32),
@@ -148,7 +164,7 @@ impl ToGlib for CollectionSortOrder {
 
 #[doc(hidden)]
 impl FromGlib<ffi::AtspiCollectionSortOrder> for CollectionSortOrder {
-    fn from_glib(value: ffi::AtspiCollectionSortOrder) -> Self {
+    unsafe fn from_glib(value: ffi::AtspiCollectionSortOrder) -> Self {
         skip_assert_initialized!();
         match value {
             0 => CollectionSortOrder::Invalid,
@@ -191,10 +207,15 @@ impl SetValue for CollectionSortOrder {
 #[derive(Debug, Eq, PartialEq, Ord, PartialOrd, Hash)]
 #[derive(Clone, Copy)]
 #[non_exhaustive]
+#[doc(alias = "AtspiCollectionTreeTraversalType")]
 pub enum CollectionTreeTraversalType {
+    #[doc(alias = "ATSPI_Collection_TREE_RESTRICT_CHILDREN")]
     RestrictChildren,
+    #[doc(alias = "ATSPI_Collection_TREE_RESTRICT_SIBLING")]
     RestrictSibling,
+    #[doc(alias = "ATSPI_Collection_TREE_INORDER")]
     Inorder,
+    #[doc(alias = "ATSPI_Collection_TREE_LAST_DEFINED")]
     LastDefined,
 #[doc(hidden)]
     __Unknown(i32),
@@ -229,7 +250,7 @@ impl ToGlib for CollectionTreeTraversalType {
 
 #[doc(hidden)]
 impl FromGlib<ffi::AtspiCollectionTreeTraversalType> for CollectionTreeTraversalType {
-    fn from_glib(value: ffi::AtspiCollectionTreeTraversalType) -> Self {
+    unsafe fn from_glib(value: ffi::AtspiCollectionTreeTraversalType) -> Self {
         skip_assert_initialized!();
         match value {
             0 => CollectionTreeTraversalType::RestrictChildren,
@@ -268,15 +289,25 @@ impl SetValue for CollectionTreeTraversalType {
 #[derive(Debug, Eq, PartialEq, Ord, PartialOrd, Hash)]
 #[derive(Clone, Copy)]
 #[non_exhaustive]
+#[doc(alias = "AtspiComponentLayer")]
 pub enum ComponentLayer {
+    #[doc(alias = "ATSPI_LAYER_INVALID")]
     Invalid,
+    #[doc(alias = "ATSPI_LAYER_BACKGROUND")]
     Background,
+    #[doc(alias = "ATSPI_LAYER_CANVAS")]
     Canvas,
+    #[doc(alias = "ATSPI_LAYER_WIDGET")]
     Widget,
+    #[doc(alias = "ATSPI_LAYER_MDI")]
     Mdi,
+    #[doc(alias = "ATSPI_LAYER_POPUP")]
     Popup,
+    #[doc(alias = "ATSPI_LAYER_OVERLAY")]
     Overlay,
+    #[doc(alias = "ATSPI_LAYER_WINDOW")]
     Window,
+    #[doc(alias = "ATSPI_LAYER_LAST_DEFINED")]
     LastDefined,
 #[doc(hidden)]
     __Unknown(i32),
@@ -321,7 +352,7 @@ impl ToGlib for ComponentLayer {
 
 #[doc(hidden)]
 impl FromGlib<ffi::AtspiComponentLayer> for ComponentLayer {
-    fn from_glib(value: ffi::AtspiComponentLayer) -> Self {
+    unsafe fn from_glib(value: ffi::AtspiComponentLayer) -> Self {
         skip_assert_initialized!();
         match value {
             0 => ComponentLayer::Invalid,
@@ -365,9 +396,13 @@ impl SetValue for ComponentLayer {
 #[derive(Debug, Eq, PartialEq, Ord, PartialOrd, Hash)]
 #[derive(Clone, Copy)]
 #[non_exhaustive]
+#[doc(alias = "AtspiCoordType")]
 pub enum CoordType {
+    #[doc(alias = "ATSPI_COORD_TYPE_SCREEN")]
     Screen,
+    #[doc(alias = "ATSPI_COORD_TYPE_WINDOW")]
     Window,
+    #[doc(alias = "ATSPI_COORD_TYPE_PARENT")]
     Parent,
 #[doc(hidden)]
     __Unknown(i32),
@@ -400,7 +435,7 @@ impl ToGlib for CoordType {
 
 #[doc(hidden)]
 impl FromGlib<ffi::AtspiCoordType> for CoordType {
-    fn from_glib(value: ffi::AtspiCoordType) -> Self {
+    unsafe fn from_glib(value: ffi::AtspiCoordType) -> Self {
         skip_assert_initialized!();
         match value {
             0 => CoordType::Screen,
@@ -438,13 +473,21 @@ impl SetValue for CoordType {
 #[derive(Debug, Eq, PartialEq, Ord, PartialOrd, Hash)]
 #[derive(Clone, Copy)]
 #[non_exhaustive]
+#[doc(alias = "AtspiKeySynthType")]
 pub enum KeySynthType {
+    #[doc(alias = "ATSPI_KEY_PRESS")]
     Press,
+    #[doc(alias = "ATSPI_KEY_RELEASE")]
     Release,
+    #[doc(alias = "ATSPI_KEY_PRESSRELEASE")]
     Pressrelease,
+    #[doc(alias = "ATSPI_KEY_SYM")]
     Sym,
+    #[doc(alias = "ATSPI_KEY_STRING")]
     String,
+    #[doc(alias = "ATSPI_KEY_LOCKMODIFIERS")]
     Lockmodifiers,
+    #[doc(alias = "ATSPI_KEY_UNLOCKMODIFIERS")]
     Unlockmodifiers,
 #[doc(hidden)]
     __Unknown(i32),
@@ -485,7 +528,7 @@ impl ToGlib for KeySynthType {
 
 #[doc(hidden)]
 impl FromGlib<ffi::AtspiKeySynthType> for KeySynthType {
-    fn from_glib(value: ffi::AtspiKeySynthType) -> Self {
+    unsafe fn from_glib(value: ffi::AtspiKeySynthType) -> Self {
         skip_assert_initialized!();
         match value {
             0 => KeySynthType::Press,
@@ -527,30 +570,55 @@ impl SetValue for KeySynthType {
 #[derive(Debug, Eq, PartialEq, Ord, PartialOrd, Hash)]
 #[derive(Clone, Copy)]
 #[non_exhaustive]
+#[doc(alias = "AtspiRelationType")]
 pub enum RelationType {
+    #[doc(alias = "ATSPI_RELATION_NULL")]
     Null,
+    #[doc(alias = "ATSPI_RELATION_LABEL_FOR")]
     LabelFor,
+    #[doc(alias = "ATSPI_RELATION_LABELLED_BY")]
     LabelledBy,
+    #[doc(alias = "ATSPI_RELATION_CONTROLLER_FOR")]
     ControllerFor,
+    #[doc(alias = "ATSPI_RELATION_CONTROLLED_BY")]
     ControlledBy,
+    #[doc(alias = "ATSPI_RELATION_MEMBER_OF")]
     MemberOf,
+    #[doc(alias = "ATSPI_RELATION_TOOLTIP_FOR")]
     TooltipFor,
+    #[doc(alias = "ATSPI_RELATION_NODE_CHILD_OF")]
     NodeChildOf,
+    #[doc(alias = "ATSPI_RELATION_NODE_PARENT_OF")]
     NodeParentOf,
+    #[doc(alias = "ATSPI_RELATION_EXTENDED")]
     Extended,
+    #[doc(alias = "ATSPI_RELATION_FLOWS_TO")]
     FlowsTo,
+    #[doc(alias = "ATSPI_RELATION_FLOWS_FROM")]
     FlowsFrom,
+    #[doc(alias = "ATSPI_RELATION_SUBWINDOW_OF")]
     SubwindowOf,
+    #[doc(alias = "ATSPI_RELATION_EMBEDS")]
     Embeds,
+    #[doc(alias = "ATSPI_RELATION_EMBEDDED_BY")]
     EmbeddedBy,
+    #[doc(alias = "ATSPI_RELATION_POPUP_FOR")]
     PopupFor,
+    #[doc(alias = "ATSPI_RELATION_PARENT_WINDOW_OF")]
     ParentWindowOf,
+    #[doc(alias = "ATSPI_RELATION_DESCRIPTION_FOR")]
     DescriptionFor,
+    #[doc(alias = "ATSPI_RELATION_DESCRIBED_BY")]
     DescribedBy,
+    #[doc(alias = "ATSPI_RELATION_DETAILS")]
     Details,
+    #[doc(alias = "ATSPI_RELATION_DETAILS_FOR")]
     DetailsFor,
+    #[doc(alias = "ATSPI_RELATION_ERROR_MESSAGE")]
     ErrorMessage,
+    #[doc(alias = "ATSPI_RELATION_ERROR_FOR")]
     ErrorFor,
+    #[doc(alias = "ATSPI_RELATION_LAST_DEFINED")]
     LastDefined,
 #[doc(hidden)]
     __Unknown(i32),
@@ -625,7 +693,7 @@ impl ToGlib for RelationType {
 
 #[doc(hidden)]
 impl FromGlib<ffi::AtspiRelationType> for RelationType {
-    fn from_glib(value: ffi::AtspiRelationType) -> Self {
+    unsafe fn from_glib(value: ffi::AtspiRelationType) -> Self {
         skip_assert_initialized!();
         match value {
             0 => RelationType::Null,
@@ -684,139 +752,280 @@ impl SetValue for RelationType {
 #[derive(Debug, Eq, PartialEq, Ord, PartialOrd, Hash)]
 #[derive(Clone, Copy)]
 #[non_exhaustive]
+#[doc(alias = "AtspiRole")]
 pub enum Role {
+    #[doc(alias = "ATSPI_ROLE_INVALID")]
     Invalid,
+    #[doc(alias = "ATSPI_ROLE_ACCELERATOR_LABEL")]
     AcceleratorLabel,
+    #[doc(alias = "ATSPI_ROLE_ALERT")]
     Alert,
+    #[doc(alias = "ATSPI_ROLE_ANIMATION")]
     Animation,
+    #[doc(alias = "ATSPI_ROLE_ARROW")]
     Arrow,
+    #[doc(alias = "ATSPI_ROLE_CALENDAR")]
     Calendar,
+    #[doc(alias = "ATSPI_ROLE_CANVAS")]
     Canvas,
+    #[doc(alias = "ATSPI_ROLE_CHECK_BOX")]
     CheckBox,
+    #[doc(alias = "ATSPI_ROLE_CHECK_MENU_ITEM")]
     CheckMenuItem,
+    #[doc(alias = "ATSPI_ROLE_COLOR_CHOOSER")]
     ColorChooser,
+    #[doc(alias = "ATSPI_ROLE_COLUMN_HEADER")]
     ColumnHeader,
+    #[doc(alias = "ATSPI_ROLE_COMBO_BOX")]
     ComboBox,
+    #[doc(alias = "ATSPI_ROLE_DATE_EDITOR")]
     DateEditor,
+    #[doc(alias = "ATSPI_ROLE_DESKTOP_ICON")]
     DesktopIcon,
+    #[doc(alias = "ATSPI_ROLE_DESKTOP_FRAME")]
     DesktopFrame,
+    #[doc(alias = "ATSPI_ROLE_DIAL")]
     Dial,
+    #[doc(alias = "ATSPI_ROLE_DIALOG")]
     Dialog,
+    #[doc(alias = "ATSPI_ROLE_DIRECTORY_PANE")]
     DirectoryPane,
+    #[doc(alias = "ATSPI_ROLE_DRAWING_AREA")]
     DrawingArea,
+    #[doc(alias = "ATSPI_ROLE_FILE_CHOOSER")]
     FileChooser,
+    #[doc(alias = "ATSPI_ROLE_FILLER")]
     Filler,
+    #[doc(alias = "ATSPI_ROLE_FOCUS_TRAVERSABLE")]
     FocusTraversable,
+    #[doc(alias = "ATSPI_ROLE_FONT_CHOOSER")]
     FontChooser,
+    #[doc(alias = "ATSPI_ROLE_FRAME")]
     Frame,
+    #[doc(alias = "ATSPI_ROLE_GLASS_PANE")]
     GlassPane,
+    #[doc(alias = "ATSPI_ROLE_HTML_CONTAINER")]
     HtmlContainer,
+    #[doc(alias = "ATSPI_ROLE_ICON")]
     Icon,
+    #[doc(alias = "ATSPI_ROLE_IMAGE")]
     Image,
+    #[doc(alias = "ATSPI_ROLE_INTERNAL_FRAME")]
     InternalFrame,
+    #[doc(alias = "ATSPI_ROLE_LABEL")]
     Label,
+    #[doc(alias = "ATSPI_ROLE_LAYERED_PANE")]
     LayeredPane,
+    #[doc(alias = "ATSPI_ROLE_LIST")]
     List,
+    #[doc(alias = "ATSPI_ROLE_LIST_ITEM")]
     ListItem,
+    #[doc(alias = "ATSPI_ROLE_MENU")]
     Menu,
+    #[doc(alias = "ATSPI_ROLE_MENU_BAR")]
     MenuBar,
+    #[doc(alias = "ATSPI_ROLE_MENU_ITEM")]
     MenuItem,
+    #[doc(alias = "ATSPI_ROLE_OPTION_PANE")]
     OptionPane,
+    #[doc(alias = "ATSPI_ROLE_PAGE_TAB")]
     PageTab,
+    #[doc(alias = "ATSPI_ROLE_PAGE_TAB_LIST")]
     PageTabList,
+    #[doc(alias = "ATSPI_ROLE_PANEL")]
     Panel,
+    #[doc(alias = "ATSPI_ROLE_PASSWORD_TEXT")]
     PasswordText,
+    #[doc(alias = "ATSPI_ROLE_POPUP_MENU")]
     PopupMenu,
+    #[doc(alias = "ATSPI_ROLE_PROGRESS_BAR")]
     ProgressBar,
+    #[doc(alias = "ATSPI_ROLE_PUSH_BUTTON")]
     PushButton,
+    #[doc(alias = "ATSPI_ROLE_RADIO_BUTTON")]
     RadioButton,
+    #[doc(alias = "ATSPI_ROLE_RADIO_MENU_ITEM")]
     RadioMenuItem,
+    #[doc(alias = "ATSPI_ROLE_ROOT_PANE")]
     RootPane,
+    #[doc(alias = "ATSPI_ROLE_ROW_HEADER")]
     RowHeader,
+    #[doc(alias = "ATSPI_ROLE_SCROLL_BAR")]
     ScrollBar,
+    #[doc(alias = "ATSPI_ROLE_SCROLL_PANE")]
     ScrollPane,
+    #[doc(alias = "ATSPI_ROLE_SEPARATOR")]
     Separator,
+    #[doc(alias = "ATSPI_ROLE_SLIDER")]
     Slider,
+    #[doc(alias = "ATSPI_ROLE_SPIN_BUTTON")]
     SpinButton,
+    #[doc(alias = "ATSPI_ROLE_SPLIT_PANE")]
     SplitPane,
+    #[doc(alias = "ATSPI_ROLE_STATUS_BAR")]
     StatusBar,
+    #[doc(alias = "ATSPI_ROLE_TABLE")]
     Table,
+    #[doc(alias = "ATSPI_ROLE_TABLE_CELL")]
     TableCell,
+    #[doc(alias = "ATSPI_ROLE_TABLE_COLUMN_HEADER")]
     TableColumnHeader,
+    #[doc(alias = "ATSPI_ROLE_TABLE_ROW_HEADER")]
     TableRowHeader,
+    #[doc(alias = "ATSPI_ROLE_TEAROFF_MENU_ITEM")]
     TearoffMenuItem,
+    #[doc(alias = "ATSPI_ROLE_TERMINAL")]
     Terminal,
+    #[doc(alias = "ATSPI_ROLE_TEXT")]
     Text,
+    #[doc(alias = "ATSPI_ROLE_TOGGLE_BUTTON")]
     ToggleButton,
+    #[doc(alias = "ATSPI_ROLE_TOOL_BAR")]
     ToolBar,
+    #[doc(alias = "ATSPI_ROLE_TOOL_TIP")]
     ToolTip,
+    #[doc(alias = "ATSPI_ROLE_TREE")]
     Tree,
+    #[doc(alias = "ATSPI_ROLE_TREE_TABLE")]
     TreeTable,
+    #[doc(alias = "ATSPI_ROLE_UNKNOWN")]
     Unknown,
+    #[doc(alias = "ATSPI_ROLE_VIEWPORT")]
     Viewport,
+    #[doc(alias = "ATSPI_ROLE_WINDOW")]
     Window,
+    #[doc(alias = "ATSPI_ROLE_EXTENDED")]
     Extended,
+    #[doc(alias = "ATSPI_ROLE_HEADER")]
     Header,
+    #[doc(alias = "ATSPI_ROLE_FOOTER")]
     Footer,
+    #[doc(alias = "ATSPI_ROLE_PARAGRAPH")]
     Paragraph,
+    #[doc(alias = "ATSPI_ROLE_RULER")]
     Ruler,
+    #[doc(alias = "ATSPI_ROLE_APPLICATION")]
     Application,
+    #[doc(alias = "ATSPI_ROLE_AUTOCOMPLETE")]
     Autocomplete,
+    #[doc(alias = "ATSPI_ROLE_EDITBAR")]
     Editbar,
+    #[doc(alias = "ATSPI_ROLE_EMBEDDED")]
     Embedded,
+    #[doc(alias = "ATSPI_ROLE_ENTRY")]
     Entry,
+    #[doc(alias = "ATSPI_ROLE_CHART")]
     Chart,
+    #[doc(alias = "ATSPI_ROLE_CAPTION")]
     Caption,
+    #[doc(alias = "ATSPI_ROLE_DOCUMENT_FRAME")]
     DocumentFrame,
+    #[doc(alias = "ATSPI_ROLE_HEADING")]
     Heading,
+    #[doc(alias = "ATSPI_ROLE_PAGE")]
     Page,
+    #[doc(alias = "ATSPI_ROLE_SECTION")]
     Section,
+    #[doc(alias = "ATSPI_ROLE_REDUNDANT_OBJECT")]
     RedundantObject,
+    #[doc(alias = "ATSPI_ROLE_FORM")]
     Form,
+    #[doc(alias = "ATSPI_ROLE_LINK")]
     Link,
+    #[doc(alias = "ATSPI_ROLE_INPUT_METHOD_WINDOW")]
     InputMethodWindow,
+    #[doc(alias = "ATSPI_ROLE_TABLE_ROW")]
     TableRow,
+    #[doc(alias = "ATSPI_ROLE_TREE_ITEM")]
     TreeItem,
+    #[doc(alias = "ATSPI_ROLE_DOCUMENT_SPREADSHEET")]
     DocumentSpreadsheet,
+    #[doc(alias = "ATSPI_ROLE_DOCUMENT_PRESENTATION")]
     DocumentPresentation,
+    #[doc(alias = "ATSPI_ROLE_DOCUMENT_TEXT")]
     DocumentText,
+    #[doc(alias = "ATSPI_ROLE_DOCUMENT_WEB")]
     DocumentWeb,
+    #[doc(alias = "ATSPI_ROLE_DOCUMENT_EMAIL")]
     DocumentEmail,
+    #[doc(alias = "ATSPI_ROLE_COMMENT")]
     Comment,
+    #[doc(alias = "ATSPI_ROLE_LIST_BOX")]
     ListBox,
+    #[doc(alias = "ATSPI_ROLE_GROUPING")]
     Grouping,
+    #[doc(alias = "ATSPI_ROLE_IMAGE_MAP")]
     ImageMap,
+    #[doc(alias = "ATSPI_ROLE_NOTIFICATION")]
     Notification,
+    #[doc(alias = "ATSPI_ROLE_INFO_BAR")]
     InfoBar,
+    #[doc(alias = "ATSPI_ROLE_LEVEL_BAR")]
     LevelBar,
+    #[doc(alias = "ATSPI_ROLE_TITLE_BAR")]
     TitleBar,
+    #[doc(alias = "ATSPI_ROLE_BLOCK_QUOTE")]
     BlockQuote,
+    #[doc(alias = "ATSPI_ROLE_AUDIO")]
     Audio,
+    #[doc(alias = "ATSPI_ROLE_VIDEO")]
     Video,
+    #[doc(alias = "ATSPI_ROLE_DEFINITION")]
     Definition,
+    #[doc(alias = "ATSPI_ROLE_ARTICLE")]
     Article,
+    #[doc(alias = "ATSPI_ROLE_LANDMARK")]
     Landmark,
+    #[doc(alias = "ATSPI_ROLE_LOG")]
     Log,
+    #[doc(alias = "ATSPI_ROLE_MARQUEE")]
     Marquee,
+    #[doc(alias = "ATSPI_ROLE_MATH")]
     Math,
+    #[doc(alias = "ATSPI_ROLE_RATING")]
     Rating,
+    #[doc(alias = "ATSPI_ROLE_TIMER")]
     Timer,
+    #[doc(alias = "ATSPI_ROLE_STATIC")]
     Static,
+    #[doc(alias = "ATSPI_ROLE_MATH_FRACTION")]
     MathFraction,
+    #[doc(alias = "ATSPI_ROLE_MATH_ROOT")]
     MathRoot,
+    #[doc(alias = "ATSPI_ROLE_SUBSCRIPT")]
     Subscript,
+    #[doc(alias = "ATSPI_ROLE_SUPERSCRIPT")]
     Superscript,
+    #[doc(alias = "ATSPI_ROLE_DESCRIPTION_LIST")]
     DescriptionList,
+    #[doc(alias = "ATSPI_ROLE_DESCRIPTION_TERM")]
     DescriptionTerm,
+    #[doc(alias = "ATSPI_ROLE_DESCRIPTION_VALUE")]
     DescriptionValue,
+    #[doc(alias = "ATSPI_ROLE_FOOTNOTE")]
     Footnote,
+    #[doc(alias = "ATSPI_ROLE_CONTENT_DELETION")]
     ContentDeletion,
+    #[doc(alias = "ATSPI_ROLE_CONTENT_INSERTION")]
     ContentInsertion,
+    #[doc(alias = "ATSPI_ROLE_MARK")]
     Mark,
+    #[doc(alias = "ATSPI_ROLE_SUGGESTION")]
     Suggestion,
+    #[doc(alias = "ATSPI_ROLE_LAST_DEFINED")]
     LastDefined,
 #[doc(hidden)]
     __Unknown(i32),
+}
+
+impl Role {
+    #[doc(alias = "atspi_role_get_name")]
+    pub fn get_name(self) -> Option<glib::GString> {
+        assert_initialized_main_thread!();
+        unsafe {
+            from_glib_full(ffi::atspi_role_get_name(self.to_glib()))
+        }
+    }
 }
 
 impl fmt::Display for Role {
@@ -1100,7 +1309,7 @@ impl ToGlib for Role {
 
 #[doc(hidden)]
 impl FromGlib<ffi::AtspiRole> for Role {
-    fn from_glib(value: ffi::AtspiRole) -> Self {
+    unsafe fn from_glib(value: ffi::AtspiRole) -> Self {
         skip_assert_initialized!();
         match value {
             0 => Role::Invalid,
@@ -1265,51 +1474,97 @@ impl SetValue for Role {
 #[derive(Debug, Eq, PartialEq, Ord, PartialOrd, Hash)]
 #[derive(Clone, Copy)]
 #[non_exhaustive]
+#[doc(alias = "AtspiStateType")]
 pub enum StateType {
+    #[doc(alias = "ATSPI_STATE_INVALID")]
     Invalid,
+    #[doc(alias = "ATSPI_STATE_ACTIVE")]
     Active,
+    #[doc(alias = "ATSPI_STATE_ARMED")]
     Armed,
+    #[doc(alias = "ATSPI_STATE_BUSY")]
     Busy,
+    #[doc(alias = "ATSPI_STATE_CHECKED")]
     Checked,
+    #[doc(alias = "ATSPI_STATE_COLLAPSED")]
     Collapsed,
+    #[doc(alias = "ATSPI_STATE_DEFUNCT")]
     Defunct,
+    #[doc(alias = "ATSPI_STATE_EDITABLE")]
     Editable,
+    #[doc(alias = "ATSPI_STATE_ENABLED")]
     Enabled,
+    #[doc(alias = "ATSPI_STATE_EXPANDABLE")]
     Expandable,
+    #[doc(alias = "ATSPI_STATE_EXPANDED")]
     Expanded,
+    #[doc(alias = "ATSPI_STATE_FOCUSABLE")]
     Focusable,
+    #[doc(alias = "ATSPI_STATE_FOCUSED")]
     Focused,
+    #[doc(alias = "ATSPI_STATE_HAS_TOOLTIP")]
     HasTooltip,
+    #[doc(alias = "ATSPI_STATE_HORIZONTAL")]
     Horizontal,
+    #[doc(alias = "ATSPI_STATE_ICONIFIED")]
     Iconified,
+    #[doc(alias = "ATSPI_STATE_MODAL")]
     Modal,
+    #[doc(alias = "ATSPI_STATE_MULTI_LINE")]
     MultiLine,
+    #[doc(alias = "ATSPI_STATE_MULTISELECTABLE")]
     Multiselectable,
+    #[doc(alias = "ATSPI_STATE_OPAQUE")]
     Opaque,
+    #[doc(alias = "ATSPI_STATE_PRESSED")]
     Pressed,
+    #[doc(alias = "ATSPI_STATE_RESIZABLE")]
     Resizable,
+    #[doc(alias = "ATSPI_STATE_SELECTABLE")]
     Selectable,
+    #[doc(alias = "ATSPI_STATE_SELECTED")]
     Selected,
+    #[doc(alias = "ATSPI_STATE_SENSITIVE")]
     Sensitive,
+    #[doc(alias = "ATSPI_STATE_SHOWING")]
     Showing,
+    #[doc(alias = "ATSPI_STATE_SINGLE_LINE")]
     SingleLine,
+    #[doc(alias = "ATSPI_STATE_STALE")]
     Stale,
+    #[doc(alias = "ATSPI_STATE_TRANSIENT")]
     Transient,
+    #[doc(alias = "ATSPI_STATE_VERTICAL")]
     Vertical,
+    #[doc(alias = "ATSPI_STATE_VISIBLE")]
     Visible,
+    #[doc(alias = "ATSPI_STATE_MANAGES_DESCENDANTS")]
     ManagesDescendants,
+    #[doc(alias = "ATSPI_STATE_INDETERMINATE")]
     Indeterminate,
+    #[doc(alias = "ATSPI_STATE_REQUIRED")]
     Required,
+    #[doc(alias = "ATSPI_STATE_TRUNCATED")]
     Truncated,
+    #[doc(alias = "ATSPI_STATE_ANIMATED")]
     Animated,
+    #[doc(alias = "ATSPI_STATE_INVALID_ENTRY")]
     InvalidEntry,
+    #[doc(alias = "ATSPI_STATE_SUPPORTS_AUTOCOMPLETION")]
     SupportsAutocompletion,
+    #[doc(alias = "ATSPI_STATE_SELECTABLE_TEXT")]
     SelectableText,
+    #[doc(alias = "ATSPI_STATE_IS_DEFAULT")]
     IsDefault,
+    #[doc(alias = "ATSPI_STATE_VISITED")]
     Visited,
+    #[doc(alias = "ATSPI_STATE_CHECKABLE")]
     Checkable,
+    #[doc(alias = "ATSPI_STATE_HAS_POPUP")]
     HasPopup,
+    #[doc(alias = "ATSPI_STATE_READ_ONLY")]
     ReadOnly,
+    #[doc(alias = "ATSPI_STATE_LAST_DEFINED")]
     LastDefined,
 #[doc(hidden)]
     __Unknown(i32),
@@ -1426,7 +1681,7 @@ impl ToGlib for StateType {
 
 #[doc(hidden)]
 impl FromGlib<ffi::AtspiStateType> for StateType {
-    fn from_glib(value: ffi::AtspiStateType) -> Self {
+    unsafe fn from_glib(value: ffi::AtspiStateType) -> Self {
         skip_assert_initialized!();
         match value {
             0 => StateType::Invalid,
@@ -1506,13 +1761,21 @@ impl SetValue for StateType {
 #[derive(Debug, Eq, PartialEq, Ord, PartialOrd, Hash)]
 #[derive(Clone, Copy)]
 #[non_exhaustive]
+#[doc(alias = "AtspiTextBoundaryType")]
 pub enum TextBoundaryType {
+    #[doc(alias = "ATSPI_TEXT_BOUNDARY_CHAR")]
     Char,
+    #[doc(alias = "ATSPI_TEXT_BOUNDARY_WORD_START")]
     WordStart,
+    #[doc(alias = "ATSPI_TEXT_BOUNDARY_WORD_END")]
     WordEnd,
+    #[doc(alias = "ATSPI_TEXT_BOUNDARY_SENTENCE_START")]
     SentenceStart,
+    #[doc(alias = "ATSPI_TEXT_BOUNDARY_SENTENCE_END")]
     SentenceEnd,
+    #[doc(alias = "ATSPI_TEXT_BOUNDARY_LINE_START")]
     LineStart,
+    #[doc(alias = "ATSPI_TEXT_BOUNDARY_LINE_END")]
     LineEnd,
 #[doc(hidden)]
     __Unknown(i32),
@@ -1553,7 +1816,7 @@ impl ToGlib for TextBoundaryType {
 
 #[doc(hidden)]
 impl FromGlib<ffi::AtspiTextBoundaryType> for TextBoundaryType {
-    fn from_glib(value: ffi::AtspiTextBoundaryType) -> Self {
+    unsafe fn from_glib(value: ffi::AtspiTextBoundaryType) -> Self {
         skip_assert_initialized!();
         match value {
             0 => TextBoundaryType::Char,
@@ -1595,10 +1858,15 @@ impl SetValue for TextBoundaryType {
 #[derive(Debug, Eq, PartialEq, Ord, PartialOrd, Hash)]
 #[derive(Clone, Copy)]
 #[non_exhaustive]
+#[doc(alias = "AtspiTextClipType")]
 pub enum TextClipType {
+    #[doc(alias = "ATSPI_TEXT_CLIP_NONE")]
     None,
+    #[doc(alias = "ATSPI_TEXT_CLIP_MIN")]
     Min,
+    #[doc(alias = "ATSPI_TEXT_CLIP_MAX")]
     Max,
+    #[doc(alias = "ATSPI_TEXT_CLIP_BOTH")]
     Both,
 #[doc(hidden)]
     __Unknown(i32),
@@ -1633,7 +1901,7 @@ impl ToGlib for TextClipType {
 
 #[doc(hidden)]
 impl FromGlib<ffi::AtspiTextClipType> for TextClipType {
-    fn from_glib(value: ffi::AtspiTextClipType) -> Self {
+    unsafe fn from_glib(value: ffi::AtspiTextClipType) -> Self {
         skip_assert_initialized!();
         match value {
             0 => TextClipType::None,
@@ -1672,11 +1940,17 @@ impl SetValue for TextClipType {
 #[derive(Debug, Eq, PartialEq, Ord, PartialOrd, Hash)]
 #[derive(Clone, Copy)]
 #[non_exhaustive]
+#[doc(alias = "AtspiTextGranularity")]
 pub enum TextGranularity {
+    #[doc(alias = "ATSPI_TEXT_GRANULARITY_CHAR")]
     Char,
+    #[doc(alias = "ATSPI_TEXT_GRANULARITY_WORD")]
     Word,
+    #[doc(alias = "ATSPI_TEXT_GRANULARITY_SENTENCE")]
     Sentence,
+    #[doc(alias = "ATSPI_TEXT_GRANULARITY_LINE")]
     Line,
+    #[doc(alias = "ATSPI_TEXT_GRANULARITY_PARAGRAPH")]
     Paragraph,
 #[doc(hidden)]
     __Unknown(i32),
@@ -1713,7 +1987,7 @@ impl ToGlib for TextGranularity {
 
 #[doc(hidden)]
 impl FromGlib<ffi::AtspiTextGranularity> for TextGranularity {
-    fn from_glib(value: ffi::AtspiTextGranularity) -> Self {
+    unsafe fn from_glib(value: ffi::AtspiTextGranularity) -> Self {
         skip_assert_initialized!();
         match value {
             0 => TextGranularity::Char,

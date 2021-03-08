@@ -3,7 +3,7 @@
 // DO NOT EDIT
 
 
-glib::glib_wrapper! {
+glib::wrapper! {
     #[derive(Debug, PartialEq, Eq, PartialOrd, Ord, Hash)]
     pub struct TextRange(Boxed<ffi::AtspiTextRange>);
 

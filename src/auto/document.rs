@@ -7,7 +7,7 @@ use glib::translate::*;
 use std::fmt;
 use std::ptr;
 
-glib::glib_wrapper! {
+glib::wrapper! {
     pub struct Document(Interface<ffi::AtspiDocument>);
 
     match fn {
@@ -18,14 +18,19 @@ glib::glib_wrapper! {
 pub const NONE_DOCUMENT: Option<&Document> = None;
 
 pub trait DocumentExt: 'static {
+    #[doc(alias = "atspi_document_get_current_page_number")]
     fn get_current_page_number(&self) -> Result<i32, glib::Error>;
 
+    #[doc(alias = "atspi_document_get_document_attribute_value")]
     fn get_document_attribute_value(&self, attribute: &str) -> Result<glib::GString, glib::Error>;
 
+    //#[doc(alias = "atspi_document_get_document_attributes")]
     //fn get_document_attributes(&self) -> Result</*Unknown conversion*//*Unimplemented*/HashTable TypeId { ns_id: 0, id: 28 }/TypeId { ns_id: 0, id: 28 }, glib::Error>;
 
+    #[doc(alias = "atspi_document_get_locale")]
     fn get_locale(&self) -> Result<glib::GString, glib::Error>;
 
+    #[doc(alias = "atspi_document_get_page_count")]
     fn get_page_count(&self) -> Result<i32, glib::Error>;
 }
 

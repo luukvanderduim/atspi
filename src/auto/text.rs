@@ -13,7 +13,7 @@ use glib::translate::*;
 use std::fmt;
 use std::ptr;
 
-glib::glib_wrapper! {
+glib::wrapper! {
     pub struct Text(Interface<ffi::AtspiText>);
 
     match fn {
@@ -24,50 +24,73 @@ glib::glib_wrapper! {
 pub const NONE_TEXT: Option<&Text> = None;
 
 pub trait TextExt: 'static {
+    #[doc(alias = "atspi_text_add_selection")]
     fn add_selection(&self, start_offset: i32, end_offset: i32) -> Result<(), glib::Error>;
 
+    //#[doc(alias = "atspi_text_get_attribute_run")]
     //fn get_attribute_run(&self, offset: i32, include_defaults: bool) -> Result<(/*Unknown conversion*//*Unimplemented*/HashTable TypeId { ns_id: 0, id: 28 }/TypeId { ns_id: 0, id: 28 }, i32, i32), glib::Error>;
 
+    //#[doc(alias = "atspi_text_get_bounded_ranges")]
     //fn get_bounded_ranges(&self, x: i32, y: i32, width: i32, height: i32, type_: CoordType, clipTypeX: TextClipType, clipTypeY: TextClipType) -> Result</*Unknown conversion*//*Unimplemented*/Array TypeId { ns_id: 1, id: 64 }, glib::Error>;
 
+    #[doc(alias = "atspi_text_get_caret_offset")]
     fn get_caret_offset(&self) -> Result<i32, glib::Error>;
 
+    #[doc(alias = "atspi_text_get_character_at_offset")]
     fn get_character_at_offset(&self, offset: i32) -> Result<(), glib::Error>;
 
+    #[doc(alias = "atspi_text_get_character_count")]
     fn get_character_count(&self) -> Result<i32, glib::Error>;
 
+    #[doc(alias = "atspi_text_get_character_extents")]
     fn get_character_extents(&self, offset: i32, type_: CoordType) -> Result<Rect, glib::Error>;
 
+    //#[doc(alias = "atspi_text_get_default_attributes")]
     //fn get_default_attributes(&self) -> Result</*Unknown conversion*//*Unimplemented*/HashTable TypeId { ns_id: 0, id: 28 }/TypeId { ns_id: 0, id: 28 }, glib::Error>;
 
+    #[doc(alias = "atspi_text_get_n_selections")]
     fn get_n_selections(&self) -> Result<i32, glib::Error>;
 
+    #[doc(alias = "atspi_text_get_offset_at_point")]
     fn get_offset_at_point(&self, x: i32, y: i32, type_: CoordType) -> Result<i32, glib::Error>;
 
+    #[doc(alias = "atspi_text_get_range_extents")]
     fn get_range_extents(&self, start_offset: i32, end_offset: i32, type_: CoordType) -> Result<Rect, glib::Error>;
 
+    #[doc(alias = "atspi_text_get_selection")]
     fn get_selection(&self, selection_num: i32) -> Result<Range, glib::Error>;
 
+    #[doc(alias = "atspi_text_get_string_at_offset")]
     fn get_string_at_offset(&self, offset: i32, granularity: TextGranularity) -> Result<TextRange, glib::Error>;
 
+    #[doc(alias = "atspi_text_get_text")]
     fn get_text(&self, start_offset: i32, end_offset: i32) -> Result<glib::GString, glib::Error>;
 
+    #[doc(alias = "atspi_text_get_text_after_offset")]
     fn get_text_after_offset(&self, offset: i32, type_: TextBoundaryType) -> Result<TextRange, glib::Error>;
 
+    #[doc(alias = "atspi_text_get_text_attribute_value")]
     fn get_text_attribute_value(&self, offset: i32, attribute_name: &str) -> Result<Option<glib::GString>, glib::Error>;
 
+    //#[doc(alias = "atspi_text_get_text_attributes")]
     //fn get_text_attributes(&self, offset: i32) -> Result<(/*Unknown conversion*//*Unimplemented*/HashTable TypeId { ns_id: 0, id: 28 }/TypeId { ns_id: 0, id: 28 }, i32, i32), glib::Error>;
 
+    #[doc(alias = "atspi_text_get_text_before_offset")]
     fn get_text_before_offset(&self, offset: i32, type_: TextBoundaryType) -> Result<TextRange, glib::Error>;
 
+    #[doc(alias = "atspi_text_remove_selection")]
     fn remove_selection(&self, selection_num: i32) -> Result<(), glib::Error>;
 
+    //#[doc(alias = "atspi_text_scroll_substring_to")]
     //fn scroll_substring_to(&self, start_offset: i32, end_offset: i32, type_: /*Ignored*/ScrollType) -> Result<(), glib::Error>;
 
+    #[doc(alias = "atspi_text_scroll_substring_to_point")]
     fn scroll_substring_to_point(&self, start_offset: i32, end_offset: i32, coords: CoordType, x: i32, y: i32) -> Result<(), glib::Error>;
 
+    #[doc(alias = "atspi_text_set_caret_offset")]
     fn set_caret_offset(&self, new_offset: i32) -> Result<(), glib::Error>;
 
+    #[doc(alias = "atspi_text_set_selection")]
     fn set_selection(&self, selection_num: i32, start_offset: i32, end_offset: i32) -> Result<(), glib::Error>;
 }
 

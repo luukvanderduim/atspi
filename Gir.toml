@@ -60,8 +60,7 @@ generate = [
             "Atspi.RelationType",
             "Atspi.Role",
             "Atspi.Selection",
-            #"Atspi.StateSet",
-            # Manually
+            "Atspi.StateSet",
             "Atspi.StateType",
             "Atspi.Table",
             "Atspi.TableCell",
@@ -79,7 +78,6 @@ manual = [
          "GLib.MainContext",
          "Atspi.Event",
          "Atspi.Rect",
-         "Atspi.StateSet",
          "GObject.Object",
          "GObject.Value",
          "GObject.ValueArray",

@@ -29,7 +29,7 @@ use std::fmt;
 use std::mem::transmute;
 use std::ptr;
 
-glib::glib_wrapper! {
+glib::wrapper! {
     pub struct Accessible(Object<ffi::AtspiAccessible, ffi::AtspiAccessibleClass>) @extends Object, @implements Action, Collection, Component, Document, EditableText, Hypertext, Image, Selection, Table, TableCell, Text, Value;
 
     match fn {
@@ -40,83 +40,120 @@ glib::glib_wrapper! {
 pub const NONE_ACCESSIBLE: Option<&Accessible> = None;
 
 pub trait AccessibleExt: 'static {
+    #[doc(alias = "atspi_accessible_clear_cache")]
     fn clear_cache(&self);
 
     #[cfg(any(feature = "v2_34", feature = "dox"))]
     #[cfg_attr(feature = "dox", doc(cfg(feature = "v2_34")))]
+    #[doc(alias = "atspi_accessible_get_accessible_id")]
     fn get_accessible_id(&self) -> Result<glib::GString, glib::Error>;
 
+    #[doc(alias = "atspi_accessible_get_action_iface")]
     fn get_action_iface(&self) -> Option<Action>;
 
+    #[doc(alias = "atspi_accessible_get_application")]
     fn get_application(&self) -> Result<Accessible, glib::Error>;
 
+    #[doc(alias = "atspi_accessible_get_atspi_version")]
     fn get_atspi_version(&self) -> Result<glib::GString, glib::Error>;
 
+    //#[doc(alias = "atspi_accessible_get_attributes")]
     //fn get_attributes(&self) -> Result</*Unknown conversion*//*Unimplemented*/HashTable TypeId { ns_id: 0, id: 28 }/TypeId { ns_id: 0, id: 28 }, glib::Error>;
 
+    //#[doc(alias = "atspi_accessible_get_attributes_as_array")]
     //fn get_attributes_as_array(&self) -> Result</*Unknown conversion*//*Unimplemented*/Array TypeId { ns_id: 0, id: 28 }, glib::Error>;
 
+    #[doc(alias = "atspi_accessible_get_child_at_index")]
     fn get_child_at_index(&self, child_index: i32) -> Result<Accessible, glib::Error>;
 
+    #[doc(alias = "atspi_accessible_get_child_count")]
     fn get_child_count(&self) -> Result<i32, glib::Error>;
 
+    #[doc(alias = "atspi_accessible_get_collection_iface")]
     fn get_collection_iface(&self) -> Option<Collection>;
 
+    #[doc(alias = "atspi_accessible_get_component_iface")]
     fn get_component_iface(&self) -> Option<Component>;
 
+    #[doc(alias = "atspi_accessible_get_description")]
     fn get_description(&self) -> Result<glib::GString, glib::Error>;
 
+    #[doc(alias = "atspi_accessible_get_document_iface")]
     fn get_document_iface(&self) -> Option<Document>;
 
+    #[doc(alias = "atspi_accessible_get_editable_text_iface")]
     fn get_editable_text_iface(&self) -> Option<EditableText>;
 
+    #[doc(alias = "atspi_accessible_get_hyperlink")]
     fn get_hyperlink(&self) -> Option<Hyperlink>;
 
+    #[doc(alias = "atspi_accessible_get_hypertext_iface")]
     fn get_hypertext_iface(&self) -> Option<Hypertext>;
 
+    #[doc(alias = "atspi_accessible_get_id")]
     fn get_id(&self) -> Result<i32, glib::Error>;
 
+    #[doc(alias = "atspi_accessible_get_image_iface")]
     fn get_image_iface(&self) -> Option<Image>;
 
+    #[doc(alias = "atspi_accessible_get_index_in_parent")]
     fn get_index_in_parent(&self) -> Result<i32, glib::Error>;
 
+    //#[doc(alias = "atspi_accessible_get_interfaces")]
     //fn get_interfaces(&self) -> /*Unknown conversion*//*Unimplemented*/Array TypeId { ns_id: 0, id: 28 };
 
+    #[doc(alias = "atspi_accessible_get_localized_role_name")]
     fn get_localized_role_name(&self) -> Result<glib::GString, glib::Error>;
 
+    #[doc(alias = "atspi_accessible_get_name")]
     fn get_name(&self) -> Result<glib::GString, glib::Error>;
 
+    #[doc(alias = "atspi_accessible_get_object_locale")]
     fn get_object_locale(&self) -> Result<glib::GString, glib::Error>;
 
+    #[doc(alias = "atspi_accessible_get_parent")]
     fn get_parent(&self) -> Result<Option<Accessible>, glib::Error>;
 
+    #[doc(alias = "atspi_accessible_get_process_id")]
     fn get_process_id(&self) -> Result<(), glib::Error>;
 
+    //#[doc(alias = "atspi_accessible_get_relation_set")]
     //fn get_relation_set(&self) -> Result</*Unknown conversion*//*Unimplemented*/Array TypeId { ns_id: 1, id: 19 }, glib::Error>;
 
+    #[doc(alias = "atspi_accessible_get_role")]
     fn get_role(&self) -> Result<Role, glib::Error>;
 
+    #[doc(alias = "atspi_accessible_get_role_name")]
     fn get_role_name(&self) -> Result<glib::GString, glib::Error>;
 
+    #[doc(alias = "atspi_accessible_get_selection_iface")]
     fn get_selection_iface(&self) -> Option<Selection>;
 
+    #[doc(alias = "atspi_accessible_get_state_set")]
     fn get_state_set(&self) -> Option<StateSet>;
 
+    #[doc(alias = "atspi_accessible_get_table_cell")]
     fn get_table_cell(&self) -> Option<TableCell>;
 
+    #[doc(alias = "atspi_accessible_get_table_iface")]
     fn get_table_iface(&self) -> Option<Table>;
 
+    #[doc(alias = "atspi_accessible_get_text_iface")]
     fn get_text_iface(&self) -> Option<Text>;
 
+    #[doc(alias = "atspi_accessible_get_toolkit_name")]
     fn get_toolkit_name(&self) -> Result<glib::GString, glib::Error>;
 
+    #[doc(alias = "atspi_accessible_get_toolkit_version")]
     fn get_toolkit_version(&self) -> Result<glib::GString, glib::Error>;
 
+    #[doc(alias = "atspi_accessible_get_value_iface")]
     fn get_value_iface(&self) -> Option<Value>;
 
+    #[doc(alias = "atspi_accessible_set_cache_mask")]
     fn set_cache_mask(&self, mask: Cache);
 
-    fn connect_mode_changed<F: Fn(&Self, i32, &str) + 'static>(&self, f: F) -> SignalHandlerId;
+    fn connect_mode_changed<F: Fn(&Self, i32, &str) + 'static>(&self, detail: Option<&str>, f: F) -> SignalHandlerId;
 
     fn connect_region_changed<F: Fn(&Self, i32, i32) + 'static>(&self, f: F) -> SignalHandlerId;
 }
@@ -372,7 +409,7 @@ impl<O: IsA<Accessible>> AccessibleExt for O {
         }
     }
 
-    fn connect_mode_changed<F: Fn(&Self, i32, &str) + 'static>(&self, f: F) -> SignalHandlerId {
+    fn connect_mode_changed<F: Fn(&Self, i32, &str) + 'static>(&self, detail: Option<&str>, f: F) -> SignalHandlerId {
         unsafe extern "C" fn mode_changed_trampoline<P, F: Fn(&P, i32, &str) + 'static>(this: *mut ffi::AtspiAccessible, arg1: libc::c_int, why: *mut libc::c_char, f: glib::ffi::gpointer)
             where P: IsA<Accessible>
         {
@@ -381,7 +418,9 @@ impl<O: IsA<Accessible>> AccessibleExt for O {
         }
         unsafe {
             let f: Box_<F> = Box_::new(f);
-            connect_raw(self.as_ptr() as *mut _, b"mode-changed\0".as_ptr() as *const _,
+            let detailed_signal_name = detail.map(|name| { format!("mode-changed::{}\0", name) });
+            let signal_name: &[u8] = detailed_signal_name.as_ref().map_or(&b"mode-changed\0"[..], |n| n.as_bytes());
+            connect_raw(self.as_ptr() as *mut _, signal_name.as_ptr() as *const _,
                 Some(transmute::<_, unsafe extern "C" fn()>(mode_changed_trampoline::<Self, F> as *const ())), Box_::into_raw(f))
         }
     }
